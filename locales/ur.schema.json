@@ -146,7 +146,8 @@
     "disclosures": "ڈسکلوزر",
     "disclosures_metafield_content": "اس پروڈکٹ کے لیے درکار حفاظتی انتباہات اور ریگولیٹری ڈسکلوزر۔",
     "app_required_for_ratings": "پروڈکٹ کی ریٹنگز کے لیے ایک ایپ درکار ہے۔ [مزید جانیں](https://help.shopify.com/manual/apps)",
-    "navigation": "نیویگیشن"
+    "navigation": "نیویگیشن",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "join_our_email_list": "<h2>ہماری ای میل لسٹ میں شامل ہوں</h2>",
@@ -203,7 +204,8 @@
     "team_with_goal": "<h2>ایک مقصد کے ساتھ ایک ٹیم</h2>",
     "unable_to_accept_returns": "<p>ہم کچھ مخصوص اشیاء پر واپسی قبول کرنے سے قاصر ہیں۔ خریداری سے پہلے ان پر احتیاط سے نشان لگا دیا جائے گا۔</p>",
     "uncompromising_standards": "<p>غیر سمجھوتہ شدہ معیارات </p>",
-    "work_quickly_to_ship": "<p>ہم جلد از جلد آپ کا آرڈر شپ کرنے کے لیے تیزی سے کام کریں گے۔ آپ کا آرڈر شپ ہونے کے بعد، آپ کو مزید معلومات کے ساتھ ایک ای میل موصول ہوگی۔ آپ کے مقام کے لحاظ سے ترسیل کے اوقات مختلف ہو سکتے ہیں۔</p>"
+    "work_quickly_to_ship": "<p>ہم جلد از جلد آپ کا آرڈر شپ کرنے کے لیے تیزی سے کام کریں گے۔ آپ کا آرڈر شپ ہونے کے بعد، آپ کو مزید معلومات کے ساتھ ایک ای میل موصول ہوگی۔ آپ کے مقام کے لحاظ سے ترسیل کے اوقات مختلف ہو سکتے ہیں۔</p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "info": {
     "actions_display_style": "موبائل پر ہمیشہ آئیکن استعمال ہوتے ہیں",
@@ -246,6 +248,7 @@
     "animations": "اینیمیشن",
     "announcement": "اعلان",
     "announcement_bar": "اعلان کی بار",
+    "announcement_ticker": "Announcement ticker",
     "badges": "بیج",
     "blog_card": "بلاگ کارڈ",
     "blog_post": "بلاگ پوسٹ",
@@ -378,6 +381,7 @@
     "social_link": "سوشل لنک",
     "social_media_links": "سوشل میڈیا کے لنک",
     "spacer": "سپیسر",
+    "split_hero": "Split hero",
     "split_showcase": "سپلٹ شوکیس",
     "subheading": "ذیلی سرخی",
     "submit_button": "سبمٹ کا بٹن",
@@ -394,7 +398,26 @@
     "view_all_button": "سبھی دیکھیں",
     "disclosures": "ڈسکلوزر",
     "pills": "پل",
-    "comparison_slider": "موازنہ کرنے والا سلائیڈر"
+    "comparison_slider": "موازنہ کرنے والا سلائیڈر",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "options": {
     "above_carousel": "کیرول کے اوپر",
@@ -1085,7 +1108,9 @@
     "top_row_background": "اوپری قطار کا پس منظر",
     "top_row_text": "اوپری قطار کا متن",
     "bottom_row_background": "نچلی قطار کا پس منظر",
-    "bottom_row_text": "نچلی قطار کا متن"
+    "bottom_row_text": "نچلی قطار کا متن",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "text_defaults": {
     "accordion_heading": "ایکارڈین کی سرخی",

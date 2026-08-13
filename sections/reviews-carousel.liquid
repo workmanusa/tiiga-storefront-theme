@@ -1,0 +1,239 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+{% capture slides %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+{% capture controls %}
+  <div class="reviews-carousel__footer">
+    <div class="reviews-carousel__nav">
+      <button
+        type="button"
+        class="reviews-carousel__nav-button button-unstyled"
+        aria-label="{{ 'accessibility.slideshow_previous' | t }}"
+        on:click="/previous"
+      >
+        {{- 'icon-chevron-left.svg' | inline_asset_content -}}
+      </button>
+      <button
+        type="button"
+        class="reviews-carousel__nav-button button-unstyled"
+        aria-label="{{ 'accessibility.slideshow_next' | t }}"
+        on:click="/next"
+      >
+        {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+      </button>
+    </div>
+    {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+      <a class="button reviews-carousel__cta" href="{{ section.settings.link }}">
+        {{- section.settings.link_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+{% endcapture %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="reviews-carousel spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="reviews-carousel__header">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="reviews-carousel__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtext != blank -%}
+      <p class="reviews-carousel__subtext">{{ section.settings.subtext }}</p>
+    {%- endif -%}
+  </div>
+
+  {% render 'slideshow',
+    class: 'reviews-carousel__slideshow',
+    slides: slides,
+    slide_count: section.blocks.size,
+    controls: controls,
+    show_arrows: false,
+    initial_slide: 1,
+    auto_hide_controls: false
+  %}
+</div>
+
+{% stylesheet %}
+  .reviews-carousel {
+    grid-column: 1 / -1;
+    overflow: hidden;
+
+    --reviews-carousel-inset: max(3rem, calc((100vw - var(--page-width, 1300px)) / 2 + 3rem));
+    /* One height for every tile: quote cards, photos, and videos */
+    --review-tile-height: 21rem;
+  }
+
+  .reviews-carousel__header {
+    text-align: center;
+    padding-inline: var(--reviews-carousel-inset);
+    margin-block-end: 2.5rem;
+  }
+
+  .reviews-carousel__heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.875rem, 3.2vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .reviews-carousel__subtext {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .reviews-carousel slideshow-slides {
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .reviews-carousel slideshow-slide {
+    width: min(300px, 78vw);
+    scroll-snap-align: center;
+  }
+
+  .reviews-carousel__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-inline: var(--reviews-carousel-inset);
+    margin-block-start: 2.5rem;
+  }
+
+  .reviews-carousel__nav {
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  .reviews-carousel__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    /* Thin, muted chevron like the reference */
+    --icon-stroke-width: 1px;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+    cursor: pointer;
+  }
+
+  .reviews-carousel__nav-button:hover {
+    color: var(--color-foreground);
+  }
+
+  .reviews-carousel__nav-button svg {
+    width: 0.5rem;
+    height: auto;
+  }
+
+
+  @media screen and (max-width: 749px) {
+    .reviews-carousel__header,
+    .reviews-carousel__footer {
+      padding-inline: 1.5rem;
+    }
+
+    /* Inset the rail so the first card lines up with the header instead of
+       being clipped at the viewport edge; the next card still peeks. */
+    .reviews-carousel slideshow-slides {
+      padding-inline: 1.5rem;
+      scroll-padding-inline-start: 1.5rem;
+    }
+
+    .reviews-carousel slideshow-slide {
+      scroll-snap-align: start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.reviews_carousel",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_review-card"
+    },
+    {
+      "type": "_review-photo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.reviews_carousel",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "review_1": { "type": "_review-card" },
+        "review_2": { "type": "_review-card" },
+        "review_3": { "type": "_review-card" }
+      },
+      "block_order": ["review_1", "review_2", "review_3"]
+    }
+  ]
+}
+{% endschema %}

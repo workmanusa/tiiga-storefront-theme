@@ -146,7 +146,8 @@
     "disclosures": "גילוי נאות",
     "disclosures_metafield_content": "אזהרות בטיחות חובה וגילויים רגולטוריים עבור מוצר זה.",
     "app_required_for_ratings": "נדרש יישום עבור דירוגי מוצרים. [למידע נוסף](https://help.shopify.com/manual/apps)",
-    "navigation": "ניווט"
+    "navigation": "ניווט",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "join_our_email_list": "<h2>הצטרף לרשימת הדיוור שלנו</h2>",
@@ -203,7 +204,8 @@
     "team_with_goal": "<h2>צוות עם מטרה</h2>",
     "unable_to_accept_returns": "<p>איננו יכולים לקבל החזרות על פריטים מסוימים. פריטים אלו יסומנו בבירור לפני הרכישה.</p>",
     "uncompromising_standards": "<p>סטנדרטים ללא פשרות </p>",
-    "work_quickly_to_ship": "<p>נעבוד מהר כדי לשלוח את ההזמנה שלך בהקדם האפשרי. לאחר שההזמנה שלך תישלח, תקבל דוא&quot;ל עם מידע נוסף. זמני האספקה משתנים בהתאם למיקומך.</p>"
+    "work_quickly_to_ship": "<p>נעבוד מהר כדי לשלוח את ההזמנה שלך בהקדם האפשרי. לאחר שההזמנה שלך תישלח, תקבל דוא&quot;ל עם מידע נוסף. זמני האספקה משתנים בהתאם למיקומך.</p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "info": {
     "actions_display_style": "תמיד נעשה שימוש בסמלים בנייד",
@@ -246,6 +248,7 @@
     "animations": "אנימציות",
     "announcement": "הכרזה",
     "announcement_bar": "סרגל הכרזות",
+    "announcement_ticker": "Announcement ticker",
     "badges": "תגים",
     "blog_card": "כרטיס בלוג",
     "blog_post": "פוסט בבלוג",
@@ -378,6 +381,7 @@
     "social_link": "קישור חברתי",
     "social_media_links": "קישורי מדיה חברתית",
     "spacer": "מרווח",
+    "split_hero": "Split hero",
     "split_showcase": "תצוגה מפוצלת",
     "subheading": "כותרת משנה",
     "submit_button": "לחצן 'שליחה'",
@@ -394,7 +398,26 @@
     "view_all_button": "הצג הכול",
     "disclosures": "גילוי נאות",
     "pills": "גלולות",
-    "comparison_slider": "מחוון השוואה"
+    "comparison_slider": "מחוון השוואה",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "options": {
     "above_carousel": "מעל הקרוסלה",
@@ -1085,7 +1108,9 @@
     "top_row_background": "רקע לשורה העליונה",
     "top_row_text": "טקסט לשורה העליונה",
     "bottom_row_background": "רקע לשורה התחתונה",
-    "bottom_row_text": "טקסט לשורה התחתונה"
+    "bottom_row_text": "טקסט לשורה התחתונה",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "text_defaults": {
     "accordion_heading": "כותרת אקורדיון",

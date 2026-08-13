@@ -1,0 +1,125 @@
+<div
+  class="bundle-tier{% if block.settings.highlight %} bundle-tier--highlight{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="bundle-tier__copy">
+    {%- if block.settings.title != blank -%}
+      <span class="bundle-tier__title">{{ block.settings.title }}</span>
+    {%- endif -%}
+    {%- if block.settings.subtitle != blank -%}
+      <span class="bundle-tier__subtitle">{{ block.settings.subtitle }}</span>
+    {%- endif -%}
+  </div>
+  {%- if block.settings.badge != blank -%}
+    <span class="bundle-tier__badge">{{ block.settings.badge }}</span>
+  {%- endif -%}
+  {%- if block.settings.value != blank -%}
+    <span class="bundle-tier__value">{{ block.settings.value }}</span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .bundle-tier {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.125rem 1rem;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+  }
+
+  .bundle-tier--highlight {
+    background-color: rgb(var(--color-foreground-rgb) / 0.05);
+    border-radius: 6px;
+    border-block-start-color: transparent;
+  }
+
+  .bundle-tier__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .bundle-tier__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .bundle-tier__subtitle {
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+
+  .bundle-tier__badge {
+    margin-inline-start: auto;
+    flex: 0 0 auto;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .bundle-tier__value {
+    flex: 0 0 auto;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--bundle-value-color, #1d5a6b);
+  }
+
+  .bundle-tier__badge + .bundle-tier__value {
+    margin-inline-start: 0;
+  }
+
+  .bundle-tier__value:only-of-type {
+    margin-inline-start: auto;
+  }
+
+  .bundle-tier:not(:has(.bundle-tier__badge)) .bundle-tier__value {
+    margin-inline-start: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.bundle_tier",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight",
+      "label": "t:settings.style",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.bundle_tier"
+    }
+  ]
+}
+{% endschema %}

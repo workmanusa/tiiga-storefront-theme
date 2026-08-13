@@ -1,0 +1,29 @@
+{%- assign plain_text = block.settings.text | strip_newlines | strip_html | strip -%}
+
+{%- unless plain_text == '' -%}
+  <div
+    class="announcement-ticker__item"
+    {{ block.shopify_attributes }}
+  >
+    {{ block.settings.text }}
+  </div>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "t:names.announcement",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.announcement"
+    }
+  ]
+}
+{% endschema %}

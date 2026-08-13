@@ -75,7 +75,8 @@
     "search_suggestions_available": "Cari rekomendasi yang tersedia untuk \"{{ query }}\"",
     "price_filter_low": "Harga rendah",
     "price_filter_high": "Harga tinggi",
-    "view_disclosure_information_for_product": "Lihat informasi pengungkapan untuk {{ product_title }}"
+    "view_disclosure_information_for_product": "Lihat informasi pengungkapan untuk {{ product_title }}",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Tambahkan ke keranjang",
@@ -343,5 +344,17 @@
       "success_moderated": "Komentar diposting, menunggu moderasi",
       "success": "Komentar diposting"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

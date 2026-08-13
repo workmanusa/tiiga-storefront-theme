@@ -75,7 +75,8 @@
     "search_suggestions_available": "Sökförslag tillgängliga för \"{{ query }}\"",
     "price_filter_low": "Lågt pris",
     "price_filter_high": "Högt pris",
-    "view_disclosure_information_for_product": "Visa produktupplysningar för {{ product_title }}"
+    "view_disclosure_information_for_product": "Visa produktupplysningar för {{ product_title }}",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Lägg till i varukorgen",
@@ -343,5 +344,17 @@
       "default_title": "Standardtitel",
       "sticky_add_to_cart": "Fält för att lägga till snabbt i varukorgen"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

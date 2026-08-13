@@ -1,0 +1,196 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="stats-numbers spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %};{% if section.settings.value_color != blank %} --stat-value-color: {{ section.settings.value_color }};{% endif %}"
+>
+  <div class="stats-numbers__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="stats-numbers__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="stats-numbers__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="stats-numbers__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    <div class="stats-numbers__grid">
+      {% content_for 'blocks' %}
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="stats-numbers__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .stats-numbers {
+    grid-column: 1 / -1;
+  }
+
+  .stats-numbers__inner {
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+    text-align: center;
+  }
+
+  .stats-numbers__eyebrow {
+    margin: 0 0 1rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .stats-numbers__heading {
+    margin: 0 0 1rem;
+    font-size: clamp(1.75rem, 2.9vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .stats-numbers__text {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .stats-numbers__text p {
+    margin: 0;
+  }
+
+  .stats-numbers__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Cross hairlines on the 2x2 mobile grid */
+  @media screen and (max-width: 989px) {
+    .stats-numbers__grid > :nth-child(even) {
+      border-inline-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+    }
+
+    .stats-numbers__grid > :nth-child(n + 3) {
+      border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+    }
+  }
+
+  /* Single row on desktop: vertical dividers between every column */
+  @media screen and (min-width: 990px) {
+    .stats-numbers__grid {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+      max-width: 72rem;
+      margin-inline: auto;
+    }
+
+    .stats-numbers__grid > * {
+      padding-block: 2.5rem;
+    }
+
+    .stats-numbers__grid > * + * {
+      border-inline-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+    }
+  }
+
+  .stats-numbers__footnote {
+    margin: 2.5rem 0 0;
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.stats_numbers",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "t:settings.text_color",
+      "default": "#1d5a6b"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_stat-item"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.stats_numbers",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "stat_1": { "type": "_stat-item" },
+        "stat_2": { "type": "_stat-item" },
+        "stat_3": { "type": "_stat-item" },
+        "stat_4": { "type": "_stat-item" }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"]
+    }
+  ]
+}
+{% endschema %}

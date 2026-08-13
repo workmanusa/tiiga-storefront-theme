@@ -38,6 +38,7 @@
     "animations": "アニメーション",
     "announcement": "お知らせ",
     "announcement_bar": "告知バー",
+    "announcement_ticker": "Announcement ticker",
     "badges": "バッジ",
     "button": "ボタン",
     "cart": "カート",
@@ -125,6 +126,7 @@
     "prices": "価格",
     "products_editorial": "特集コレクション: エディトリアル",
     "social_link": "SNSリンク",
+    "split_hero": "Split hero",
     "split_showcase": "分割ショーケース",
     "variant_pickers": "バリエーションピッカー",
     "product_title": "商品名",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "レイヤースライドショー",
     "cart_drawer": "カートドロワー",
-    "disclosures": "開示情報"
+    "disclosures": "開示情報",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "配置",
@@ -574,7 +595,9 @@
     "input_style": "入力のスタイル",
     "selected_button_style": "選択されたボタンのスタイル",
     "open_by_default": "デフォルトで開く",
-    "title_preset": "タイトルプリセット"
+    "title_preset": "タイトルプリセット",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "ギフトカード商品",
     "disclosures": "開示情報",
     "disclosures_metafield_content": "この商品に必要な安全に関する警告および規制に基づく開示情報です。",
-    "page_text_color_contrast_info": "カスタム背景色を使用したセクションでは、色のコントラストが十分な場合にのみ、このテキストの配色が使用されます。"
+    "page_text_color_contrast_info": "カスタム背景色を使用したセクションでは、色のコントラストが十分な場合にのみ、このテキストの配色が使用されます。",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>ブランドに関する情報をお客様に伝えましょう。商品の説明、お知らせ、ストアへのお客様への歓迎メッセージなどに使用します。</p>",
@@ -1035,7 +1059,8 @@
     "uncompromising_standards": "<p>妥協のない基準</p>",
     "featured_collection_h3": "<h3>特集コレクション</h3>",
     "shop_collection": "<p>スタイルと品質を両立した、厳選されたお気に入りのアイテムが揃ったコレクションをご覧ください。</p>",
-    "introducing_p": "<p><em>新登場</em></p>"
+    "introducing_p": "<p><em>新登場</em></p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "今すぐ購入",

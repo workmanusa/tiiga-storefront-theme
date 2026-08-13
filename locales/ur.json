@@ -55,7 +55,8 @@
     "filter_count": {
       "one": "{{ count }} فلٹر لاگو کیا گیا",
       "other": "{{ count }} فلٹر لاگو کیے گئے"
-    }
+    },
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add": "شامل کریں",
@@ -343,5 +344,17 @@
       "default_title": "ڈیفالٹ عنوان",
       "sticky_add_to_cart": "کوئیک ایڈ ٹو کارٹ بار"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

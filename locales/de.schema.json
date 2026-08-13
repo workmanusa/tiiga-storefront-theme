@@ -35,6 +35,7 @@
     "animations": "Animationen",
     "announcement": "Ankündigung",
     "announcement_bar": "Ankündigungsleiste",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Badges",
     "button": "Schaltfläche",
     "cart": "Warenkorb",
@@ -124,6 +125,7 @@
     "prices": "Preise",
     "products_editorial": "Vorgestellte Kollektion: Editorial",
     "social_link": "Social-Media-Link",
+    "split_hero": "Split hero",
     "split_showcase": "Geteilte Präsentation",
     "variant_pickers": "Variantenauswahlen",
     "product_title": "Produkttitel",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Überlagerte Slideshow",
     "cart_drawer": "Warenkorbeinschub",
-    "disclosures": "Pflichtangaben"
+    "disclosures": "Pflichtangaben",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "autoplay": "Autoplay",
@@ -574,7 +595,9 @@
     "input_style": "Eingabestil",
     "selected_button_style": "Ausgewählter Button-Stil",
     "open_by_default": "Standardmäßig geöffnet",
-    "title_preset": "Titelvoreinstellung"
+    "title_preset": "Titelvoreinstellung",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apfel",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Gutscheinprodukte",
     "disclosures": "Pflichtangaben",
     "disclosures_metafield_content": "Erforderliche Sicherheitshinweise und gesetzliche Pflichtangaben für dieses Produkt.",
-    "page_text_color_contrast_info": "Abschnitte mit einer benutzerdefinierten Hintergrundfarbe verwenden diese Textfarbe nur bei ausreichendem Farbkontrast."
+    "page_text_color_contrast_info": "Abschnitte mit einer benutzerdefinierten Hintergrundfarbe verwenden diese Textfarbe nur bei ausreichendem Farbkontrast.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Teile Informationen über deine Marke mit deinen Kunden. Beschreibe ein Produkt, mache Ankündigungen oder heiße Kunden in deinem Shop willkommen.</p>",
@@ -1035,7 +1059,8 @@
     "uncompromising_standards": "<p>Kompromisslose Standards </p>",
     "shop_collection": "<p>Entdecke unsere kuratierte Kollektion mit handverlesenen Favoriten, die Stil und Qualität vereinen.</p>",
     "introducing_p": "<p><em>Vorgestellt</em></p>",
-    "featured_collection_h3": "<h3>Vorgestellte Kategorie</h3>"
+    "featured_collection_h3": "<h3>Vorgestellte Kategorie</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "collapsible_row": "Einklappbare Zeile",

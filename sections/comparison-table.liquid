@@ -1,0 +1,478 @@
+<script
+  src="{{ 'comparison-table.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<div
+  class="comparison spacing-style section section--full-width"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    {% if section.settings.text_color != blank %}color: {{ section.settings.text_color }};{% endif %}
+    {% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}
+  "
+>
+  {%- if section.settings.background_image -%}
+    {{
+      section.settings.background_image
+      | image_url: width: 2400
+      | image_tag: class: 'comparison__background', loading: 'lazy', alt: ''
+    }}
+  {%- else -%}
+    <img
+      src="{{ 'comparison-bg.jpg' | asset_url }}"
+      alt=""
+      class="comparison__background"
+      loading="lazy"
+      width="1800"
+      height="1200"
+    >
+  {%- endif -%}
+  {%- if section.settings.overlay_color != blank -%}
+    <div class="comparison__overlay" style="background-color: {{ section.settings.overlay_color }};"></div>
+  {%- endif -%}
+
+  <div class="comparison__inner">
+    <div class="comparison__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="comparison__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="comparison__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <comparison-table-component class="comparison__table">
+      <div
+        class="comparison__brand-card"
+        {% if section.settings.brand_text_color != blank %}
+          style="color: {{ section.settings.brand_text_color }};"
+        {% endif %}
+      >
+        <div class="comparison__brand-title">
+          {%- liquid
+            assign brand_logo = section.settings.brand_logo | default: settings.logo
+          -%}
+          {%- if brand_logo -%}
+            {{
+              brand_logo
+              | image_url: width: 400
+              | image_tag: class: 'comparison__brand-logo', loading: 'lazy'
+            }}
+          {%- else -%}
+            <span class="comparison__brand-name">{{ shop.name }}</span>
+          {%- endif -%}
+        </div>
+        <hr class="comparison__brand-rule">
+
+        {%- for i in (1..2) -%}
+          {%- liquid
+            assign value_key = 'brand_stat_' | append: i | append: '_value'
+            assign unit_key = 'brand_stat_' | append: i | append: '_unit'
+          -%}
+          {%- if section.settings[value_key] != blank -%}
+            <div class="comparison__brand-stat">
+              <span class="comparison__brand-stat-value">{{ section.settings[value_key] }}</span>
+              <span class="comparison__brand-stat-unit">{{ section.settings[unit_key] }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if section.settings.brand_description != blank -%}
+          <p class="comparison__brand-description">{{ section.settings.brand_description }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="comparison__columns">
+        {% content_for 'blocks' %}
+      </div>
+
+      <button
+        type="button"
+        class="comparison__scroll-hint button-unstyled"
+        aria-label="{{ 'accessibility.slideshow_next' | t }}"
+      >
+        {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+      </button>
+    </comparison-table-component>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="comparison__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .comparison {
+    grid-column: 1 / -1;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .comparison__background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .comparison__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .comparison__inner {
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+  }
+
+  .comparison__header {
+    display: grid;
+    gap: 1rem 4rem;
+    margin-block-end: 3rem;
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .comparison__heading {
+    margin: 0;
+    font-size: clamp(1.875rem, 3.2vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .comparison__text {
+    max-width: 34rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+
+    @media screen and (min-width: 990px) {
+      padding-block-start: 0.75rem;
+    }
+  }
+
+  .comparison__text p {
+    margin: 0;
+  }
+
+  .comparison__table {
+    position: relative;
+    display: grid;
+    gap: 2.5rem;
+
+    /* Shared row rhythm for the brand card and competitor columns */
+    --cmp-title-height: 4.25rem;
+    --cmp-stat-height: 8.25rem;
+    --cmp-rule-margin: 1rem 0 2.25rem;
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
+      align-items: stretch;
+      gap: 0;
+    }
+  }
+
+  .comparison__brand-card {
+    background-color: #fff;
+    border-radius: 8px 0 0 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  .comparison__brand-logo {
+    max-width: 11rem;
+    height: auto;
+    align-self: flex-start;
+  }
+
+  .comparison__brand-title {
+    display: flex;
+    align-items: center;
+    min-height: var(--cmp-title-height, 4rem);
+  }
+
+  .comparison__brand-name {
+    font-family: var(--font-heading--family);
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .comparison__brand-rule {
+    width: 72%;
+    align-self: flex-start;
+    margin: var(--cmp-rule-margin, 1rem 0 2rem);
+    border: none;
+    border-block-start: 1px solid currentcolor;
+    opacity: 0.4;
+  }
+
+  .comparison__brand-stat {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--cmp-stat-height, 7rem);
+  }
+
+  .comparison__brand-stat-value {
+    font-size: 2.375rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .comparison__brand-stat-unit {
+    font-size: 0.9375rem;
+  }
+
+  .comparison__brand-description {
+    margin: auto 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .comparison__columns {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 3rem;
+    min-width: 0;
+    /* Hazy glass panel behind the numbers. Flush against the brand card:
+       rounded on the right only, tucked under the card's rounded corners.
+       Top padding matches the card's so the rows align. */
+    background-color: rgb(163 196 205 / 0.38);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0 8px 8px 0;
+    padding: 2rem 3rem 2.5rem;
+  }
+
+  .comparison__scroll-hint {
+    display: none;
+  }
+
+  .comparison__footnote {
+    margin: 2.5rem 0 0;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: start;
+  }
+
+  /* Mobile: brand card beside one competitor at a time, swipeable */
+  @media screen and (max-width: 749px) {
+    .comparison__inner {
+      padding-inline: 1.5rem;
+    }
+
+    .comparison__table {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0;
+    }
+
+    .comparison__table {
+      --cmp-title-height: 3.25rem;
+      --cmp-stat-height: 6.5rem;
+      --cmp-rule-margin: 0.75rem 0 1.5rem;
+      column-gap: 0;
+    }
+
+    .comparison__brand-card {
+      padding: 1.25rem;
+    }
+
+    .comparison__columns {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 1.25rem 1.25rem 1.5rem 1.5rem;
+      scroll-padding-inline-start: 1.5rem;
+      gap: 1.5rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .comparison__columns::-webkit-scrollbar {
+      display: none;
+    }
+
+    .comparison__columns > * {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+
+    .comparison__footnote {
+      text-align: center;
+    }
+
+    .comparison-column__title {
+      padding-inline-end: 2.5rem;
+    }
+
+    .comparison__scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0.75rem;
+      inset-inline-end: 0;
+      width: var(--minimum-touch-target, 44px);
+      height: var(--minimum-touch-target, 44px);
+      color: currentcolor;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    .comparison__scroll-hint svg {
+      width: 1rem;
+      height: auto;
+    }
+
+    .comparison__footnote {
+      margin-block-start: 2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.comparison_table",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:content.background_image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:settings.overlay_color",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "t:content.block_link"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "t:settings.logo"
+    },
+    {
+      "type": "color",
+      "id": "brand_text_color",
+      "label": "t:settings.text_color",
+      "default": "#33302c"
+    },
+    {
+      "type": "text",
+      "id": "brand_stat_1_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "brand_stat_1_unit",
+      "label": "t:settings.unit"
+    },
+    {
+      "type": "text",
+      "id": "brand_stat_2_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "brand_stat_2_unit",
+      "label": "t:settings.unit"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_comparison-column"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.comparison_table",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "column_1": { "type": "_comparison-column" },
+        "column_2": { "type": "_comparison-column" },
+        "column_3": { "type": "_comparison-column" }
+      },
+      "block_order": ["column_1", "column_2", "column_3"]
+    }
+  ]
+}
+{% endschema %}

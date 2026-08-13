@@ -57,7 +57,8 @@
       "other": "הופעלו {{ count }} מסננים",
       "many": "הופעלו {{ count }} מסננים",
       "two": "הופעלו {{ count }} מסננים"
-    }
+    },
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add": "הוספה",
@@ -357,5 +358,17 @@
       "default_title": "כותרת ברירת מחדל",
       "sticky_add_to_cart": "סרגל הוספה מהירה לסל"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

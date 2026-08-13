@@ -1,0 +1,391 @@
+{% assign block_settings = block.settings %}
+{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+{%- assign section_index = section.index -%}
+
+{% capture children %}
+  {% liquid
+    assign preview_image = block_settings.image
+    if block_settings.media_type == 'video'
+      assign preview_image = block_settings.video.preview_image
+    endif
+
+    if block_settings.background_color != blank
+      render 'contrast-override', background_color: block_settings.background_color, text_color: block_settings.text_color, section_id: block.id
+      assign panel_class = 'color-custom-' | append: block.id
+    endif
+  %}
+
+  <div class="split-slide__media">
+    {%- if preview_image -%}
+      {%- liquid
+        assign height = preview_image.width | divided_by: preview_image.aspect_ratio | round
+        assign sizes = '(min-width: 750px) 50vw, 100vw'
+        assign widths = '400, 600, 832, 1200, 1600, 1920, 2560'
+
+        assign loading = 'lazy'
+        if block_index == 0 and section_index <= 3
+          assign loading = 'eager'
+          assign sizes = 'auto, ' | append: sizes
+        endif
+
+        assign fetchpriority = 'low'
+        if block_index == 0 and section_index == 1
+          assign fetchpriority = 'high'
+        endif
+      -%}
+
+      {%- if block_settings.media_type == 'image' -%}
+        {{
+          block_settings.image
+          | image_url: width: 2560
+          | image_tag: height: height, sizes: sizes, widths: widths, class: 'split-slide__image', loading: loading, fetchpriority: fetchpriority
+        }}
+      {%- else -%}
+        {%- if block_settings.video.preview_image -%}
+          {{
+            block_settings.video.preview_image
+            | image_url: width: 2560
+            | image_tag:
+              height: height,
+              sizes: sizes,
+              widths: widths,
+              loading: loading,
+              class: 'split-slide__video-poster',
+              fetchpriority: fetchpriority
+          }}
+        {%- endif -%}
+        {{
+          block_settings.video
+          | video_tag: poster: nil, autoplay: true, loop: true, controls: false, muted: true, class: 'split-slide__video'
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {%- liquid
+        assign modulo_result = block_index | modulo: 2
+        assign placeholder_variant = 2 | minus: modulo_result
+        assign placeholder_name = 'hero-apparel-' | append: placeholder_variant
+      -%}
+      {{ placeholder_name | placeholder_svg_tag: 'split-slide__image' }}
+    {%- endif -%}
+  </div>
+  <div
+    class="split-slide__panel spacing-style {{ panel_class }}"
+    style="{% render 'spacing-style', settings: block_settings %}"
+  >
+    <div
+      class="group-block-content layout-panel-flex layout-panel-flex--column mobile-column split-slide__panel-content"
+      style="--split-slide-alignment: {{ block_settings.horizontal_alignment }}; --vertical-alignment: center; --vertical-alignment-mobile: center; --flex-direction: column; {% render 'gap-style', value: block_settings.gap %}"
+    >
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% liquid
+  assign slide_class = 'split-slide'
+  if block_settings.media_position == 'start'
+    assign slide_class = slide_class | append: ' split-slide--media-start'
+  endif
+%}
+
+{% render 'slideshow-slide',
+  index: block_index,
+  class: slide_class,
+  children: children,
+  attributes: block.shopify_attributes,
+  navigate_to_slide: true
+%}
+
+{% stylesheet %}
+  slideshow-slide.split-slide {
+    display: grid;
+    grid-template-rows: var(--split-hero-media-height-mobile, 45dvh) 1fr;
+    grid-template-areas: 'media' 'panel';
+  }
+
+  .split-slide__media {
+    grid-area: media;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .split-slide__media > .split-slide__image,
+  .split-slide__media > .split-slide__video,
+  .split-slide__media > .split-slide__video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .split-slide__panel {
+    grid-area: panel;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    position: relative;
+    z-index: var(--layer-flat);
+  }
+
+  .split-slide__panel-content {
+    width: 100%;
+    max-width: 32rem;
+    margin-inline: auto;
+    --horizontal-alignment: center;
+    text-align: center;
+  }
+
+  /* Reference-scale CTA on desktop; mobile keeps the compact global sizing */
+  @media screen and (min-width: 750px) {
+    .split-slide__panel .button {
+      font-size: 0.9375rem;
+      padding-inline: 1.75rem;
+      padding-block: 0.875rem;
+    }
+  }
+
+  /* Half-width panels can't fit the full 72px display size on tablets —
+     scale the heading so it keeps its two-line reference wrap */
+  @media screen and (min-width: 750px) and (max-width: 1199px) {
+    .split-slide__panel-content .text-block.h1,
+    .split-slide__panel-content .text-block.h1 > * {
+      font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+    }
+  }
+
+  /*
+    Text blocks resolve their alignment from `--text-align-default`, which the
+    theme only sets via `[style*='--horizontal-alignment: ...']` attribute
+    selectors on the parent's inline style. Our alignment lives in this
+    stylesheet, so those selectors never match and text falls back to left.
+    Set the variables directly; doubled class beats the attribute selectors.
+  */
+  @media screen and (max-width: 749px) {
+    .split-slide__panel-content .text-block.text-block {
+      --text-align: center;
+      --text-align-default: center;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    slideshow-slide.split-slide {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 'panel media';
+    }
+
+    slideshow-slide.split-slide--media-start {
+      grid-template-areas: 'media panel';
+    }
+
+    .split-slide__panel-content {
+      --horizontal-alignment: var(--split-slide-alignment, flex-start);
+      text-align: start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.slide",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_heading"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "image"
+    },
+    {
+      "type": "icon"
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "t:settings.type",
+      "options": [
+        {
+          "value": "image",
+          "label": "t:options.image"
+        },
+        {
+          "value": "video",
+          "label": "t:options.video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "visible_if": "{{ block.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:settings.video",
+      "visible_if": "{{ block.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "t:settings.media_position",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:options.left"
+        },
+        {
+          "value": "end",
+          "label": "t:options.right"
+        }
+      ],
+      "default": "end"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "t:settings.alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:options.right"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "placeholder": "t:settings.default",
+      "visible_if": "{{ block.settings.background_color != blank }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.slide",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "t:html_defaults.new_arrivals_h3"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "t:html_defaults.latest_products",
+            "padding-block-end": 8
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "t:text_defaults.shop_now_button_label",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"]
+    }
+  ]
+}
+{% endschema %}

@@ -74,6 +74,7 @@
     "gift_card_products": "Gift card products",
     "local_pickup": "Local pickup",
     "local_pickup_description": "Show nearby pickup locations when online store local pickup is set up. [Learn more](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab.",
     "fonts": "Fonts",
     "grid": "Grid",
     "grid_layout": "Grid layout",
@@ -166,6 +167,7 @@
     "navigation": "Navigation"
   },
   "html_defaults": {
+    "welcome_announcement": "<p>Welcome to our store</p>",
     "join_our_email_list": "<h2>Join our email list</h2>",
     "get_exclusive_deals_and_early_access_to_new_products": "<p>Get exclusive deals and early access to new products.</p>",
     "artistry_in_action": "<p>Artistry in action </p>",
@@ -252,6 +254,10 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    // Brand-vs-competitors stat table on a photo background
+    "comparison_table": "Comparison",
+    // One competitor column in the comparison table
+    "comparison_column": "Comparison column",
     "column": "Column",
     "product_title": "Product title",
     "custom_liquid": "Custom Liquid",
@@ -263,6 +269,8 @@
     "animations": "Animations",
     "announcement": "Announcement",
     "announcement_bar": "Announcement bar",
+    // Continuously scrolling bar of announcements
+    "announcement_ticker": "Announcement ticker",
     "badges": "Badges",
     "blog_card": "Blog card",
     "blog_post": "Blog post",
@@ -324,6 +332,12 @@
     "group": "Group",
     "header": "Header",
     "heading": "Heading",
+    // Editorial card in the ingredients carousel
+    "ingredient_card": "Ingredient card",
+    // Scrolling carousel of ingredient cards with a split header
+    "ingredient_cards": "Ingredient cards",
+    // Tab bar that switches between the featured product sections below it
+    "flavor_tabs": "Flavor tabs",
     "hero": "Hero",
     "hero_bottom_aligned": "Hero: Bottom aligned",
     "hero_marquee": "Hero: Marquee",
@@ -361,6 +375,24 @@
     "predictive_search_empty": "Predictive search empty",
     "price": "Price",
     "prices": "Prices",
+    // Full-bleed background quote with press logos
+    // Image + subscription bundle tier rows
+    "bundle_tiers": "Bundle tiers",
+    // One discount tier row in the bundle section
+    "bundle_tier": "Bundle tier",
+    // Scrolling customer review cards
+    "reviews_carousel": "Reviews",
+    // One quote card in the reviews carousel
+    "review_card": "Review",
+    // One customer photo card in the reviews carousel
+    "review_photo": "Review photo",
+    "press_quote": "Press quote",
+    // One press outlet logo in the press quote section
+    "press_logo": "Press logo",
+    // Split intro + specialty pill rows (medical advisors)
+    "advisors": "Advisors",
+    // One specialty row in the advisors section
+    "advisor_row": "Advisor row",
     "product": "Product",
     "product_buy_buttons": "Buy buttons",
     "product_card": "Product card",
@@ -376,6 +408,8 @@
     "product_list_button": "View all button",
     "product_media": "Product media",
     "product_price": "Price",
+    // Subscribe-and-save / one-time purchase selector in the flavor panels
+    "purchase_options": "Purchase options",
     "product_recommendations": "Recommended products",
     "product_sku": "SKU",
     "product_review_stars": "Review stars",
@@ -392,6 +426,10 @@
     "search": "Search",
     "search_input": "Search input",
     "search_results": "Search results",
+    // Split image + spec-table section (the science section)
+    "science_spec": "Science",
+    // One row of the science spec table
+    "science_row": "Spec row",
     "section": "Section",
     "selected_variants": "Selected variants",
     "slide": "Slide",
@@ -401,8 +439,14 @@
     "social_link": "Social link",
     "social_media_links": "Social media links",
     "spacer": "Spacer",
+    // Slideshow hero with a solid content panel beside the media
+    "split_hero": "Split hero",
     // Banner section with two side-by-side content panels
     "split_showcase": "Split showcase",
+    // Centered by-the-numbers stat band
+    "stats_numbers": "By the numbers",
+    // One big statistic in the by-the-numbers band
+    "stat_item": "Stat",
     "subheading": "Subheading",
     "submit_button": "Submit button",
     "summary": "Summary",
@@ -860,6 +904,7 @@
     "extra_large": "Extra large",
     "extra_small": "Extra small",
     "favicon": "Favicon",
+    // Tab bar that switches between the featured product sections below it
     "filter_style": "Filter style",
     "first_row_media_position": "First row media position",
     "fixed_height": "Pixel height",
@@ -1113,6 +1158,9 @@
     "swatches": "Swatches",
     "tertiary_font": "Tertiary font",
     // Generic label for text-related settings (content or color)
+    // Chemical symbol shown in the science spec table
+    "symbol": "Symbol",
+    "value": "Value",
     "text": "Text",
     // Text capitalization setting for typography (uppercase/lowercase)
     "text_case": "Case",

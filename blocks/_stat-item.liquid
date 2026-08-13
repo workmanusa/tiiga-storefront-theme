@@ -1,0 +1,59 @@
+<div
+  class="stat-item"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.value != blank -%}
+    <span class="stat-item__value">{{ block.settings.value }}</span>
+  {%- endif -%}
+  {%- if block.settings.description != blank -%}
+    <p class="stat-item__description">{{ block.settings.description }}</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .stat-item__value {
+    font-family: var(--font-heading--family);
+    font-size: clamp(3.25rem, 6vw, 6rem);
+    line-height: 1;
+    color: var(--stat-value-color, #1d5a6b);
+  }
+
+  .stat-item__description {
+    margin: 1.25rem 0 0;
+    max-width: 16rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.stat_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.stat_item"
+    }
+  ]
+}
+{% endschema %}

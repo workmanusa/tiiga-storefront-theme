@@ -38,6 +38,7 @@
     "animations": "Animasyonlar",
     "announcement": "Duyuru",
     "announcement_bar": "Duyuru çubuğu",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Rozetler",
     "button": "Düğme",
     "cart": "Sepet",
@@ -124,6 +125,7 @@
     "prices": "Fiyatlar",
     "products_editorial": "Öne çıkan koleksiyon: Editoryal",
     "social_link": "Sosyal medya bağlantısı",
+    "split_hero": "Split hero",
     "split_showcase": "Bölünmüş vitrin",
     "variant_pickers": "Varyasyon seçiciler",
     "product_title": "Ürün başlığı",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Katmanlı slayt gösterisi",
     "cart_drawer": "Sepet çekmecesi",
-    "disclosures": "Bildirimler"
+    "disclosures": "Bildirimler",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "autoplay": "Otomatik oynatma",
@@ -574,7 +595,9 @@
     "input_style": "Giriş stili",
     "selected_button_style": "Seçili düğme stili",
     "open_by_default": "Varsayılan olarak açık",
-    "title_preset": "Başlık ön ayarı"
+    "title_preset": "Başlık ön ayarı",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Hediye kartı ürünleri",
     "disclosures": "Bildirimler",
     "disclosures_metafield_content": "Bu ürün için zorunlu güvenlik uyarıları ve yasal bildirimler.",
-    "page_text_color_contrast_info": "Özel arka plan rengine sahip bölümler, yalnızca yeterli renk kontrastı olduğunda bu metin rengini kullanır."
+    "page_text_color_contrast_info": "Özel arka plan rengine sahip bölümler, yalnızca yeterli renk kontrastı olduğunda bu metin rengini kullanır.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Markanızla ilgili bilgileri müşterilerinizle paylaşın. Bir ürünü açıklayın, duyurular yapın veya mağazanıza gelen müşterileri karşılayın.</p>",
@@ -1035,7 +1059,8 @@
     "uncompromising_standards": "<p>Tavizsiz standartlar </p>",
     "featured_collection_h3": "<h3>Öne çıkan koleksiyon</h3>",
     "shop_collection": "<p>Stil ve kaliteyi bir araya getiren, özenle seçilmiş favorilerden oluşan koleksiyonumuzu keşfedin.</p>",
-    "introducing_p": "<p><em>Karşınızda</em></p>"
+    "introducing_p": "<p><em>Karşınızda</em></p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "collapsible_row": "Daraltılabilir satır",

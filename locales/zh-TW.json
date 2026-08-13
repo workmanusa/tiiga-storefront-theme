@@ -75,7 +75,8 @@
     "price_filter_low": "低價",
     "price_filter_high": "高價",
     "view_disclosure_information_for_product": "檢視 {{ product_title }} 的揭露資訊",
-    "show_submenu": "顯示 {{ title }} 子選單"
+    "show_submenu": "顯示 {{ title }} 子選單",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "加入購物車",
@@ -343,5 +344,17 @@
       "default_title": "預設標題",
       "sticky_add_to_cart": "快速加入購物車列"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

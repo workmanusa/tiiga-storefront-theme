@@ -1,0 +1,275 @@
+{% if section.blocks.size > 1 %}
+  {% capture controls %}
+    {%- render 'slideshow-controls',
+      style: 'dots',
+      autoplay: section.settings.autoplay,
+      item_count: section.blocks.size,
+      show_arrows: false,
+      arrows_on_media: true,
+      controls_on_media: true,
+      pagination_position: 'center',
+      icon_style: section.settings.icons_style
+    -%}
+  {% endcapture %}
+{% endif %}
+
+{% capture slides %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+{% liquid
+  assign show_arrows = true
+  if section.settings.icons_style == 'none' or section.blocks.size <= 1
+    assign show_arrows = false
+  endif
+
+  case section.settings.media_height
+    when 'small'
+      assign media_height_mobile = '35dvh'
+    when 'large'
+      assign media_height_mobile = '55dvh'
+    else
+      assign media_height_mobile = '45dvh'
+  endcase
+%}
+
+<div
+  class="split-hero spacing-style section section--full-width disable-section-top-offset"
+  style="{% render 'spacing-padding', settings: section.settings %}; --split-hero-media-height-mobile: {{ media_height_mobile }};"
+>
+  <h2 class="visually-hidden">{{ 'accessibility.slideshow' | t }}</h2>
+  {% render 'slideshow',
+    class: 'split-hero__slideshow',
+    controls: controls,
+    show_arrows: show_arrows,
+    icon_style: section.settings.icons_style,
+    icon_shape: 'none',
+    autoplay: section.settings.autoplay,
+    autoplay_speed: section.settings.autoplay_speed,
+    slides: slides,
+    slide_count: section.blocks.size,
+    slide_size: section.settings.media_height
+  %}
+</div>
+
+{% stylesheet %}
+  .split-hero {
+    /*
+      The design calls for solid arrows and pagination over both the media and
+      the colored content panel, so opt out of the theme's difference-blend
+      treatment and keep the arrows visible without the hover reveal.
+    */
+    slideshow-arrows {
+      mix-blend-mode: normal;
+      align-items: center;
+    }
+
+    slideshow-arrows .slideshow-control.slideshow-control {
+      animation: none;
+      opacity: 1;
+      color: var(--color-white);
+      filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.25));
+    }
+
+    slideshow-controls:has(.slideshow-controls__dots) {
+      mix-blend-mode: normal;
+    }
+
+    /* Restyle the dot pagination as dashes */
+    .slideshow-controls__dots {
+      gap: var(--gap-sm);
+      padding: var(--padding-xs) var(--padding-lg);
+
+      button {
+        width: 2.75rem;
+        height: var(--minimum-touch-target);
+        margin: 0;
+        border-radius: 0;
+
+        &::after {
+          width: 100%;
+          height: 0.25rem;
+          border-radius: 0.125rem;
+          box-shadow: none;
+        }
+
+        &[aria-selected='true']::after {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.split_hero",
+  "class": "container-background-image",
+  "blocks": [
+    {
+      "type": "_split-slide"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_height",
+      "label": "t:settings.media_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:options.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "t:content.navigation"
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "t:settings.icons",
+      "options": [
+        {
+          "value": "chevron",
+          "label": "t:options.chevrons"
+        },
+        {
+          "value": "chevron_large",
+          "label": "t:options.large_chevrons"
+        },
+        {
+          "value": "arrow",
+          "label": "t:options.arrows"
+        },
+        {
+          "value": "arrows_large",
+          "label": "t:options.large_arrows"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "chevron_large"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:settings.auto_rotate_slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:settings.speed",
+      "min": 3,
+      "max": 7,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "visible_if": "{{ section.settings.autoplay }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.split_hero",
+      "category": "t:categories.banners",
+      "blocks": {
+        "slide_1": {
+          "type": "_split-slide",
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "t:html_defaults.new_arrivals_h3"
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "t:html_defaults.latest_products",
+                "padding-block-end": 8
+              }
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "t:text_defaults.shop_now_button_label",
+                "link": "shopify://collections/all"
+              }
+            }
+          },
+          "block_order": ["heading", "text", "button"]
+        },
+        "slide_2": {
+          "type": "_split-slide",
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "t:html_defaults.bestseller_h2"
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "t:html_defaults.discover_bestsellers",
+                "padding-block-end": 8
+              }
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "t:text_defaults.shop_now_button_label",
+                "link": "shopify://collections/all"
+              }
+            }
+          },
+          "block_order": ["heading", "text", "button"]
+        }
+      },
+      "block_order": ["slide_1", "slide_2"]
+    }
+  ]
+}
+{% endschema %}

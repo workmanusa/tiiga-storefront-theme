@@ -33,6 +33,7 @@
     "animations": "Animações",
     "announcement": "Anúncio",
     "announcement_bar": "Barra de anúncios",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Selos",
     "button": "Botão",
     "cart": "Carrinho",
@@ -123,6 +124,7 @@
     "products_editorial": "Coleção em destaque: Editorial",
     "products_grid": "Coleção em destaque: Grade",
     "social_link": "Link de rede social",
+    "split_hero": "Split hero",
     "split_showcase": "Vitrine dividida",
     "variant_pickers": "Seletores de variantes",
     "pills": "Pílulas",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Apresentação de slides em camadas",
     "cart_drawer": "Carrinho de compras deslizante",
-    "disclosures": "Divulgações"
+    "disclosures": "Divulgações",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "Alinhamento",
@@ -574,7 +595,9 @@
     "input_style": "Estilo do campo",
     "selected_button_style": "Estilo do botão selecionado",
     "open_by_default": "Aberto por padrão",
-    "title_preset": "Predefinição de título"
+    "title_preset": "Predefinição de título",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Produtos de cartão-presente",
     "disclosures": "Divulgações",
     "disclosures_metafield_content": "Avisos de segurança e divulgações regulatórias obrigatórios para este produto.",
-    "page_text_color_contrast_info": "Seções com uma cor de fundo personalizada usarão esta cor do texto apenas quando houver contraste de cor suficiente."
+    "page_text_color_contrast_info": "Seções com uma cor de fundo personalizada usarão esta cor do texto apenas quando houver contraste de cor suficiente.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Compartilhe informações sobre sua marca com seus clientes. Descreva um produto, faça anúncios ou dê as boas-vindas aos clientes em sua loja.</p>",
@@ -1035,7 +1059,8 @@
     "uncompromising_standards": "<p>Padrões rigorosos </p>",
     "featured_collection_h3": "<h3>Coleção em destaque</h3>",
     "shop_collection": "<p>Descubra nossa coleção selecionada, com os favoritos escolhidos a dedo que unem estilo e qualidade.</p>",
-    "introducing_p": "<p><em>Apresentando</em></p>"
+    "introducing_p": "<p><em>Apresentando</em></p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "Compre agora",

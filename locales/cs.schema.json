@@ -35,6 +35,7 @@
     "animations": "Animace",
     "announcement": "Oznámení",
     "announcement_bar": "Oznamovací lišta",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Odznaky",
     "button": "Tlačítko",
     "cart": "Košík",
@@ -123,6 +124,7 @@
     "prices": "Ceny",
     "products_editorial": "Propagovaná kolekce: Redakční",
     "social_link": "Odkaz na sociální síť",
+    "split_hero": "Split hero",
     "split_showcase": "Rozdělená prezentace",
     "variant_pickers": "Selektory variant",
     "product_title": "Název produktu",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Vrstvená prezentace",
     "cart_drawer": "Výsuvný košík",
-    "disclosures": "Prohlášení"
+    "disclosures": "Prohlášení",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "Zarovnání",
@@ -574,7 +595,9 @@
     "input_style": "Styl vstupního pole",
     "selected_button_style": "Styl vybraného tlačítka",
     "open_by_default": "Otevřeno ve výchozím stavu",
-    "title_preset": "Předvolba nadpisu"
+    "title_preset": "Předvolba nadpisu",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Produkty dárkové karty",
     "disclosures": "Prohlášení",
     "disclosures_metafield_content": "Povinná bezpečnostní varování a zákonná prohlášení pro tento produkt.",
-    "page_text_color_contrast_info": "Sekce s vlastní barvou pozadí použijí tuto barvu textu pouze v případě dostatečného barevného kontrastu."
+    "page_text_color_contrast_info": "Sekce s vlastní barvou pozadí použijí tuto barvu textu pouze v případě dostatečného barevného kontrastu.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Sdílejte informace o značce se zákazníky. Popište produkt, oznamte novinky nebo přivítejte zákazníky v obchodě.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Kvalita, kterou poznáte</h2>",
     "uncompromising_standards": "<p>Bezkompromisní standardy </p>",
     "shop_collection": "<p>Objevte naši pečlivě sestavenou kolekci s vybranými oblíbenými kousky, které spojují styl a kvalitu.</p>",
-    "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
+    "featured_collection_h3": "<h3>Doporučená kolekce</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "Nakupujte nyní",

@@ -75,7 +75,8 @@
     "price_filter_low": "Giá thấp",
     "price_filter_high": "Giá cao",
     "view_disclosure_information_for_product": "Xem thông tin công bố của {{ product_title }}",
-    "show_submenu": "Hiển thị menu phụ {{ title }}"
+    "show_submenu": "Hiển thị menu phụ {{ title }}",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Thêm vào giỏ hàng",
@@ -343,5 +344,17 @@
       "default_title": "Tiêu đề mặc định",
       "sticky_add_to_cart": "Thanh thêm nhanh vào giỏ hàng"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

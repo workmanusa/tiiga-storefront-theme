@@ -1,0 +1,200 @@
+<div
+  class="press-quote spacing-style section section--full-width"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    {% if section.settings.text_color != blank %}color: {{ section.settings.text_color }};{% endif %}
+  "
+>
+  {%- if section.settings.background_image -%}
+    {{
+      section.settings.background_image
+      | image_url: width: 2400
+      | image_tag: class: 'press-quote__background', loading: 'lazy', alt: ''
+    }}
+  {%- else -%}
+    <img
+      src="{{ 'quote-bg.jpg' | asset_url }}"
+      alt=""
+      class="press-quote__background"
+      loading="lazy"
+      width="1800"
+      height="1200"
+    >
+  {%- endif -%}
+  {%- if section.settings.overlay_color != blank -%}
+    <div class="press-quote__overlay" style="background-color: {{ section.settings.overlay_color }};"></div>
+  {%- endif -%}
+
+  <div class="press-quote__inner">
+    {%- if section.settings.quote != blank -%}
+      <blockquote class="press-quote__quote">{{ section.settings.quote }}</blockquote>
+    {%- endif -%}
+    {%- if section.settings.attribution != blank -%}
+      <p class="press-quote__attribution">{{ section.settings.attribution }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="press-quote__logos">
+        {% content_for 'blocks' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .press-quote {
+    grid-column: 1 / -1;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .press-quote__background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .press-quote__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .press-quote__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+    width: 100%;
+  }
+
+  .press-quote__quote {
+    margin: 0;
+    max-width: 52rem;
+    text-align: center;
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.5rem, 2.9vw, 2.75rem);
+    line-height: 1.3;
+  }
+
+  .press-quote__quote p {
+    margin: 0;
+  }
+
+  .press-quote__attribution {
+    margin: 1.5rem 0 0;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .press-quote__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem 4rem;
+    margin-block-start: clamp(3rem, 7vw, 6rem);
+  }
+
+  @media screen and (max-width: 749px) {
+    .press-quote__logos {
+      gap: 1.25rem 2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.press_quote",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:content.background_image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:settings.overlay_color",
+      "alpha": true,
+      "default": "#00000073"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_press-logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.press_quote",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "logo_1": { "type": "_press-logo" },
+        "logo_2": { "type": "_press-logo" },
+        "logo_3": { "type": "_press-logo" }
+      },
+      "block_order": ["logo_1", "logo_2", "logo_3"]
+    }
+  ]
+}
+{% endschema %}

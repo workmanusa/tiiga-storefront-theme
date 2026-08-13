@@ -33,6 +33,7 @@
     "animations": "Animationer",
     "announcement": "Meddelelse",
     "announcement_bar": "Meddelelseslinje",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Badges",
     "button": "Knap",
     "cart": "Indkøbskurv",
@@ -124,6 +125,7 @@
     "products_editorial": "Udvalgt kollektion: Redaktionel",
     "products_grid": "Udvalgt kollektion: Gitter",
     "social_link": "Link til sociale medier",
+    "split_hero": "Split hero",
     "split_showcase": "Opdelt fremvisning",
     "variant_pickers": "Variantvælgere",
     "view_all_button": "Se alle",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Diasshow i lag",
     "cart_drawer": "Indkøbskurvskuffe",
-    "disclosures": "Oplysninger"
+    "disclosures": "Oplysninger",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "Justering",
@@ -574,7 +595,9 @@
     "input_style": "Inputstil",
     "selected_button_style": "Valgt knapstil",
     "open_by_default": "Åben som standard",
-    "title_preset": "Forudindstilling for titel"
+    "title_preset": "Forudindstilling for titel",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Gavekortprodukter",
     "disclosures": "Oplysninger",
     "disclosures_metafield_content": "Obligatoriske sikkerhedsadvarsler og lovpligtige oplysninger for dette produkt.",
-    "page_text_color_contrast_info": "Afsnit med en brugerdefineret baggrundsfarve bruger kun denne tekstfarve, når der er tilstrækkelig farvekontrast."
+    "page_text_color_contrast_info": "Afsnit med en brugerdefineret baggrundsfarve bruger kun denne tekstfarve, når der er tilstrækkelig farvekontrast.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Del oplysninger om dit brand med dine kunder. Beskriv et produkt, kom med meddelelser, eller byd kunder velkommen i din butik.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Kvalitet, du kan mærke</h2>",
     "uncompromising_standards": "<p>Kompromisløse standarder</p>",
     "featured_collection_h3": "<h3>Udvalgt kollektion</h3>",
-    "shop_collection": "<p>Opdag vores nøje udvalgte kollektion med håndplukkede favoritter, der forener stil og kvalitet.</p>"
+    "shop_collection": "<p>Opdag vores nøje udvalgte kollektion med håndplukkede favoritter, der forener stil og kvalitet.</p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "Køb nu",

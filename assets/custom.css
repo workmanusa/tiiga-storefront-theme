@@ -1,0 +1,367 @@
+/*
+ * Tiiga brand overrides.
+ * Loaded after base.css via snippets/stylesheets.liquid so rules here win ties.
+ */
+
+/*
+ * Desktop nav: render the first top-level menu item as a solid pill.
+ * The desktop menu items are <li> elements slotted directly into <overflow-list>
+ * (its first child is a <template>, hence :first-of-type instead of :first-child).
+ */
+.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  border-radius: 100px;
+  padding-inline: 1.125rem;
+}
+
+.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link:hover {
+  background-color: rgb(var(--color-foreground-rgb) / 0.85);
+}
+
+/* The pill supplies its own emphasis — suppress the underline treatment on it */
+.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link .menu-list__link-title {
+  text-decoration: none;
+}
+
+/* Larger text wordmark until a logo image is uploaded.
+   Doubled class beats the block's `font-size: var(--font-size--md)` rule,
+   which loads after this file. */
+.header-logo.header-logo {
+  font-size: 1.75rem;
+}
+
+/* Breathe more like the reference: roomier icon cluster on desktop */
+@media screen and (min-width: 990px) {
+  header-actions {
+    gap: 0.75rem;
+  }
+}
+
+/*
+ * Flavor selector panels (.flavor-tab-panel is added to the section wrappers
+ * by flavor-tabs.js): restyle the variant buttons as a two-column list where
+ * the selected flavor sits on a soft white pill.
+ */
+/* Doubled classes outweigh the theme's `:has(:checked)` variant rules, which
+   load after this file and would otherwise win the cascade. */
+.flavor-tab-panel.flavor-tab-panel .variant-option--buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem 0.5rem;
+}
+
+.flavor-tab-panel.flavor-tab-panel .variant-option__button-label.variant-option__button-label {
+  border: none;
+  border-radius: 0.625rem;
+  background-color: transparent;
+  justify-content: flex-start;
+  padding-block: 0.625rem;
+  color: var(--color-foreground);
+}
+
+.flavor-tab-panel.flavor-tab-panel .variant-option__button-label.variant-option__button-label::before {
+  display: none;
+}
+
+.flavor-tab-panel.flavor-tab-panel .variant-option__button-label.variant-option__button-label:has(:checked) {
+  background-color: rgb(255 255 255 / 0.95);
+  box-shadow: 0 1px 8px rgb(0 0 0 / 0.07);
+}
+
+/* The theme's animated selection pill assumes a flex row; in our grid it
+   mispositions, so hide it — the white label background marks selection. */
+.flavor-tab-panel.flavor-tab-panel .variant-option__button-label__pill {
+  display: none;
+}
+
+/*
+ * Mobile scale, site-wide: the theme's fluid clamp() keeps headings near their
+ * desktop minimum on phones, and buttons keep desktop padding. Tighten both to
+ * the reference. :root:root outweighs the theme's :root definitions regardless
+ * of load order.
+ */
+@media screen and (max-width: 749px) {
+  :root:root {
+    --font-h1--size: clamp(1.875rem, 8.5vw, 2.5rem);
+    --font-h2--size: clamp(1.625rem, 7.5vw, 2.125rem);
+    --font-h3--size: clamp(1.375rem, 6vw, 1.75rem);
+    --button-padding-inline: 20px;
+    --button-padding-block: 10px;
+  }
+
+  /* Hero panel: tighter inset and smaller body copy on phones */
+  .split-slide__panel.spacing-style {
+    padding-block: 2.5rem 3.25rem;
+    padding-inline: 1.5rem;
+  }
+
+  /* Flavor panels: reference-scale section rhythm on phones */
+  .flavor-tab-panel .product-information.spacing-style {
+    padding-block: 1.5rem 2.5rem;
+  }
+
+  .split-slide__panel-content .custom-font-size {
+    font-size: 0.9375rem;
+  }
+}
+
+/*
+ * Flavor color dots. The variant inputs expose data-option-name and the flavor
+ * name as value, so the dots are pure CSS: only Flavor options get one (pack
+ * sizes don't), and each known flavor maps to a brand color below. Unknown
+ * flavors fall back to a neutral dot. If real option-value swatches are ever
+ * set in admin, Horizon's native swatches take over via --has-swatch and these
+ * stay out of the way.
+ */
+.flavor-tab-panel.flavor-tab-panel
+  .variant-option__button-label:not(.variant-option__button-label--has-swatch):has(
+    input[data-option-name='Flavor']
+  )
+  .variant-option__button-label__text::before {
+  content: '';
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  margin-inline-end: 0.625rem;
+  vertical-align: -0.3em;
+  background: var(--flavor-dot, #d8d3ca);
+}
+
+.flavor-tab-panel label:has(input[value='Raspberry Lemonade']) { --flavor-dot: #d23c6d; }
+.flavor-tab-panel label:has(input[value='Watermelon']) { --flavor-dot: #ef6f6f; }
+.flavor-tab-panel label:has(input[value='Strawberry']) { --flavor-dot: #e8556d; }
+.flavor-tab-panel label:has(input[value='Tropical Bliss']) { --flavor-dot: #f5a623; }
+.flavor-tab-panel label:has(input[value='Orange Mango']) { --flavor-dot: #f28c28; }
+.flavor-tab-panel label:has(input[value='Lemon Lime']) { --flavor-dot: #b5cc2e; }
+.flavor-tab-panel label:has(input[value='Wild Berry']) { --flavor-dot: #7b4397; }
+.flavor-tab-panel label:has(input[value='Fruit Punch']) { --flavor-dot: #d64550; }
+.flavor-tab-panel label:has(input[value='Orange']) { --flavor-dot: #f28522; }
+.flavor-tab-panel label:has(input[value='Berry Melon']) { --flavor-dot: #c04b8e; }
+.flavor-tab-panel label:has(input[value='Tropical Fruit']) { --flavor-dot: #f2a03d; }
+
+.flavor-tab-panel label:has(input[value='Variety Pack (All 6 Flavors)']) {
+  --flavor-dot: conic-gradient(
+    #d23c6d 0 60deg,
+    #ef6f6f 60deg 120deg,
+    #e8556d 120deg 180deg,
+    #f5a623 180deg 240deg,
+    #f28c28 240deg 300deg,
+    #b5cc2e 300deg 360deg
+  );
+}
+
+/* Sold-out flavors: dim instead of the diagonal strikethrough, which assumes
+   the theme's equal-width flex buttons and draws across our grid gaps. */
+.flavor-tab-panel.flavor-tab-panel .variant-option__strikethrough {
+  display: none;
+}
+
+.flavor-tab-panel.flavor-tab-panel
+  .variant-option__button-label:has([data-option-available='false'])
+  .variant-option__button-label__text {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+/* The reference shows a single Add button — hide express checkout in panels */
+.flavor-tab-panel.flavor-tab-panel .accelerated-checkout-block {
+  display: none;
+}
+
+/* The product-page view-transition title has no place in the panels */
+.flavor-tab-panel.flavor-tab-panel .view-product-title {
+  display: none;
+}
+
+/*
+ * Reference layout is three columns: flavor list | media | details.
+ * The details wrapper chain becomes display: contents so its blocks join the
+ * panel grid directly, letting the variant picker sit in its own left column
+ * while title/description/purchase rows stack on the right.
+ */
+@media screen and (min-width: 1200px) {
+  /*
+   * The quintupled class outweighs the theme's deeply nested
+   * `.product-information__grid--half` rules (~0,5,0), which define a
+   * four-track grid with 40px gutter columns. In our three-column template the
+   * theme's own item placements (media 2/3, details 3/4) land exactly where we
+   * want them, so only the template and the display:contents chain need to win.
+   */
+  .flavor-tab-panel.flavor-tab-panel.flavor-tab-panel.flavor-tab-panel.flavor-tab-panel {
+    .product-information__grid--half {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 1.15fr);
+      column-gap: 2.5rem;
+      align-items: center;
+      align-content: center;
+      max-width: var(--page-width, 1300px);
+      margin-inline: auto;
+      padding-inline: 3rem;
+    }
+
+    /* The reference shows the flavor list without an option heading */
+    .variant-option legend {
+      display: none;
+    }
+
+    .product-details,
+    .product-details > .group-block,
+    .product-details > .group-block > .group-block-content {
+      display: contents;
+    }
+
+    .product-information__media {
+      grid-column: 2;
+      grid-row: 1 / span 7;
+    }
+
+    .product-details > .group-block > .group-block-content > * {
+      grid-column: 3;
+      margin-block: 0.375rem;
+    }
+
+    .product-details > .group-block > .group-block-content > .text-block:has(> p > a) {
+      margin-block-start: 1rem;
+    }
+
+    .product-details > .group-block > .group-block-content > variant-picker {
+      grid-column: 1;
+      grid-row: 1 / span 7;
+      align-self: center;
+    }
+  }
+}
+
+/*
+ * Mobile flavor panels: a skinny flavor rail beside the product image, with
+ * the title / purchase stack full-width below (reference mobile layout).
+ * Same display:contents + fortified-scope technique as the desktop grid.
+ */
+@media screen and (max-width: 1199px) {
+  .flavor-tab-panel.flavor-tab-panel.flavor-tab-panel.flavor-tab-panel.flavor-tab-panel {
+    .product-information__grid--half {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      column-gap: 0.75rem;
+      align-items: center;
+      padding-inline: 1rem;
+      max-width: 44rem;
+      margin-inline: auto;
+    }
+
+    .product-details,
+    .product-details > .group-block,
+    .product-details > .group-block > .group-block-content {
+      display: contents;
+    }
+
+    .product-information__media {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .product-details > .group-block > .group-block-content > * {
+      grid-column: 1 / -1;
+      margin-block: 0.25rem;
+    }
+
+    .product-details > .group-block > .group-block-content > variant-picker {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: center;
+    }
+
+    /* Single-column flavor rail, one compact row per flavor */
+    .variant-option--buttons {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .variant-option__button-label {
+      padding-block: 0.3125rem;
+      padding-inline: 0.625rem;
+    }
+
+    .variant-option__button-label__text {
+      font-size: 0.75rem;
+    }
+
+    /* Reference-scale type in the panel: smaller title and buy button */
+    .product-details .text-block.h2,
+    .product-details .text-block.h2 > * {
+      font-size: 1.875rem;
+    }
+
+    .buy-buttons-block .button {
+      font-size: 0.8125rem;
+      min-height: 44px;
+      padding-block: 8px;
+    }
+
+    .variant-option__button-label .variant-option__button-label__text::before {
+      width: 0.875rem;
+      height: 0.875rem;
+      margin-inline-end: 0.5rem;
+    }
+
+    .variant-option legend {
+      display: none;
+    }
+
+    /* Centered details link below the buy stack, like the reference.
+       The block is a fit-content grid item, so center the box itself. */
+    .product-details .text-block:has(> p > a) {
+      justify-self: center;
+      text-align: center;
+      --text-align: center;
+      --text-align-default: center;
+      margin-block: 0.875rem 0.25rem;
+    }
+  }
+}
+
+/* "See full product details" link */
+.flavor-tab-panel.flavor-tab-panel .product-details .text-block:has(> p > a) p {
+  font-family: var(--font-subheading--family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flavor-tab-panel.flavor-tab-panel .product-details .text-block:has(> p > a) a {
+  color: currentcolor;
+  text-underline-offset: 0.25em;
+}
+
+/*
+ * Footer: reference styling — small uppercase column headings and a
+ * social icon row on the right.
+ */
+.shopify-section-group-footer-group .menu__heading {
+  font-family: var(--font-subheading--family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-block-end: 0.5rem;
+}
+
+.shopify-section-group-footer-group .social-icons__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.shopify-section-group-footer-group .social-icons__wrapper a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  margin-inline-start: -1px;
+}

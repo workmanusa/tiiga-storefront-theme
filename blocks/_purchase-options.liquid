@@ -1,0 +1,228 @@
+<script
+  src="{{ 'purchase-options.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{%- liquid
+  assign product = closest.product
+  assign variant = product.selected_or_first_available_variant
+  assign plan_group = product.selling_plan_groups | first
+
+  # Default to the second plan when several exist (e.g. 4 weeks out of 2/4/6/8)
+  assign default_plan = plan_group.selling_plans | first
+  if plan_group.selling_plans.size > 1
+    assign default_plan = plan_group.selling_plans[1]
+  endif
+
+  assign default_allocation = blank
+  assign savings_percent = 0
+  for allocation in variant.selling_plan_allocations
+    if allocation.selling_plan.id == default_plan.id
+      assign default_allocation = allocation
+    endif
+  endfor
+  if default_allocation != blank and variant.price > 0
+    assign savings_percent = variant.price | minus: default_allocation.price | times: 100.0 | divided_by: variant.price | round
+  endif
+-%}
+
+<purchase-options-component
+  class="purchase-options"
+  data-block-id="{{ block.id }}"
+  data-product-id="{{ product.id }}"
+  {{ block.shopify_attributes }}
+>
+  {%- if plan_group != blank and default_allocation != blank -%}
+    <label
+      class="purchase-options__option purchase-options__option--selected"
+      data-price="{{ default_allocation.price | money }}"
+    >
+      <input
+        type="radio"
+        class="visually-hidden"
+        name="purchase-mode-{{ block.id }}"
+        value="subscribe"
+        checked
+        ref="modeInputs[]"
+      >
+      <span class="purchase-options__radio" aria-hidden="true"></span>
+      <span class="purchase-options__copy">
+        <span class="purchase-options__title">{{ 'purchase_options.subscribe_save' | t }}</span>
+        <span class="purchase-options__subtitle">
+          {{ 'purchase_options.deliver_every' | t }}
+          <select
+            class="purchase-options__plan-select"
+            aria-label="{{ 'purchase_options.delivery_frequency' | t }}"
+            ref="planSelect"
+          >
+            {%- for plan in plan_group.selling_plans -%}
+              {%- liquid
+                assign plan_allocation = blank
+                for allocation in variant.selling_plan_allocations
+                  if allocation.selling_plan.id == plan.id
+                    assign plan_allocation = allocation
+                  endif
+                endfor
+              -%}
+              <option
+                value="{{ plan.id }}"
+                data-price="{{ plan_allocation.price | default: default_allocation.price | money }}"
+                {% if plan.id == default_plan.id %}
+                  selected
+                {% endif %}
+              >
+                {{ plan.name | downcase }}
+              </option>
+            {%- endfor -%}
+          </select>
+          · {{ 'purchase_options.cancel_anytime' | t }}
+        </span>
+      </span>
+      {%- if savings_percent > 0 -%}
+        <span class="purchase-options__badge">
+          {{- 'purchase_options.percent_off' | t: percent: savings_percent -}}
+        </span>
+      {%- endif -%}
+      <span class="purchase-options__price">{{ default_allocation.price | money }}</span>
+    </label>
+  {%- endif -%}
+
+  <label
+    class="purchase-options__option{% unless plan_group != blank and default_allocation != blank %} purchase-options__option--selected{% endunless %}"
+    data-price="{{ variant.price | money }}"
+  >
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="purchase-mode-{{ block.id }}"
+      value="one-time"
+      {% unless plan_group != blank and default_allocation != blank %}
+        checked
+      {% endunless %}
+      ref="modeInputs[]"
+    >
+    <span class="purchase-options__radio" aria-hidden="true"></span>
+    <span class="purchase-options__copy">
+      <span class="purchase-options__title">{{ 'purchase_options.one_time_purchase' | t }}</span>
+    </span>
+    <span class="purchase-options__price">{{ variant.price | money }}</span>
+  </label>
+
+  <input
+    type="hidden"
+    name="selling_plan"
+    value="{{ default_plan.id }}"
+    form="BuyButtons-ProductForm-{{ section.id }}"
+    ref="sellingPlanInput"
+  >
+</purchase-options-component>
+
+{% stylesheet %}
+  .purchase-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .purchase-options__option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    background-color: rgb(255 255 255 / 0.95);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 0.8125rem 1.125rem;
+    cursor: pointer;
+  }
+
+  .purchase-options__option--selected {
+    border-color: var(--color-foreground);
+  }
+
+  .purchase-options__radio {
+    flex: 0 0 auto;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 1px solid var(--color-foreground);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .purchase-options__option--selected .purchase-options__radio::after {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-foreground);
+  }
+
+  .purchase-options__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+  }
+
+  .purchase-options__title {
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .purchase-options__subtitle {
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .purchase-options__plan-select {
+    appearance: auto;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .purchase-options__badge {
+    position: absolute;
+    top: -0.625rem;
+    right: 1rem;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 0.1875rem 0.625rem;
+  }
+
+  .purchase-options__price {
+    margin-inline-start: auto;
+    font-size: 1.0625rem;
+    white-space: nowrap;
+  }
+
+  .purchase-options__add-price {
+    white-space: nowrap;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.purchase_options",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

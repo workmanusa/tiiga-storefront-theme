@@ -1,0 +1,78 @@
+<div
+  class="advisor-row"
+  {{ block.shopify_attributes }}
+>
+  <span
+    class="advisor-row__dot"
+    aria-hidden="true"
+    {% if block.settings.color != blank %}
+      style="background-color: {{ block.settings.color }};"
+    {% endif %}
+  ></span>
+  {%- if block.settings.title != blank -%}
+    <span class="advisor-row__title">{{ block.settings.title }}</span>
+  {%- endif -%}
+  {%- if block.settings.detail != blank -%}
+    <span class="advisor-row__detail">{{ block.settings.detail }}</span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .advisor-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    background-color: rgb(255 255 255 / 0.75);
+    border-radius: 100px;
+    padding: 1.125rem 1.5rem;
+  }
+
+  .advisor-row__dot {
+    flex: 0 0 auto;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-foreground);
+  }
+
+  .advisor-row__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .advisor-row__detail {
+    margin-inline-start: auto;
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+    text-align: end;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.advisor_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:settings.color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "detail",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.advisor_row"
+    }
+  ]
+}
+{% endschema %}

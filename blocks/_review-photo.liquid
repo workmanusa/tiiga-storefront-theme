@@ -1,0 +1,93 @@
+{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+
+{% capture card %}
+  <figure class="review-photo">
+    {%- if block.settings.video -%}
+      {{
+        block.settings.video
+        | video_tag: autoplay: true, loop: true, controls: false, muted: true, class: 'review-photo__image'
+      }}
+    {%- elsif block.settings.image -%}
+      {{
+        block.settings.image
+        | image_url: width: 640
+        | image_tag: class: 'review-photo__image', loading: 'lazy'
+      }}
+    {%- else -%}
+      {%- liquid
+        # Burst stock stand-ins until real customer photos/videos are uploaded
+        assign fallback_index = block_index | modulo: 3 | plus: 1
+        assign fallback_asset = 'review-photo-' | append: fallback_index | append: '.jpg'
+      -%}
+      <img
+        src="{{ fallback_asset | asset_url }}"
+        alt=""
+        class="review-photo__image"
+        loading="lazy"
+        width="700"
+        height="805"
+      >
+    {%- endif -%}
+    {%- if block.settings.handle != blank -%}
+      <figcaption class="review-photo__handle">{{ block.settings.handle }}</figcaption>
+    {%- endif -%}
+  </figure>
+{% endcapture %}
+
+{% render 'slideshow-slide',
+  index: block_index,
+  children: card,
+  attributes: block.shopify_attributes
+%}
+
+{% stylesheet %}
+  .review-photo {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .review-photo__image {
+    width: 100%;
+    height: var(--review-tile-height, 21rem);
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .review-photo__handle {
+    text-align: center;
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.review_photo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:settings.video"
+    },
+    {
+      "type": "text",
+      "id": "handle",
+      "label": "t:settings.title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.review_photo"
+    }
+  ]
+}
+{% endschema %}

@@ -37,6 +37,7 @@
     "animations": "Animaties",
     "announcement": "Aankondiging",
     "announcement_bar": "Aankondigingsbalk",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Badges",
     "button": "Knop",
     "cart": "Winkelwagen",
@@ -125,6 +126,7 @@
     "product_list_button": "Knop ‘Alles weergeven’",
     "products_editorial": "Uitgelichte collectie: Redactioneel",
     "social_link": "Sociale link",
+    "split_hero": "Split hero",
     "split_showcase": "Gesplitste showcase",
     "variant_pickers": "Variantkiezers",
     "pills": "Pills",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Gelaagde diavoorstelling",
     "cart_drawer": "Winkelwagenoptie",
-    "disclosures": "Toelichtingen"
+    "disclosures": "Toelichtingen",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "autoplay": "Automatisch afspelen",
@@ -574,7 +595,9 @@
     "input_style": "Invoerstijl",
     "selected_button_style": "Geselecteerde knopstijl",
     "open_by_default": "Standaard geopend",
-    "title_preset": "Titelvoorinstelling"
+    "title_preset": "Titelvoorinstelling",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Cadeaubonproducten",
     "disclosures": "Toelichtingen",
     "disclosures_metafield_content": "Verplichte veiligheidswaarschuwingen en wettelijke vermeldingen voor dit product.",
-    "page_text_color_contrast_info": "Secties met een aangepaste achtergrondkleur gebruiken deze tekstkleur alleen als er voldoende kleurcontrast is."
+    "page_text_color_contrast_info": "Secties met een aangepaste achtergrondkleur gebruiken deze tekstkleur alleen als er voldoende kleurcontrast is.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Deel informatie over je merk met je klanten. Beschrijf een product, doe aankondigingen of heet klanten welkom in je winkel.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Kwaliteit die je voelt</h2>",
     "uncompromising_standards": "<p>Compromisloze standaarden</p>",
     "shop_collection": "<p>Ontdek onze samengestelde collectie met zorgvuldig uitgekozen favorieten die stijl en kwaliteit combineren.</p>",
-    "featured_collection_h3": "<h3>Uitgelichte collectie</h3>"
+    "featured_collection_h3": "<h3>Uitgelichte collectie</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "collapsible_row": "Inklapbare rij",

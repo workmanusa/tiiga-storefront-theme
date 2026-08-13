@@ -33,6 +33,7 @@
     "animations": "ภาพเคลื่อนไหว",
     "announcement": "ประกาศ",
     "announcement_bar": "แถบประกาศ",
+    "announcement_ticker": "Announcement ticker",
     "badges": "เครื่องหมาย",
     "button": "ปุ่ม",
     "cart": "ตะกร้าสินค้า",
@@ -126,6 +127,7 @@
     "products_editorial": "คอลเลกชันเด่น: บทบรรณาธิการ",
     "product_inventory": "สินค้าคงคลัง",
     "social_link": "ลิงก์โซเชียล",
+    "split_hero": "Split hero",
     "split_showcase": "การจัดแสดงแบบแบ่งส่วน",
     "variant_pickers": "เครื่องมือเลือกตัวเลือกสินค้า",
     "pills": "ป้าย",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "สไลด์โชว์แบบซ้อน",
     "cart_drawer": "ตะกร้าสินค้าแบบเลื่อนด้านข้าง",
-    "disclosures": "การเปิดเผยข้อมูล"
+    "disclosures": "การเปิดเผยข้อมูล",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "การจัดตำแหน่ง",
@@ -574,7 +595,9 @@
     "input_style": "สไตล์อินพุต",
     "selected_button_style": "สไตล์ปุ่มที่เลือก",
     "open_by_default": "เปิดตามค่าเริ่มต้น",
-    "title_preset": "พรีเซ็ตชื่อ"
+    "title_preset": "พรีเซ็ตชื่อ",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "สินค้าบัตรของขวัญ",
     "disclosures": "การเปิดเผยข้อมูล",
     "disclosures_metafield_content": "คำเตือนด้านความปลอดภัยและข้อมูลตามระเบียบข้อบังคับที่ต้องเปิดเผยสำหรับสินค้านี้",
-    "page_text_color_contrast_info": "ส่วนที่มีสีพื้นหลังแบบกำหนดเองจะใช้สีตัวอักษรนี้ก็ต่อเมื่อมีความเปรียบต่างของสีเพียงพอ"
+    "page_text_color_contrast_info": "ส่วนที่มีสีพื้นหลังแบบกำหนดเองจะใช้สีตัวอักษรนี้ก็ต่อเมื่อมีความเปรียบต่างของสีเพียงพอ",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>แชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้า อธิบายสินค้า ประกาศข่าวสาร หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>คุณภาพที่คุณสัมผัสได้</h2>",
     "uncompromising_standards": "<p>มาตรฐานที่ไม่ลดหย่อน </p>",
     "shop_collection": "<p>พบกับคอลเลกชันที่เราคัดสรรมาเป็นพิเศษซึ่งมีแต่สินค้ายอดนิยมที่ผสมผสานสไตล์และคุณภาพเข้าไว้ด้วยกัน</p>",
-    "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>"
+    "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "ช้อปเลย",

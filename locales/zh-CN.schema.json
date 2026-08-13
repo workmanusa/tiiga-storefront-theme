@@ -36,6 +36,7 @@
     "animations": "动画",
     "announcement": "公告",
     "announcement_bar": "公告栏",
+    "announcement_ticker": "Announcement ticker",
     "badges": "徽章",
     "button": "按钮",
     "cart": "购物车",
@@ -128,6 +129,7 @@
     "products_grid": "特色产品系列：网格",
     "product_inventory": "产品库存",
     "social_link": "社交链接",
+    "split_hero": "Split hero",
     "split_showcase": "拆分展示",
     "variant_pickers": "多属性选择器",
     "pills": "胶囊标签",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "分层幻灯片",
     "cart_drawer": "购物车抽屉",
-    "disclosures": "披露信息"
+    "disclosures": "披露信息",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "对齐方式",
@@ -574,7 +595,9 @@
     "input_style": "输入框样式",
     "selected_button_style": "所选按钮样式",
     "open_by_default": "默认展开",
-    "title_preset": "标题预设"
+    "title_preset": "标题预设",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "礼品卡产品",
     "disclosures": "披露信息",
     "disclosures_metafield_content": "此产品所需的安全警告和监管披露信息。",
-    "page_text_color_contrast_info": "具有自定义背景色的分区仅在颜色对比度足够时才会使用此文本颜色。"
+    "page_text_color_contrast_info": "具有自定义背景色的分区仅在颜色对比度足够时才会使用此文本颜色。",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>与您的客户分享有关您品牌的信息。描述产品、发布公告或欢迎客户光临您的商店。</p>",
@@ -1035,7 +1059,8 @@
     "uncompromising_standards": "<p>严苛标准，绝不妥协</p>",
     "shop_collection": "<p>探索我们精心挑选的产品系列，这些热门商品兼具时尚风格与卓越品质。</p>",
     "introducing_p": "<p><em>隆重推出</em></p>",
-    "featured_collection_h3": "<h3>特色系列</h3>"
+    "featured_collection_h3": "<h3>特色系列</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "立即购买",

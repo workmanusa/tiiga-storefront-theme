@@ -1,0 +1,191 @@
+<script
+  src="{{ 'marquee.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<aside
+  class="announcement-ticker spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <marquee-component
+    class="announcement-ticker__marquee"
+    style="--marquee-gap: {{ section.settings.gap }}px; --marquee-direction: normal;"
+    data-speed-factor="{{ section.settings.speed_factor }}"
+    data-movement-direction="normal"
+  >
+    <div
+      class="announcement-ticker__wrapper"
+      ref="wrapper"
+    >
+      <div
+        class="announcement-ticker__content"
+        ref="content"
+      >
+        <div
+          class="announcement-ticker__items"
+          ref="marqueeItems[]"
+        >
+          {% content_for 'blocks' %}
+        </div>
+      </div>
+    </div>
+  </marquee-component>
+</aside>
+
+{% stylesheet %}
+  .announcement-ticker {
+    grid-column: 1 / -1;
+    overflow: hidden;
+  }
+
+  .announcement-ticker__marquee {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .announcement-ticker__wrapper {
+    display: flex;
+    gap: var(--marquee-gap);
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .announcement-ticker__content {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+  }
+
+  .announcement-ticker__items {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    align-items: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .announcement-ticker__marquee:not([data-disabled]) .announcement-ticker__wrapper {
+      animation: announcement-ticker-motion var(--marquee-speed) linear infinite var(--marquee-direction);
+    }
+  }
+
+  @keyframes announcement-ticker-motion {
+    to {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+
+  .announcement-ticker__item {
+    white-space: nowrap;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .announcement-ticker__item p {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .announcement-ticker__item a {
+    color: currentcolor;
+    text-underline-offset: 0.2em;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.announcement_ticker",
+  "blocks": [
+    {
+      "type": "_announcement-item"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed_factor",
+      "label": "t:settings.speed",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 16,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.announcement_ticker",
+      "blocks": {
+        "announcement_1": {
+          "type": "_announcement-item",
+          "settings": {
+            "text": "t:html_defaults.welcome_announcement"
+          }
+        },
+        "announcement_2": {
+          "type": "_announcement-item",
+          "settings": {
+            "text": "t:html_defaults.welcome_announcement"
+          }
+        }
+      },
+      "block_order": ["announcement_1", "announcement_2"]
+    }
+  ]
+}
+{% endschema %}

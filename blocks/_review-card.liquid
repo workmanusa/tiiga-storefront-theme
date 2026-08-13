@@ -1,0 +1,144 @@
+{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+
+{% capture card %}
+  <div class="review-card">
+    {%- if block.settings.category != blank -%}
+      <span class="review-card__category">{{ block.settings.category }}</span>
+    {%- endif -%}
+    {%- if block.settings.show_stars -%}
+      <span class="review-card__stars" role="img" aria-label="{{ 'reviews.five_stars' | t }}">★★★★★</span>
+    {%- endif -%}
+    {%- if block.settings.quote != blank -%}
+      <blockquote class="review-card__quote">{{ block.settings.quote }}</blockquote>
+    {%- endif -%}
+    {%- if block.settings.author != blank -%}
+      <span class="review-card__author">{{ block.settings.author }}</span>
+    {%- endif -%}
+    {%- if block.settings.verified -%}
+      <span class="review-card__verified">
+        {{ 'reviews.verified_buyer' | t }}
+        <span class="review-card__verified-check" aria-hidden="true">
+          {{- 'icon-checkmark.svg' | inline_asset_content -}}
+        </span>
+      </span>
+    {%- endif -%}
+  </div>
+{% endcapture %}
+
+{% render 'slideshow-slide',
+  index: block_index,
+  children: card,
+  attributes: block.shopify_attributes
+%}
+
+{% stylesheet %}
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    height: var(--review-tile-height, 21rem);
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+
+  .review-card__category {
+    background-color: rgb(29 90 107 / 0.1);
+    color: #1d5a6b;
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 0.25rem 0.875rem;
+  }
+
+  .review-card__stars {
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    color: var(--color-foreground, #33302c);
+  }
+
+  .review-card__quote {
+    margin: 0.5rem 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .review-card__author {
+    margin-block-start: auto;
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .review-card__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  .review-card__verified-check {
+    display: inline-flex;
+    width: 0.875rem;
+  }
+
+  .review-card__verified-check svg {
+    width: 100%;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.review_card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "category",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "t:settings.icons",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "checkbox",
+      "id": "verified",
+      "label": "t:settings.style",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.review_card"
+    }
+  ]
+}
+{% endschema %}

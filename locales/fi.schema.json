@@ -33,6 +33,7 @@
     "animations": "Animaatiot",
     "announcement": "Ilmoitus",
     "announcement_bar": "Ilmoituspalkki",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Tunnukset",
     "button": "Painike",
     "cart": "Ostoskori",
@@ -125,6 +126,7 @@
     "products_grid": "Esittelykokoelma: Ruudukko",
     "product_inventory": "Tuotevarasto",
     "social_link": "Some-linkki",
+    "split_hero": "Split hero",
     "split_showcase": "Jaettu esittely",
     "variant_pickers": "Versionvalitsimet",
     "pills": "Pillerit",
@@ -159,7 +161,26 @@
     "product_sku": "SKU-koodi",
     "layered_slideshow": "Kerroksittainen diaesitys",
     "cart_drawer": "Veto-ostoskori",
-    "disclosures": "Ilmoitukset"
+    "disclosures": "Ilmoitukset",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "Tasaus",
@@ -574,7 +595,9 @@
     "input_style": "Syöttökentän tyyli",
     "selected_button_style": "Valitun painikkeen tyyli",
     "open_by_default": "Avoinna oletuksena",
-    "title_preset": "Otsikon esiasetus"
+    "title_preset": "Otsikon esiasetus",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Omena",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Lahjakorttituotteet",
     "disclosures": "Ilmoitukset",
     "disclosures_metafield_content": "Tämän tuotteen pakolliset turvallisuusvaroitukset ja säädösten edellyttämät ilmoitukset.",
-    "page_text_color_contrast_info": "Osiot, joissa on mukautettu taustaväri, käyttävät tätä tekstin väriä vain, kun värikontrasti on riittävä."
+    "page_text_color_contrast_info": "Osiot, joissa on mukautettu taustaväri, käyttävät tätä tekstin väriä vain, kun värikontrasti on riittävä.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Jaa tietoja brändistäsi asiakkaillesi. Kuvaile tuotetta, tee ilmoituksia tai toivota asiakkaat tervetulleiksi kauppaasi.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Laatua, jonka voit tuntea</h2>",
     "uncompromising_standards": "<p>Tinkimättömät standardit </p>",
     "shop_collection": "<p>Tutustu kuratoituun kokoelmaamme, joka sisältää käsin valittuja suosikkeja, joissa yhdistyvät tyyli ja laatu.</p>",
-    "featured_collection_h3": "<h3>Esittelyssä oleva kokoelma</h3>"
+    "featured_collection_h3": "<h3>Esittelyssä oleva kokoelma</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "Osta nyt",

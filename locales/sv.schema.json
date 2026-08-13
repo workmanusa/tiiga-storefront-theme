@@ -34,6 +34,7 @@
     "animations": "Animationer",
     "announcement": "Tillkännagivande",
     "announcement_bar": "Meddelandefält",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Brickor",
     "button": "Knapp",
     "cart": "Varukorg",
@@ -125,6 +126,7 @@
     "products_editorial": "Utvald produktserie: Redaktionellt",
     "products_grid": "Utvald produktserie: Rutnät",
     "social_link": "Social länk",
+    "split_hero": "Split hero",
     "split_showcase": "Delad visning",
     "variant_pickers": "Variantväljare",
     "pills": "Etiketter",
@@ -159,7 +161,26 @@
     "product_sku": "Lagerhållningsenhet",
     "layered_slideshow": "Bildspel med lager",
     "cart_drawer": "Varukorgspanel",
-    "disclosures": "Upplysningar"
+    "disclosures": "Upplysningar",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "alignment": "Justering",
@@ -574,7 +595,9 @@
     "input_style": "Inmatningsstil",
     "selected_button_style": "Vald knappstil",
     "open_by_default": "Öppen som standard",
-    "title_preset": "Förinställning för rubrik"
+    "title_preset": "Förinställning för rubrik",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Presentkortsprodukter",
     "disclosures": "Upplysningar",
     "disclosures_metafield_content": "Obligatoriska säkerhetsvarningar och lagstadgad information för denna produkt.",
-    "page_text_color_contrast_info": "Sektioner med anpassad bakgrundsfärg använder endast den här textfärgen om färgkontrasten är tillräcklig."
+    "page_text_color_contrast_info": "Sektioner med anpassad bakgrundsfärg använder endast den här textfärgen om färgkontrasten är tillräcklig.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Dela information om ditt varumärke med dina kunder. Beskriv en produkt, gör tillkännagivanden eller välkomna kunder till din butik.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Kvalitet du kan känna</h2>",
     "uncompromising_standards": "<p>Kompromisslösa standarder </p>",
     "shop_collection": "<p>Upptäck vår utvalda produktserie med handplockade favoriter som förenar stil och kvalitet.</p>",
-    "featured_collection_h3": "<h3>Utvald kollektion</h3>"
+    "featured_collection_h3": "<h3>Utvald kollektion</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "button_label": "Handla nu",

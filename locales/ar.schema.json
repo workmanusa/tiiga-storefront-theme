@@ -146,7 +146,8 @@
     "disclosures": "عمليات الإفصاح",
     "disclosures_metafield_content": "تحذيرات السلامة وعمليات الإفصاح التنظيمية المطلوبة لهذا المنتج.",
     "app_required_for_ratings": "يلزم وجود تطبيق لتقييمات المنتج. [تعرّف على المزيد](https://help.shopify.com/manual/apps)",
-    "navigation": "التنقل"
+    "navigation": "التنقل",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "join_our_email_list": "<h2>انضم إلى قائمتنا البريدية</h2>",
@@ -203,7 +204,8 @@
     "team_with_goal": "<h2>فريق لديه هدف</h2>",
     "unable_to_accept_returns": "<p>لا يمكننا قبول إرجاع عناصر معينة. سيتم تمييز هذه العناصر بعناية قبل الشراء.</p>",
     "uncompromising_standards": "<p>معايير لا تقبل المساومة </p>",
-    "work_quickly_to_ship": "<p>سنعمل بسرعة لشحن طلبك في أقرب وقت ممكن. بمجرد شحن طلبك، ستتلقى رسالة بريد إلكتروني تحتوي على مزيد من المعلومات. تختلف أوقات التوصيل حسب موقعك.</p>"
+    "work_quickly_to_ship": "<p>سنعمل بسرعة لشحن طلبك في أقرب وقت ممكن. بمجرد شحن طلبك، ستتلقى رسالة بريد إلكتروني تحتوي على مزيد من المعلومات. تختلف أوقات التوصيل حسب موقعك.</p>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "info": {
     "actions_display_style": "تُستخدم الأيقونات دائماً على الهاتف المحمول",
@@ -246,6 +248,7 @@
     "animations": "الرسوم المتحركة",
     "announcement": "إعلان",
     "announcement_bar": "شريط الإعلانات",
+    "announcement_ticker": "Announcement ticker",
     "badges": "شارات",
     "blog_card": "بطاقة مدونة",
     "blog_post": "منشور مدونة",
@@ -378,6 +381,7 @@
     "social_link": "رابط اجتماعي",
     "social_media_links": "روابط وسائل التواصل الاجتماعي",
     "spacer": "مُباعد",
+    "split_hero": "Split hero",
     "split_showcase": "عرض مقسم",
     "subheading": "عنوان فرعي",
     "submit_button": "زر الإرسال",
@@ -394,7 +398,26 @@
     "view_all_button": "عرض الكل",
     "disclosures": "عمليات الإفصاح",
     "pills": "أشكال بيضاوية",
-    "comparison_slider": "شريط تمرير المقارنة"
+    "comparison_slider": "شريط تمرير المقارنة",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "options": {
     "above_carousel": "أعلى العرض الدائري",
@@ -1085,7 +1108,9 @@
     "top_row_background": "خلفية الصف العلوي",
     "top_row_text": "نص الصف العلوي",
     "bottom_row_background": "خلفية الصف السفلي",
-    "bottom_row_text": "نص الصف السفلي"
+    "bottom_row_text": "نص الصف السفلي",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "text_defaults": {
     "accordion_heading": "عنوان القائمة المنسدلة",

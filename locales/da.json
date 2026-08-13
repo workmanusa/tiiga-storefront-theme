@@ -75,7 +75,8 @@
     "price_filter_low": "Lav pris",
     "price_filter_high": "Høj pris",
     "view_disclosure_information_for_product": "Se deklarationsoplysninger for {{ product_title }}",
-    "show_submenu": "Vis undermenu for {{ title }}"
+    "show_submenu": "Vis undermenu for {{ title }}",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Læg i indkøbskurven",
@@ -343,5 +344,17 @@
       "success_moderated": "Kommentaren blev indsendt og afventer moderering",
       "success": "Kommentaren blev indsendt"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

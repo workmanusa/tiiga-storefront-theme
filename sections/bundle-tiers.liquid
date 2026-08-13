@@ -1,0 +1,217 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="bundle-tiers spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="bundle-tiers__grid">
+    <div class="bundle-tiers__media">
+      {%- if section.settings.image -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            widths: '480, 720, 960, 1200',
+            sizes: '(min-width: 990px) 560px, 100vw',
+            class: 'bundle-tiers__image',
+            loading: 'lazy'
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'bundle-image.jpg' | asset_url }}"
+          alt=""
+          class="bundle-tiers__image"
+          loading="lazy"
+          width="1200"
+          height="800"
+        >
+      {%- endif -%}
+    </div>
+
+    <div class="bundle-tiers__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bundle-tiers__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="bundle-tiers__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="bundle-tiers__rows">
+        {% content_for 'blocks' %}
+      </div>
+
+      {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+        <a class="bundle-tiers__link" href="{{ section.settings.link }}">
+          {{- section.settings.link_label -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bundle-tiers {
+    grid-column: 1 / -1;
+  }
+
+  .bundle-tiers__grid {
+    display: grid;
+    gap: 2.5rem 5rem;
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      align-items: center;
+    }
+  }
+
+  .bundle-tiers__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .bundle-tiers__heading {
+    margin: 0 0 1.25rem;
+    max-width: 16ch;
+    font-size: clamp(1.875rem, 3.2vw, 3rem);
+    line-height: 1.12;
+  }
+
+  .bundle-tiers__heading em {
+    font-style: italic;
+    color: var(--bundle-value-color, #1d5a6b);
+  }
+
+  .bundle-tiers__text {
+    max-width: 30rem;
+    margin-block-end: 1.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .bundle-tiers__text p {
+    margin: 0;
+  }
+
+  .bundle-tiers__rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bundle-tiers__link {
+    display: inline-block;
+    margin-block-start: 1.75rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: currentcolor;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .bundle-tiers__grid {
+      padding-inline: 1.5rem;
+      gap: 1.75rem;
+    }
+
+    .bundle-tiers__heading {
+      max-width: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.bundle_tiers",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 88
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_bundle-tier"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.bundle_tiers",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "tier_1": { "type": "_bundle-tier" },
+        "tier_2": { "type": "_bundle-tier" },
+        "tier_3": { "type": "_bundle-tier" }
+      },
+      "block_order": ["tier_1", "tier_2", "tier_3"]
+    }
+  ]
+}
+{% endschema %}

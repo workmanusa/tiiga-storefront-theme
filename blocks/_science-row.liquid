@@ -1,0 +1,103 @@
+{%- liquid
+  # Wrap digits in <sub> so formulas like C6H12O6 render as chemistry notation.
+  assign symbol_html = block.settings.symbol | escape
+  for digit in (0..9)
+    assign digit_string = digit | append: ''
+    assign wrapped = '<sub>' | append: digit_string | append: '</sub>'
+    assign symbol_html = symbol_html | replace: digit_string, wrapped
+  endfor
+-%}
+
+<div
+  class="science-row"
+  {{ block.shopify_attributes }}
+>
+  <span class="science-row__symbol">{{ symbol_html }}</span>
+  <div class="science-row__content">
+    <p class="science-row__name">
+      {{ block.settings.name }}
+      {%- if block.settings.value != blank -%}
+        <span class="science-row__value">{{ block.settings.value }}</span>
+      {%- endif -%}
+    </p>
+    {%- if block.settings.description != blank -%}
+      <p class="science-row__description">{{ block.settings.description }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .science-row {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 8.5rem) minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.125rem;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+  }
+
+  .science-row:last-of-type {
+    border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+  }
+
+  .science-row__symbol {
+    font-size: 1.0625rem;
+  }
+
+  .science-row__symbol sub {
+    font-size: 0.75em;
+  }
+
+  .science-row__name {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .science-row__value {
+    margin-inline-start: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  .science-row__description {
+    margin: 0.25rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.science_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "symbol",
+      "label": "t:settings.symbol"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.science_row"
+    }
+  ]
+}
+{% endschema %}

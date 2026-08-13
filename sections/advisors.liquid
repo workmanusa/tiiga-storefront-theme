@@ -1,0 +1,198 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="advisors spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="advisors__grid">
+    <div class="advisors__intro">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="advisors__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="advisors__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+        <a class="advisors__link" href="{{ section.settings.link }}">
+          {{- section.settings.link_label -}}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="advisors__list">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="advisors__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <div class="advisors__rows">
+        {% content_for 'blocks' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .advisors {
+    grid-column: 1 / -1;
+  }
+
+  .advisors__grid {
+    display: grid;
+    gap: 2.5rem 5rem;
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      align-items: center;
+    }
+  }
+
+  .advisors__heading {
+    margin: 0 0 1.5rem;
+    max-width: 14ch;
+    font-size: clamp(1.875rem, 3vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .advisors__heading em {
+    font-style: italic;
+  }
+
+  .advisors__text {
+    max-width: 30rem;
+    margin-block-end: 1.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .advisors__text p {
+    margin: 0;
+  }
+
+  .advisors__link {
+    display: inline-block;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: currentcolor;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+
+  .advisors__eyebrow {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .advisors__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .advisors__grid {
+      padding-inline: 1.5rem;
+      gap: 2rem;
+    }
+
+    .advisors__heading {
+      max-width: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.advisors",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_advisor-row"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.advisors",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "row_1": { "type": "_advisor-row" },
+        "row_2": { "type": "_advisor-row" },
+        "row_3": { "type": "_advisor-row" }
+      },
+      "block_order": ["row_1", "row_2", "row_3"]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,147 @@
+<div
+  class="comparison-column"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.title != blank -%}
+    <h3 class="comparison-column__title">{{ block.settings.title }}</h3>
+  {%- endif -%}
+  <hr class="comparison-column__rule">
+
+  {%- for i in (1..2) -%}
+    {%- liquid
+      assign label_key = 'stat_' | append: i | append: '_label'
+      assign value_key = 'stat_' | append: i | append: '_value'
+      assign unit_key = 'stat_' | append: i | append: '_unit'
+    -%}
+    {%- if block.settings[value_key] != blank -%}
+      <div class="comparison-column__stat">
+        {%- if block.settings[label_key] != blank -%}
+          <span class="comparison-column__stat-label">{{ block.settings[label_key] }}</span>
+        {%- endif -%}
+        <span class="comparison-column__stat-value">{{ block.settings[value_key] }}</span>
+        {%- if block.settings[unit_key] != blank -%}
+          <span class="comparison-column__stat-unit">{{ block.settings[unit_key] }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if block.settings.description != blank -%}
+    <p class="comparison-column__description">{{ block.settings.description }}</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .comparison-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* Row heights come from shared variables set on .comparison__table so the
+     brand card and every column stay horizontally aligned like one table. */
+  .comparison-column__title {
+    margin: 0;
+    min-height: var(--cmp-title-height, 4rem);
+    font-family: var(--font-subheading--family);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.35;
+  }
+
+  .comparison-column__rule {
+    width: 72%;
+    align-self: flex-start;
+    margin: var(--cmp-rule-margin, 1rem 0 2rem);
+    border: none;
+    border-block-start: 1px solid rgb(255 255 255 / 0.5);
+  }
+
+  .comparison-column__stat {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--cmp-stat-height, 7rem);
+  }
+
+  .comparison-column__stat-label {
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-block-end: 0.375rem;
+  }
+
+  .comparison-column__stat-value {
+    font-size: 2.375rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .comparison-column__stat-unit {
+    font-size: 0.9375rem;
+  }
+
+  .comparison-column__description {
+    margin: 0.5rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.comparison_column",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_unit",
+      "label": "t:settings.unit"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_unit",
+      "label": "t:settings.unit"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.comparison_column"
+    }
+  ]
+}
+{% endschema %}

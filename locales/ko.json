@@ -75,7 +75,8 @@
     "search_suggestions_available": "\"{{ query }}\"에 대한 검색 제안이 있습니다",
     "price_filter_low": "낮은 가격",
     "price_filter_high": "높은 가격",
-    "view_disclosure_information_for_product": "{{ product_title }}에 대한 고지 정보 보기"
+    "view_disclosure_information_for_product": "{{ product_title }}에 대한 고지 정보 보기",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "카트에 추가",
@@ -343,5 +344,17 @@
       "success_moderated": "댓글이 게시되었습니다. 조정 대기 중입니다",
       "success": "댓글 게시됨"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

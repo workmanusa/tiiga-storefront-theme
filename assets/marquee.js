@@ -154,7 +154,7 @@ class MarqueeComponent extends Component {
 
   #handleResize = debounce(async () => {
     const { marqueeItems } = this.refs;
-    const { newNumberOfCopies, isHorizontalResize } = await this.#queryNumberOfCopies();
+    const { numberOfCopies: newNumberOfCopies, isHorizontalResize } = await this.#queryNumberOfCopies();
 
     // opt out of marquee manipulation on vertical resizes
     if (!isHorizontalResize) return;
@@ -189,6 +189,8 @@ class MarqueeComponent extends Component {
     const clone = /** @type {HTMLElement} */ (this.refs.content.cloneNode(true));
 
     clone.setAttribute('aria-hidden', 'true');
+    // Keep links inside the duplicated content out of the tab order
+    clone.inert = true;
     clone.removeAttribute('ref');
 
     this.refs.wrapper.appendChild(clone);

@@ -1,0 +1,125 @@
+{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+
+{% capture card %}
+  <div class="ingredient-card">
+    {%- if block.settings.image -%}
+      {{
+        block.settings.image
+        | image_url: width: 800
+        | image_tag:
+          widths: '320, 480, 640, 800',
+          sizes: '(min-width: 750px) 320px, 75vw',
+          class: 'ingredient-card__image',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      {%- liquid
+        # Shopify Burst stock photos shipped in assets/ as stand-ins until
+        # real ingredient photography is uploaded per card.
+        assign fallback_index = block_index | modulo: 6 | plus: 1
+        assign fallback_asset = 'ingredient-' | append: fallback_index | append: '.jpg'
+      -%}
+      <img
+        src="{{ fallback_asset | asset_url }}"
+        alt=""
+        class="ingredient-card__image"
+        loading="lazy"
+        width="900"
+        height="1440"
+      >
+    {%- endif -%}
+    <div class="ingredient-card__scrim" aria-hidden="true"></div>
+    {%- if block.settings.title != blank -%}
+      <h3 class="ingredient-card__title">{{ block.settings.title }}</h3>
+    {%- endif -%}
+    {%- if block.settings.description != blank -%}
+      <p class="ingredient-card__description">{{ block.settings.description }}</p>
+    {%- endif -%}
+  </div>
+{% endcapture %}
+
+{% render 'slideshow-slide',
+  index: block_index,
+  children: card,
+  attributes: block.shopify_attributes
+%}
+
+{% stylesheet %}
+  .ingredient-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 8;
+    border-radius: 12px;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .ingredient-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ingredient-card__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 40%);
+  }
+
+  .ingredient-card__title {
+    position: absolute;
+    top: 1rem;
+    inset-inline-start: 1rem;
+    margin: 0;
+    padding: 0.375rem 0.875rem;
+    border-radius: 100px;
+    background-color: rgb(0 0 0 / 0.35);
+    color: var(--color-white);
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .ingredient-card__description {
+    position: absolute;
+    inset-inline: 1rem;
+    bottom: 1rem;
+    margin: 0;
+    color: var(--color-white);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.ingredient_card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ingredient_card"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "liquid-lsp@liquid-skills": true,
+    "liquid-skills@liquid-skills": true
+  }
+}

@@ -75,7 +75,8 @@
     "price_filter_low": "Niedriger Preis",
     "price_filter_high": "Hoher Preis",
     "view_disclosure_information_for_product": "Offenlegungsinformationen für {{ product_title }} anzeigen",
-    "show_submenu": "Untermenü {{ title }} anzeigen"
+    "show_submenu": "Untermenü {{ title }} anzeigen",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "In den Warenkorb legen",
@@ -343,5 +344,17 @@
       "success_moderated": "Kommentar gepostet, Moderation ausstehend",
       "success": "Kommentar gepostet"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

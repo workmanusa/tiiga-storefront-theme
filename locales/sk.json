@@ -77,7 +77,8 @@
     "price_filter_low": "Nízka cena",
     "price_filter_high": "Vysoká cena",
     "view_disclosure_information_for_product": "Zobraziť zverejnené informácie o produkte {{ product_title }}",
-    "show_submenu": "Zobraziť podponuku {{ title }}"
+    "show_submenu": "Zobraziť podponuku {{ title }}",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Pridať do košíka",
@@ -357,5 +358,17 @@
       "default_title": "Predvolený názov",
       "sticky_add_to_cart": "Panel rýchleho pridania do košíka"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

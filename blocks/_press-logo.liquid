@@ -1,0 +1,61 @@
+<div
+  class="press-logo"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.image -%}
+    {{
+      block.settings.image
+      | image_url: width: 320
+      | image_tag: class: 'press-logo__image', loading: 'lazy', alt: block.settings.name
+    }}
+  {%- elsif block.settings.name != blank -%}
+    <span class="press-logo__name">{{ block.settings.name }}</span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .press-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+  }
+
+  .press-logo__image {
+    max-height: 1.5rem;
+    width: auto;
+  }
+
+  .press-logo__name {
+    font-family: var(--font-subheading--family);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.press_logo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:settings.title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.press_logo"
+    }
+  ]
+}
+{% endschema %}

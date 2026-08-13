@@ -75,7 +75,8 @@
     "price_filter_low": "Ár szerint növekvő",
     "price_filter_high": "Ár szerint csökkenő",
     "view_disclosure_information_for_product": "Tájékoztató adatok megtekintése a következőhöz: {{ product_title }}",
-    "show_submenu": "{{ title }} almenü megjelenítése"
+    "show_submenu": "{{ title }} almenü megjelenítése",
+    "product_tabs": "Product tabs"
   },
   "actions": {
     "add_to_cart": "Hozzáadás a kosárhoz",
@@ -343,5 +344,17 @@
       "default_title": "Alapértelmezett cím",
       "sticky_add_to_cart": "Gyors hozzáadás a kosárhoz sáv"
     }
+  },
+  "purchase_options": {
+    "subscribe_save": "Subscribe & save",
+    "one_time_purchase": "One-time purchase",
+    "deliver_every": "Deliver every",
+    "cancel_anytime": "cancel anytime",
+    "delivery_frequency": "Delivery frequency",
+    "percent_off": "{{ percent }}% off"
+  },
+  "reviews": {
+    "five_stars": "5 out of 5 stars",
+    "verified_buyer": "Verified buyer"
   }
 }

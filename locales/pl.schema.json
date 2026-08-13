@@ -38,6 +38,7 @@
     "animations": "Animacje",
     "announcement": "Ogłoszenie",
     "announcement_bar": "Pasek ogłoszeń",
+    "announcement_ticker": "Announcement ticker",
     "badges": "Identyfikatory",
     "button": "Przycisk",
     "cart": "Koszyk",
@@ -124,6 +125,7 @@
     "prices": "Ceny",
     "products_editorial": "Polecana kolekcja: Edytorski",
     "social_link": "Link do mediów społecznościowych",
+    "split_hero": "Split hero",
     "split_showcase": "Dzielona witryna",
     "variant_pickers": "Selektory wariantów",
     "product_title": "Tytuł produktu",
@@ -159,7 +161,26 @@
     "product_sku": "SKU",
     "layered_slideshow": "Warstwowy pokaz slajdów",
     "cart_drawer": "Szuflada koszyka",
-    "disclosures": "Informacje prawne"
+    "disclosures": "Informacje prawne",
+    "flavor_tabs": "Flavor tabs",
+    "purchase_options": "Purchase options",
+    "ingredient_card": "Ingredient card",
+    "ingredient_cards": "Ingredient cards",
+    "science_spec": "Science",
+    "science_row": "Spec row",
+    "comparison_table": "Comparison",
+    "comparison_column": "Comparison column",
+    "stats_numbers": "By the numbers",
+    "stat_item": "Stat",
+    "press_quote": "Press quote",
+    "press_logo": "Press logo",
+    "advisors": "Advisors",
+    "advisor_row": "Advisor row",
+    "bundle_tiers": "Bundle tiers",
+    "bundle_tier": "Bundle tier",
+    "reviews_carousel": "Reviews",
+    "review_card": "Review",
+    "review_photo": "Review photo"
   },
   "settings": {
     "autoplay": "Autoodtwarzanie",
@@ -574,7 +595,9 @@
     "input_style": "Styl pola wprowadzania",
     "selected_button_style": "Styl wybranego przycisku",
     "open_by_default": "Domyślnie otwarte",
-    "title_preset": "Gotowe ustawienie tytułu"
+    "title_preset": "Gotowe ustawienie tytułu",
+    "symbol": "Symbol",
+    "value": "Value"
   },
   "options": {
     "apple": "Apple",
@@ -978,7 +1001,8 @@
     "gift_card_products": "Produkty typu karta prezentowa",
     "disclosures": "Informacje prawne",
     "disclosures_metafield_content": "Wymagane ostrzeżenia dotyczące bezpieczeństwa i informacje prawne dla tego produktu.",
-    "page_text_color_contrast_info": "Sekcje z niestandardowym kolorem tła będą używać tego koloru tekstu tylko w przypadku wystarczającego kontrastu kolorów."
+    "page_text_color_contrast_info": "Sekcje z niestandardowym kolorem tła będą używać tego koloru tekstu tylko w przypadku wystarczającego kontrastu kolorów.",
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
   },
   "html_defaults": {
     "share_information_about_your": "<p>Podziel się informacjami o swojej marce z klientami. Opisz produkt, ogłaszaj nowości lub witaj klientów w swoim sklepie.</p>",
@@ -1035,7 +1059,8 @@
     "quality_you_can_feel": "<h2>Jakość, którą poczujesz</h2>",
     "uncompromising_standards": "<p>Bezkompromisowe standardy</p>",
     "shop_collection": "<p>Odkryj naszą kolekcję starannie wybranych produktów, które są połączeniem stylu i jakości.</p>",
-    "featured_collection_h3": "<h3>Polecana kolekcja</h3>"
+    "featured_collection_h3": "<h3>Polecana kolekcja</h3>",
+    "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "text_defaults": {
     "collapsible_row": "Wiersz zwijany",
