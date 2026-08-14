@@ -84,7 +84,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop All Flavors",
-                "link": "shopify://collections/all",
+                "link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#eeeeee",
@@ -1381,7 +1381,7 @@
         "heading": "Your future gut thanks you",
         "text": "<p>Start with X% off every subscription, then bundle more flavors to save more on every delivery.</p>",
         "link_label": "Build your bundle",
-        "link": "/collections/all",
+        "link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
         "background_color": "",
         "padding-block-start": 88,
         "padding-block-end": 88

@@ -82,6 +82,7 @@
             },
             "why": {
               "type": "_nav-submenu",
+              "disabled": true,
               "settings": {
                 "label": "Why Tiiga",
                 "eyebrow": "Why Tiiga",
