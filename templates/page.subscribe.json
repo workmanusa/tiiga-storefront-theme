@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "subscribe_how": {
@@ -8,21 +17,24 @@
           "settings": {
             "title": "Pick your flavors",
             "text": "Choose your sticks or tub and build the mix you want in every box — single flavors or a custom bundle."
-          }
+          },
+          "blocks": {}
         },
         "step_2": {
           "type": "_subscribe-step",
           "settings": {
             "title": "Set your rhythm",
             "text": "Deliveries land every 2, 4, 6, or 8 weeks. Pick the pace that fits how you hydrate."
-          }
+          },
+          "blocks": {}
         },
         "step_3": {
           "type": "_subscribe-step",
           "settings": {
             "title": "Stay in control",
             "text": "Swap flavors, skip a delivery, or cancel anytime from your account — no fees, no commitments."
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -36,7 +48,7 @@
         "text": "<p>Lock in 20% off every order and let baobab-powered hydration show up right when you need it.</p>",
         "steps_heading": "How it works",
         "benefits": "Save 20% on every order\nFree US shipping\nSkip or cancel anytime\nDedicated support",
-        "background_color": "#2e80ea",
+        "background_color": "{{ settings.color_palette.color3 }}",
         "card_background": "#f8f2ee",
         "padding-block-start": 72,
         "padding-block-end": 72
@@ -49,19 +61,22 @@
           "type": "_subscribe-product",
           "settings": {
             "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag"
-          }
+          },
+          "blocks": {}
         },
         "card_2": {
           "type": "_subscribe-product",
           "settings": {
             "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
-          }
+          },
+          "blocks": {}
         },
         "card_3": {
           "type": "_subscribe-product",
           "settings": {
             "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -73,6 +88,7 @@
         "eyebrow": "Ready when you are",
         "heading": "Start a subscription",
         "text": "<p>Every plan saves 20% and stays fully flexible — swap flavors, change frequency, or cancel whenever.</p>",
+        "background_color": "",
         "card_background": "#f8f2ee",
         "padding-block-start": 64,
         "padding-block-end": 80
