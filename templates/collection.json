@@ -20,7 +20,7 @@
           "tubs"
         ],
         "max_products": 8,
-        "show_search": true,
+        "show_search": false,
         "card_background": "#f8f2ee"
       }
     }
