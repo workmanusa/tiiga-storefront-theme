@@ -981,6 +981,7 @@
         "card_1": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
             "title": "100% Organic Baobab Fruit",
             "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
           },
@@ -989,6 +990,7 @@
         "card_2": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/20d55cde-99fc-41a3-b9da-28d5b944c00e_443e4912-57ce-44a0-8e2f-d8e2051ef631.png",
             "title": "Coconut Water Powder",
             "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
@@ -997,6 +999,7 @@
         "card_3": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
             "title": "Sodium Citrate",
             "description": "A functional form of sodium that helps with hydration, without tasting too salty."
           },
@@ -1005,6 +1008,7 @@
         "card_4": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/119045ce-cdf8-4430-8940-9e0efec06518_48392314-34b6-4caf-906f-194e4ca4bcb0.png",
             "title": "Magnesium Citrate",
             "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
@@ -1013,6 +1017,7 @@
         "card_6": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/6f215f64-6630-4e65-afed-e65d4105a92c.png",
             "title": "Organic Stevia Extract",
             "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
           },
@@ -1087,6 +1092,7 @@
         "row_3"
       ],
       "settings": {
+        "image": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
         "badge_label": "Backed by science",
         "badge_title": "",
         "heading": "We didn’t invent gut health, we just found the strongest fruit on earth to fix it",
