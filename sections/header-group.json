@@ -113,12 +113,34 @@
                 "card_story",
                 "card_hydration"
               ]
+            },
+            "nav_link_jiji9y": {
+              "type": "_nav-link",
+              "name": "t:names.nav_link",
+              "settings": {
+                "label": "Why Tiiga",
+                "link": "",
+                "pill": false
+              },
+              "blocks": {}
+            },
+            "nav_link_PUy9i6": {
+              "type": "_nav-link",
+              "name": "t:names.nav_link",
+              "settings": {
+                "label": "Quiz",
+                "link": "",
+                "pill": false
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "shop",
             "subscribe",
-            "why"
+            "why",
+            "nav_link_jiji9y",
+            "nav_link_PUy9i6"
           ]
         }
       },
