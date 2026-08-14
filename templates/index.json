@@ -12,101 +12,11 @@
     "split_hero_preview": {
       "type": "split-hero",
       "blocks": {
-        "slide_1": {
-          "type": "_split-slide",
-          "settings": {
-            "media_type": "image",
-            "media_position": "end",
-            "horizontal_alignment": "flex-start",
-            "gap": 24,
-            "background_color": "#2e80ea",
-            "text_color": "#ffffff",
-            "padding-block-start": 48,
-            "padding-block-end": 64,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48
-          },
-          "blocks": {
-            "heading_1": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>Gut health meets hydration</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h1",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_1": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Real fruit, dried into a single-serve stick. Tear, pour, drink. 5 g of raw prebiotic fiber, real electrolytes — that's the whole list.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-body--family)",
-                "font_size": "1.125rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 12,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "button_1": {
-              "type": "button",
-              "settings": {
-                "label": "Shop Now",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button-custom",
-                "custom_button_background": "#ffffff",
-                "custom_button_text": "#2e80ea",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "heading_1",
-            "text_1",
-            "button_1"
-          ]
-        },
         "slide_2": {
           "type": "_split-slide",
           "settings": {
             "media_type": "image",
+            "video": "shopify://files/videos/Pouring Video (1).mp4",
             "media_position": "end",
             "horizontal_alignment": "flex-start",
             "gap": 24,
@@ -122,7 +32,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Hydration for every adventure</p>",
+                "text": "<p>Gut Health Meets Hydration</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -176,8 +86,8 @@
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#ffffff",
-                "custom_button_text": "#1d5a6b",
+                "custom_button_background": "#EEEEEE",
+                "custom_button_text": "#000000",
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "link_text_color": "",
                 "width": "fit-content",
@@ -193,11 +103,104 @@
             "text_2",
             "button_2"
           ]
+        },
+        "slide_1": {
+          "type": "_split-slide",
+          "settings": {
+            "media_type": "video",
+            "image": "shopify://shop_images/11caba5c-db67-4c84-8d23-19f462b7fe19.png",
+            "video": "shopify://files/videos/Homepage Baobab Video.mp4",
+            "media_position": "end",
+            "horizontal_alignment": "center",
+            "gap": 24,
+            "background_color": "#efece7",
+            "text_color": "#332f2c",
+            "padding-block-start": 48,
+            "padding-block-end": 64,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "heading_1": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Powered By Africa's Superfruit</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Real fruit, dried into a single-serve stick. Tear, pour, drink. 5 g of raw prebiotic fiber, real electrolytes — that's the whole list.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 12,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_1": {
+              "type": "button",
+              "settings": {
+                "label": "Shop Now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#000000",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_1",
+            "text_1",
+            "button_1"
+          ]
         }
       },
       "block_order": [
-        "slide_1",
-        "slide_2"
+        "slide_2",
+        "slide_1"
       ],
       "settings": {
         "media_height": "medium",
@@ -981,6 +984,7 @@
         "card_1": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
             "title": "100% Organic Baobab Fruit",
             "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
           },
@@ -989,6 +993,7 @@
         "card_2": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_31_59_PM.png",
             "title": "Coconut Water Powder",
             "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
@@ -997,24 +1002,27 @@
         "card_3": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
             "title": "Sodium Citrate",
             "description": "A functional form of sodium that helps with hydration, without tasting too salty."
-          },
-          "blocks": {}
-        },
-        "card_4": {
-          "type": "_ingredient-card",
-          "settings": {
-            "title": "Magnesium Citrate",
-            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
         "card_6": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/2e5be3df-b8bf-47d2-82ef-b3e70503e697.png",
             "title": "Organic Stevia Extract",
             "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
+          },
+          "blocks": {}
+        },
+        "card_4": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         }
@@ -1023,8 +1031,8 @@
         "card_1",
         "card_2",
         "card_3",
-        "card_4",
-        "card_6"
+        "card_6",
+        "card_4"
       ],
       "settings": {
         "heading": "Quality ingredients, thoughtfully selected",
@@ -1044,7 +1052,7 @@
           "settings": {
             "symbol": "Fiber",
             "name": "Prebiotic Fiber",
-            "value": "4g",
+            "value": "5g",
             "description": "Feeds beneficial gut bacteria and slows sugar absorption into the bloodstream."
           },
           "blocks": {}
@@ -1073,7 +1081,7 @@
           "type": "_science-row",
           "settings": {
             "symbol": "Polyphenols",
-            "name": "Antioxidaant Compounds",
+            "name": "Antioxidant Compounds",
             "value": "",
             "description": "Neutralize oxidative stress and support the gut lining."
           },
@@ -1087,6 +1095,7 @@
         "row_3"
       ],
       "settings": {
+        "image": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
         "badge_label": "Backed by science",
         "badge_title": "",
         "heading": "We didn’t invent gut health, we just found the strongest fruit on earth to fix it",
@@ -1152,9 +1161,10 @@
       "settings": {
         "heading": "More Fruit. Less Filler.",
         "text": "<p>Most gut health drinks or electrolytes are either processed fiber gums or sugar-loaded probiotic sodas. Tiiga hits the sweet spot: whole-fruit prebiotic fiber, real electrolytes, and nothing synthetic.</p>",
+        "background_image": "shopify://shop_images/Component_1.png",
         "overlay_color": "#8fb5bf66",
         "background_color": "",
-        "text_color": "#ffffff",
+        "text_color": "{{ settings.color_palette.background }}",
         "brand_text_color": "#1d5a6b",
         "brand_stat_1_value": "0g",
         "brand_stat_1_unit": "added sugar",
@@ -1226,6 +1236,7 @@
       "settings": {
         "quote": "<p>\"The electrolyte powder that finally makes hydration gut-friendly — no added sugar, all real fruit.\"</p>",
         "attribution": "— Verified Tiiga customer",
+        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
         "overlay_color": "#00000073",
         "text_color": "#ffffff",
         "padding-block-start": 112,
@@ -1355,6 +1366,7 @@
         "tier_4"
       ],
       "settings": {
+        "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
         "heading": "Your future gut thanks you",
         "text": "<p>Start with X% off every subscription, then bundle more flavors to save more on every delivery.</p>",
         "link_label": "Build your bundle",
@@ -1372,8 +1384,8 @@
           "settings": {
             "category": "For gut health",
             "show_stars": true,
-            "quote": "\"Finally an electrolyte mix that doesn't upset my stomach — and my kids love the flavors.\"",
-            "author": "Alicia, Salt Lake City, UT",
+            "quote": "Love this stuff! Tastes great and is super helpful in the GI department. I love the bonus Vit C I am getting as well. Do not hesitate to buy!",
+            "author": "Irene P.",
             "verified": true
           },
           "blocks": {}
@@ -1381,6 +1393,7 @@
         "photo_1": {
           "type": "_review-photo",
           "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
             "handle": "@drinktiiga"
           },
           "blocks": {}
@@ -1390,8 +1403,8 @@
           "settings": {
             "category": "For your daily routine",
             "show_stars": true,
-            "quote": "\"An absolute game changer for my morning routine. I actually look forward to drinking water.\"",
-            "author": "Jacquie, New York, NY",
+            "quote": "As a person living with IBS, Tiiga has positively supported healing and healthy maintenance of my GI tract. Thank you!",
+            "author": "Koreen C.",
             "verified": true
           },
           "blocks": {}
@@ -1399,6 +1412,7 @@
         "photo_2": {
           "type": "_review-photo",
           "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
             "handle": "@drinktiiga"
           },
           "blocks": {}
@@ -1409,7 +1423,7 @@
             "category": "For workouts",
             "show_stars": true,
             "quote": "\"I keep Tiiga in my gym bag. Easy hydration before and after training.\"",
-            "author": "Dennis, Buffalo Grove, IL",
+            "author": "Dennis I.",
             "verified": true
           },
           "blocks": {}
@@ -1417,6 +1431,7 @@
         "photo_3": {
           "type": "_review-photo",
           "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
             "handle": "@drinktiiga"
           },
           "blocks": {}
@@ -1424,10 +1439,10 @@
         "review_4": {
           "type": "_review-card",
           "settings": {
-            "category": "For warmer climates",
+            "category": "Easily Dissolvable",
             "show_stars": true,
-            "quote": "\"The only electrolyte I've ever liked. Real fruit flavor, no salt-packet taste.\"",
-            "author": "Abbie, San Clemente, CA",
+            "quote": "Easy to dissolve and smooth flavor!",
+            "author": "Beth D.",
             "verified": true
           },
           "blocks": {}
@@ -1443,8 +1458,8 @@
         "review_4"
       ],
       "settings": {
-        "heading": "Real people, really hydrated",
-        "subtext": "Verified customer reviews",
+        "heading": "FROM THE PEOPLE WHO POUR IT",
+        "subtext": "Loved by 50,000+ Healthy Guts",
         "link_label": "Read More Reviews",
         "link": "/collections/all",
         "background_color": "#f6f4f0",
