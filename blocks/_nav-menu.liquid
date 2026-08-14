@@ -67,11 +67,11 @@
       {% content_for 'blocks' %}
     </nav>
 
-    {% if shop.customer_accounts_enabled %}
-      <div class="nav-menu__drawer-footer">
+    <div class="nav-menu__drawer-footer">
+      {% if shop.customer_accounts_enabled %}
         <a
           href="{{ routes.account_url }}"
-          class="nav-menu__account"
+          class="nav-menu__utility"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@
             viewBox="0 0 15 17"
             fill="none"
             aria-hidden="true"
-            class="nav-menu__account-icon"
+            class="nav-menu__utility-icon"
           >
             <path
               stroke="currentColor"
@@ -91,8 +91,19 @@
           </svg>
           {{ 'content.account_title' | t }}
         </a>
-      </div>
-    {% endif %}
+      {% endif %}
+      {% # Same destination as the header's help icon, so the drawer covers
+        the full set of header actions. %}
+      <a
+        href="{{ pages['faq'].url | default: '/pages/faq' }}"
+        class="nav-menu__utility"
+      >
+        <span class="svg-wrapper nav-menu__utility-icon" aria-hidden="true">
+          {{- 'icon-question.svg' | inline_asset_content -}}
+        </span>
+        {{ 'content.faq' | t }}
+      </a>
+    </div>
   </div>
 
   <div
@@ -149,6 +160,10 @@
     flex-direction: column;
     overflow-y: auto;
     background-color: var(--color-background);
+    /* Rounded trailing edge, same 20px radius language as the search sheet
+       and PDP tiles. The overflow scroll box clips the sticky bars to it. */
+    border-start-end-radius: 20px;
+    border-end-end-radius: 20px;
     box-shadow: var(--shadow-popover);
     transform: translateX(-100%);
     visibility: hidden;
@@ -199,10 +214,12 @@
   }
 
   .nav-menu__drawer-title {
+    /* Same kicker voice as the PDP's FLAVOR / VARIETY PACKS headings */
     margin: 0;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-foreground-muted);
   }
@@ -232,27 +249,43 @@
     position: sticky;
     bottom: 0;
     z-index: var(--layer-raised);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     margin-block-start: auto;
     background-color: var(--color-background);
     border-block-start: var(--style-border-width) solid var(--nav-hairline);
     flex-shrink: 0;
   }
 
-  .nav-menu__account {
+  .nav-menu__utility {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--gap-sm);
+    min-height: var(--minimum-touch-target);
     padding-block: var(--padding-lg);
-    padding-inline: var(--padding-xl);
-    font-size: 0.875rem;
+    padding-inline: var(--padding-sm);
+    font-size: 0.8125rem;
     font-weight: 500;
     color: var(--color-foreground);
     text-decoration: none;
   }
 
-  .nav-menu__account-icon {
-    width: var(--icon-size-sm);
-    height: var(--icon-size-sm);
+  .nav-menu__utility + .nav-menu__utility {
+    border-inline-start: var(--style-border-width) solid var(--nav-hairline);
+  }
+
+  .nav-menu__utility-icon {
+    flex-shrink: 0;
+    width: auto;
+    height: 1.0625rem;
+    color: var(--color-foreground);
+  }
+
+  .nav-menu__utility-icon svg {
+    width: auto;
+    height: 100%;
   }
 
   /* ================================
@@ -264,11 +297,15 @@
     justify-content: space-between;
     gap: var(--gap-sm);
     width: 100%;
-    padding-block: 1rem;
+    padding-block: 0.875rem;
     padding-inline: var(--padding-sm);
-    font-family: var(--font-body--family);
-    font-size: 1.0625rem;
-    font-weight: 500;
+    /* Drawer rows speak in the site's serif display voice; desktop menu
+       mode resets this to the body font below. */
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: 1.625rem;
+    line-height: 1.15;
     color: var(--color-foreground);
     text-decoration: none;
     text-align: left;
@@ -340,6 +377,36 @@
     color: var(--color-foreground-muted);
   }
 
+  /* Rows glide in one after another once the panel lands. Backwards fill
+     keeps them invisible through the delay; the class toggle re-runs the
+     animation on every open. */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-menu--open .nav-menu__nav > .nav-item,
+    .nav-menu--open .nav-menu__drawer-footer {
+      animation: nav-menu-row-in 0.35s var(--animation-easing) backwards;
+      animation-delay: calc(0.12s + 0.045s * var(--nav-row-index, 6));
+    }
+
+    .nav-menu__nav > .nav-item:nth-child(1) { --nav-row-index: 0; }
+    .nav-menu__nav > .nav-item:nth-child(2) { --nav-row-index: 1; }
+    .nav-menu__nav > .nav-item:nth-child(3) { --nav-row-index: 2; }
+    .nav-menu__nav > .nav-item:nth-child(4) { --nav-row-index: 3; }
+    .nav-menu__nav > .nav-item:nth-child(5) { --nav-row-index: 4; }
+    .nav-menu__nav > .nav-item:nth-child(6) { --nav-row-index: 5; }
+  }
+
+  @keyframes nav-menu-row-in {
+    from {
+      opacity: 0;
+      transform: translateX(-0.5rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   /* ================================
      * Menu mode (desktop, fine pointer)
      * ================================ */
@@ -376,7 +443,13 @@
         width: auto;
         padding-block: var(--padding-2xs);
         padding-inline: 0;
+        /* Back to the inline body voice — the serif display treatment is
+           drawer-only. */
+        font-family: var(--font-body--family);
+        font-style: normal;
+        font-weight: 500;
         font-size: 0.875rem;
+        line-height: normal;
       }
 
       /* Inline links keep the underline treatment, not the drawer highlight */
