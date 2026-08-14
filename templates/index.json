@@ -1072,10 +1072,10 @@
         "row_3": {
           "type": "_science-row",
           "settings": {
-            "symbol": "C6H12O6",
-            "name": "Glucose",
+            "symbol": "Polyphenols",
+            "name": "Antioxidaant Compounds",
             "value": "",
-            "description": "Activates the sodium-glucose co-transport mechanism for rapid uptake"
+            "description": "Neutralize oxidative stress and support the gut lining."
           },
           "blocks": {}
         }
@@ -1088,7 +1088,7 @@
       ],
       "settings": {
         "badge_label": "Backed by science",
-        "badge_title": "ORS + Prebiotics",
+        "badge_title": "",
         "heading": "We didn’t invent gut health, we just found the strongest fruit on earth to fix it",
         "text": "<p>Tiiga is based on baobab, a superfruit that’s been used for gut health across Africa for thousands of years. If you need any proof it works, it’s survived generations of real-world use before science ever studied it. We use that same fruit, with real ingredients backing it. All packaged and brought to you in a thirst quenching and flavorful formula.</p>",
         "link_label": "More on the science",
@@ -1150,8 +1150,8 @@
         "column_3"
       ],
       "settings": {
-        "heading": "More science. Less sugar.",
-        "text": "<p>Most hydration mixes are overloaded with sugar or underpowered in function. Tiiga hits the sweet spot: science-backed electrolytes, prebiotic baobab fiber, and real fruit flavor.</p>",
+        "heading": "More Fruit. Less Filler.",
+        "text": "<p>Most gut health drinks or electrolytes are either processed fiber gums or sugar-loaded probiotic sodas. Tiiga hits the sweet spot: whole-fruit prebiotic fiber, real electrolytes, and nothing synthetic.</p>",
         "overlay_color": "#8fb5bf66",
         "background_color": "",
         "text_color": "#ffffff",
