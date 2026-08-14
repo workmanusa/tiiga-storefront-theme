@@ -31,7 +31,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Think outside the juice box</p>",
+                "text": "<p>Gut health meets hydration</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -56,7 +56,7 @@
             "text_1": {
               "type": "text",
               "settings": {
-                "text": "<p>Meet Green Apple and Classic Grape: pediatrician-formulated hydration in two new kid-loved flavors. Get 20% off with code TASTETWO.</p>",
+                "text": "<p>Real fruit, dried into a single-serve stick. Tear, pour, drink. 5 g of raw prebiotic fiber, real electrolytes — that's the whole list.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -236,60 +236,10 @@
           },
           "blocks": {}
         },
-        "dot_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_2": {
           "type": "text",
           "settings": {
             "text": "<p>Paleo Friendly</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "dot_2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -336,60 +286,10 @@
           },
           "blocks": {}
         },
-        "dot_3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_4": {
           "type": "text",
           "settings": {
             "text": "<p>Gluten Free</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "dot_4": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -436,60 +336,10 @@
           },
           "blocks": {}
         },
-        "dot_5": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_6": {
           "type": "text",
           "settings": {
             "text": "<p>Non-GMO</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "dot_6": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -536,60 +386,10 @@
           },
           "blocks": {}
         },
-        "dot_7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_8": {
           "type": "text",
           "settings": {
             "text": "<p>Breastfeeding Safe</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "dot_8": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -636,60 +436,10 @@
           },
           "blocks": {}
         },
-        "dot_9": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_10": {
           "type": "text",
           "settings": {
             "text": "<p>Advanced Hydration</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "dot_10": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -735,56 +485,20 @@
             "padding-inline-end": 0
           },
           "blocks": {}
-        },
-        "dot_11": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "text_1",
-        "dot_1",
         "text_2",
-        "dot_2",
         "text_3",
-        "dot_3",
         "text_4",
-        "dot_4",
         "text_5",
-        "dot_5",
         "text_6",
-        "dot_6",
         "text_7",
-        "dot_7",
         "text_8",
-        "dot_8",
         "text_9",
-        "dot_9",
         "text_10",
-        "dot_10",
-        "text_11",
-        "dot_11"
+        "text_11"
       ],
       "settings": {
         "movement_direction": "normal",
