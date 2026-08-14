@@ -818,7 +818,7 @@
             "description": {
               "type": "text",
               "settings": {
-                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in a large 30 serving tub</p>",
+                "text": "<p>Gut-health and hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in a large 30 serving tub</p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
