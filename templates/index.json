@@ -1104,7 +1104,7 @@
         "column_1": {
           "type": "_comparison-column",
           "settings": {
-            "title": "Fiber Supplements (psyllium/acacia)",
+            "title": "Other Fiber Supplements (psyllium/acacia)",
             "stat_1_label": "",
             "stat_1_value": "5-8g",
             "stat_1_unit": "Added Sugar",
@@ -1136,7 +1136,7 @@
             "stat_1_label": "",
             "stat_1_value": "2-5g",
             "stat_1_unit": "Added Sugar",
-            "stat_2_label": "↑ 60% less fiber",
+            "stat_2_label": " ↓ 60% less fiber",
             "stat_2_value": "2g",
             "stat_2_unit": "Fiber",
             "description": "Synthetic ingredients and added sugars"
