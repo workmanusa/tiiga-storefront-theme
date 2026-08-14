@@ -62,56 +62,128 @@ header-actions {
 }
 
 /*
- * Search modal, restyled to the collections-page design language: soft
- * rounded dialog, roomier input, uppercase kicker headings, and product
- * results as warm rounded tiles with a hover zoom — the same card grammar as
- * the shop rails. Doubled classes beat the predictive-search section styles,
- * which load after this file.
+ * Search: rebuilt as a full-width sheet that drops from the top of the page,
+ * in the collections-page design language — page-margin-aligned content, a
+ * big serif input over a single hairline, uppercase kicker headings, and
+ * result cards on warm rounded tiles (snippets/search-result-card.liquid).
+ * Doubled/tripled classes beat the search-modal and predictive-search
+ * snippet styles, which load after this file.
  */
-.search-modal .search-modal__content.dialog-modal {
+.search-modal .search-modal__content.search-modal__content {
+  /* Align the sheet's innards to the same gutter as the page content. */
+  --tiiga-search-inset: max(
+    var(--page-margin, 16px),
+    calc((100dvw - var(--page-width, 1300px)) / 2 + var(--page-margin, 16px))
+  );
+
+  width: 100dvw;
+  max-width: 100dvw;
+  margin: 0;
   border: none;
-  box-shadow: 0 24px 60px rgb(0 0 0 / 0.14);
+  box-shadow: 0 32px 80px rgb(51 48 44 / 0.22);
 }
 
-.search-modal .search-input.search-input {
-  font-size: 1.125rem;
+@media screen and (min-width: 750px) {
+  .search-modal .search-modal__content.search-modal__content {
+    width: 100dvw;
+    margin-block-start: 0;
+  }
+}
+
+@keyframes tiiga-search-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-modal .dialog-modal[open].search-modal__content.search-modal__content {
+  transform-origin: top center;
+  animation: tiiga-search-drop 260ms var(--ease-out-quad, ease-out) forwards;
+  border-radius: 0 0 20px 20px;
+}
+
+.search-modal .search-modal__content.search-modal__content::backdrop {
+  background: rgb(51 48 44 / 0.45);
+}
+
+/* Input row: no boxed input — one hairline under the whole row. */
+.search-modal .predictive-search-form__header.predictive-search-form__header {
+  border: none;
+  border-radius: 0;
+  border-block-end: 1px solid rgb(51 48 44 / 0.12);
+  background-color: transparent;
+  padding-inline: var(--tiiga-search-inset);
+}
+
+.search-modal .predictive-search-form__header-inner.predictive-search-form__header-inner {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.search-modal input.search-input.search-input {
+  font-family: var(--font-heading--family);
+  font-weight: var(--font-heading--weight);
+  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  padding-block: 1.375rem;
+}
+
+.search-modal .predictive-search__icon.predictive-search__icon {
+  left: var(--tiiga-search-inset);
+}
+
+/* Results area: page-margin gutters, roomy vertical rhythm. */
+.search-modal .predictive-search-form__content.predictive-search-form__content {
+  max-height: min(66dvh, 40rem);
+  padding-inline: var(--tiiga-search-inset);
+  padding-block: 1.5rem 2rem;
+}
+
+.search-modal .predictive-search-form__footer {
+  padding-inline: var(--tiiga-search-inset);
 }
 
 .search-modal .predictive-search-results__title.predictive-search-results__title {
+  margin-block: 1rem 0.875rem;
+  font-family: var(--font-body--family);
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.85;
 }
 
-.search-modal .resource-card .resource-card__media {
-  border-radius: 8px;
-  background-color: #f8f2ee;
-  overflow: hidden;
+.search-modal .predictive-search-results__clear.predictive-search-results__clear {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  opacity: 0.6;
 }
 
-.search-modal .resource-card img {
-  transition: scale 0.35s ease;
+/* Product results fill the row as a responsive tile grid. */
+.search-modal
+  .predictive-search-results__wrapper-products.predictive-search-results__wrapper-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 1.25rem 0.75rem;
+  margin: 0;
+  padding: 0;
 }
 
-.search-modal .resource-card:hover img {
-  scale: 1.03;
-}
-
-.search-modal .resource-card__title.resource-card__title {
-  margin-block-start: 0.625rem;
-  font-size: 0.9375rem;
-  line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.search-modal .resource-card__subtext.resource-card__subtext {
-  font-size: 0.8125rem;
-  opacity: 0.7;
+@media screen and (min-width: 990px) {
+  .search-modal
+    .predictive-search-results__wrapper-products.predictive-search-results__wrapper-products {
+    grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  }
 }
 
 /*
