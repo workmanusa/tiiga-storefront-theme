@@ -981,7 +981,7 @@
         "card_1": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Organic Baobab Fruit",
+            "title": "100% Organic Baobab Fruit",
             "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
           },
           "blocks": {}
@@ -989,32 +989,24 @@
         "card_2": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Coconut Water",
-            "description": "Potassium from nature, not a lab. Coconut water brings naturally occurring electrolytes to every sip."
+            "title": "Coconut Water Powder",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
         "card_3": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Pink Himalayan Salt",
-            "description": "An unrefined source of sodium, an essential electrolyte for hydration. Naturally mineral-rich."
+            "title": "Sodium Citrate",
+            "description": "A functional form of sodium that helps with hydration, without tasting too salty."
           },
           "blocks": {}
         },
         "card_4": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Real Fruit",
-            "description": "Flavor from actual fruit, nothing artificial. Every flavor starts with the real thing."
-          },
-          "blocks": {}
-        },
-        "card_5": {
-          "type": "_ingredient-card",
-          "settings": {
-            "title": "Prebiotic Fiber",
-            "description": "5 grams per serving from raw, unprocessed baobab — food for your gut microbiome."
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
@@ -1032,7 +1024,6 @@
         "card_2",
         "card_3",
         "card_4",
-        "card_5",
         "card_6"
       ],
       "settings": {
@@ -1047,47 +1038,59 @@
     "science": {
       "type": "science-spec",
       "blocks": {
+        "science_row_yLyCKY": {
+          "type": "_science-row",
+          "name": "t:names.science_row",
+          "settings": {
+            "symbol": "Fiber",
+            "name": "Prebiotic Fiber",
+            "value": "4g",
+            "description": "Feeds beneficial gut bacteria and slows sugar absorption into the bloodstream."
+          },
+          "blocks": {}
+        },
         "row_1": {
           "type": "_science-row",
           "settings": {
-            "symbol": "Na+",
-            "name": "Sodium",
+            "symbol": "K+",
+            "name": "Potassium",
             "value": "",
-            "description": "Creates the osmotic gradient that draws water into the bloodstream"
+            "description": "Regulates fluid balance and muscle function. Baobab carries roughly 4x the potassium of a banana."
           },
           "blocks": {}
         },
         "row_2": {
           "type": "_science-row",
           "settings": {
-            "symbol": "K+",
-            "name": "Potassium",
+            "symbol": "Vitamin C",
+            "name": "From Absorbic Acid and Baobab",
             "value": "",
-            "description": "Regulates electrolyte balance and maintains cellular function"
+            "description": "Supports immune function and helps your body absorb other key nutrients."
           },
           "blocks": {}
         },
         "row_3": {
           "type": "_science-row",
           "settings": {
-            "symbol": "C6H12O6",
-            "name": "Glucose",
+            "symbol": "Polyphenols",
+            "name": "Antioxidaant Compounds",
             "value": "",
-            "description": "Activates the sodium-glucose co-transport mechanism for rapid uptake"
+            "description": "Neutralize oxidative stress and support the gut lining."
           },
           "blocks": {}
         }
       },
       "block_order": [
+        "science_row_yLyCKY",
         "row_1",
         "row_2",
         "row_3"
       ],
       "settings": {
         "badge_label": "Backed by science",
-        "badge_title": "ORS + Prebiotics",
-        "heading": "We didn't invent hydration science. We just made it gut-friendly.",
-        "text": "<p>Tiiga is built on ORS, or Oral Rehydration Solution: a specific balance of electrolytes and glucose designed to help your body absorb water more efficiently. We use that same science — plus prebiotic baobab fiber — with real ingredients and refreshing flavors for everyday hydration.</p>",
+        "badge_title": "",
+        "heading": "We didn’t invent gut health, we just found the strongest fruit on earth to fix it",
+        "text": "<p>Tiiga is based on baobab, a superfruit that’s been used for gut health across Africa for thousands of years. If you need any proof it works, it’s survived generations of real-world use before science ever studied it. We use that same fruit, with real ingredients backing it. All packaged and brought to you in a thirst quenching and flavorful formula.</p>",
         "link_label": "More on the science",
         "link": "/pages/science",
         "background_color": "#efece7",
@@ -1101,27 +1104,27 @@
         "column_1": {
           "type": "_comparison-column",
           "settings": {
-            "title": "Sports drinks",
-            "stat_1_label": "↑ 4.5x more calories",
-            "stat_1_value": "112",
-            "stat_1_unit": "calories",
-            "stat_2_label": "↑ 27g more added sugar",
-            "stat_2_value": "27g",
-            "stat_2_unit": "added sugar",
-            "description": "Added sugar and made with artificial ingredients"
+            "title": "Other Fiber Supplements (psyllium/acacia)",
+            "stat_1_label": "",
+            "stat_1_value": "5-8g",
+            "stat_1_unit": "Added Sugar",
+            "stat_2_label": " ↓40% Less Fiber than Tiiga",
+            "stat_2_value": "3g",
+            "stat_2_unit": "Fiber",
+            "description": "Made using Synthetic Sources of fiber and loaded with"
           },
           "blocks": {}
         },
         "column_2": {
           "type": "_comparison-column",
           "settings": {
-            "title": "Coconut water",
-            "stat_1_label": "↑ 4.8x more calories",
-            "stat_1_value": "120",
-            "stat_1_unit": "calories",
-            "stat_2_label": "↑ 28g more sugar",
-            "stat_2_value": "28g",
-            "stat_2_unit": "sugar",
+            "title": "Common Sports Drinks",
+            "stat_1_label": "",
+            "stat_1_value": "35g",
+            "stat_1_unit": "Added Sugar",
+            "stat_2_label": " ↓100% Less Fiber",
+            "stat_2_value": "0g",
+            "stat_2_unit": "fiber",
             "description": "Unbalanced electrolytes (low sodium, high sugar)"
           },
           "blocks": {}
@@ -1129,13 +1132,13 @@
         "column_3": {
           "type": "_comparison-column",
           "settings": {
-            "title": "Other hydration mixes",
-            "stat_1_label": "↑ 1.8x more calories",
-            "stat_1_value": "45",
-            "stat_1_unit": "calories",
-            "stat_2_label": "↑ 11g more added sugar",
-            "stat_2_value": "11g",
-            "stat_2_unit": "added sugar",
+            "title": "Probiotic and Prebiotic Sodas",
+            "stat_1_label": "",
+            "stat_1_value": "2-5g",
+            "stat_1_unit": "Added Sugar",
+            "stat_2_label": " ↓ 60% less fiber",
+            "stat_2_value": "2g",
+            "stat_2_unit": "Fiber",
             "description": "Synthetic ingredients and added sugars"
           },
           "blocks": {}
@@ -1147,8 +1150,8 @@
         "column_3"
       ],
       "settings": {
-        "heading": "More science. Less sugar.",
-        "text": "<p>Most hydration mixes are overloaded with sugar or underpowered in function. Tiiga hits the sweet spot: science-backed electrolytes, prebiotic baobab fiber, and real fruit flavor.</p>",
+        "heading": "More Fruit. Less Filler.",
+        "text": "<p>Most gut health drinks or electrolytes are either processed fiber gums or sugar-loaded probiotic sodas. Tiiga hits the sweet spot: whole-fruit prebiotic fiber, real electrolytes, and nothing synthetic.</p>",
         "overlay_color": "#8fb5bf66",
         "background_color": "",
         "text_color": "#ffffff",
@@ -1168,6 +1171,7 @@
       "blocks": {
         "stat_1": {
           "type": "_stat-item",
+          "disabled": true,
           "settings": {
             "value": "84%",
             "description": "drink Tiiga at least 3x a week — and more than half drink it daily"
@@ -1177,21 +1181,22 @@
         "stat_2": {
           "type": "_stat-item",
           "settings": {
-            "value": "68%",
-            "description": "choose Tiiga because it's made with real ingredients"
+            "value": "70%",
+            "description": "of your immune system lives in your gut — and prebiotic fiber feeds it."
           },
           "blocks": {}
         },
         "stat_3": {
           "type": "_stat-item",
           "settings": {
-            "value": "83%",
-            "description": "say Tiiga helps them drink more water"
+            "value": "75%",
+            "description": "of Americans are chronically dehydrated. Water alone isn't enough."
           },
           "blocks": {}
         },
         "stat_4": {
           "type": "_stat-item",
+          "disabled": true,
           "settings": {
             "value": "79%",
             "description": "use Tiiga as their only hydration brand"
@@ -1206,10 +1211,10 @@
         "stat_4"
       ],
       "settings": {
-        "eyebrow": "By the numbers",
-        "heading": "Daily hydration that sticks.",
-        "text": "<p>We asked customers how Tiiga fits into their day-to-day routines. The results were refreshing.</p>",
-        "footnote": "*Based on a post-purchase survey of verified Tiiga customers",
+        "eyebrow": "",
+        "heading": "Your Gut and Hydration Are Connected",
+        "text": "<p>Real baobab fruit and organic coconut water deliver prebiotic fiber and electrolytes in one stick — supporting healthy digestion and true hydration at the same time.</p>",
+        "footnote": "",
         "value_color": "#1d5a6b",
         "background_color": "#efece7",
         "padding-block-start": 80,
@@ -1283,6 +1288,7 @@
         "row_4",
         "row_5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Expert eyes on <em>every sip</em>.",
         "text": "<p>Our medical advisors bring expertise across women's health, nutrition, pediatrics, sports medicine, and more — helping keep every product grounded in real science.</p>",
@@ -1349,8 +1355,8 @@
         "tier_4"
       ],
       "settings": {
-        "heading": "Your future self drinks <em>more water</em>.",
-        "text": "<p>Start with 20% off every subscription, then bundle more flavors to save more on every delivery.</p>",
+        "heading": "Your future gut thanks you",
+        "text": "<p>Start with X% off every subscription, then bundle more flavors to save more on every delivery.</p>",
         "link_label": "Build your bundle",
         "link": "/collections/all",
         "background_color": "",
