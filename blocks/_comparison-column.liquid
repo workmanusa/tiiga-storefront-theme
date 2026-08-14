@@ -49,6 +49,20 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1.35;
+    /* base.css breaks words anywhere; long names like "supplements" must
+       wrap at word boundaries, not shatter mid-word */
+    word-break: normal;
+    overflow-wrap: normal;
+    text-wrap: balance;
+  }
+
+  /* Narrow swipe columns: smaller, tighter title so long names fit */
+  @media screen and (max-width: 749px) {
+    .comparison-column__title {
+      font-size: 0.8125rem;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
   }
 
   .comparison-column__rule {
