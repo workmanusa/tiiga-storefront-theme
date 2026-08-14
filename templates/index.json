@@ -180,7 +180,7 @@
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#ffffff",
-                "custom_button_text": "#2e80ea",
+                "custom_button_text": "#000000",
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "link_text_color": "",
                 "width": "fit-content",
