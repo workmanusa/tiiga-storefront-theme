@@ -1005,15 +1005,6 @@
           },
           "blocks": {}
         },
-        "card_4": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
-            "title": "Magnesium Citrate",
-            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
-          },
-          "blocks": {}
-        },
         "card_6": {
           "type": "_ingredient-card",
           "settings": {
@@ -1022,14 +1013,23 @@
             "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
           },
           "blocks": {}
+        },
+        "card_4": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "card_1",
         "card_2",
         "card_3",
-        "card_4",
-        "card_6"
+        "card_6",
+        "card_4"
       ],
       "settings": {
         "heading": "Quality ingredients, thoughtfully selected",
