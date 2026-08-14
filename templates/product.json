@@ -240,14 +240,30 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options"
+            },
+            "pdp_benefits": {
+              "type": "_pdp-benefits",
+              "settings": {
+                "title_1": "Advanced hydration",
+                "text_1": "Science-backed formula",
+                "title_2": "No added sugar",
+                "text_2": "Zero artificial sweeteners",
+                "title_3": "Gut friendly",
+                "text_3": "Prebiotic baobab fiber"
+              }
             }
           },
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "purchase_options",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "pdp_benefits"
           ]
         },
         "disclosures": {

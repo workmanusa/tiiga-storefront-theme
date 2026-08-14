@@ -1,0 +1,150 @@
+{%- liquid
+  assign icons = 'droplet,cube,plant' | split: ','
+-%}
+
+<div
+  class="pdp-benefits"
+  {{ block.shopify_attributes }}
+>
+  {%- for i in (1..3) -%}
+    {%- liquid
+      assign title_key = 'title_' | append: i
+      assign text_key = 'text_' | append: i
+      assign title = block.settings[title_key]
+      assign text = block.settings[text_key]
+      assign icon = icons[forloop.index0]
+    -%}
+    {%- if title != blank -%}
+      <div class="pdp-benefits__tile">
+        <span class="pdp-benefits__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="24" cy="24" r="22" />
+            {%- case icon -%}
+              {%- when 'droplet' -%}
+                <path d="M24 13c4 5 7 8.5 7 12a7 7 0 1 1-14 0c0-3.5 3-7 7-12Z" />
+              {%- when 'cube' -%}
+                <path d="M24 14l8 4.5v9L24 32l-8-4.5v-9L24 14Zm0 0v18M16 18.5l8 4.5 8-4.5" />
+                <path d="M15 33L33 15" stroke-width="2" />
+              {%- when 'plant' -%}
+                <path d="M24 34V18m0 0c-3-4-7-5-7-5s0 5 3 7 4 0 4 0Zm0 0c3-4 7-5 7-5s0 5-3 7-4 0-4 0Z" />
+                <path d="M17 34h14" />
+            {%- endcase -%}
+          </svg>
+        </span>
+        <span class="pdp-benefits__title">{{ title }}</span>
+        {%- if text != blank -%}
+          <span class="pdp-benefits__text">{{ text }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% stylesheet %}
+  .pdp-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-block-start: 0.75rem;
+  }
+
+  .pdp-benefits__tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.75rem 1rem;
+    border-radius: 10px;
+    /* Driven by the selected flavor; falls back to the brand charcoal */
+    background-color: var(--flavor-color, #33302c);
+    color: #fff;
+  }
+
+  .pdp-benefits__icon {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .pdp-benefits__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pdp-benefits__title {
+    font-family: var(--font-subheading--family);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .pdp-benefits__text {
+    font-size: 0.8125rem;
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 749px) {
+    .pdp-benefits__tile {
+      padding: 1.25rem 0.75rem;
+    }
+
+    .pdp-benefits__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .pdp-benefits__title {
+      font-size: 0.6875rem;
+    }
+
+    .pdp-benefits__text {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.pdp_benefits",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.pdp_benefits"
+    }
+  ]
+}
+{% endschema %}

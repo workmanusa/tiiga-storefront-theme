@@ -386,6 +386,8 @@
     "review_card": "Review",
     // One customer photo card in the reviews carousel
     "review_photo": "Review photo",
+    // Flavor-colored benefit tiles on the product page
+    "pdp_benefits": "Product benefits",
     "press_quote": "Press quote",
     // One press outlet logo in the press quote section
     "press_logo": "Press logo",
