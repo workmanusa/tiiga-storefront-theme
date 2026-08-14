@@ -14,93 +14,185 @@
       "blocks": {
         "slide_1": {
           "type": "_split-slide",
+          "settings": {
+            "media_type": "image",
+            "media_position": "end",
+            "horizontal_alignment": "flex-start",
+            "gap": 24,
+            "background_color": "#2e80ea",
+            "text_color": "#ffffff",
+            "padding-block-start": 48,
+            "padding-block-end": 64,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
           "blocks": {
             "heading_1": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Think outside the juice box</p>",
-                "type_preset": "h1"
-              }
+                "text": "<p>Gut health meets hydration</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "text_1": {
               "type": "text",
               "settings": {
-                "text": "<p>Meet Green Apple and Classic Grape: pediatrician-formulated hydration in two new kid-loved flavors. Get 20% off with code TASTETWO.</p>",
+                "text": "<p>Real fruit, dried into a single-serve stick. Tear, pour, drink. 5 g of raw prebiotic fiber, real electrolytes — that's the whole list.</p>",
+                "width": "fit-content",
                 "max_width": "normal",
-                "padding-block-end": 12,
-                "font_size": "1.125rem",
+                "alignment": "left",
                 "type_preset": "custom",
-                "font": "var(--font-body--family)"
-              }
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 12,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "button_1": {
               "type": "button",
               "settings": {
                 "label": "Shop Now",
                 "link": "shopify://collections/all",
+                "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#ffffff",
-                "custom_button_text": "#2e80ea"
-              }
+                "custom_button_text": "#2e80ea",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "heading_1",
             "text_1",
             "button_1"
-          ],
-          "settings": {
-            "media_position": "end",
-            "background_color": "#2e80ea",
-            "text_color": "#ffffff",
-            "gap": 24
-          }
+          ]
         },
         "slide_2": {
           "type": "_split-slide",
+          "settings": {
+            "media_type": "image",
+            "media_position": "end",
+            "horizontal_alignment": "flex-start",
+            "gap": 24,
+            "background_color": "#1d5a6b",
+            "text_color": "#ffffff",
+            "padding-block-start": 48,
+            "padding-block-end": 64,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
           "blocks": {
             "heading_2": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
                 "text": "<p>Hydration for every adventure</p>",
-                "type_preset": "h1"
-              }
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "text_2": {
               "type": "text",
               "settings": {
                 "text": "<p>Electrolytes from real fruit, no added sugar. Fuel the whole family with flavors kids actually ask for.</p>",
+                "width": "fit-content",
                 "max_width": "normal",
-                "padding-block-end": 12,
-                "font_size": "1.125rem",
+                "alignment": "left",
                 "type_preset": "custom",
-                "font": "var(--font-body--family)"
-              }
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 12,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "button_2": {
               "type": "button",
               "settings": {
                 "label": "Shop All Flavors",
                 "link": "shopify://collections/all",
+                "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#ffffff",
-                "custom_button_text": "#1d5a6b"
-              }
+                "custom_button_text": "#1d5a6b",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "heading_2",
             "text_2",
             "button_2"
-          ],
-          "settings": {
-            "media_position": "end",
-            "background_color": "#1d5a6b",
-            "text_color": "#ffffff",
-            "gap": 24
-          }
+          ]
         }
       },
       "block_order": [
@@ -109,7 +201,11 @@
       ],
       "settings": {
         "media_height": "medium",
-        "icons_style": "chevron_large"
+        "icons_style": "chevron_large",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "benefits_marquee": {
@@ -118,68 +214,252 @@
         "text_1": {
           "type": "text",
           "settings": {
-            "text": "<p>No Added Sugar</p>"
-          }
+            "text": "<p>No Added Sugar</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_2": {
           "type": "text",
           "settings": {
-            "text": "<p>Paleo Friendly</p>"
-          }
+            "text": "<p>Paleo Friendly</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_3": {
           "type": "text",
           "settings": {
-            "text": "<p>Vegan Formula</p>"
-          }
+            "text": "<p>Vegan Formula</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_4": {
           "type": "text",
           "settings": {
-            "text": "<p>Gluten Free</p>"
-          }
+            "text": "<p>Gluten Free</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_5": {
           "type": "text",
           "settings": {
-            "text": "<p>Allergen Friendly</p>"
-          }
+            "text": "<p>Allergen Friendly</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_6": {
           "type": "text",
           "settings": {
-            "text": "<p>Non-GMO</p>"
-          }
+            "text": "<p>Non-GMO</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_7": {
           "type": "text",
           "settings": {
-            "text": "<p>Pregnancy Safe</p>"
-          }
+            "text": "<p>Pregnancy Safe</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_8": {
           "type": "text",
           "settings": {
-            "text": "<p>Breastfeeding Safe</p>"
-          }
-        },
-        "text_9": {
-          "type": "text",
-          "settings": {
-            "text": "<p>HSA/FSA Approved</p>"
-          }
+            "text": "<p>Breastfeeding Safe</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_10": {
           "type": "text",
           "settings": {
-            "text": "<p>Advanced Hydration</p>"
-          }
+            "text": "<p>Advanced Hydration</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "text_11": {
           "type": "text",
           "settings": {
-            "text": "<p>Plant Based</p>"
-          }
+            "text": "<p>Plant Based</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -191,15 +471,15 @@
         "text_6",
         "text_7",
         "text_8",
-        "text_9",
         "text_10",
         "text_11"
       ],
       "settings": {
         "movement_direction": "normal",
-        "gap_between_elements": 0,
+        "background_color": "",
         "padding-block-start": 20,
-        "padding-block-end": 20
+        "padding-block-end": 20,
+        "gap_between_elements": 32
       }
     },
     "flavor_tabs": {
@@ -207,6 +487,7 @@
       "settings": {
         "label_1": "Hydration Packs",
         "label_2": "Hydration Tubs",
+        "label_3": "",
         "background_color": "#efece7",
         "padding-block-start": 48,
         "padding-block-end": 0
@@ -219,83 +500,216 @@
           "type": "_featured-product-information-carousel",
           "static": true,
           "settings": {
+            "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
             "media_radius": 12,
             "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
             "hide_variants": true,
+            "icons_style": "arrow",
             "slideshow_controls_style": "none",
             "slideshow_mobile_controls_style": "none",
             "thumbnail_position": "bottom",
             "thumbnail_width": 44,
-            "zoom": false
-          }
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "product-details": {
           "type": "_product-details",
           "static": true,
           "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
             "gap": 24,
             "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
             "padding-block-start": 24,
-            "padding-block-end": 24
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
             "title": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Hydration Packs</p>",
-                "type_preset": "h2"
-              }
+                "text": "<p>Gut Health + Hydration</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "description": {
               "type": "text",
               "settings": {
-                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 on-the-go packs.</p>",
+                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 convenient on-the-go packs.</p>",
                 "width": "100%",
                 "max_width": "narrow",
-                "alignment": "left"
-              }
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "variant_picker": {
               "type": "variant-picker",
               "settings": {
                 "variant_style": "buttons",
-                "show_swatches": true
-              }
+                "show_swatches": true,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "purchase_options": {
-              "type": "_purchase-options"
+              "type": "_purchase-options",
+              "settings": {},
+              "blocks": {}
             },
             "buy_buttons": {
               "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
               "blocks": {
                 "quantity": {
                   "type": "quantity",
-                  "static": true
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button"
-                  }
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
-                  "static": true
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
                 }
               },
-              "settings": {
-                "show_pickup_availability": false
-              }
+              "block_order": []
             },
             "details_link": {
               "type": "text",
               "settings": {
-                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag\">See full product details</a></p>"
-              }
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -327,26 +741,52 @@
           "type": "_featured-product-information-carousel",
           "static": true,
           "settings": {
+            "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
             "media_radius": 12,
             "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
             "hide_variants": true,
+            "icons_style": "arrow",
             "slideshow_controls_style": "none",
             "slideshow_mobile_controls_style": "none",
             "thumbnail_position": "bottom",
             "thumbnail_width": 44,
-            "zoom": false
-          }
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "product-details": {
           "type": "_product-details",
           "static": true,
           "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
             "gap": 24,
             "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
             "padding-block-start": 24,
-            "padding-block-end": 24
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
             "title": {
@@ -354,56 +794,163 @@
               "name": "t:names.heading",
               "settings": {
                 "text": "<p>Hydration Tubs</p>",
-                "type_preset": "h2"
-              }
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "description": {
               "type": "text",
               "settings": {
-                "text": "<p>The same gut-health hydration in a 30-serving tub. Scoop, stir, sip — your daily ritual, simplified.</p>",
+                "text": "<p>Gut-health and hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in a large 30 serving tub</p>",
                 "width": "100%",
                 "max_width": "narrow",
-                "alignment": "left"
-              }
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "variant_picker": {
               "type": "variant-picker",
               "settings": {
                 "variant_style": "buttons",
-                "show_swatches": true
-              }
+                "show_swatches": true,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "purchase_options": {
-              "type": "_purchase-options"
+              "type": "_purchase-options",
+              "settings": {},
+              "blocks": {}
             },
             "buy_buttons": {
               "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
               "blocks": {
                 "quantity": {
                   "type": "quantity",
-                  "static": true
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button"
-                  }
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
-                  "static": true
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
                 }
               },
-              "settings": {
-                "show_pickup_availability": false
-              }
+              "block_order": []
             },
             "details_link": {
               "type": "text",
               "settings": {
-                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub\">See full product details</a></p>"
-              }
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -436,42 +983,48 @@
           "settings": {
             "title": "Organic Baobab Fruit",
             "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
-          }
+          },
+          "blocks": {}
         },
         "card_2": {
           "type": "_ingredient-card",
           "settings": {
             "title": "Coconut Water",
             "description": "Potassium from nature, not a lab. Coconut water brings naturally occurring electrolytes to every sip."
-          }
+          },
+          "blocks": {}
         },
         "card_3": {
           "type": "_ingredient-card",
           "settings": {
             "title": "Pink Himalayan Salt",
             "description": "An unrefined source of sodium, an essential electrolyte for hydration. Naturally mineral-rich."
-          }
+          },
+          "blocks": {}
         },
         "card_4": {
           "type": "_ingredient-card",
           "settings": {
             "title": "Real Fruit",
             "description": "Flavor from actual fruit, nothing artificial. Every flavor starts with the real thing."
-          }
+          },
+          "blocks": {}
         },
         "card_5": {
           "type": "_ingredient-card",
           "settings": {
             "title": "Prebiotic Fiber",
             "description": "5 grams per serving from raw, unprocessed baobab — food for your gut microbiome."
-          }
+          },
+          "blocks": {}
         },
         "card_6": {
           "type": "_ingredient-card",
           "settings": {
             "title": "Organic Stevia Extract",
             "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -483,9 +1036,10 @@
         "card_6"
       ],
       "settings": {
-        "heading": "Refreshingly real ingredients.",
-        "text": "<p>No need to make things complicated. Tiiga is made with a handful of real ingredients — no added sugar, no artificial sweeteners, and nothing you can't pronounce. Just baobab fruit, coconut water, pink Himalayan salt, and a burst of real fruit. Cheers to that.</p>",
+        "heading": "Quality ingredients, thoughtfully selected",
+        "text": "<p>Every serving contains functional ingredients chosen to support gut health, hydration, and daily wellness.</p>",
         "card_width": 300,
+        "background_color": "",
         "padding-block-start": 72,
         "padding-block-end": 72
       }
@@ -498,24 +1052,30 @@
           "settings": {
             "symbol": "Na+",
             "name": "Sodium",
+            "value": "",
             "description": "Creates the osmotic gradient that draws water into the bloodstream"
-          }
+          },
+          "blocks": {}
         },
         "row_2": {
           "type": "_science-row",
           "settings": {
             "symbol": "K+",
             "name": "Potassium",
+            "value": "",
             "description": "Regulates electrolyte balance and maintains cellular function"
-          }
+          },
+          "blocks": {}
         },
         "row_3": {
           "type": "_science-row",
           "settings": {
             "symbol": "C6H12O6",
             "name": "Glucose",
+            "value": "",
             "description": "Activates the sodium-glucose co-transport mechanism for rapid uptake"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -530,9 +1090,9 @@
         "text": "<p>Tiiga is built on ORS, or Oral Rehydration Solution: a specific balance of electrolytes and glucose designed to help your body absorb water more efficiently. We use that same science — plus prebiotic baobab fiber — with real ingredients and refreshing flavors for everyday hydration.</p>",
         "link_label": "More on the science",
         "link": "/pages/science",
+        "background_color": "#efece7",
         "padding-block-start": 64,
-        "padding-block-end": 80,
-        "background_color": "#efece7"
+        "padding-block-end": 80
       }
     },
     "comparison": {
@@ -549,7 +1109,8 @@
             "stat_2_value": "27g",
             "stat_2_unit": "added sugar",
             "description": "Added sugar and made with artificial ingredients"
-          }
+          },
+          "blocks": {}
         },
         "column_2": {
           "type": "_comparison-column",
@@ -562,7 +1123,8 @@
             "stat_2_value": "28g",
             "stat_2_unit": "sugar",
             "description": "Unbalanced electrolytes (low sodium, high sugar)"
-          }
+          },
+          "blocks": {}
         },
         "column_3": {
           "type": "_comparison-column",
@@ -575,7 +1137,8 @@
             "stat_2_value": "11g",
             "stat_2_unit": "added sugar",
             "description": "Synthetic ingredients and added sugars"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -587,6 +1150,7 @@
         "heading": "More science. Less sugar.",
         "text": "<p>Most hydration mixes are overloaded with sugar or underpowered in function. Tiiga hits the sweet spot: science-backed electrolytes, prebiotic baobab fiber, and real fruit flavor.</p>",
         "overlay_color": "#8fb5bf66",
+        "background_color": "",
         "text_color": "#ffffff",
         "brand_text_color": "#1d5a6b",
         "brand_stat_1_value": "0g",
@@ -607,28 +1171,32 @@
           "settings": {
             "value": "84%",
             "description": "drink Tiiga at least 3x a week — and more than half drink it daily"
-          }
+          },
+          "blocks": {}
         },
         "stat_2": {
           "type": "_stat-item",
           "settings": {
             "value": "68%",
             "description": "choose Tiiga because it's made with real ingredients"
-          }
+          },
+          "blocks": {}
         },
         "stat_3": {
           "type": "_stat-item",
           "settings": {
             "value": "83%",
             "description": "say Tiiga helps them drink more water"
-          }
+          },
+          "blocks": {}
         },
         "stat_4": {
           "type": "_stat-item",
           "settings": {
             "value": "79%",
             "description": "use Tiiga as their only hydration brand"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -642,6 +1210,7 @@
         "heading": "Daily hydration that sticks.",
         "text": "<p>We asked customers how Tiiga fits into their day-to-day routines. The results were refreshing.</p>",
         "footnote": "*Based on a post-purchase survey of verified Tiiga customers",
+        "value_color": "#1d5a6b",
         "background_color": "#efece7",
         "padding-block-start": 80,
         "padding-block-end": 80
@@ -651,11 +1220,11 @@
       "type": "press-quote",
       "settings": {
         "quote": "<p>\"The electrolyte powder that finally makes hydration gut-friendly — no added sugar, all real fruit.\"</p>",
+        "attribution": "— Verified Tiiga customer",
         "overlay_color": "#00000073",
         "text_color": "#ffffff",
         "padding-block-start": 112,
-        "padding-block-end": 96,
-        "attribution": "— Verified Tiiga customer"
+        "padding-block-end": 96
       }
     },
     "advisors": {
@@ -667,7 +1236,8 @@
             "color": "#d23c6d",
             "title": "Women's Health",
             "detail": "OB-GYN · Maternal Medicine"
-          }
+          },
+          "blocks": {}
         },
         "row_2": {
           "type": "_advisor-row",
@@ -675,7 +1245,8 @@
             "color": "#2e7d5b",
             "title": "Nutrition & Dietetics",
             "detail": "RD · Sports Nutrition"
-          }
+          },
+          "blocks": {}
         },
         "row_3": {
           "type": "_advisor-row",
@@ -683,7 +1254,8 @@
             "color": "#3a7de5",
             "title": "Pediatrics",
             "detail": "Infant & Child Health"
-          }
+          },
+          "blocks": {}
         },
         "row_4": {
           "type": "_advisor-row",
@@ -691,7 +1263,8 @@
             "color": "#f5a623",
             "title": "Sports Medicine",
             "detail": "Performance & Recovery"
-          }
+          },
+          "blocks": {}
         },
         "row_5": {
           "type": "_advisor-row",
@@ -699,7 +1272,8 @@
             "color": "#7b4397",
             "title": "Internal Medicine & more",
             "detail": "General Practice · ER"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -729,8 +1303,10 @@
             "title": "1 product",
             "subtitle": "20% subscription discount",
             "value": "20% off",
+            "badge": "",
             "highlight": false
-          }
+          },
+          "blocks": {}
         },
         "tier_2": {
           "type": "_bundle-tier",
@@ -738,8 +1314,10 @@
             "title": "2 products",
             "subtitle": "20% subscription + bundle savings",
             "value": "24% off",
+            "badge": "",
             "highlight": false
-          }
+          },
+          "blocks": {}
         },
         "tier_3": {
           "type": "_bundle-tier",
@@ -747,8 +1325,10 @@
             "title": "3 products",
             "subtitle": "20% subscription + bundle savings",
             "value": "28% off",
+            "badge": "",
             "highlight": false
-          }
+          },
+          "blocks": {}
         },
         "tier_4": {
           "type": "_bundle-tier",
@@ -756,9 +1336,10 @@
             "title": "4 products",
             "subtitle": "20% subscription + bundle savings",
             "value": "32% off",
-            "highlight": true,
-            "badge": "Best value"
-          }
+            "badge": "Best value",
+            "highlight": true
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -772,6 +1353,7 @@
         "text": "<p>Start with 20% off every subscription, then bundle more flavors to save more on every delivery.</p>",
         "link_label": "Build your bundle",
         "link": "/collections/all",
+        "background_color": "",
         "padding-block-start": 88,
         "padding-block-end": 88
       }
@@ -783,59 +1365,66 @@
           "type": "_review-card",
           "settings": {
             "category": "For gut health",
+            "show_stars": true,
             "quote": "\"Finally an electrolyte mix that doesn't upset my stomach — and my kids love the flavors.\"",
             "author": "Alicia, Salt Lake City, UT",
-            "show_stars": true,
             "verified": true
-          }
-        },
-        "review_2": {
-          "type": "_review-card",
-          "settings": {
-            "category": "For your daily routine",
-            "quote": "\"An absolute game changer for my morning routine. I actually look forward to drinking water.\"",
-            "author": "Jacquie, New York, NY",
-            "show_stars": true,
-            "verified": true
-          }
-        },
-        "review_3": {
-          "type": "_review-card",
-          "settings": {
-            "category": "For workouts",
-            "quote": "\"I keep Tiiga in my gym bag. Easy hydration before and after training.\"",
-            "author": "Dennis, Buffalo Grove, IL",
-            "show_stars": true,
-            "verified": true
-          }
-        },
-        "review_4": {
-          "type": "_review-card",
-          "settings": {
-            "category": "For warmer climates",
-            "quote": "\"The only electrolyte I've ever liked. Real fruit flavor, no salt-packet taste.\"",
-            "author": "Abbie, San Clemente, CA",
-            "show_stars": true,
-            "verified": true
-          }
+          },
+          "blocks": {}
         },
         "photo_1": {
           "type": "_review-photo",
           "settings": {
             "handle": "@drinktiiga"
-          }
+          },
+          "blocks": {}
+        },
+        "review_2": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For your daily routine",
+            "show_stars": true,
+            "quote": "\"An absolute game changer for my morning routine. I actually look forward to drinking water.\"",
+            "author": "Jacquie, New York, NY",
+            "verified": true
+          },
+          "blocks": {}
         },
         "photo_2": {
           "type": "_review-photo",
           "settings": {
             "handle": "@drinktiiga"
-          }
+          },
+          "blocks": {}
+        },
+        "review_3": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For workouts",
+            "show_stars": true,
+            "quote": "\"I keep Tiiga in my gym bag. Easy hydration before and after training.\"",
+            "author": "Dennis, Buffalo Grove, IL",
+            "verified": true
+          },
+          "blocks": {}
         },
         "photo_3": {
           "type": "_review-photo",
           "settings": {
             "handle": "@drinktiiga"
-          }
+          },
+          "blocks": {}
+        },
+        "review_4": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For warmer climates",
+            "show_stars": true,
+            "quote": "\"The only electrolyte I've ever liked. Real fruit flavor, no salt-packet taste.\"",
+            "author": "Abbie, San Clemente, CA",
+            "verified": true
+          },
+          "blocks": {}
         }
       },
       "block_order": [
