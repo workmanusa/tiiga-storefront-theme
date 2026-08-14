@@ -1171,6 +1171,7 @@
       "blocks": {
         "stat_1": {
           "type": "_stat-item",
+          "disabled": true,
           "settings": {
             "value": "84%",
             "description": "drink Tiiga at least 3x a week — and more than half drink it daily"
@@ -1180,8 +1181,8 @@
         "stat_2": {
           "type": "_stat-item",
           "settings": {
-            "value": "68%",
-            "description": "choose Tiiga because it's made with real ingredients"
+            "value": "70%",
+            "description": "Of your immune system lives in your gut — and prebiotic fiber feeds it."
           },
           "blocks": {}
         },
