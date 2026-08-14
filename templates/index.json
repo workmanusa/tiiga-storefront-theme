@@ -1038,13 +1038,24 @@
     "science": {
       "type": "science-spec",
       "blocks": {
+        "science_row_yLyCKY": {
+          "type": "_science-row",
+          "name": "t:names.science_row",
+          "settings": {
+            "symbol": "Fiber",
+            "name": "Prebiotic Fiber",
+            "value": "4g",
+            "description": "Feeds beneficial gut bacteria and slows sugar absorption into the bloodstream."
+          },
+          "blocks": {}
+        },
         "row_1": {
           "type": "_science-row",
           "settings": {
-            "symbol": "Na+",
-            "name": "Sodium",
+            "symbol": "K+",
+            "name": "Potassium",
             "value": "",
-            "description": "Creates the osmotic gradient that draws water into the bloodstream"
+            "description": "Regulates fluid balance and muscle function. Baobab carries roughly 4x the potassium of a banana."
           },
           "blocks": {}
         },
@@ -1070,6 +1081,7 @@
         }
       },
       "block_order": [
+        "science_row_yLyCKY",
         "row_1",
         "row_2",
         "row_3"
