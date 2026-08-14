@@ -12,6 +12,97 @@
     "split_hero_preview": {
       "type": "split-hero",
       "blocks": {
+        "slide_2": {
+          "type": "_split-slide",
+          "settings": {
+            "media_type": "image",
+            "media_position": "end",
+            "horizontal_alignment": "flex-start",
+            "gap": 24,
+            "background_color": "#1d5a6b",
+            "text_color": "#ffffff",
+            "padding-block-start": 48,
+            "padding-block-end": 64,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "heading_2": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Gut Health Meets Hydration</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_2": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Electrolytes from real fruit, no added sugar. Fuel the whole family with flavors kids actually ask for.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 12,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Shop All Flavors",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#1d5a6b",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_2",
+            "text_2",
+            "button_2"
+          ]
+        },
         "slide_1": {
           "type": "_split-slide",
           "settings": {
@@ -104,102 +195,11 @@
             "text_1",
             "button_1"
           ]
-        },
-        "slide_2": {
-          "type": "_split-slide",
-          "settings": {
-            "media_type": "image",
-            "media_position": "end",
-            "horizontal_alignment": "flex-start",
-            "gap": 24,
-            "background_color": "#1d5a6b",
-            "text_color": "#ffffff",
-            "padding-block-start": 48,
-            "padding-block-end": 64,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48
-          },
-          "blocks": {
-            "heading_2": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>Hydration for every adventure</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h1",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_2": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Electrolytes from real fruit, no added sugar. Fuel the whole family with flavors kids actually ask for.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-body--family)",
-                "font_size": "1.125rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 12,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "button_2": {
-              "type": "button",
-              "settings": {
-                "label": "Shop All Flavors",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button-custom",
-                "custom_button_background": "#ffffff",
-                "custom_button_text": "#1d5a6b",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "heading_2",
-            "text_2",
-            "button_2"
-          ]
         }
       },
       "block_order": [
-        "slide_1",
-        "slide_2"
+        "slide_2",
+        "slide_1"
       ],
       "settings": {
         "media_height": "medium",
