@@ -989,8 +989,8 @@
         "card_2": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Coconut Water",
-            "description": "Potassium from nature, not a lab. Coconut water brings naturally occurring electrolytes to every sip."
+            "title": "Coconut Water Powder",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
