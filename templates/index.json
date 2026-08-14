@@ -57,7 +57,7 @@
             "text_2": {
               "type": "text",
               "settings": {
-                "text": "<p>Electrolytes from real fruit, no added sugar. Fuel the whole family with flavors kids actually ask for.</p>",
+                "text": "<p>Fiber and electrolytes from real fruit, no added sugar. All in flavors you actually ask for.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -86,7 +86,7 @@
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#EEEEEE",
+                "custom_button_background": "#eeeeee",
                 "custom_button_text": "#000000",
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "link_text_color": "",
@@ -607,6 +607,9 @@
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
                 "option_label_text_color": "",
                 "variant_style_class": "default",
                 "custom_variant_background": "{{ settings.color_palette.background }}",
@@ -626,7 +629,9 @@
             },
             "purchase_options": {
               "type": "_purchase-options",
-              "settings": {},
+              "settings": {
+                "heading": ""
+              },
               "blocks": {}
             },
             "buy_buttons": {
@@ -848,6 +853,9 @@
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
                 "option_label_text_color": "",
                 "variant_style_class": "default",
                 "custom_variant_background": "{{ settings.color_palette.background }}",
@@ -867,7 +875,9 @@
             },
             "purchase_options": {
               "type": "_purchase-options",
-              "settings": {},
+              "settings": {
+                "heading": ""
+              },
               "blocks": {}
             },
             "buy_buttons": {
