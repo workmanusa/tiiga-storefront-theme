@@ -1161,9 +1161,10 @@
       "settings": {
         "heading": "More Fruit. Less Filler.",
         "text": "<p>Most gut health drinks or electrolytes are either processed fiber gums or sugar-loaded probiotic sodas. Tiiga hits the sweet spot: whole-fruit prebiotic fiber, real electrolytes, and nothing synthetic.</p>",
+        "background_image": "shopify://shop_images/Component_1.png",
         "overlay_color": "#8fb5bf66",
         "background_color": "",
-        "text_color": "#ffffff",
+        "text_color": "#E2E2E2",
         "brand_text_color": "#1d5a6b",
         "brand_stat_1_value": "0g",
         "brand_stat_1_unit": "added sugar",
