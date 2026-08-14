@@ -1062,10 +1062,10 @@
         "row_2": {
           "type": "_science-row",
           "settings": {
-            "symbol": "K+",
-            "name": "Potassium",
+            "symbol": "Vitamin C",
+            "name": "From Absorbic Acid and Baobab",
             "value": "",
-            "description": "Regulates electrolyte balance and maintains cellular function"
+            "description": "Supports immune function and helps your body absorb other key nutrients."
           },
           "blocks": {}
         },
