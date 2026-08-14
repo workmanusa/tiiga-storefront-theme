@@ -365,3 +365,23 @@
   border: 1px solid rgb(255 255 255 / 0.25);
   margin-inline-start: -1px;
 }
+
+/*
+ * Benefits marquee: separators are rendered by CSS rather than typed into the
+ * copy, so merchants only enter the phrases. The theme id in the section
+ * wrapper changes per theme, hence the suffix match on the section key.
+ */
+[id$='__benefits_marquee'] .marquee__repeated-items > * {
+  display: flex;
+  /* .text-block is column by default, which would stack the separator below
+     the phrase instead of beside it */
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+
+[id$='__benefits_marquee'] .marquee__repeated-items > *::after {
+  content: '\00B7';
+  margin-inline: 1.75rem;
+  color: rgb(var(--color-foreground-rgb) / 0.45);
+}

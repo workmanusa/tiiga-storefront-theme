@@ -121,22 +121,10 @@
             "text": "<p>No Added Sugar</p>"
           }
         },
-        "dot_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
-        },
         "text_2": {
           "type": "text",
           "settings": {
             "text": "<p>Paleo Friendly</p>"
-          }
-        },
-        "dot_2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
           }
         },
         "text_3": {
@@ -145,22 +133,10 @@
             "text": "<p>Vegan Formula</p>"
           }
         },
-        "dot_3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
-        },
         "text_4": {
           "type": "text",
           "settings": {
             "text": "<p>Gluten Free</p>"
-          }
-        },
-        "dot_4": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
           }
         },
         "text_5": {
@@ -169,22 +145,10 @@
             "text": "<p>Allergen Friendly</p>"
           }
         },
-        "dot_5": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
-        },
         "text_6": {
           "type": "text",
           "settings": {
             "text": "<p>Non-GMO</p>"
-          }
-        },
-        "dot_6": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
           }
         },
         "text_7": {
@@ -193,22 +157,10 @@
             "text": "<p>Pregnancy Safe</p>"
           }
         },
-        "dot_7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
-        },
         "text_8": {
           "type": "text",
           "settings": {
             "text": "<p>Breastfeeding Safe</p>"
-          }
-        },
-        "dot_8": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
           }
         },
         "text_9": {
@@ -217,22 +169,10 @@
             "text": "<p>HSA/FSA Approved</p>"
           }
         },
-        "dot_9": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
-        },
         "text_10": {
           "type": "text",
           "settings": {
             "text": "<p>Advanced Hydration</p>"
-          }
-        },
-        "dot_10": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
           }
         },
         "text_11": {
@@ -240,41 +180,24 @@
           "settings": {
             "text": "<p>Plant Based</p>"
           }
-        },
-        "dot_11": {
-          "type": "text",
-          "settings": {
-            "text": "<p>·</p>"
-          }
         }
       },
       "block_order": [
         "text_1",
-        "dot_1",
         "text_2",
-        "dot_2",
         "text_3",
-        "dot_3",
         "text_4",
-        "dot_4",
         "text_5",
-        "dot_5",
         "text_6",
-        "dot_6",
         "text_7",
-        "dot_7",
         "text_8",
-        "dot_8",
         "text_9",
-        "dot_9",
         "text_10",
-        "dot_10",
-        "text_11",
-        "dot_11"
+        "text_11"
       ],
       "settings": {
         "movement_direction": "normal",
-        "gap_between_elements": 32,
+        "gap_between_elements": 0,
         "padding-block-start": 20,
         "padding-block-end": 20
       }
