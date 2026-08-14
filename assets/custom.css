@@ -61,6 +61,38 @@ header-actions {
   stroke-width: calc(var(--icon-stroke-width) * 20 / 21);
 }
 
+/* The account glyph is the odd one out: help/cart sit in a flex-centered
+   .svg-wrapper, but the account svg is slotted into shopify-account inside a
+   bare inline span — it rides the text baseline and the component's shadow
+   styles own its box, so it lands bigger and lower than its neighbours.
+   Give the host the same box as the other actions and center the slotted
+   icon; document rules beat the shadow's ::slotted sizing. */
+.header-actions__action.account-button shopify-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  width: var(--button-size);
+  height: var(--button-size);
+}
+
+.account-button shopify-account [slot='signed-out-avatar'][aria-hidden='true'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Art fills ~93% of the account canvas vs ~72% of cart/help's 21px boxes —
+   16px tall lands the drawn figure at ~14.9px, level with their ~15.1px. */
+.account-button .account-button__icon.account-button__icon {
+  width: auto;
+  height: 16px;
+}
+
+.account-button .account-button__icon path {
+  stroke-width: calc(var(--icon-stroke-width) * 17 / 16);
+}
+
 /*
  * Search: rebuilt as a full-width sheet that drops from the top of the page,
  * in the collections-page design language — page-margin-aligned content, a
@@ -260,7 +292,8 @@ header-actions {
     min-height: 3.75rem;
   }
 
-  .header.header .header-actions__action:not(.account-button) .svg-wrapper {
+  .header.header .header-actions__action:not(.account-button) .svg-wrapper,
+  .header.header .account-button shopify-account {
     width: 40px;
     height: 40px;
   }
@@ -524,13 +557,16 @@ img {
     }
 
     /* Centered details link below the buy stack, like the reference.
-       The block is a fit-content grid item, so center the box itself. */
-    .product-details .text-block:has(> p > a) {
+       The block is a fit-content grid item, so center the box itself.
+       Same > chain as the every-item margin rule above — a shorter
+       descendant selector loses that specificity race and the gap
+       collapses to the blanket 0.25rem. */
+    .product-details > .group-block > .group-block-content > .text-block:has(> p > a) {
       justify-self: center;
       text-align: center;
       --text-align: center;
       --text-align-default: center;
-      margin-block: 1.5rem 0.25rem;
+      margin-block: 1.75rem 0.25rem;
     }
   }
 }
@@ -1137,6 +1173,12 @@ body:has(input[data-option-name='Flavor'][value='Orange']:checked:not(featured-p
 .product-information[data-flavor-mode]:not(featured-product-information *) .variant-picker .variant-picker__form {
   min-height: 0;
   overflow: clip;
+  /* Clip happens at the padding edge, and the chips' selection ring
+     (box-shadow) and focus outline reach 4px past their border box — bleed
+     the clip out by that much, cancelled by the margin so nothing moves.
+     (overflow-clip-margin would be cleaner but Safari lacks it.) */
+  padding: 4px;
+  margin: -4px;
 }
 
 .product-information[data-flavor-mode='bundle']:not(featured-product-information *) .variant-picker {
