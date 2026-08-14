@@ -17,14 +17,16 @@
         "announcement_1": {
           "type": "_announcement-item",
           "settings": {
-            "text": "<p>Save more – <a href=\"/collections/all\" title=\"Bundle offer\">get up to 20% off when you bundle</a></p>"
-          }
+            "text": "<p>Save more – <a href=\"/collections/all\" title=\"Bundle offer\">get up to X% off when you bundle</a></p>"
+          },
+          "blocks": {}
         },
         "announcement_2": {
           "type": "_announcement-item",
           "settings": {
-            "text": "<p>Green Apple + Classic Grape are here – <a href=\"/collections/all\" title=\"New flavors\">take 20% off our two new kid-approved flavors with code TASTETWO</a></p>"
-          }
+            "text": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -66,20 +68,24 @@
                 "label": "Shop",
                 "link": "/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
                 "pill": true
-              }
+              },
+              "blocks": {}
             },
             "subscribe": {
               "type": "_nav-link",
               "settings": {
                 "label": "Subscribe",
-                "link": "/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag"
-              }
+                "link": "/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                "pill": false
+              },
+              "blocks": {}
             },
             "why": {
               "type": "_nav-submenu",
               "settings": {
                 "label": "Why Tiiga",
                 "eyebrow": "Why Tiiga",
+                "blog": "",
                 "articles_heading": "Featured articles"
               },
               "blocks": {
@@ -87,27 +93,39 @@
                   "type": "_nav-card",
                   "settings": {
                     "title": "Our story",
-                    "description": "How Tiiga was born from the mighty baobab fruit"
-                  }
+                    "description": "How Tiiga was born from the mighty baobab fruit",
+                    "link": ""
+                  },
+                  "blocks": {}
                 },
                 "card_hydration": {
                   "type": "_nav-card",
                   "settings": {
                     "title": "Better hydration",
-                    "description": "Why water alone isn't always enough to keep you hydrated"
-                  }
+                    "description": "Why water alone isn't always enough to keep you hydrated",
+                    "link": ""
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": ["card_story", "card_hydration"]
+              "block_order": [
+                "card_story",
+                "card_hydration"
+              ]
             }
           },
-          "block_order": ["shop", "subscribe", "why"]
+          "block_order": [
+            "shop",
+            "subscribe",
+            "why"
+          ]
         }
       },
       "settings": {
         "logo_position": "center",
         "menu_position": "left",
         "menu_row": "top",
+        "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
@@ -123,10 +141,29 @@
         "enable_sticky_header": "always",
         "divider_width": 0,
         "divider_size": "page-width",
+        "divider_color": "",
         "border_width": 0,
+        "bottom_border_color": "",
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
+        "background_color_top": "",
+        "text_color_top": "",
+        "background_color_bottom": "",
+        "text_color_bottom": "",
+        "bubble_style": "default",
+        "bubble_background_color": "",
+        "bubble_text_color": "",
         "enable_transparent_header_home": false,
+        "home_inverse_logo": false,
+        "text_color_transparent_home": "",
         "enable_transparent_header_product": false,
-        "enable_transparent_header_collection": false
+        "product_inverse_logo": false,
+        "text_color_transparent_product": "",
+        "enable_transparent_header_collection": false,
+        "collection_inverse_logo": false,
+        "text_color_transparent_collection": ""
       }
     }
   },
