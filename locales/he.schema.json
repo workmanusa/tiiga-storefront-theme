@@ -418,7 +418,9 @@
     "reviews_carousel": "Reviews",
     "review_card": "Review",
     "review_photo": "Review photo",
-    "pdp_benefits": "Product benefits"
+    "pdp_benefits": "Product benefits",
+    "pdp_header": "Product header",
+    "pdp_trust_bar": "Trust bar"
   },
   "options": {
     "above_carousel": "מעל הקרוסלה",
@@ -1111,7 +1113,9 @@
     "bottom_row_background": "רקע לשורה התחתונה",
     "bottom_row_text": "טקסט לשורה התחתונה",
     "symbol": "Symbol",
-    "value": "Value"
+    "value": "Value",
+    "show_rating": "Show rating",
+    "rating": "Rating"
   },
   "text_defaults": {
     "accordion_heading": "כותרת אקורדיון",

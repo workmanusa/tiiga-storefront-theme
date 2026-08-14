@@ -181,7 +181,9 @@
     "reviews_carousel": "Reviews",
     "review_card": "Review",
     "review_photo": "Review photo",
-    "pdp_benefits": "Product benefits"
+    "pdp_benefits": "Product benefits",
+    "pdp_header": "Product header",
+    "pdp_trust_bar": "Trust bar"
   },
   "settings": {
     "autoplay": "Lecture automatique",
@@ -598,7 +600,9 @@
     "open_by_default": "Ouvert par défaut",
     "title_preset": "Préréglage du titre",
     "symbol": "Symbol",
-    "value": "Value"
+    "value": "Value",
+    "show_rating": "Show rating",
+    "rating": "Rating"
   },
   "options": {
     "apple": "Pomme",

@@ -1,0 +1,178 @@
+{%- if block.settings.title != blank -%}
+  {%- liquid
+    assign is_link = false
+    if block.settings.link != blank and block.settings.link_label != blank
+      assign is_link = true
+    endif
+  -%}
+
+  {%- capture trust_inner -%}
+    <span class="pdp-trust__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 12.4l3.6 3.6L18 7.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+
+    <span class="pdp-trust__body">
+      <span class="pdp-trust__heading">
+        <span class="pdp-trust__title">{{ block.settings.title }}</span>
+        {%- if block.settings.badge != blank -%}
+          <span class="pdp-trust__badge">{{ block.settings.badge }}</span>
+        {%- endif -%}
+      </span>
+      {%- if block.settings.text != blank -%}
+        <span class="pdp-trust__text">{{ block.settings.text }}</span>
+      {%- endif -%}
+    </span>
+
+    {%- if is_link -%}
+      <span class="pdp-trust__cta">
+        <span class="pdp-trust__cta-label">{{ block.settings.link_label }}</span>
+        <span class="pdp-trust__chevron" aria-hidden="true">
+          {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+        </span>
+      </span>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- if is_link -%}
+    <a class="pdp-trust pdp-trust--link" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+      {{ trust_inner }}
+    </a>
+  {%- else -%}
+    <div class="pdp-trust" {{ block.shopify_attributes }}>
+      {{ trust_inner }}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% stylesheet %}
+  .pdp-trust {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .pdp-trust__icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #1d5a6b;
+    color: #fff;
+  }
+
+  .pdp-trust__icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .pdp-trust__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1875rem;
+    min-width: 0;
+  }
+
+  .pdp-trust__heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pdp-trust__title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .pdp-trust__badge {
+    background-color: #1d5a6b;
+    color: #fff;
+    border-radius: 100px;
+    padding: 0.125rem 0.625rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .pdp-trust__text {
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .pdp-trust__cta {
+    margin-inline-start: auto;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .pdp-trust__chevron {
+    display: inline-flex;
+    width: 0.5rem;
+  }
+
+  .pdp-trust__chevron svg {
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 749px) {
+    .pdp-trust__cta-label {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.pdp_trust_bar",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.pdp_trust_bar"
+    }
+  ]
+}
+{% endschema %}

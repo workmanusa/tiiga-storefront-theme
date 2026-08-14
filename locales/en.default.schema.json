@@ -387,6 +387,10 @@
     // One customer photo card in the reviews carousel
     "review_photo": "Review photo",
     // Flavor-colored benefit tiles on the product page
+    // Buy-box header: category pill, flavor title, rating
+    "pdp_header": "Product header",
+    // Reassurance card under the buy box
+    "pdp_trust_bar": "Trust bar",
     "pdp_benefits": "Product benefits",
     "press_quote": "Press quote",
     // One press outlet logo in the press quote section
@@ -1118,6 +1122,8 @@
     "shape": "Shape",
     // Checkbox label to toggle visibility of UI elements
     "show": "Show",
+    "rating": "Rating",
+    "show_rating": "Show rating",
     "show_as_accordion": "Show as accordion on mobile",
     "show_author": "Author",
     "show_alignment": "Show alignment",
