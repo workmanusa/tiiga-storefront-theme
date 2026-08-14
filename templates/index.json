@@ -113,7 +113,7 @@
             "media_position": "end",
             "horizontal_alignment": "center",
             "gap": 24,
-            "background_color": "#efece7",
+            "background_color": "#f6f4f0",
             "text_color": "#332f2c",
             "padding-block-start": 48,
             "padding-block-end": 64,
