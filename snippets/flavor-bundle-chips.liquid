@@ -1,0 +1,83 @@
+{% doc %}
+  Renders the bundle builder's flavor chip buttons for one product's Flavor
+  option. Used once for a standalone product, or once per member of a combined
+  flavor family (e.g. the 16-pack + its variety packs), so bundles can mix
+  variants from sibling products.
+
+  Each chip carries a `data-plans` map of "plan name:selling plan id" pairs —
+  selling plan ids differ per product even when the plan names match, so
+  flavor-bundle.js resolves the chosen plan per line instead of stamping the
+  page product's plan id onto every line.
+
+  @param {object} source_product - The product whose flavor variants become chips.
+
+  @example
+  {% render 'flavor-bundle-chips', source_product: product %}
+{% enddoc %}
+
+{%- liquid
+  assign chip_option = blank
+  for option in source_product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'flavor'
+      assign chip_option = option
+    endif
+  endfor
+-%}
+
+{%- if chip_option != blank -%}
+  {%- for value in chip_option.values -%}
+    {%- if value.available -%}
+      {%- liquid
+        assign variant = value.variant
+        # Same art and color as the flavor selector: the tiiga_flavor
+        # metaobject, falling back to the variant's product photo.
+        assign flavor_value_handle = value | handleize
+        assign flavor_entry = shop.metaobjects.tiiga_flavor[flavor_value_handle]
+        assign thumb = flavor_entry.image.value
+        if thumb == blank
+          assign thumb = variant.featured_media | default: source_product.featured_media
+        endif
+
+        # The filled slot shows the actual product shot, not the flavor
+        # art — the chip keeps the art, the slot confirms what ships.
+        assign slot_image = variant.featured_media | default: source_product.featured_media
+
+        assign plan_price = variant.price
+        for allocation in variant.selling_plan_allocations
+          if allocation.price < plan_price
+            assign plan_price = allocation.price
+          endif
+        endfor
+      -%}
+      {% # One line: loop-boundary whitespace trimming is unreliable inside capture %}
+      {%- capture plan_map -%}{%- for allocation in variant.selling_plan_allocations -%}{%- unless forloop.first -%},{%- endunless -%}{{ allocation.selling_plan.name | downcase }}:{{ allocation.selling_plan.id }}{%- endfor -%}{%- endcapture -%}
+      <button
+        type="button"
+        class="flavor-bundle__flavor"
+        {% if flavor_entry.color %}
+          style="--flavor-swatch: {{ flavor_entry.color }};"
+        {% endif %}
+        data-flavor="{{ value | escape }}"
+        data-variant-id="{{ variant.id }}"
+        data-label="{{ value | escape }}"
+        data-price="{{ variant.price }}"
+        data-plan-price="{{ plan_price }}"
+        {% if plan_map != blank %}
+          data-plans="{{ plan_map | strip | escape }}"
+        {% endif %}
+        data-image="{{ slot_image | image_url: width: 480 }}"
+      >
+        {%- if thumb != blank -%}
+          <span class="flavor-bundle__flavor-media" aria-hidden="true">
+            {{ thumb | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', widths: '120, 240', sizes: '120px' }}
+          </span>
+        {%- else -%}
+          <span class="flavor-bundle__flavor-dot" aria-hidden="true"></span>
+        {%- endif -%}
+        <span class="flavor-bundle__flavor-name">{{ value }}</span>
+        <span class="flavor-bundle__flavor-count" data-ref="flavorCount" hidden></span>
+      </button>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

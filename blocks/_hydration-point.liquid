@@ -1,0 +1,76 @@
+{%- assign block_index = section.blocks | find_index: 'id', block.id | plus: 1 -%}
+
+<li class="hydration-point" {{ block.shopify_attributes }}>
+  <span class="hydration-point__number" aria-hidden="true">
+    {%- if block_index < 10 %}0{% endif %}{{ block_index -}}
+  </span>
+  <div class="hydration-point__body">
+    {%- if block.settings.title != blank -%}
+      <h3 class="hydration-point__title">{{ block.settings.title }}</h3>
+    {%- endif -%}
+    {%- if block.settings.text != blank -%}
+      <p class="hydration-point__text">{{ block.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</li>
+
+{% stylesheet %}
+  .hydration-point {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+  }
+
+  .hydration-point__number {
+    font-family: var(--font-heading--family);
+    font-size: 1.625rem;
+    line-height: 1.2;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  .hydration-point__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .hydration-point__title {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  .hydration-point__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.hydration_point",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.hydration_point"
+    }
+  ]
+}
+{% endschema %}

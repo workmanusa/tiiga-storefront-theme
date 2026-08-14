@@ -82,17 +82,15 @@
     content_for 'block', type: '_header-logo', id: 'header-logo'
   endcapture
 
+  # Tiiga: Horizon's header menu, mobile drawer and navigation bar are
+  # replaced by the custom nav menu (blocks/_nav-menu.liquid), which renders
+  # the desktop mega menu and the mobile drawer from one block.
   capture menu
-    content_for 'block', type: '_header-menu', id: 'header-menu'
+    content_for 'block', type: '_nav-menu', id: 'nav-menu'
   endcapture
 
-  capture drawer_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
-  endcapture
-
-  capture navigation_bar
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
-  endcapture
+  assign drawer_menu = ''
+  assign navigation_bar = ''
 
   capture actions
     render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section

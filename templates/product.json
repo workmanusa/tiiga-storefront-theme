@@ -18,19 +18,19 @@
           "settings": {
             "media_presentation": "grid",
             "media_columns": "two",
-            "image_gap": 4,
-            "large_first_image": false,
+            "image_gap": 12,
+            "large_first_image": true,
             "icons_style": "arrow",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
-            "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
+            "aspect_ratio": "1",
+            "constrain_to_viewport": false,
             "media_fit": "contain",
-            "media_radius": 0,
+            "media_radius": 20,
             "extend_media": false,
-            "zoom": true,
+            "zoom": false,
             "video_loop": false,
             "hide_variants": true,
             "padding-block-start": 0,
@@ -39,6 +39,23 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "pdp-benefits": {
+          "type": "_pdp-benefits",
+          "static": true,
+          "settings": {
+            "title_1": "Advanced hydration",
+            "text_1": "Science-backed formula",
+            "title_2": "No added sugar",
+            "text_2": "Zero artificial sweeteners",
+            "title_3": "Gut friendly",
+            "text_3": "Prebiotic baobab fiber"
+          }
+        },
+        "pdp-lightbox": {
+          "type": "_pdp-lightbox",
+          "static": true,
+          "settings": {}
         },
         "product-details": {
           "type": "_product-details",
@@ -50,7 +67,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 28,
+            "gap": 0,
             "sticky_details_desktop": true,
             "background_media": "none",
             "video_position": "cover",
@@ -59,8 +76,8 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 24,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -74,14 +91,20 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-end": 0,
+                "show_variant_thumbnails": true,
+                "flavor_link_products": [
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
+                ],
+                "flavor_link_heading": "Variety packs"
               },
               "blocks": {}
             },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
-                "stacking": true,
+                "stacking": false,
                 "show_pickup_availability": false,
                 "gift_card_form": true,
                 "padding-block-start": 0,
@@ -113,43 +136,10 @@
               },
               "block_order": []
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "t:names.product_description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "purchase_options": {
-              "type": "_purchase-options"
-            },
-            "pdp_benefits": {
-              "type": "_pdp-benefits",
+              "type": "_purchase-options",
               "settings": {
-                "title_1": "Advanced hydration",
-                "text_1": "Science-backed formula",
-                "title_2": "No added sugar",
-                "text_2": "Zero artificial sweeteners",
-                "title_3": "Gut friendly",
-                "text_3": "Prebiotic baobab fiber"
+                "heading": "Purchase options"
               }
             },
             "pdp_header": {
@@ -159,31 +149,47 @@
                 "show_rating": true,
                 "rating": "4.8",
                 "review_count": "67 reviews",
-                "eligibility": "HSA/FSA Eligible.",
+                "eligibility": "",
                 "eligibility_link_label": "Learn more",
                 "eligibility_link": "/pages/hsa-fsa",
                 "description": "<p>Water, but better. A science-backed blend of electrolytes, coconut water, prebiotic baobab fiber, and real fruit, made for daily hydration.</p>"
               }
             },
-            "pdp_trust": {
-              "type": "_pdp-trust-bar",
+            "size_selector": {
+              "type": "_pdp-size-selector",
               "settings": {
-                "title": "3rd Party Testing",
-                "badge": "Complete",
-                "text": "Passed strict quality, safety, and regulatory standards.",
-                "link_label": "Learn more",
-                "link": "/pages/testing"
+                "label": "Select size",
+                "product_1": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                "title_1": "16 Pack",
+                "text_1": "Stick packs",
+                "product_2": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub",
+                "title_2": "30 Serving",
+                "text_2": "Tub"
+              }
+            },
+            "flavor_bundle": {
+              "type": "_flavor-bundle",
+              "settings": {
+                "max_flavors": 4,
+                "min_flavors": 2,
+                "badge": "Best value",
+                "savings_label": "Save up to 30%",
+                "discount_tiers": "2:25, 4:30",
+                "flavor_link_products": [
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
+                ],
+                "flavor_link_heading": "Variety packs"
               }
             }
           },
           "block_order": [
             "pdp_header",
+            "size_selector",
+            "flavor_bundle",
             "variant_picker_R3rGDr",
             "purchase_options",
-            "buy_buttons_eYQEYi",
-            "text_aEtTtq",
-            "pdp_benefits",
-            "pdp_trust"
+            "buy_buttons_eYQEYi"
           ]
         },
         "disclosures": {
@@ -204,148 +210,314 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
+    "flavor_nutrition": {
+      "type": "flavor-nutrition",
       "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
+        "panel_raspberry_lemonade": {
+          "type": "_flavor-nutrition-panel",
           "settings": {
-            "text": "<h2>You may also like </h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "flavor": "Raspberry Lemonade",
+            "tagline": "Sweet-tart raspberries squeezed into sunny lemonade — bright, jammy, and endlessly sippable."
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "panel_watermelon": {
+          "type": "_flavor-nutrition-panel",
           "settings": {
-            "product_card_gap": 8,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
+            "flavor": "Watermelon",
+            "tagline": "Summer in a glass — crisp, juicy watermelon with a clean, thirst-quenching finish."
+          }
+        },
+        "panel_strawberry": {
+          "type": "_flavor-nutrition-panel",
+          "settings": {
+            "flavor": "Strawberry",
+            "tagline": "Ripe, sun-warmed strawberries — soft, sweet, and picked at peak season."
+          }
+        },
+        "panel_tropical_bliss": {
+          "type": "_flavor-nutrition-panel",
+          "settings": {
+            "flavor": "Tropical Bliss",
+            "tagline": "A beach-day blend of tropical fruit — one sip and you're on island time."
+          }
+        },
+        "panel_orange_mango": {
+          "type": "_flavor-nutrition-panel",
+          "settings": {
+            "flavor": "Orange Mango",
+            "tagline": "Golden mango wrapped in fresh-squeezed orange — smooth, sunny, and citrus-bright."
+          }
+        },
+        "panel_lemon_lime": {
+          "type": "_flavor-nutrition-panel",
+          "settings": {
+            "flavor": "Lemon Lime",
+            "tagline": "The classic twist — zesty lemon and cool lime with a clean, refreshing finish."
+          }
         }
       },
       "block_order": [
-        "text_cbcgyb"
+        "panel_raspberry_lemonade",
+        "panel_watermelon",
+        "panel_strawberry",
+        "panel_tropical_bliss",
+        "panel_orange_mango",
+        "panel_lemon_lime"
       ],
-      "name": "t:names.product_recommendations",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
+        "benefit_label_1": "Advanced hydration",
+        "benefit_label_2": "No added sugar",
+        "benefit_symbol_2": "cube",
+        "benefit_label_3": "Gut friendly",
+        "benefit_symbol_3": "gut",
+        "benefit_label_4": "Vegan formula",
+        "benefit_symbol_4": "leaf",
+        "benefit_label_5": "Prebiotic fiber",
+        "benefit_symbol_5": "fiber",
+        "benefit_label_6": ""
+      }
+    },
+    "proven_to_hydrate": {
+      "type": "proven-to-hydrate",
+      "blocks": {
+        "point_1": {
+          "type": "_hydration-point",
+          "settings": {
+            "title": "Balanced electrolytes + glucose",
+            "text": "The right ratio activates your body's sodium–glucose co-transport system, helping water absorb faster and more efficiently."
+          }
+        },
+        "point_2": {
+          "type": "_hydration-point",
+          "settings": {
+            "title": "Prebiotic baobab fiber",
+            "text": "Baobab brings prebiotic fiber and naturally occurring vitamin C, so you support your gut while you hydrate."
+          }
+        }
+      },
+      "block_order": [
+        "point_1",
+        "point_2"
+      ],
+      "settings": {
+        "eyebrow": "Hydration, down to a science",
+        "heading": "Proven to hydrate faster than water alone.",
+        "link_label": "Learn more",
+        "link": "/pages/science",
+        "background_color": "",
         "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "ingredients": {
+      "type": "ingredient-cards",
+      "blocks": {
+        "card_1": {
+          "type": "_ingredient-card",
+          "settings": {
+            "title": "100% Organic Baobab Fruit",
+            "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
+          },
+          "blocks": {}
+        },
+        "card_2": {
+          "type": "_ingredient-card",
+          "settings": {
+            "title": "Coconut Water Powder",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+          },
+          "blocks": {}
+        },
+        "card_3": {
+          "type": "_ingredient-card",
+          "settings": {
+            "title": "Sodium Citrate",
+            "description": "A functional form of sodium that helps with hydration, without tasting too salty."
+          },
+          "blocks": {}
+        },
+        "card_4": {
+          "type": "_ingredient-card",
+          "settings": {
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+          },
+          "blocks": {}
+        },
+        "card_6": {
+          "type": "_ingredient-card",
+          "settings": {
+            "title": "Organic Stevia Extract",
+            "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_6"
+      ],
+      "settings": {
+        "heading": "Quality ingredients, thoughtfully selected",
+        "text": "<p>We're not making it complicated. Tiiga is made with thoughtfully selected ingredients-no added sugar, artificial sweeteners, dyes, or anything you can't pronounce. </p>",
+        "card_width": 320,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "whats_not_inside": {
+      "type": "whats-not-inside",
+      "blocks": {
+        "item_added_sugar": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Added sugar" }
+        },
+        "item_dairy": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Dairy" }
+        },
+        "item_artificial_sweeteners": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Artificial sweeteners" }
+        },
+        "item_gluten": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Gluten" }
+        },
+        "item_artificial_colors": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Artificial colors" }
+        },
+        "item_soy": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Soy" }
+        },
+        "item_artificial_flavors": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Artificial flavors" }
+        },
+        "item_sugar_alcohols": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Sugar alcohols" }
+        },
+        "item_artificial_dyes": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Artificial dyes" }
+        },
+        "item_nuts": {
+          "type": "_not-inside-item",
+          "settings": { "label": "Peanuts & tree nuts" }
+        }
+      },
+      "block_order": [
+        "item_added_sugar",
+        "item_dairy",
+        "item_artificial_sweeteners",
+        "item_gluten",
+        "item_artificial_colors",
+        "item_soy",
+        "item_artificial_flavors",
+        "item_sugar_alcohols",
+        "item_artificial_dyes",
+        "item_nuts"
+      ],
+      "settings": {
+        "eyebrow": "Nothing to see here",
+        "heading": "What's not inside",
+        "text": "<p>There's a lot we put into Tiiga. And a lot we don't. Here's a list of things we left out on purpose.</p>",
+        "background_color": "",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "author": "Jaime B.",
+            "date": "08/02/26",
+            "rating": 5,
+            "verified": true,
+            "title": "My favorite flavor so far",
+            "text": "So good! These are definitely my favorite flavor I've tried, and I've tried a lot. It's become part of my morning routine before every run."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "author": "Julie H.",
+            "date": "07/28/26",
+            "rating": 5,
+            "verified": true,
+            "title": "Reminds me of being a kid",
+            "text": "Great taste and I feel great after drinking it. No weird aftertaste like the other hydration mixes I've tried."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "author": "Nain D.",
+            "date": "07/19/26",
+            "rating": 5,
+            "verified": true,
+            "title": "A huge fan for quite some time",
+            "text": "I truly love this flavor so much it has become part of my daily routine to stay hydrated, especially because I'm an athlete and I believe this is the best way to hydrate."
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "author": "Marcus T.",
+            "date": "07/05/26",
+            "rating": 4,
+            "verified": true,
+            "title": "Solid daily hydration",
+            "text": "Mixes easily and tastes clean. I'd love a slightly bigger stick for large bottles, but the flavor is spot on."
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ],
+      "settings": {
+        "heading": "Reviews",
+        "klaviyo_company_id": "SsANN3",
+        "combine_reviews": true,
+        "rating": "4.8",
+        "review_count": "67",
+        "visible_reviews": 3,
+        "media_heading": "Reviews with media",
+        "button_label": "Write a review",
+        "stars_5": 55,
+        "stars_4": 8,
+        "stars_3": 2,
+        "stars_2": 1,
+        "stars_1": 1,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 72
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "flavor_nutrition",
+    "proven_to_hydrate",
+    "ingredients",
+    "whats_not_inside",
+    "reviews"
   ]
 }

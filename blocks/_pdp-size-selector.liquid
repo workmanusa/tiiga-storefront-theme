@@ -1,0 +1,164 @@
+{% doc %}
+  Size selector for the PDP buy box: two cards (e.g. "16 Pack / Stick packs"
+  and "30 Serving / Tub") that link between the sibling size products. Tiiga
+  sizes are separate products, not variants, so each card points at a product;
+  the card matching the current PDP renders as the active, non-linked state.
+
+  Rendered inside the product details column, above the one-flavor/bundle
+  toggle and the flavor picker.
+
+  @example
+  {% content_for 'block', type: '_pdp-size-selector', id: 'size-selector' %}
+{% enddoc %}
+
+<div
+  class="pdp-size"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.label != blank -%}
+    <p class="pdp-size__label">{{ block.settings.label }}</p>
+  {%- endif -%}
+  <div class="pdp-size__options">
+    {%- for i in (1..2) -%}
+      {%- liquid
+        assign product_key = 'product_' | append: i
+        assign title_key = 'title_' | append: i
+        assign subtitle_key = 'text_' | append: i
+        assign size_product = block.settings[product_key]
+        assign size_title = block.settings[title_key] | default: size_product.title
+        assign size_subtitle = block.settings[subtitle_key]
+      -%}
+      {%- if size_product != blank -%}
+        {%- capture option_content -%}
+          <span class="pdp-size__title">{{ size_title }}</span>
+          {%- if size_subtitle != blank -%}
+            <span class="pdp-size__sub">{{ size_subtitle }}</span>
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- comment -%}
+          Compare against the routed product, NOT closest.product: this
+          block's own product-type settings make closest.product resolve to
+          the first picked product instead of the page's product.
+        {%- endcomment -%}
+        {%- if size_product.handle == product.handle -%}
+          <span
+            class="pdp-size__option pdp-size__option--active"
+            aria-current="page"
+          >
+            {{ option_content }}
+          </span>
+        {%- else -%}
+          <a
+            class="pdp-size__option"
+            href="{{ size_product.url }}"
+          >
+            {{ option_content }}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pdp-size {
+    /* Start-only margin, a step roomier than the 12px group rhythm so the
+       buy box doesn't crowd the description above it */
+    margin-block: 16px 0;
+  }
+
+  .pdp-size__label {
+    margin: 0 0 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+  }
+
+  .pdp-size__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .pdp-size__option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgb(var(--color-foreground-rgb) / 0.1);
+    color: var(--color-foreground);
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow var(--animation-speed) var(--animation-easing);
+  }
+
+  a.pdp-size__option:hover {
+    box-shadow: 0 0 0 1px rgb(var(--color-foreground-rgb) / 0.35);
+  }
+
+  .pdp-size__option--active {
+    box-shadow: 0 0 0 1.5px var(--pdp-selected, #7a726b);
+  }
+
+  .pdp-size__title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .pdp-size__sub {
+    font-size: 0.625rem;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.pdp_size_selector",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label",
+      "default": "Select size"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "t:settings.product"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "t:settings.product"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "t:settings.text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,83 @@
+<div class="not-inside-item" {{ block.shopify_attributes }}>
+  <span class="not-inside-item__icon" aria-hidden="true">
+    {{- 'icon-close.svg' | inline_asset_content -}}
+  </span>
+  <span class="not-inside-item__label">{{ block.settings.label }}</span>
+</div>
+
+{% stylesheet %}
+  .not-inside-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    /* Foreground tint rather than white so the pill reads on the default white
+       scheme too; on a tinted section background it lands close to the
+       reference's lightened pill. */
+    background-color: rgb(var(--color-foreground-rgb) / 0.05);
+  }
+
+  .not-inside-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.08);
+    color: var(--color-foreground);
+  }
+
+  .not-inside-item__icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .not-inside-item__label {
+    font-family: var(--font-subheading--family);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 749px) {
+    .not-inside-item {
+      min-height: 56px;
+      gap: 10px;
+      padding: 8px 14px;
+    }
+
+    .not-inside-item__icon {
+      width: 26px;
+      height: 26px;
+    }
+
+    .not-inside-item__label {
+      font-size: 11px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.not_inside_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.not_inside_item"
+    }
+  ]
+}
+{% endschema %}

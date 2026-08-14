@@ -1,0 +1,38 @@
+{%- doc -%}
+  Renders a product/link tile for the nav menu shop grid: an image card with
+  a centered caption below it. Used by `_nav-shop-tab` (collection products)
+  and `_nav-tile` (manually configured tiles).
+
+  @param {string} label - The tile caption
+  @param {string} [url] - The tile destination; renders a non-interactive tile when blank
+  @param {image} [image] - The tile image; renders a placeholder wash when blank
+
+  @example
+  {% render 'nav-tile', label: product.title, url: product.url, image: product.featured_image %}
+{%- enddoc -%}
+
+{% capture tile_content %}
+  <span class="nav-tile__media">
+    {% if image != blank %}
+      {{
+        image
+        | image_url: width: 480
+        | image_tag: class: 'nav-tile__image', widths: '240, 360, 480', sizes: '(min-width: 750px) 160px, 30vw', loading: 'lazy'
+      }}
+    {% endif %}
+  </span>
+  <span class="nav-tile__label">{{ label }}</span>
+{% endcapture %}
+
+{% if url != blank %}
+  <a
+    href="{{ url }}"
+    class="nav-tile"
+  >
+    {{ tile_content }}
+  </a>
+{% else %}
+  <span class="nav-tile">
+    {{ tile_content }}
+  </span>
+{% endif %}

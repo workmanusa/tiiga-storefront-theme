@@ -1,0 +1,246 @@
+{% doc %}
+  Floating social-proof card layered over the top of the product media column.
+{% enddoc %}
+
+{%- if block.settings.text != blank or block.settings.label != blank -%}
+  {%- liquid
+    assign has_avatars = false
+    if block.settings.avatar_1 != blank or block.settings.avatar_2 != blank or block.settings.avatar_3 != blank
+      assign has_avatars = true
+    endif
+  -%}
+
+  <div class="pdp-media-badge" {{ block.shopify_attributes }}>
+    {%- if block.settings.label != blank -%}
+      <span class="pdp-media-badge__seal">
+        <span class="pdp-media-badge__laurel pdp-media-badge__laurel--start" aria-hidden="true">
+          <svg viewBox="0 0 16 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 2C6 8 4 14 4 20s2 12 8 18" stroke-linecap="round" />
+            <path d="M11 7c-3-1-5 0-6 2 2 1 4 1 6-2ZM8 14c-3-1-5 0-6 2 2 1 4 1 6-2ZM7 22c-3 0-5 1-5 3 2 1 4 0 5-3ZM8 30c-3 0-5 1-5 3 2 1 4 0 5-3Z" />
+          </svg>
+        </span>
+        <span class="pdp-media-badge__label">{{ block.settings.label }}</span>
+        <span class="pdp-media-badge__laurel pdp-media-badge__laurel--end" aria-hidden="true">
+          <svg viewBox="0 0 16 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M4 2c6 6 8 12 8 18s-2 12-8 18" stroke-linecap="round" />
+            <path d="M5 7c3-1 5 0 6 2-2 1-4 1-6-2ZM8 14c3-1 5 0 6 2-2 1-4 1-6-2ZM9 22c3 0 5 1 5 3-2 1-4 0-5-3ZM8 30c3 0 5 1 5 3-2 1-4 0-5-3Z" />
+          </svg>
+        </span>
+      </span>
+    {%- endif -%}
+
+    <span class="pdp-media-badge__body">
+      {%- if block.settings.text != blank -%}
+        <span class="pdp-media-badge__text">
+          {{- block.settings.text -}}
+          {%- if block.settings.link != blank and block.settings.link_label != blank %}
+            <a class="pdp-media-badge__link" href="{{ block.settings.link }}">{{ block.settings.link_label }}</a>
+          {% endif -%}
+        </span>
+      {%- endif -%}
+
+      {%- if has_avatars or block.settings.avatars_label != blank -%}
+        <span class="pdp-media-badge__proof">
+          {%- if has_avatars -%}
+            <span class="pdp-media-badge__avatars" aria-hidden="true">
+              {%- for index in (1..3) -%}
+                {%- liquid
+                  assign avatar_key = 'avatar_' | append: index
+                  assign avatar = block.settings[avatar_key]
+                -%}
+                {%- if avatar != blank -%}
+                  {{
+                    avatar
+                    | image_url: width: 72
+                    | image_tag: loading: 'lazy', alt: '', class: 'pdp-media-badge__avatar', widths: '36, 72'
+                  }}
+                {%- endif -%}
+              {%- endfor -%}
+            </span>
+          {%- endif -%}
+
+          {%- if block.settings.avatars_label != blank -%}
+            {%- if block.settings.avatars_link != blank -%}
+              <a class="pdp-media-badge__link" href="{{ block.settings.avatars_link }}">
+                {{- block.settings.avatars_label -}}
+              </a>
+            {%- else -%}
+              <span class="pdp-media-badge__avatars-label">{{ block.settings.avatars_label }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+    </span>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .pdp-media-badge {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    inset-inline-start: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    max-width: min(370px, calc(100% - 28px));
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.1);
+    font-size: 11px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  .pdp-media-badge__seal {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .pdp-media-badge__laurel {
+    display: inline-flex;
+    width: 0.625rem;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .pdp-media-badge__laurel svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .pdp-media-badge__label {
+    max-width: 4.5rem;
+    font-family: var(--font-heading--family);
+    font-size: 13px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .pdp-media-badge__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .pdp-media-badge__text strong {
+    font-weight: 600;
+  }
+
+  .pdp-media-badge__link {
+    color: currentcolor;
+    text-underline-offset: 0.2em;
+  }
+
+  .pdp-media-badge__proof {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pdp-media-badge__avatars {
+    display: inline-flex;
+  }
+
+  .pdp-media-badge__avatar {
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+  }
+
+  .pdp-media-badge__avatar + .pdp-media-badge__avatar {
+    margin-inline-start: -0.5rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .pdp-media-badge {
+      top: 8px;
+      inset-inline-start: 8px;
+      /* Stay inside the lead shot — the media column is a wide scroll rail on
+         phones, so a percentage width would spill across the benefit tiles. */
+      max-width: min(264px, calc(100% - 16px));
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 9px;
+    }
+
+    .pdp-media-badge__label {
+      max-width: 4rem;
+      font-size: 11px;
+    }
+
+    .pdp-media-badge__avatar {
+      width: 18px;
+      height: 18px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.pdp_media_badge",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.link_label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.social_proof"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "avatars_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "avatars_link",
+      "label": "t:settings.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.pdp_media_badge"
+    }
+  ]
+}
+{% endschema %}

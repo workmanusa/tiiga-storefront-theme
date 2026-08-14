@@ -1,0 +1,50 @@
+{%- doc -%}
+  Renders a plain link row in the nav menu (blocks/_nav-menu.liquid),
+  e.g. "Subscribe" or "Quiz". A full-width row in drawer mode and an inline
+  text link in desktop menu mode.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<div
+  class="nav-item nav-item--link{% if block.settings.pill %} nav-item--pill{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <a
+    href="{{ block.settings.link }}"
+    class="nav-item__row"
+  >
+    {{- block.settings.label -}}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.nav_link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "checkbox",
+      "id": "pill",
+      "label": "t:settings.pill",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.nav_link"
+    }
+  ]
+}
+{% endschema %}

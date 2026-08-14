@@ -9,10 +9,32 @@
   assign variant = product.selected_or_first_available_variant
   assign plan_group = product.selling_plan_groups | first
 
-  # Default to the second plan when several exist (e.g. 4 weeks out of 2/4/6/8)
+  # Default frequency follows the size: the 16-pack defaults to every 2 weeks,
+  # the 30-serving tub to every 4 weeks. Both sizes share one product template,
+  # so the size is read off the product title rather than a block setting.
+  assign product_title_down = product.title | downcase
+  assign default_plan_keyword = blank
+  if product_title_down contains '16 pack'
+    assign default_plan_keyword = ' 2 week'
+  elsif product_title_down contains '30 serving' or product_title_down contains 'tub'
+    assign default_plan_keyword = ' 4 week'
+  endif
+
+  # Fallback when neither size matches: second plan when several exist
+  # (e.g. 4 weeks out of 2/4/6/8)
   assign default_plan = plan_group.selling_plans | first
   if plan_group.selling_plans.size > 1
     assign default_plan = plan_group.selling_plans[1]
+  endif
+  if default_plan_keyword != blank
+    for plan in plan_group.selling_plans
+      # Leading space so ' 2 week' can't match inside '12 weeks'
+      assign plan_name_padded = plan.name | downcase | prepend: ' '
+      if plan_name_padded contains default_plan_keyword
+        assign default_plan = plan
+        break
+      endif
+    endfor
   endif
 
   assign default_allocation = blank
@@ -33,6 +55,10 @@
   data-product-id="{{ product.id }}"
   {{ block.shopify_attributes }}
 >
+  {%- if block.settings.heading != blank -%}
+    <span class="purchase-options__heading">{{ block.settings.heading }}</span>
+  {%- endif -%}
+
   {%- if plan_group != blank and default_allocation != blank -%}
     <label
       class="purchase-options__option purchase-options__option--selected"
@@ -48,9 +74,8 @@
       >
       <span class="purchase-options__radio" aria-hidden="true"></span>
       <span class="purchase-options__copy">
-        <span class="purchase-options__title">{{ 'purchase_options.subscribe_save' | t }}</span>
-        <span class="purchase-options__subtitle">
-          {{ 'purchase_options.deliver_every' | t }}
+        <span class="purchase-options__title">{{ 'purchase_options.subscribe' | t }}</span>
+        <span class="purchase-options__frequency">
           <select
             class="purchase-options__plan-select"
             aria-label="{{ 'purchase_options.delivery_frequency' | t }}"
@@ -76,15 +101,22 @@
               </option>
             {%- endfor -%}
           </select>
-          · {{ 'purchase_options.cancel_anytime' | t }}
+          <span class="purchase-options__caret" aria-hidden="true">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
         </span>
       </span>
       {%- if savings_percent > 0 -%}
         <span class="purchase-options__badge">
-          {{- 'purchase_options.percent_off' | t: percent: savings_percent -}}
+          {{- 'purchase_options.save_percent' | t: percent: savings_percent -}}
         </span>
       {%- endif -%}
-      <span class="purchase-options__price">{{ default_allocation.price | money }}</span>
+      <span class="purchase-options__price">
+        {%- if default_allocation.price < variant.price -%}
+          <s class="purchase-options__price-was">{{ variant.price | money }}</s>
+        {%- endif -%}
+        <span class="purchase-options__price-now">{{ default_allocation.price | money }}</span>
+      </span>
     </label>
   {%- endif -%}
 
@@ -104,9 +136,14 @@
     >
     <span class="purchase-options__radio" aria-hidden="true"></span>
     <span class="purchase-options__copy">
-      <span class="purchase-options__title">{{ 'purchase_options.one_time_purchase' | t }}</span>
+      <span class="purchase-options__title">{{ 'purchase_options.one_time' | t }}</span>
     </span>
-    <span class="purchase-options__price">{{ variant.price | money }}</span>
+    <span class="purchase-options__price">
+      {%- if variant.compare_at_price > variant.price -%}
+        <s class="purchase-options__price-was">{{ variant.compare_at_price | money }}</s>
+      {%- endif -%}
+      <span class="purchase-options__price-now">{{ variant.price | money }}</span>
+    </span>
   </label>
 
   <input
@@ -120,51 +157,86 @@
 
 {% stylesheet %}
   .purchase-options {
+    /* Badge keeps the brand teal; selection uses the neutral ink so the
+       stroke doesn't fight the flavor-tinted page. */
+    --purchase-options-accent: #1d5a6b;
+    --purchase-options-selected: var(--pdp-selected, #7a726b);
+
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
   }
 
+  .purchase-options__heading {
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-block-end: 0.125rem;
+  }
+
   .purchase-options__option {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 10px;
     position: relative;
-    background-color: rgb(255 255 255 / 0.95);
-    border: 2px solid transparent;
+    /* Both rows are solid white — the tint must not show through, or the card
+       picks up the flavor wash. Unselected simply recedes via opacity. */
+    background-color: #fff;
+    border: 1.5px solid transparent;
     border-radius: 12px;
-    padding: 0.8125rem 1.125rem;
+    padding: 7px 12px;
     cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, border-color 0.18s ease;
+  }
+
+  .purchase-options__option:hover {
+    opacity: 1;
   }
 
   .purchase-options__option--selected {
-    border-color: var(--color-foreground);
+    opacity: 1;
+    border-color: var(--purchase-options-selected);
+  }
+
+  .purchase-options__option:has(:focus-visible) {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
   }
 
   .purchase-options__radio {
     flex: 0 0 auto;
-    width: 1.125rem;
-    height: 1.125rem;
-    border: 1px solid var(--color-foreground);
-    border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(0 0 0 / 0.3);
+    border-radius: 50%;
+    background-color: #fff;
+  }
+
+  .purchase-options__option--selected .purchase-options__radio {
+    border-color: var(--purchase-options-selected);
   }
 
   .purchase-options__option--selected .purchase-options__radio::after {
     content: '';
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background-color: var(--color-foreground);
+    background-color: var(--purchase-options-selected);
   }
 
   .purchase-options__copy {
     display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 10px;
     min-width: 0;
   }
 
@@ -172,50 +244,149 @@
     font-family: var(--font-subheading--family);
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  .purchase-options__subtitle {
-    font-size: 0.8125rem;
-    color: rgb(var(--color-foreground-rgb) / 0.7);
+  /* Frequency picker reads as a pill; the native select stays the control so
+     keyboard and mobile pickers keep working. */
+  .purchase-options__frequency {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    max-width: 100%;
+    border-radius: 999px;
+    background-color: rgb(0 0 0 / 0.05);
+    font-size: 0.75rem;
+  }
+
+  .purchase-options__frequency:hover {
+    background-color: rgb(0 0 0 / 0.08);
   }
 
   .purchase-options__plan-select {
-    appearance: auto;
+    appearance: none;
     border: none;
+    border-radius: inherit;
     background: transparent;
     font: inherit;
     color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    padding: 0;
+    /* Padding lives on the control so the whole pill is the hit area */
+    padding-block: 0.3125rem;
+    padding-inline: 0.625rem 1.5rem;
     cursor: pointer;
+  }
+
+  .purchase-options__plan-select:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 3px;
+  }
+
+  .purchase-options__caret {
+    position: absolute;
+    inset-inline-end: 0.625rem;
+    display: inline-flex;
+    width: 0.625rem;
+    pointer-events: none;
+  }
+
+  .purchase-options__caret svg {
+    width: 100%;
+    height: auto;
   }
 
   .purchase-options__badge {
     position: absolute;
-    top: -0.625rem;
-    right: 1rem;
-    background-color: var(--color-foreground);
-    color: var(--color-background);
+    top: -9px;
+    inset-inline-end: 14px;
+    background-color: var(--purchase-options-accent);
+    color: #fff;
     font-family: var(--font-subheading--family);
-    font-size: 0.625rem;
+    font-size: 0.6rem;
     font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    border-radius: 100px;
-    padding: 0.1875rem 0.625rem;
+    border-radius: 999px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    pointer-events: none;
   }
 
   .purchase-options__price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-shrink: 0;
     margin-inline-start: auto;
-    font-size: 1.0625rem;
     white-space: nowrap;
   }
 
-  .purchase-options__add-price {
-    white-space: nowrap;
+  .purchase-options__price-was {
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: rgb(var(--color-foreground-rgb) / 0.5);
+  }
+
+  .purchase-options__price-now {
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .purchase-options__option {
+      gap: 10px;
+      padding: 7px 10px;
+    }
+
+    .purchase-options__copy {
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+
+    .purchase-options__title {
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .purchase-options__radio {
+      width: 18px;
+      height: 18px;
+    }
+
+    .purchase-options__option--selected .purchase-options__radio::after {
+      width: 8px;
+      height: 8px;
+    }
+
+    .purchase-options__frequency {
+      font-size: 0.7rem;
+    }
+
+    .purchase-options__plan-select {
+      padding-block: 4px;
+      padding-inline: 8px 1.375rem;
+    }
+
+    .purchase-options__price {
+      gap: 4px;
+    }
+
+    .purchase-options__price-now {
+      font-size: 1rem;
+    }
+
+    .purchase-options__price-was {
+      font-size: 0.85rem;
+    }
+
+    .purchase-options__badge {
+      inset-inline-end: 12px;
+      font-size: 0.6rem;
+      padding: 3px 8px;
+    }
   }
 {% endstylesheet %}
 
@@ -223,6 +394,12 @@
 {
   "name": "t:names.purchase_options",
   "tag": null,
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.title"
+    }
+  ]
 }
 {% endschema %}

@@ -1,0 +1,282 @@
+{% comment %}
+  Flavor & nutrition section for the PDP. Renders one _flavor-nutrition-panel
+  block per flavor (photo, story, allergen lines, nutrition facts card) and
+  shows only the panel matching the selected variant's Flavor option value.
+  assets/flavor-nutrition.js swaps panels when the shopper changes flavor.
+
+  The benefit icons and certification logos are shared by every flavor, so
+  they live here in the section settings and the panel blocks read them via
+  section.settings.
+{% endcomment %}
+
+<flavor-nutrition-panels class="flavor-nutrition">
+  {% content_for 'blocks' %}
+</flavor-nutrition-panels>
+
+<script src="{{ 'flavor-nutrition.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+{% stylesheet %}
+  flavor-nutrition-panels {
+    display: block;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.flavor_nutrition",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.benefit_icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_1",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_1",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "droplet"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_1",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_2",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_2",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "plant"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_2",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_3",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_3",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "cube"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_3",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_4",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_4",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "gut"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_4",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_5",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_5",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "leaf"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_5",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefit_icon_6",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "select",
+      "id": "benefit_symbol_6",
+      "label": "t:settings.built_in_icon",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "droplet", "label": "t:options.droplet" },
+        { "value": "plant", "label": "t:options.plant" },
+        { "value": "cube", "label": "t:options.sugar_cube" },
+        { "value": "gut", "label": "t:options.gut" },
+        { "value": "leaf", "label": "t:options.leaf" },
+        { "value": "fiber", "label": "t:options.fiber" }
+      ],
+      "default": "fiber"
+    },
+    {
+      "type": "text",
+      "id": "benefit_label_6",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.certifications"
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image_1",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "cert_size_1",
+      "label": "t:settings.size",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 55
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image_2",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "cert_size_2",
+      "label": "t:settings.size",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 55
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image_3",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "cert_size_3",
+      "label": "t:settings.size",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image_4",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "cert_size_4",
+      "label": "t:settings.size",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image_5",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "cert_size_5",
+      "label": "t:settings.size",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_flavor-nutrition-panel"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "t:names.flavor_nutrition",
+      "blocks": [
+        {
+          "type": "_flavor-nutrition-panel"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

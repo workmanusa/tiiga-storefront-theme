@@ -1,0 +1,436 @@
+{%- doc -%}
+  Renders the Tiiga navigation menu, replacing Horizon's header menu, mobile
+  drawer and navigation bar. One DOM tree serves two presentations:
+
+  - Drawer mode (small screens / touch devices, `data-menu-style='drawer'`):
+    a hamburger opens a slide-out panel with a "Menu" header, accordion rows
+    and an account footer.
+  - Menu mode (desktop): items render inline next to the logo and expandable
+    items open full-width mega panels below the header row.
+
+  Menu rows are provided by child blocks: `_nav-shop` (browse tabs + product
+  grid + promo banner), `_nav-submenu` (content cards + featured articles)
+  and `_nav-link` (plain links).
+
+  @example
+  {% content_for 'block', type: '_nav-menu', id: 'nav-menu' %}
+{%- enddoc -%}
+
+<script
+  src="{{ 'nav-menu.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<nav-menu
+  class="nav-menu"
+  style="--nav-card-background: {{ block.settings.card_background | default: '#f2f0ec' }};"
+  {{ block.shopify_attributes }}
+>
+  <button
+    type="button"
+    class="button-unstyled nav-menu__hamburger"
+    aria-expanded="false"
+    aria-controls="NavMenuPanel-{{ block.id }}"
+    aria-label="{{ 'accessibility.menu' | t }}"
+    ref="hamburger"
+    on:click="/toggle"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-menu.svg' | inline_asset_content -}}
+    </span>
+  </button>
+
+  <div
+    class="nav-menu__panel"
+    id="NavMenuPanel-{{ block.id }}"
+    ref="panel"
+  >
+    <div class="nav-menu__drawer-header">
+      <p class="nav-menu__drawer-title">{{ 'accessibility.menu' | t }}</p>
+      <button
+        class="button-unstyled nav-menu__drawer-close focus-inset"
+        type="button"
+        aria-label="{{ 'actions.close' | t }}"
+        on:click="/close"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-close-menu.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </div>
+
+    <nav
+      class="nav-menu__nav"
+      aria-label="{{ 'accessibility.header_navigation_label' | t }}"
+    >
+      {% content_for 'blocks' %}
+    </nav>
+
+    {% if shop.customer_accounts_enabled %}
+      <div class="nav-menu__drawer-footer">
+        <a
+          href="{{ routes.account_url }}"
+          class="nav-menu__account"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="17"
+            viewBox="0 0 15 17"
+            fill="none"
+            aria-hidden="true"
+            class="nav-menu__account-icon"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="var(--icon-stroke-width)"
+              d="M10.375 3.813a3.063 3.063 0 1 1-6.125 0 3.063 3.063 0 0 1 6.125 0ZM7.313 9.5c-3.667 0-6.24 2.691-6.563 6.125h13.125C13.552 12.191 10.979 9.5 7.312 9.5Z"
+            />
+          </svg>
+          {{ 'content.account_title' | t }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div
+    class="nav-menu__backdrop"
+    on:click="/close"
+  ></div>
+</nav-menu>
+
+{% stylesheet %}
+  /* ================================
+     * Drawer mode (default; small screens and touch devices)
+     * ================================ */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    /* Only takes effect on the mobile header grid */
+    grid-area: leftA;
+  }
+
+  .nav-menu__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--minimum-touch-target);
+    height: var(--minimum-touch-target);
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .nav-menu__hamburger .svg-wrapper {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
+
+  .nav-menu__panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: var(--drawer-height);
+    width: var(--drawer-width);
+    max-width: var(--drawer-max-width);
+    z-index: var(--layer-menu-drawer);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: var(--color-background);
+    border-right: var(--style-border-drawer);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform var(--drawer-animation-speed) ease, visibility var(--drawer-animation-speed) ease;
+  }
+
+  .nav-menu--open .nav-menu__panel {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .nav-menu__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--layer-overlay);
+    backdrop-filter: brightness(0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--drawer-animation-speed) ease;
+  }
+
+  .nav-menu--open .nav-menu__backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu__drawer-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--layer-raised);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding-block: var(--padding-2xs);
+    padding-inline: var(--padding-lg) var(--padding-2xs);
+    background-color: var(--color-background);
+    border-block-end: var(--style-border-width) solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .nav-menu__drawer-title {
+    margin: 0;
+    font-size: 1.125rem;
+    color: var(--color-foreground);
+  }
+
+  .nav-menu__drawer-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--minimum-touch-target);
+    height: var(--minimum-touch-target);
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .nav-menu__drawer-close .svg-wrapper {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
+
+  .nav-menu__nav {
+    flex: 1 0 auto;
+    padding-block: var(--padding-2xs) var(--padding-lg);
+  }
+
+  .nav-menu__drawer-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: var(--layer-raised);
+    margin-block-start: auto;
+    background-color: var(--color-background);
+    border-block-start: var(--style-border-width) solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .nav-menu__account {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    padding-block: var(--padding-md);
+    padding-inline: var(--padding-xl);
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .nav-menu__account-icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+  }
+
+  /* ================================
+     * Menu items (shared by child blocks)
+     * ================================ */
+  .nav-item {
+    border-block-end: var(--style-border-width) solid var(--color-border);
+  }
+
+  .nav-item__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    width: 100%;
+    padding-block: var(--padding-lg);
+    padding-inline: var(--padding-xl);
+    font-family: var(--font-body--family);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nav-item__row::marker,
+  .nav-item__row::-webkit-details-marker {
+    display: none;
+    content: '';
+  }
+
+  .nav-item__caret {
+    display: flex;
+    flex-shrink: 0;
+    width: var(--icon-size-2xs, 0.625rem);
+    height: var(--icon-size-2xs, 0.625rem);
+    color: var(--color-foreground-muted);
+  }
+
+  .nav-item__caret svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    transition: transform var(--animation-speed) var(--animation-easing);
+  }
+
+  .nav-item[open] > .nav-item__row .nav-item__caret svg {
+    transform: rotate(0deg);
+  }
+
+  /* Animate the accordion body open/close. `interpolate-size` lets modern
+     browsers transition to block-size: auto; others just snap open. */
+  .nav-item {
+    interpolate-size: allow-keywords;
+  }
+
+  .nav-item::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition: content-visibility var(--animation-speed) allow-discrete,
+      block-size var(--animation-speed) var(--animation-easing);
+  }
+
+  .nav-item[open]::details-content {
+    block-size: auto;
+  }
+
+  .nav-item__panel-inner {
+    padding-block: var(--padding-3xs) var(--padding-xl);
+    padding-inline: var(--padding-xl);
+  }
+
+  .nav-menu__eyebrow {
+    margin-block: 0 var(--margin-sm);
+    font-family: var(--font-body--family);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-foreground-muted);
+  }
+
+  /* ================================
+     * Menu mode (desktop, fine pointer)
+     * ================================ */
+  @media screen and (min-width: 750px) {
+    #header-component:not([data-menu-style='drawer']) {
+      .nav-menu__hamburger,
+      .nav-menu__drawer-header,
+      .nav-menu__drawer-footer,
+      .nav-menu__backdrop {
+        display: none;
+      }
+
+      .nav-menu__panel {
+        /* visibility would otherwise inherit from the hidden drawer state */
+        display: contents;
+        visibility: visible;
+      }
+
+      .nav-menu__nav {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-md);
+        padding-block: 0;
+      }
+
+      .nav-item {
+        border-block-end: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-item__row {
+        width: auto;
+        padding-block: var(--padding-2xs);
+        padding-inline: var(--padding-xs);
+        font-size: 0.9375rem;
+      }
+
+      .nav-item__row:hover {
+        color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+      }
+
+      .nav-item__caret {
+        display: none;
+      }
+
+      /* The Shop item renders as a solid pill */
+      :is(.nav-item--shop, .nav-item--pill) > .nav-item__row {
+        background-color: var(--color-foreground);
+        color: var(--color-background);
+        border-radius: 100px;
+        padding-block: var(--padding-2xs);
+        padding-inline: var(--padding-lg);
+        min-height: 2.375rem;
+        transition: background-color var(--animation-speed) var(--animation-easing);
+      }
+
+      :is(.nav-item--shop, .nav-item--pill) > .nav-item__row:hover {
+        background-color: rgb(var(--color-foreground-rgb) / 0.85);
+        color: var(--color-background);
+      }
+
+      /* Full-width mega panel below the header row */
+      .nav-item__panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        z-index: var(--layer-header-menu);
+        background-color: var(--color-background);
+        border-block-start: var(--style-border-width) solid var(--color-border);
+        border-block-end: var(--style-border-width) solid var(--color-border);
+        box-shadow: var(--shadow-popover);
+        max-height: calc(90dvh - var(--header-height));
+        overflow-y: auto;
+      }
+
+      .nav-item__panel-inner {
+        max-width: var(--page-width);
+        margin-inline: auto;
+        padding-block: var(--padding-2xl) var(--padding-3xl);
+        padding-inline: var(--page-margin);
+      }
+    }
+  }
+
+  /* Elevate the header row while a mega panel is open so it overlays
+     the page content below. */
+  .header__row:has(.nav-item[open]) {
+    z-index: var(--layer-heightened);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.nav_menu",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "t:settings.card_background",
+      "default": "#f2f0ec"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_nav-shop"
+    },
+    {
+      "type": "_nav-submenu"
+    },
+    {
+      "type": "_nav-link"
+    }
+  ]
+}
+{% endschema %}

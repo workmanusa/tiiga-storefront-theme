@@ -1,0 +1,268 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+{% liquid
+  # Default to the selected flavor's page tint (like the buy box above); a
+  # merchant-set background color takes over via contrast-override instead.
+  assign background_class = ' proven-hydrate__background'
+  if section.settings.background_color != blank and section.settings.background_color.alpha != 0
+    assign background_class = ''
+  endif
+%}
+
+<div class="section-background{{ background_class }} color-custom-{{ section.id }}"></div>
+<div
+  class="proven-hydrate spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="proven-hydrate__inner">
+    <div class="proven-hydrate__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1400
+          | image_tag:
+            widths: '600, 900, 1200, 1400',
+            sizes: '(min-width: 990px) 46vw, 100vw',
+            class: 'proven-hydrate__image',
+            loading: 'lazy'
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'proven-hydrate__image proven-hydrate__image--placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="proven-hydrate__content">
+      <div class="proven-hydrate__top">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="proven-hydrate__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="proven-hydrate__heading h2">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+
+      <div class="proven-hydrate__bottom">
+        <ol class="proven-hydrate__list" role="list">
+          {% content_for 'blocks' %}
+        </ol>
+
+        {%- if section.settings.link_label != blank -%}
+          <a class="proven-hydrate__link" href="{{ section.settings.link | default: '#' }}">
+            {{- section.settings.link_label -}}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .proven-hydrate {
+    grid-column: 1 / -1;
+
+    /* Same inset formula as the other PDP storytelling sections, so their
+       content edges line up at every viewport width */
+    --proven-hydrate-inset: max(3rem, calc((100vw - var(--page-width, 1300px)) / 2 + 3rem));
+  }
+
+  .proven-hydrate__background {
+    /* Neutral like the PDP above it — swap var(--pdp-page, ...) for
+       var(--flavor-tint, ...) to re-join the per-flavor tint */
+    background-color: var(--pdp-page, var(--color-background));
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color 0.6s ease;
+    }
+  }
+
+  .proven-hydrate__inner {
+    display: grid;
+    gap: 2rem;
+    padding-inline: var(--proven-hydrate-inset);
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: stretch;
+    }
+  }
+
+  .proven-hydrate__media {
+    min-width: 0;
+  }
+
+  .proven-hydrate__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .proven-hydrate__image--placeholder {
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .proven-hydrate__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding-block: 0.5rem;
+  }
+
+  .proven-hydrate__eyebrow {
+    margin: 0 0 1rem;
+    font-family: var(--font-subheading--family);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+
+  .proven-hydrate__heading {
+    margin: 0;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.12;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .proven-hydrate__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .proven-hydrate__link {
+    display: inline-block;
+    width: fit-content;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+    font-family: var(--font-subheading--family);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .proven-hydrate__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* The list draws its own top hairlines; the link's border continues the
+     rhythm below the last row */
+  .proven-hydrate__bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 749px) {
+    .proven-hydrate {
+      --proven-hydrate-inset: 1.5rem;
+    }
+
+    .proven-hydrate.spacing-style {
+      padding-block: 2rem 2.5rem;
+    }
+
+    .proven-hydrate__content {
+      gap: 1.5rem;
+      padding-block: 0;
+    }
+
+    .proven-hydrate__heading {
+      font-size: 1.75rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.proven_to_hydrate",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.button_label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_hydration-point"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.proven_to_hydrate",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "point_1": { "type": "_hydration-point" },
+        "point_2": { "type": "_hydration-point" }
+      },
+      "block_order": ["point_1", "point_2"]
+    }
+  ]
+}
+{% endschema %}

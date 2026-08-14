@@ -1,0 +1,126 @@
+{% doc %}
+  Renders flavor chips that link to sibling products in a combined flavor
+  family (e.g. variety packs sold as a separate product). The family list is
+  ordered; each product page renders the other members' flavors as link chips
+  around its own variant inputs, so chip order stays identical across every
+  page in the family. The optional heading renders once, in front of the
+  second family group (the first linked/variety group).
+
+  @param {object} flavor_link_products - Ordered flavor family (the block's product_list); must include the current product.
+  @param {object} product_resource - The product whose variant picker is rendering.
+  @param {object} block_settings - The variant picker block settings (flavor_link_heading, show_variant_thumbnails).
+  @param {string} position - 'before' renders the family members listed before the current product, 'after' the ones listed after it.
+
+  @example
+  {% render 'variant-flavor-link-chips',
+    flavor_link_products: block.settings.flavor_link_products,
+    product_resource: product,
+    block_settings: block.settings,
+    position: 'after'
+  %}
+{% enddoc %}
+
+{%- liquid
+  assign current_index = -1
+  for family_product in flavor_link_products
+    if family_product.id == product_resource.id
+      assign current_index = forloop.index0
+    endif
+  endfor
+-%}
+
+{%- for family_product in flavor_link_products -%}
+  {%- liquid
+    if family_product.id == product_resource.id
+      continue
+    endif
+    if position == 'before' and forloop.index0 > current_index
+      continue
+    endif
+    if position == 'after' and forloop.index0 < current_index
+      continue
+    endif
+  -%}
+  {%- if forloop.index0 == 1 and block_settings.flavor_link_heading != blank -%}
+    <span class="variant-option__linked-heading">{{ block_settings.flavor_link_heading }}</span>
+  {%- endif -%}
+  {%- for linked_option in family_product.options_with_values -%}
+    {%- liquid
+      assign linked_option_name = linked_option.name | downcase
+      unless linked_option_name contains 'flavor'
+        continue
+      endunless
+    -%}
+    {%- for linked_value in linked_option.values -%}
+      {% liquid
+        # Same art and color source as the native chips: the tiiga_flavor
+        # metaobject, falling back to the linked variant's product photo.
+        assign linked_flavor_entry = nil
+        assign linked_flavor_handle = linked_value | handleize
+        assign linked_flavor_entry = shop.metaobjects.tiiga_flavor[linked_flavor_handle]
+      %}
+      <a
+        class="variant-option__button-label variant-option__button-label--linked"
+        href="{{ family_product.url }}{% if linked_value.variant %}?variant={{ linked_value.variant.id }}{% endif %}"
+        data-flavor="{{ linked_value | escape }}"
+        {% if linked_flavor_entry.color %}
+          style="--flavor-swatch: {{ linked_flavor_entry.color }};"
+        {% endif %}
+        {% if linked_value.available == false %}
+          aria-label="{{ linked_value.name | escape }} - {{ 'products.product.sold_out' | t }}"
+        {% endif %}
+      >
+        {% if block_settings.show_variant_thumbnails %}
+          {% liquid
+            assign linked_thumb = linked_flavor_entry.image.value
+            if linked_thumb == blank
+              assign linked_thumb = linked_value.variant.featured_media
+            endif
+            if linked_thumb == blank
+              assign linked_thumb = family_product.featured_media
+            endif
+          %}
+          {% if linked_thumb != blank %}
+            <span class="variant-option__button-label__media">
+              {{
+                linked_thumb
+                | image_url: width: 320
+                | image_tag: loading: 'lazy', alt: '', widths: '160, 320', sizes: '160px'
+              }}
+            </span>
+          {% endif %}
+        {% endif %}
+        <span
+          class="variant-option__button-label__text"
+          data-key="variant-option-text"
+          data-option-available="{{ linked_value.available }}"
+        >
+          {{- linked_value | escape -}}
+        </span>
+      </a>
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- if position == 'before' and current_index == 1 and block_settings.flavor_link_heading != blank -%}
+  <span class="variant-option__linked-heading">{{ block_settings.flavor_link_heading }}</span>
+{%- endif -%}
+
+{% stylesheet %}
+  /* Linked flavor chips are anchors to a sibling product, not radio labels —
+     strip link styling and give them their own focus ring (no inner input). */
+  .variant-option__button-label--linked {
+    color: var(--color-variant-text);
+    text-decoration: none;
+  }
+
+  .variant-option__button-label--linked:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .variant-option__linked-heading {
+    display: block;
+    width: 100%;
+  }
+{% endstylesheet %}

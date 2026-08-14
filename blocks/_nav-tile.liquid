@@ -1,0 +1,54 @@
+{%- doc -%}
+  Renders a manually configured tile in a shop navigation tab grid
+  (blocks/_nav-shop-tab.liquid). Useful for linking straight to a flavor
+  (e.g. a product URL with a `?variant=` parameter) with custom imagery.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<div
+  class="nav-tile-block"
+  {{ block.shopify_attributes }}
+>
+  {% render 'nav-tile',
+    label: block.settings.label,
+    url: block.settings.link,
+    image: block.settings.image
+  %}
+</div>
+
+{% stylesheet %}
+  .nav-tile-block {
+    display: contents;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.nav_tile",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.nav_tile"
+    }
+  ]
+}
+{% endschema %}

@@ -9,6 +9,8 @@
   @param {string} block_shopify_attributes - Block shopify attributes
   @param {block} block - The current block object
   @param {section} section - The current section object
+  @param {string} [media_extras] - Captured HTML inserted into the grid after the first media item
+  @param {string} [media_overlay] - Captured HTML layered inside the first media item
 
   @example
   {% render 'product-media-gallery-content',
@@ -101,23 +103,62 @@
     endif
   endif
 
+  # Tiiga's product photos are named `<shot>_<flavor>` (bagstick_watermelon,
+  # fruitstick_lemon_lime, ...), which ties every photo to a flavor by
+  # filename. Both sides are collapsed to bare alphanumerics before comparing
+  # so casing, underscore and hyphen variations (lemonlime vs lemon_lime)
+  # still match. A photo naming another flavor is hidden; a photo naming no
+  # flavor at all (lifestyle, generic) always shows.
+  assign flavor_tokens = '' | split: ','
+  assign selected_flavor_token = blank
+  for option in selected_product.options_with_values
+    assign option_name_down = option.name | downcase
+    if option_name_down contains 'flavor'
+      for value in option.values
+        assign token = value | handleize | remove: '-' | split: '|'
+        assign flavor_tokens = flavor_tokens | concat: token
+      endfor
+      assign selected_flavor_token = option.selected_value | handleize | remove: '-'
+    endif
+  endfor
+
   assign sorted_media = '' | split: ','
   if selected_variant_media
     assign sorted_media = sorted_media | concat: selected_product.media | where: 'id', selected_variant_media.id
-
-    for media in selected_product.media
-      if block_settings.hide_variants and variant_images contains media.src and sorted_media.size > 0
-        continue
-      endif
-
-      if media.id != selected_variant_media.id
-        assign found_media = selected_product.media | where: 'id', media.id
-        assign sorted_media = sorted_media | concat: found_media
-      endif
-    endfor
-  else
-    assign sorted_media = selected_product.media
   endif
+
+  for media in selected_product.media
+    if media.id == selected_variant_media.id
+      continue
+    endif
+
+    if block_settings.hide_variants and variant_images contains media.src and sorted_media.size > 0
+      continue
+    endif
+
+    if selected_flavor_token != blank and media.media_type == 'image' and media.src != blank
+      # Filename plus alt text, so photos with generated/UUID filenames can
+      # still be tied to a flavor by setting their alt text in admin.
+      # handleize keeps underscores, so strip them separately.
+      assign media_name = media.src | split: '/' | last
+      assign media_token = media_name | append: ' ' | append: media.alt | downcase | handleize | remove: '-' | remove: '_'
+      unless media_token contains selected_flavor_token
+        assign other_flavor = false
+        for token in flavor_tokens
+          if media_token contains token
+            assign other_flavor = true
+            break
+          endif
+        endfor
+        if other_flavor
+          continue
+        endif
+      endunless
+    endif
+
+    assign found_media = selected_product.media | where: 'id', media.id
+    assign sorted_media = sorted_media | concat: found_media
+  endfor
   assign has_image_drop = sorted_media | has: 'media_type', 'image'
 
   # Determine if we're in single column mode (carousel or grid with one column)
@@ -455,6 +496,10 @@
         data-testid="media-gallery-grid"
       >
         {% for media in sorted_media %}
+          {% # Extras (e.g. benefit tiles) sit directly under the lead image %}
+          {% if media_extras != blank and forloop.index == 2 %}
+            <li class="media-gallery__extras">{{ media_extras }}</li>
+          {% endif %}
           <li
             ref="media[]"
             class="{{ product_media_container_class }} product-media-container--{{ media.media_type }} {% unless block_settings.aspect_ratio == 'adapt' %}product-media-container--force-aspect{% endunless %}"
@@ -466,6 +511,10 @@
               data-focal-point="{{ media.presentation.focal_point }}"
             {% endif %}
           >
+            {% # Overlay lives inside the lead image so it scrolls with it %}
+            {% if media_overlay != blank and forloop.first %}
+              {{ media_overlay }}
+            {% endif %}
             {%- if block_settings.zoom and media.media_type == 'image' -%}
               <button
                 type="button"
@@ -493,6 +542,9 @@
             {% endif %}
           </li>
         {% endfor %}
+        {% if media_extras != blank and sorted_media.size < 2 %}
+          <li class="media-gallery__extras">{{ media_extras }}</li>
+        {% endif %}
       </ul>
     {% endif %}
 

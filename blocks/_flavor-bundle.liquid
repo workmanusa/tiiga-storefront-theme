@@ -1,0 +1,709 @@
+{% doc %}
+  Flavor mode switch: buy a single flavor, or build a mixed bundle of several.
+
+  The single-flavor path is Horizon's own variant picker; this block only hides
+  it and takes over add-to-cart while the shopper is in bundle mode.
+{% enddoc %}
+
+{%- liquid
+  assign product = closest.product
+
+  assign flavor_option = blank
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'flavor'
+      assign flavor_option = option
+    endif
+  endfor
+
+  assign slot_count = block.settings.max_flavors | default: 4
+  assign min_flavors = block.settings.min_flavors | default: 2
+  if min_flavors > slot_count
+    assign min_flavors = slot_count
+  endif
+-%}
+
+{%- if flavor_option != blank and flavor_option.values.size > 1 -%}
+  <script src="{{ 'flavor-bundle.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+  <flavor-bundle-component
+    class="flavor-bundle"
+    data-max-flavors="{{ slot_count }}"
+    data-min-flavors="{{ min_flavors }}"
+    data-section-id="{{ section.id }}"
+    {% # Copy the component needs at runtime — translation stays in Liquid %}
+    data-add-flavor-label="{{ 'flavor_bundle.add_flavor' | t }}"
+    data-status-min="{{ 'flavor_bundle.status_min' | t: count: min_flavors }}"
+    data-status-ready="{{ 'flavor_bundle.status_ready' | t }}"
+    data-remove-label="{{ 'flavor_bundle.remove' | t }}"
+    {% # Bracket tokens below are filled in by JS, not Liquid %}
+    {% # No `escape` here: `t` already HTML-escapes, and a second pass rendered a literal &#39; %}
+    data-status-tier="{{ 'flavor_bundle.status_tier' | t }}"
+    data-status-max="{{ 'flavor_bundle.status_max' | t }}"
+    data-save-label="{{ 'purchase_options.save_percent' | t: percent: '[percent]' }}"
+    data-tiers="{{ block.settings.discount_tiers | escape }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="flavor-bundle__modes">
+      <button
+        type="button"
+        class="flavor-bundle__mode flavor-bundle__mode--active"
+        data-mode="single"
+        aria-pressed="true"
+      >
+        <span class="flavor-bundle__mode-title">{{ 'flavor_bundle.one_flavor' | t }}</span>
+        <span class="flavor-bundle__mode-sub">{{ 'flavor_bundle.one_flavor_sub' | t }}</span>
+      </button>
+      <button
+        type="button"
+        class="flavor-bundle__mode"
+        data-mode="bundle"
+        aria-pressed="false"
+      >
+        {%- if block.settings.badge != blank -%}
+          <span class="flavor-bundle__mode-badge">{{ block.settings.badge }}</span>
+        {%- endif -%}
+        <span class="flavor-bundle__mode-title">{{ 'flavor_bundle.bundle' | t }}</span>
+        <span class="flavor-bundle__mode-sub">
+          {{- 'flavor_bundle.bundle_sub' | t: count: slot_count -}}
+        </span>
+      </button>
+    </div>
+
+    <div class="flavor-bundle__panel" data-ref="panel" hidden>
+      {% # Extra wrapper so the panel can animate open: the panel's grid row
+        # collapses 1fr -> 0fr and this inner element is what gets clipped %}
+      <div class="flavor-bundle__panel-inner">
+      <div class="flavor-bundle__panel-head">
+        <span class="flavor-bundle__panel-title">{{ 'flavor_bundle.build_title' | t }}</span>
+        {%- if block.settings.savings_label != blank -%}
+          <span class="flavor-bundle__panel-badge">{{ block.settings.savings_label }}</span>
+        {%- endif -%}
+      </div>
+      <p class="flavor-bundle__hint">{{ 'flavor_bundle.build_hint' | t: count: slot_count }}</p>
+
+      <ol class="flavor-bundle__slots" data-ref="slots">
+        {%- for i in (1..slot_count) -%}
+          {%- liquid
+            # A tier chip on the slot that unlocks it, parsed from the same
+            # "count:percent" setting the JS status line uses.
+            assign slot_number = forloop.index
+            assign slot_tier_percent = blank
+            assign tier_pairs = block.settings.discount_tiers | remove: ' ' | split: ','
+            for tier_pair in tier_pairs
+              assign tier_parts = tier_pair | split: ':'
+              assign tier_count = tier_parts[0] | plus: 0
+              if tier_count == slot_number
+                assign slot_tier_percent = tier_parts[1]
+              endif
+            endfor
+          -%}
+          <li class="flavor-bundle__slot" data-slot="{{ forloop.index0 }}">
+            <span class="flavor-bundle__slot-index" aria-hidden="true">{{ forloop.index }}</span>
+            {%- if slot_tier_percent != blank -%}
+              <span class="flavor-bundle__slot-tier">
+                {{- 'flavor_bundle.tier_off' | t: percent: slot_tier_percent -}}
+              </span>
+            {%- endif -%}
+            <span class="flavor-bundle__slot-media" data-ref="slotMedia" aria-hidden="true"></span>
+            <span class="flavor-bundle__slot-body">
+              <span class="flavor-bundle__slot-mark" aria-hidden="true">+</span>
+              <span class="flavor-bundle__slot-label">{{ 'flavor_bundle.add_flavor' | t }}</span>
+            </span>
+            <button
+              type="button"
+              class="flavor-bundle__slot-remove"
+              data-ref="slotRemove"
+              hidden
+            >
+              <span class="visually-hidden">{{ 'flavor_bundle.remove' | t }}</span>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </li>
+        {%- endfor -%}
+      </ol>
+
+      <p class="flavor-bundle__status" data-ref="status" role="status"></p>
+      <div class="flavor-bundle__progress" aria-hidden="true">
+        <span class="flavor-bundle__progress-bar" data-ref="progress"></span>
+      </div>
+
+      <span class="flavor-bundle__choose">{{ 'flavor_bundle.choose_flavors' | t }}</span>
+      <div class="flavor-bundle__grid">
+        {%- liquid
+          # Sibling products in the combined flavor family (the variety packs)
+          # are bundleable too: their chips join the grid in family-list order,
+          # matching the single-flavor picker. Gated on membership so the
+          # shared product template doesn't leak them onto the tub.
+          assign bundle_family = blank
+          for family_product in block.settings.flavor_link_products
+            if family_product.id == product.id
+              assign bundle_family = block.settings.flavor_link_products
+            endif
+          endfor
+        -%}
+        {%- if bundle_family != blank -%}
+          {%- for family_product in bundle_family -%}
+            {%- if forloop.index0 == 1 and block.settings.flavor_link_heading != blank -%}
+              <span class="flavor-bundle__group-heading">{{ block.settings.flavor_link_heading }}</span>
+            {%- endif -%}
+            {% render 'flavor-bundle-chips', source_product: family_product %}
+          {%- endfor -%}
+        {%- else -%}
+          {% render 'flavor-bundle-chips', source_product: product %}
+        {%- endif -%}
+      </div>
+      </div>
+    </div>
+  </flavor-bundle-component>
+{%- endif -%}
+
+{% stylesheet %}
+  .flavor-bundle {
+    display: block;
+    margin-block-start: 16px;
+  }
+
+  .flavor-bundle__modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+    border-radius: 10px;
+    padding: 4px;
+  }
+
+  .flavor-bundle__mode {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    border: 0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .flavor-bundle__mode--active {
+    background-color: var(--pdp-selected, #7a726b);
+    color: #fff;
+  }
+
+  /* The lighter neutral fill needs full-strength white to keep the small
+     subtitle readable */
+  .flavor-bundle__mode--active .flavor-bundle__mode-sub {
+    opacity: 1;
+  }
+
+  .flavor-bundle__mode-title {
+    font-size: 13px;
+  }
+
+  .flavor-bundle__mode-sub {
+    font-size: 11px;
+    line-height: 1.3;
+    opacity: 0.7;
+  }
+
+  .flavor-bundle__mode-badge {
+    position: absolute;
+    top: -15px;
+    inset-inline-end: 10px;
+    background-color: #1d5a6b;
+    color: #fff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-family: var(--font-subheading--family);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Mode switches glide instead of snapping. height: auto can't transition
+     everywhere yet, but a grid row's 1fr -> 0fr can, in every evergreen
+     browser — the panel is a one-row grid and the inner wrapper is what gets
+     clipped. The author display deliberately overrides the UA's [hidden]
+     display: none; the collapsed state below stands in for it, with
+     visibility ending the close unfocusable and out of the a11y tree. */
+  .flavor-bundle__panel {
+    display: grid;
+    grid-template-rows: 1fr;
+    background-color: #fff;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+    border-radius: 10px;
+    margin-block-start: 8px;
+    opacity: 1;
+    transition:
+      grid-template-rows 0.3s ease,
+      opacity 0.2s ease 0.1s,
+      margin-block-start 0.3s ease,
+      border-color 0.3s ease,
+      visibility 0.3s;
+  }
+
+  .flavor-bundle__panel[hidden] {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-block-start: 0;
+    border-color: transparent;
+    visibility: hidden;
+  }
+
+  .flavor-bundle__panel-inner {
+    min-height: 0;
+    overflow: clip;
+    padding: 16px;
+    transition: padding-block 0.3s ease;
+  }
+
+  .flavor-bundle__panel[hidden] .flavor-bundle__panel-inner {
+    padding-block: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flavor-bundle__panel,
+    .flavor-bundle__panel-inner {
+      transition: none;
+    }
+  }
+
+  .flavor-bundle__panel-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .flavor-bundle__panel-title {
+    font-size: 16px;
+  }
+
+  .flavor-bundle__panel-badge {
+    margin-inline-start: auto;
+    background-color: #1d5a6b;
+    color: #fff;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: var(--font-subheading--family);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .flavor-bundle__hint {
+    margin: 4px 0 12px;
+    font-size: 12px;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  .flavor-bundle__slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .flavor-bundle__slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border: 1px dashed rgb(var(--color-foreground-rgb) / 0.25);
+    border-radius: 8px;
+    background-color: #f4f2ef;
+    overflow: hidden;
+  }
+
+  .flavor-bundle__slot-index {
+    position: absolute;
+    top: 6px;
+    inset-inline-start: 8px;
+    z-index: 2;
+    font-size: 11px;
+    color: rgb(var(--color-foreground-rgb) / 0.45);
+  }
+
+  /* Discount unlocked by filling this slot — same badge language as SAVE 20%.
+     Hidden once filled: the X takes the corner and the status line reports
+     the running saving. */
+  .flavor-bundle__slot-tier {
+    position: absolute;
+    top: 4px;
+    inset-inline-end: 4px;
+    z-index: 2;
+    border-radius: 999px;
+    padding: 2px 7px;
+    background-color: #1d5a6b;
+    color: #fff;
+    font-family: var(--font-subheading--family);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .flavor-bundle__slot--filled .flavor-bundle__slot-tier {
+    display: none;
+  }
+
+  .flavor-bundle__slot-media {
+    position: absolute;
+    inset: 0;
+    display: none;
+  }
+
+  .flavor-bundle__slot-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .flavor-bundle__slot-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-inline: 6px;
+  }
+
+  .flavor-bundle__slot-mark {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .flavor-bundle__slot-label {
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  /* Filled: the pack fills the tile, its name moves to a caption bar, and an
+     X appears so the choice can be undone without hunting for it. */
+  .flavor-bundle__slot--filled {
+    border-style: solid;
+    border-color: rgb(var(--color-foreground-rgb) / 0.2);
+  }
+
+  .flavor-bundle__slot--filled .flavor-bundle__slot-media {
+    display: block;
+  }
+
+  .flavor-bundle__slot--filled .flavor-bundle__slot-mark {
+    display: none;
+  }
+
+  .flavor-bundle__slot--filled .flavor-bundle__slot-body {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 3px 4px;
+    /* Solid white bar so the name stays legible over the pack artwork */
+    background-color: #fff;
+  }
+
+  .flavor-bundle__slot--filled .flavor-bundle__slot-label {
+    font-size: 10px;
+  }
+
+  .flavor-bundle__slot-remove {
+    position: absolute;
+    top: 4px;
+    inset-inline-end: 4px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    background-color: rgb(var(--color-foreground-rgb) / 0.55);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .flavor-bundle__slot-remove:hover {
+    background-color: var(--color-foreground);
+  }
+
+  .flavor-bundle__slot-remove[hidden] {
+    display: none;
+  }
+
+  .flavor-bundle__status {
+    margin: 12px 0 6px;
+    font-size: 12px;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  .flavor-bundle__progress {
+    height: 4px;
+    border-radius: 999px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.1);
+    overflow: hidden;
+  }
+
+  .flavor-bundle__progress-bar {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--color-foreground);
+    transition: width 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Max tier reached — the bar goes green, as in the reference */
+  .flavor-bundle__progress-bar--complete {
+    background-color: #2e7d5b;
+  }
+
+  .flavor-bundle__choose {
+    display: block;
+    margin-block: 12px 8px;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+  }
+
+  .flavor-bundle__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  /* Group label splitting the variety packs from the single flavors —
+     same voice as CHOOSE FLAVORS above the grid. */
+  .flavor-bundle__group-heading {
+    grid-column: 1 / -1;
+    margin-block: 8px 0;
+    font-family: var(--font-subheading--family);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  /* Geometry mirrors the single-flavor picker tile exactly, so the two lists
+     read as one component: full-bleed pack running behind a short white name
+     bar, on the same tinted surface. */
+  /* Same slim chips as the one-flavor picker: round art, name beside it,
+     states painted with the flavor's own color. */
+  .flavor-bundle__flavor {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+    border-radius: 10px;
+    padding: 4px 10px 4px 4px;
+    background-color: #fff;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .flavor-bundle__flavor--added {
+    border-color: transparent;
+    background-color: color-mix(in srgb, var(--flavor-swatch, #7a726b) 7%, #fff);
+    box-shadow: 0 0 0 1.5px var(--flavor-swatch, #7a726b);
+  }
+
+  .flavor-bundle__flavor-media {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    width: 36px;
+    aspect-ratio: 1;
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: color-mix(in srgb, var(--flavor-swatch, #f6f4f0) 16%, #fff);
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+
+  .flavor-bundle__flavor-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  @media (hover: hover) {
+    .flavor-bundle__flavor:hover:not(:disabled):not(.flavor-bundle__flavor--added) {
+      border-color: rgb(var(--color-foreground-rgb) / 0.35);
+    }
+
+    .flavor-bundle__flavor:hover:not(:disabled) .flavor-bundle__flavor-media img {
+      scale: 1.06;
+    }
+  }
+
+  .flavor-bundle__flavor:disabled {
+    cursor: not-allowed;
+  }
+
+  /* Full bundle: the chosen cards stay lit, the rest step back */
+  .flavor-bundle__flavor:disabled:not(.flavor-bundle__flavor--added) {
+    opacity: 0.4;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flavor-bundle__flavor,
+    .flavor-bundle__flavor-media img {
+      transition: none;
+    }
+  }
+
+  .flavor-bundle__flavor-dot {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--flavor-swatch, rgb(var(--color-foreground-rgb) / 0.25));
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+  }
+
+  .flavor-bundle__flavor-name {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    padding: 0;
+    background-color: transparent;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  .flavor-bundle__flavor-count {
+    position: absolute;
+    top: calc(50% - 9.5px);
+    inset-inline-end: 6px;
+    z-index: 2;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    border-radius: 999px;
+    padding-inline: 5px;
+    background-color: var(--flavor-swatch, var(--color-foreground));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.28);
+  }
+
+  .flavor-bundle__flavor-count[hidden] {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .flavor-bundle__grid {
+      gap: 6px;
+    }
+
+    .flavor-bundle__flavor-name {
+      font-size: 11px;
+    }
+
+    .flavor-bundle__mode-title {
+      font-size: 14px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.flavor_bundle",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "max_flavors",
+      "label": "t:settings.max_flavors",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "min_flavors",
+      "label": "t:settings.min_flavors",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "savings_label",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "discount_tiers",
+      "label": "t:settings.discount_tiers",
+      "default": "2:25, 4:30",
+      "info": "t:info.discount_tiers"
+    },
+    {
+      "type": "product_list",
+      "id": "flavor_link_products",
+      "label": "t:settings.flavor_link_products",
+      "limit": 4,
+      "info": "t:info.flavor_link_products"
+    },
+    {
+      "type": "text",
+      "id": "flavor_link_heading",
+      "label": "t:settings.flavor_link_heading",
+      "info": "t:info.flavor_link_heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.flavor_bundle"
+    }
+  ]
+}
+{% endschema %}

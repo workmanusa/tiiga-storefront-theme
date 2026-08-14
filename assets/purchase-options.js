@@ -58,38 +58,7 @@ class PurchaseOptionsComponent extends HTMLElement {
         .closest('.purchase-options__option')
         ?.classList.toggle('purchase-options__option--selected', input.checked);
     }
-
-    this.#updateAddButtonPrice();
   };
-
-  #updateAddButtonPrice() {
-    const button = this.closest('.product-details')?.querySelector('.add-to-cart-button');
-    if (!button) return;
-
-    const selectedInput = this.#modeInputs.find((input) => input.checked);
-    const row = selectedInput?.closest('.purchase-options__option');
-    let price = row?.getAttribute('data-price') ?? '';
-
-    if (this.#selectedMode === 'subscribe') {
-      const planOption = this.#planSelect?.selectedOptions[0];
-      price = planOption?.getAttribute('data-price') || price;
-    }
-
-    let priceElement = button.querySelector('.purchase-options__add-price');
-
-    if (!price) {
-      priceElement?.remove();
-      return;
-    }
-
-    if (!priceElement) {
-      priceElement = document.createElement('span');
-      priceElement.className = 'purchase-options__add-price';
-      button.querySelector('.add-to-cart__added')?.before(priceElement);
-    }
-
-    priceElement.textContent = ` · ${price}`;
-  }
 
   /**
    * Re-render from the updated section HTML after a variant change, keeping
@@ -123,10 +92,6 @@ class PurchaseOptionsComponent extends HTMLElement {
       }
 
       this.#apply();
-
-      // The buy-buttons block may re-render its button on the same event;
-      // re-inject the price after the current frame.
-      requestAnimationFrame(() => this.#updateAddButtonPrice());
     });
   };
 }

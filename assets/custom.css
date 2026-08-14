@@ -4,25 +4,10 @@
  */
 
 /*
- * Desktop nav: render the first top-level menu item as a solid pill.
- * The desktop menu items are <li> elements slotted directly into <overflow-list>
- * (its first child is a <template>, hence :first-of-type instead of :first-child).
+ * Header navigation is fully custom: see blocks/_nav-menu.liquid (desktop
+ * mega menu + mobile drawer) and its child blocks. The Shop pill styling
+ * lives in that block's stylesheet.
  */
-.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link {
-  background-color: var(--color-foreground);
-  color: var(--color-background);
-  border-radius: 100px;
-  padding-inline: 1.125rem;
-}
-
-.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link:hover {
-  background-color: rgb(var(--color-foreground-rgb) / 0.85);
-}
-
-/* The pill supplies its own emphasis — suppress the underline treatment on it */
-.header-menu overflow-list > .menu-list__list-item:first-of-type > .menu-list__link .menu-list__link-title {
-  text-decoration: none;
-}
 
 /* Larger text wordmark until a logo image is uploaded.
    Doubled class beats the block's `font-size: var(--font-size--md)` rule,
@@ -399,88 +384,481 @@
 
 /* =========================================================================
  * Product page (PDP)
- * The page tints to the selected flavor. Each flavor maps to an accent (used
- * by the benefit tiles) and a soft page tint. Driven entirely by :has() on the
- * checked variant input, so it survives the variant picker's DOM morphs with
- * no JavaScript.
+ *
+ * Layout and sizing follow the Cure Hydration reference PDP: a 1240px grid
+ * split 1.1fr / 1fr with a 48px gutter, a fixed-ratio lead image, benefit
+ * tiles under it, then a collage of supporting shots.
+ *
+ * The page also tints to the selected flavor. Each flavor maps to an accent
+ * (used by the benefit tiles), a soft page tint, and a dot on its own choice
+ * card. Driven entirely by :has() on the variant inputs, so it survives the
+ * variant picker's DOM morphs with no JavaScript.
+ *
+ * The homepage flavor selector renders the same markup inside
+ * <featured-product-information>, hence the :not() guard on every rule here.
+ * Doubled class names are used deliberately to out-specify Horizon's own
+ * section stylesheets.
  * ========================================================================= */
 body {
   --flavor-color: #33302c;
-  --flavor-tint: #f2f0ec;
+  --flavor-tint: #f6f4f0;
+
+  /* Steady accent for stars, badges and the trust icon. These must NOT follow
+     the flavor, or the UI chrome reads as part of the product art. */
+  --pdp-accent: #1d5a6b;
+  /* Selected-state strokes and fills: a light warm neutral, softer than the
+     foreground ink — the teal accent clashed against the flavor tints. */
+  --pdp-selected: #7a726b;
+  --pdp-card: #fff;
+  /* Brand off-white, shared with the homepage sections */
+  --pdp-page: #f6f4f0;
+  --pdp-surface: #fff;
+  --pdp-hairline: rgb(var(--color-foreground-rgb) / 0.12);
+  /* Side gutter for the PDP at every width */
+  --pdp-gutter: clamp(16px, 4vw, 32px);
+  --pdp-ink-muted: rgb(var(--color-foreground-rgb) / 0.6);
 }
 
 body:has(input[data-option-name='Flavor'][value='Raspberry Lemonade']:checked:not(featured-product-information *)) {
   --flavor-color: #c0325f;
-  --flavor-tint: #f7e7ed;
+  --flavor-tint: #f6dde7;
+}
+
+.variant-option__button-label:has(input[value='Raspberry Lemonade']),
+[data-flavor='Raspberry Lemonade'] {
+  --flavor-swatch: #c0325f;
 }
 
 body:has(input[data-option-name='Flavor'][value='Watermelon']:checked:not(featured-product-information *)) {
   --flavor-color: #e06060;
-  --flavor-tint: #fbe9e9;
+  --flavor-tint: #fbdedd;
+}
+
+.variant-option__button-label:has(input[value='Watermelon']),
+[data-flavor='Watermelon'] {
+  --flavor-swatch: #e06060;
 }
 
 body:has(input[data-option-name='Flavor'][value='Strawberry']:checked:not(featured-product-information *)) {
   --flavor-color: #d94a63;
-  --flavor-tint: #fae9ec;
+  --flavor-tint: #fadfe4;
+}
+
+.variant-option__button-label:has(input[value='Strawberry']),
+[data-flavor='Strawberry'] {
+  --flavor-swatch: #d94a63;
 }
 
 body:has(input[data-option-name='Flavor'][value='Tropical Bliss']:checked:not(featured-product-information *)) {
   --flavor-color: #e08a1e;
-  --flavor-tint: #fbf0df;
+  --flavor-tint: #fbeacd;
+}
+
+.variant-option__button-label:has(input[value='Tropical Bliss']),
+[data-flavor='Tropical Bliss'] {
+  --flavor-swatch: #e08a1e;
 }
 
 body:has(input[data-option-name='Flavor'][value='Orange Mango']:checked:not(featured-product-information *)) {
   --flavor-color: #dd7a1f;
-  --flavor-tint: #fbeee0;
+  --flavor-tint: #fbe4cd;
+}
+
+.variant-option__button-label:has(input[value='Orange Mango']),
+[data-flavor='Orange Mango'] {
+  --flavor-swatch: #dd7a1f;
 }
 
 body:has(input[data-option-name='Flavor'][value='Lemon Lime']:checked:not(featured-product-information *)) {
   --flavor-color: #8faa1f;
-  --flavor-tint: #f2f6e2;
+  --flavor-tint: #eef3d3;
+}
+
+.variant-option__button-label:has(input[value='Lemon Lime']),
+[data-flavor='Lemon Lime'] {
+  --flavor-swatch: #8faa1f;
 }
 
 body:has(input[data-option-name='Flavor'][value='Berry Melon']:checked:not(featured-product-information *)) {
   --flavor-color: #b8437f;
-  --flavor-tint: #f8e8f0;
+  --flavor-tint: #f6dced;
+}
+
+.variant-option__button-label:has(input[value='Berry Melon']),
+[data-flavor='Berry Melon'] {
+  --flavor-swatch: #b8437f;
 }
 
 body:has(input[data-option-name='Flavor'][value='Tropical Fruit']:checked:not(featured-product-information *)) {
   --flavor-color: #dd8f2a;
-  --flavor-tint: #fbf1e2;
+  --flavor-tint: #fbead2;
+}
+
+.variant-option__button-label:has(input[value='Tropical Fruit']),
+[data-flavor='Tropical Fruit'] {
+  --flavor-swatch: #dd8f2a;
 }
 
 body:has(input[data-option-name='Flavor'][value='Wild Berry']:checked:not(featured-product-information *)) {
   --flavor-color: #6f3d88;
-  --flavor-tint: #efe8f4;
+  --flavor-tint: #eadff2;
+}
+
+.variant-option__button-label:has(input[value='Wild Berry']),
+[data-flavor='Wild Berry'] {
+  --flavor-swatch: #6f3d88;
 }
 
 body:has(input[data-option-name='Flavor'][value='Fruit Punch']:checked:not(featured-product-information *)) {
   --flavor-color: #c93d48;
-  --flavor-tint: #f9e8ea;
+  --flavor-tint: #f9dcdf;
+}
+
+.variant-option__button-label:has(input[value='Fruit Punch']),
+[data-flavor='Fruit Punch'] {
+  --flavor-swatch: #c93d48;
 }
 
 body:has(input[data-option-name='Flavor'][value='Orange']:checked:not(featured-product-information *)) {
   --flavor-color: #dd7a1f;
-  --flavor-tint: #fbeee0;
+  --flavor-tint: #fbe4cd;
 }
 
-/* Tint the product section and everything below it on the product page */
-/* PDP only. The homepage flavor selector also renders .product-information
-   (inside <featured-product-information>), so match one that is not. The old
-   rule additionally repainted every .section-background on the page. */
-body:has(.product-information:not(featured-product-information *)) .product-information:not(featured-product-information *),
-body:has(.product-information:not(featured-product-information *)) .page-wrapper {
-  background-color: var(--flavor-tint);
+.variant-option__button-label:has(input[value='Orange']),
+[data-flavor='Orange'] {
+  --flavor-swatch: #dd7a1f;
 }
 
-/* Media panel sits on a neutral card so the packaging stays true to color */
+/* The page holds the neutral brand off-white regardless of the selected
+   flavor — swap var(--pdp-page) for var(--flavor-tint, var(--pdp-page)) to
+   bring back the per-flavor tint (the --flavor-tint map above still tracks
+   the selection). White stays reserved for the cards on top of it (media,
+   flavor tiles, purchase rows). */
+/* Scoped to the product section only. Painting .page-wrapper tinted the whole
+   document, dragging the announcement bar, header and footer along with it. */
+/* Tripled class: base.css paints every section transparent via
+   `.shopify-section:not(.header-section) :is(.section, .cart-summary)` (0-3-0)
+   so color schemes land on the sibling .section-background instead — this must
+   out-specify that rule or the background never renders. */
+.product-information.product-information.product-information:not(featured-product-information *) {
+  background-color: var(--pdp-page);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-information.product-information.product-information:not(featured-product-information *) {
+    transition: background-color 0.6s ease;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Grid: 1240px, 1.1fr / 1fr, 48px gutter, both columns sticky-topped.
+ * Horizon defaults to 2fr / 1fr above 1200px and fakes the gutter with
+ * per-column padding; both are replaced here.
+ * ---------------------------------------------------------------------- */
+.product-information:not(featured-product-information *) .product-information__grid.product-information__grid {
+  grid-column: 1 / -1;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: start;
+  gap: 48px;
+  width: 100%;
+  /* Gutter is inside the max-width, so the content column still measures
+     1240px once the viewport is wide enough to allow it. */
+  max-width: calc(1240px + (var(--pdp-gutter) * 2));
+  margin-inline: auto;
+  padding-inline: var(--pdp-gutter);
+  box-sizing: border-box;
+}
+
+/* Horizon sizes the media column with `width: 0; min-width: 100%`. Only the
+   padding gutter is dropped here — overriding min-width collapses the column.
+   The tripled class beats the theme's nested
+   `.product-information__grid:not(...).product-information--media-left .product-information__media`. */
+.product-information:not(featured-product-information *)
+  .product-information__media.product-information__media.product-information__media {
+  padding-inline: 0;
+}
+
+.product-information:not(featured-product-information *) .product-details {
+  padding-inline: 0;
+  min-width: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Stacked layout (tablet and below)
+ * Two 1.1fr/1fr columns need real width; below ~900px they squeeze the buy box
+ * until the flavor grid overflows, so the reference collapses to one column
+ * here — phone-only treatments (media rail, dot pills) stay at 749px.
+ *
+ * The reference also lifts the eyebrow and title above the media and drops the
+ * rest of the buy box below it. Horizon nests the details blocks two wrappers
+ * deep, so the wrappers (and .pdp-header itself) become display: contents and
+ * the leaf blocks are ordered directly against the media column.
+ * ---------------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  .product-information:not(featured-product-information *) .product-information__grid.product-information__grid {
+    display: flex;
+    flex-direction: column;
+    /* Desktop pins tracks to the top; in the mobile column the blocks must
+       fill the width instead, or inline ones (the trust bar) shrink to fit. */
+    align-items: stretch;
+    gap: 0;
+    /* The flex switch drops out of the page grid, and with it the margin
+       columns that were holding content off the screen edges. Without
+       border-box the padding was added to width:100% and overflowed. */
+    padding-inline: var(--pdp-gutter);
+    box-sizing: border-box;
+  }
+
+
+  .product-information:not(featured-product-information *) .product-details,
+  .product-information:not(featured-product-information *) .product-details .group-block,
+  .product-information:not(featured-product-information *) .product-details .group-block-content,
+  .product-information:not(featured-product-information *) .pdp-header {
+    display: contents;
+  }
+
+  .product-information:not(featured-product-information *) .pdp-header__eyebrow {
+    order: 1;
+    /* .pdp-header is display: contents here, so the pill is a stretch item */
+    align-self: flex-start;
+    margin-block-end: 10px;
+  }
+
+  .product-information:not(featured-product-information *) .pdp-header__title {
+    order: 2;
+    margin-block-end: 12px;
+    font-size: 38px;
+  }
+
+  .product-information:not(featured-product-information *) .product-information__media {
+    order: 3;
+  }
+
+
+
+  .product-information:not(featured-product-information *) .pdp-header__rating {
+    order: 4;
+    margin-block: 18px 8px;
+  }
+
+  .product-information:not(featured-product-information *) .pdp-header__eligibility {
+    order: 5;
+    margin-block-end: 8px;
+  }
+
+  .product-information:not(featured-product-information *) .pdp-header__description {
+    order: 6;
+  }
+
+  /* Same order as the bundle toggle: ties resolve by DOM order, where the
+     size selector sits first. Without this it defaults to 0 and jumps above
+     the eyebrow. */
+  .product-information:not(featured-product-information *) .pdp-size {
+    order: 7;
+  }
+
+  .product-information:not(featured-product-information *) .flavor-bundle {
+    order: 7;
+    margin-block-start: 16px;
+  }
+
+  .product-information:not(featured-product-information *) .variant-picker {
+    order: 8;
+  }
+
+  .product-information:not(featured-product-information *) .purchase-options {
+    order: 9;
+    margin-block: 12px 0;
+  }
+
+  .product-information:not(featured-product-information *) .buy-buttons-block {
+    order: 10;
+  }
+
+  .product-information:not(featured-product-information *) .pdp-trust {
+    order: 11;
+  }
+
+  .product-information:not(featured-product-information *) .variant-option--buttons {
+    margin-block-start: 12px;
+  }
+
+  .product-information:not(featured-product-information *) .variant-option--buttons legend {
+    margin-block-end: 8px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Media column
+ * Fixed ratios per position so the lead shot can't run away with the page
+ * height. Every shot is `contain` on white: the packaging, nutrition panel
+ * and infographics all carry text, so cropping them is not an option.
+ * ---------------------------------------------------------------------- */
 .product-information:not(featured-product-information *) .product-information__media {
-  background-color: #efece7;
-  border-radius: 12px;
-  padding: 1.5rem;
+  position: relative;
 }
 
-/* Buy box: option group labels */
+.product-information:not(featured-product-information *)
+  .product-media-container:not(.dialog-zoomed-gallery *) {
+  /* Positioned so the social-proof badge anchors to the lead shot and travels
+     with it when the mobile rail scrolls. */
+  position: relative;
+  background-color: var(--pdp-surface);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* The renamed product photography is full-bleed (fruit backdrops baked into
+   the shots), so media fills its tile edge to edge: Horizon's hard-coded
+   `media-fit-cover` is left in charge and the old contain + padding frame the
+   text-bearing packshots needed is gone. */
+
+/* Lead shot spans the column in a shorter frame. The studio packshots share
+   a warm off-white backdrop, so the square photo sits contained and centered
+   on a tile painted the same color — reads as one seamless banner, keeps the
+   full composition in view, and renders the artwork smaller on desktop. */
+.product-information:not(featured-product-information *)
+  .media-gallery__grid
+  > .product-media-container:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 3;
+  background-color: #f8f2ee;
+}
+
+.product-information:not(featured-product-information *)
+  .media-gallery__grid
+  > .product-media-container:first-child img {
+  object-fit: contain;
+}
+
+/* A lone trailing shot widens instead of leaving a hole in the pair grid */
+.product-information:not(featured-product-information *)
+  .media-gallery__grid
+  > .product-media-container:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+/* Media reads as clickable now that the lightbox owns the click */
+.product-information:not(featured-product-information *)
+  .media-gallery__grid
+  > .product-media-container {
+  cursor: zoom-in;
+}
+
+.media-gallery__extras {
+  grid-column: 1 / -1;
+}
+
+/* Phone gallery rail: a horizontal, snap-scrolled strip — lead shot, then the
+   benefit tiles stacked beside it, then the rest of the collage. Phones only;
+   tablets keep the stacked grid (capped below so the hero stays sane).
+   Horizon's slideshow and its dot pagination are retired in favour of this. */
+@media screen and (max-width: 749px) {
+  .product-information:not(featured-product-information *)
+    media-gallery.media-gallery--grid
+    slideshow-component {
+    display: none;
+  }
+
+  .product-information:not(featured-product-information *)
+    media-gallery.media-gallery--grid
+    .media-gallery__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    --pdp-rail-frame: min(calc(100vw - 150px), 320px);
+
+    align-items: flex-start;
+    /* Squares set the row height; without this a stray taller item stretches
+       the whole rail and leaves dead space under the gallery. */
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* Bleed to the screen edges, but keep the first item aligned to the text */
+    margin-inline: calc(var(--pdp-gutter) * -1);
+    padding-inline: var(--pdp-gutter);
+    padding-block-end: 8px;
+    scroll-padding-inline-start: var(--pdp-gutter);
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-information:not(featured-product-information *)
+    .media-gallery__grid
+    > .product-media-container,
+  .product-information:not(featured-product-information *)
+    .media-gallery__grid
+    > .product-media-container:first-child,
+  .product-information:not(featured-product-information *)
+    .media-gallery__grid
+    > .product-media-container:last-child:nth-child(odd) {
+    grid-column: auto;
+    /* Square frames, sized so the benefit-tile column stays fully in view
+       beside the lead shot rather than being cut off at the edge. */
+    flex: 0 0 var(--pdp-rail-frame);
+    width: var(--pdp-rail-frame);
+    height: auto;
+    aspect-ratio: 1;
+    align-self: flex-start;
+    scroll-snap-align: start;
+  }
+
+  /* Lead shot and the tiles beside it anchor to the left edge; everything
+     after them centres as you scroll, like the reference. */
+  .product-information:not(featured-product-information *)
+    .media-gallery__grid
+    > .product-media-container:not(:first-child) {
+    scroll-snap-align: center;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras {
+    flex: 0 0 auto;
+    align-self: stretch;
+    height: var(--pdp-rail-frame);
+    scroll-snap-align: start;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras .pdp-benefits {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras .pdp-benefits__tile {
+    flex: 1 1 0;
+    width: 96px;
+    min-height: 0;
+    gap: 0;
+    padding: 10px;
+    scroll-snap-align: start;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras .pdp-benefits__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras .pdp-benefits__title {
+    margin-block-start: 6px;
+    font-size: 10px;
+  }
+
+  .product-information:not(featured-product-information *) .media-gallery__extras .pdp-benefits__text {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Buy box
+ * ---------------------------------------------------------------------- */
+/* Same label voice as the size selector and purchase options headings */
 .product-information:not(featured-product-information *) .variant-option__label,
 .product-information:not(featured-product-information *) legend {
   font-family: var(--font-subheading--family);
@@ -488,24 +866,350 @@ body:has(.product-information:not(featured-product-information *)) .page-wrapper
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--color-foreground);
 }
 
-/* Size / flavor choices as white cards rather than the theme's outlined pills */
+/* The details column drives its own rhythm with per-block margins below, the
+   way the reference does. The block's 28px flex gap on top of those margins
+   made every group float apart. */
+.product-information:not(featured-product-information *) .product-details .group-block-content {
+  gap: 0;
+}
+
+/* Uniform rhythm: every buy-box group opens with the same 12px start margin
+   (the group wrapper's own gap is zeroed below), so size / flavor / purchase
+   options / buy row all sit the same distance apart. */
+.product-information:not(featured-product-information *) .purchase-options {
+  margin-block: 12px 0;
+}
+
+/* Flavor choices are slim chips — two per row so names never wrap */
+.product-information:not(featured-product-information *) .variant-option--buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+/* A fieldset's legend is lifted out of the grid's flow, so its own margin-top
+   can't push the group down — the space has to come from the fieldset. */
+.product-information:not(featured-product-information *) .variant-option--buttons {
+  margin-block-start: 12px;
+}
+
+.product-information:not(featured-product-information *) .variant-option--buttons legend {
+  grid-column: 1 / -1;
+  margin-block: 0 8px;
+}
+
+/* Bundle mode swaps the single-flavor picker for the builder. The attribute is
+   set by flavor-bundle.js on the section root — it does not exist until the
+   first toggle, so keying the transition on [data-flavor-mode] keeps page
+   load from replaying the entry animation. Same glide as the bundle panel:
+   a one-row grid collapsing 1fr -> 0fr (works in every evergreen browser,
+   unlike height: auto transitions), the form is what gets clipped, and
+   visibility ends the close unfocusable and out of the a11y tree. */
+.product-information[data-flavor-mode]:not(featured-product-information *) .variant-picker {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.2s ease 0.1s,
+    visibility 0.3s;
+}
+
+.product-information[data-flavor-mode]:not(featured-product-information *) .variant-picker .variant-picker__form {
+  min-height: 0;
+  overflow: clip;
+}
+
+.product-information[data-flavor-mode='bundle']:not(featured-product-information *) .variant-picker {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-information[data-flavor-mode]:not(featured-product-information *) .variant-picker {
+    transition: none;
+  }
+}
+
+/* Flavor chips: rounded-square flavor art beside the name on a hairline card,
+   matching the 10px-radius language of the rest of the buy box. Selection is a
+   slim ring in that flavor's own color (--flavor-swatch, set inline from the
+   tiiga_flavor metaobject). */
 .product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label {
-  background-color: #fff;
-  border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
-  border-radius: 8px;
-  padding-block: 0.875rem;
-  justify-content: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  min-width: 0;
+  min-height: 44px;
+  background-color: var(--pdp-card);
+  border: 1px solid var(--pdp-hairline);
+  border-radius: 10px;
+  /* Slim padding so the flavor art, not the chip, carries the height */
+  padding: 4px 10px 4px 4px;
+  overflow: hidden;
+  text-align: start;
+  white-space: normal;
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
-.product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label:has(:checked) {
-  border-color: var(--color-foreground);
-  border-width: 2px;
+.product-information:not(featured-product-information *) .variant-option__button-label__media {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 36px;
+  aspect-ratio: 1;
+  /* Rounded square, not a circle — corners stay, so more of the art shows */
+  border-radius: 7px;
+  overflow: hidden;
+  /* Faint wash of the flavor color while the art loads */
+  background-color: color-mix(in srgb, var(--flavor-swatch, #f6f4f0) 16%, #fff);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+.product-information:not(featured-product-information *) .variant-option__button-label__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .product-information:not(featured-product-information *)
+    .variant-option__button-label.variant-option__button-label:hover:not(:has(:checked)) {
+    border-color: rgb(var(--color-foreground-rgb) / 0.35);
+  }
+
+  .product-information:not(featured-product-information *)
+    .variant-option__button-label:hover
+    .variant-option__button-label__media
+    img {
+    scale: 1.06;
+  }
+}
+
+/* No dot once there is artwork to look at */
+.product-information:not(featured-product-information *)
+  .variant-option__button-label:has(.variant-option__button-label__media)
+  .variant-option__button-label__text::before {
+  display: none;
+}
+
+/* Horizon paints fake borders with ::before (all options) and ::after
+   (sold-out options). The chip draws its own border and ring, so retire both —
+   the ::after otherwise doubles up inside the selection ring on a selected
+   sold-out flavor. */
+.product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label::before,
+.product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label::after {
+  display: none;
+}
+
+/* Selection: a slim ring in the flavor's own color over a faint wash of it */
+.product-information:not(featured-product-information *)
+  .variant-option__button-label.variant-option__button-label:has(:checked) {
+  border-color: transparent;
+  background-color: color-mix(in srgb, var(--flavor-swatch, var(--pdp-selected)) 7%, #fff);
+  box-shadow: 0 0 0 1.5px var(--flavor-swatch, var(--pdp-selected));
+}
+
+.product-information:not(featured-product-information *)
+  .variant-option__button-label.variant-option__button-label:has(input:focus-visible) {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label,
+  .product-information:not(featured-product-information *) .variant-option__button-label__media img {
+    transition: none;
+  }
 }
 
 .product-information:not(featured-product-information *) .variant-option__button-label__pill {
   display: none;
+}
+
+.product-information:not(featured-product-information *) .variant-option__button-label__text {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  background-color: transparent;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+.product-information:not(featured-product-information *) .variant-option__button-label__text::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--flavor-swatch, rgb(var(--color-foreground-rgb) / 0.25));
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+/* The theme whitens the selected label for its dark pill, which we hide —
+   restore readable text on the white card. */
+.product-information .variant-option__button-label.variant-option__button-label:has(:checked)
+  .variant-option__button-label__text.variant-option__button-label__text {
+  color: var(--color-foreground);
+}
+
+/* Sold out reads as a struck-through name and a pale dot, matching the
+   homepage. Horizon's diagonal strike SVG is sized for its own flex pill and
+   misplaces itself here, so it is retired in favour of line-through. */
+.product-information:not(featured-product-information *)
+  .variant-option__button-label:has([data-option-available='false'])
+  .variant-option__button-label__text {
+  color: rgb(var(--color-foreground-rgb) / 0.45);
+  text-decoration: line-through;
+}
+
+.product-information:not(featured-product-information *)
+  .variant-option__button-label:has([data-option-available='false'])
+  .variant-option__button-label__media {
+  /* Faded but still in the flavor's color — grey reads as broken art */
+  filter: saturate(0.55);
+  opacity: 0.4;
+}
+
+.product-information:not(featured-product-information *)
+  .variant-option__button-label:has([data-option-available='false'])
+  .variant-option__button-label__text::before {
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.product-information:not(featured-product-information *) .variant-option__strikethrough {
+  display: none;
+}
+
+/* Group label splitting the variety packs (link chips to their own product)
+   from the single flavors — same voice as the bundle's CHOOSE FLAVORS. */
+.product-information:not(featured-product-information *) .variant-option__linked-heading {
+  grid-column: 1 / -1;
+  margin-block: 10px 2px;
+  font-family: var(--font-subheading--family);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pdp-ink-muted);
+}
+
+/* Phones fall back to dot pills — a packshot a third of a phone wide is
+   unreadable, and the tall tiles would push the buy box off-screen. Tablets
+   keep the image tiles: the stacked column is wide enough to read them. */
+@media screen and (max-width: 749px) {
+  .product-information:not(featured-product-information *) .variant-option--buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label {
+    /* Must stay positioned: Horizon's radio is `position: absolute; inset: 0`,
+       so a static label lets it escape and blanket the whole section, eating
+       every click on the flavors and the bundle toggle. */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    aspect-ratio: auto;
+    min-height: 40px;
+    padding: 3px 8px 3px 4px;
+    text-align: start;
+  }
+
+  /* The art shrinks to a small tile beside the name */
+  .product-information:not(featured-product-information *) .variant-option__button-label__media {
+    flex: 0 0 auto;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+
+  .product-information:not(featured-product-information *) .variant-option__button-label__text {
+    position: static;
+    min-height: 0;
+    gap: 6px;
+    padding: 0;
+    background-color: transparent;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: start;
+  }
+
+  /* The pill's checked state is the ring — the lift and badge are for cards */
+  .product-information:not(featured-product-information *)
+    .variant-option__button-label.variant-option__button-label:has(:checked) {
+    border-color: transparent;
+    box-shadow: 0 0 0 1.5px var(--flavor-swatch, var(--pdp-selected));
+    translate: none;
+  }
+
+  .product-information:not(featured-product-information *)
+    .variant-option__button-label.variant-option__button-label::after {
+    display: none;
+  }
+}
+
+/* Quantity stepper and add-to-cart share one pill-shaped row */
+.product-information:not(featured-product-information *) .product-form-buttons {
+  --style-border-radius-buttons-primary: 999px;
+  --style-border-radius-buttons-secondary: 999px;
+  --style-border-radius-inputs: 999px;
+
+  align-items: center;
+  gap: 10px;
+  margin-block-start: 16px;
+}
+
+.product-information:not(featured-product-information *) .quantity-selector {
+  min-width: 104px;
+}
+
+/* The stepper's +/- keep the 44px minimum touch target, so the button lands
+   at the same height — any taller and the pair reads mismatched. */
+.product-information:not(featured-product-information *) .add-to-cart-button {
+  padding-block: 12px;
+  font-family: var(--font-subheading--family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Header block */
+.product-information:not(featured-product-information *) .pdp-header {
+  gap: 10px;
+}
+
+.product-information:not(featured-product-information *) .pdp-header__stars {
+  color: var(--pdp-accent);
+}
+
+.product-information:not(featured-product-information *) .pdp-trust__icon,
+.product-information:not(featured-product-information *) .pdp-trust__badge {
+  background-color: var(--pdp-accent);
 }
 
 /* Product title as the flavor name, like the reference */
@@ -514,15 +1218,81 @@ body:has(.product-information:not(featured-product-information *)) .page-wrapper
   line-height: 1.05;
 }
 
-@media screen and (max-width: 749px) {
-  .product-information:not(featured-product-information *) .product-information__media {
-    padding: 1rem;
-  }
+/* The Recharge app injects its own subscribe / one-time widget into the
+   product form. `_purchase-options` replaces it (and drives the same
+   selling_plan input), so the app's copy is a duplicate. */
+.product-information:not(featured-product-information *) .rc-container-wrapper {
+  display: none;
 }
 
-/* The theme whitens the selected label for its dark pill, which we hide —
-   restore readable text on the white card. */
-.product-information .variant-option__button-label.variant-option__button-label:has(:checked)
-  .variant-option__button-label__text.variant-option__button-label__text {
-  color: var(--color-foreground);
+/* Reference buy box ends at Add to cart — no express checkout, and with it
+   goes Shop Pay's deferred-purchase disclosure. */
+.product-information:not(featured-product-information *) .accelerated-checkout-block {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------
+ * Sticky quick-add bar (appears on scroll)
+ * Horizon dresses it as a glassy full-pill popover with a 2px gradient border
+ * painted by ::before. Restyled onto the buy box's card language instead:
+ * white card, 16px radius, hairline border, rounded-square media tile and the
+ * same uppercase pill Add-to-cart. Doubled classes beat the section
+ * stylesheet, which loads after this file.
+ * ---------------------------------------------------------------------- */
+.sticky-add-to-cart__bar.sticky-add-to-cart__bar {
+  width: min(600px, calc(100vw - 32px));
+  padding: 8px;
+  gap: 12px;
+  background-color: rgb(255 255 255 / 0.96);
+  border: 1px solid var(--pdp-hairline);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.25);
+  backdrop-filter: blur(12px);
+}
+
+/* The gradient-border glass layer is retired — the card paints itself now */
+.sticky-add-to-cart__bar.sticky-add-to-cart__bar::before {
+  display: none;
+}
+
+/* Media tile matches the flavor chips: rounded square on the packshot cream */
+.sticky-add-to-cart__bar .sticky-add-to-cart__image {
+  border-radius: 10px;
+  background-color: #f8f2ee;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+.sticky-add-to-cart__bar .sticky-add-to-cart__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.sticky-add-to-cart__bar .sticky-add-to-cart__variant {
+  font-size: 0.75rem;
+}
+
+/* Price sits under the variant-name headline in the info column */
+.sticky-add-to-cart__bar .sticky-add-to-cart__price {
+  margin-block-start: 2px;
+  font-size: 0.875rem;
+}
+
+/* Same voice as the buy box's Add to cart */
+.sticky-add-to-cart__bar .sticky-add-to-cart__button.sticky-add-to-cart__button {
+  border-radius: 999px;
+  padding-inline: 22px;
+  font-family: var(--font-subheading--family);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Phones: keep the floating-card look instead of a flush full-width strip */
+@media screen and (max-width: 749px) {
+  .sticky-add-to-cart__bar.sticky-add-to-cart__bar {
+    bottom: 12px;
+    width: calc(100vw - 24px);
+    border-radius: 16px;
+  }
 }

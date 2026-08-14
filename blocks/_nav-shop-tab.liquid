@@ -1,0 +1,250 @@
+{%- doc -%}
+  Renders one browse tab of the shop navigation panel (blocks/_nav-shop.liquid):
+  a toggle (pill in drawer mode, sidebar item in desktop menu mode) plus its
+  product grid panel.
+
+  The grid shows manually configured `_nav-tile` child blocks first, followed
+  by the products of the selected collection (if any).
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<div
+  class="nav-shop-tab"
+  {{ block.shopify_attributes }}
+>
+  <button
+    type="button"
+    class="button-unstyled nav-shop-tab__toggle"
+    data-nav-tab
+    aria-expanded="false"
+    aria-controls="NavShopTabPanel-{{ block.id }}"
+    on:click="/select"
+  >
+    {{- block.settings.label -}}
+  </button>
+  <div
+    class="nav-shop-tab__panel"
+    id="NavShopTabPanel-{{ block.id }}"
+  >
+    {% if block.settings.eyebrow != blank %}
+      <p class="nav-menu__eyebrow">{{ block.settings.eyebrow }}</p>
+    {% endif %}
+    <div class="nav-shop-tab__grid">
+      {% content_for 'blocks' %}
+      {% if block.settings.collection != blank %}
+        {% for product in block.settings.collection.products limit: 12 %}
+          {% render 'nav-tile', label: product.title, url: product.url, image: product.featured_image %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% liquid
+      assign view_all_url = block.settings.view_all_link | default: block.settings.collection.url
+      assign view_all_label = block.settings.view_all_label
+      if view_all_label == blank
+        assign view_all_label = 'actions.view_all' | t
+      endif
+    %}
+    {% if view_all_url != blank %}
+      <a
+        href="{{ view_all_url }}"
+        class="nav-shop-tab__view-all"
+      >
+        {{- view_all_label }} &rarr;
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .nav-shop-tab {
+    display: contents;
+  }
+
+  /* Drawer mode: pill toggles in a row, panel below at full width */
+  .nav-shop-tab__toggle {
+    order: 1;
+    flex-shrink: 0;
+    padding: var(--padding-3xs) var(--padding-md);
+    border-radius: 100px;
+    background-color: var(--nav-card-background);
+    font-family: var(--font-body--family);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-foreground-muted);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color var(--animation-speed) var(--animation-easing),
+      color var(--animation-speed) var(--animation-easing);
+  }
+
+  .nav-shop-tab__toggle[aria-expanded='true'],
+  nav-shop-tabs:not([data-initialized]) .nav-shop-tab:first-of-type .nav-shop-tab__toggle {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .nav-shop-tab__panel {
+    order: 2;
+    width: 100%;
+    padding-block-start: var(--padding-lg);
+  }
+
+  /* Before the tabs component initializes, show only the first panel */
+  nav-shop-tabs:not([data-initialized]) .nav-shop-tab:not(:first-of-type) .nav-shop-tab__panel {
+    display: none;
+  }
+
+  .nav-shop-tab__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap-sm) var(--gap-2xs);
+  }
+
+  .nav-shop-tab__grid:empty {
+    display: none;
+  }
+
+  .nav-shop-tab__view-all {
+    display: inline-block;
+    margin-block-start: var(--margin-md);
+    font-size: 0.75rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    border-block-end: 1px solid currentcolor;
+    padding-block-end: 1px;
+  }
+
+  .nav-shop-tab__view-all:hover {
+    color: var(--color-foreground-muted);
+  }
+
+  /* Tiles (also rendered for collection products via snippets/nav-tile.liquid) */
+  .nav-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-2xs);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-tile__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--nav-card-background);
+    transition: box-shadow var(--animation-speed) var(--animation-easing);
+  }
+
+  a.nav-tile:hover .nav-tile__media {
+    box-shadow: 0 0 0 2px var(--color-foreground-muted);
+  }
+
+  .nav-tile__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .nav-tile__label {
+    font-size: 0.6875rem;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--color-foreground);
+  }
+
+  /* Menu mode (desktop): sidebar toggles, taller tiles, wider grid */
+  @media screen and (min-width: 750px) {
+    #header-component:not([data-menu-style='drawer']) {
+      .nav-shop-tab__toggle {
+        grid-column: 1;
+        order: initial;
+        justify-self: start;
+        padding: var(--padding-2xs) 0;
+        border-radius: 0;
+        background-color: transparent;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+      }
+
+      .nav-shop-tab__toggle[aria-expanded='true'],
+      nav-shop-tabs:not([data-initialized]) .nav-shop-tab:first-of-type .nav-shop-tab__toggle {
+        background-color: transparent;
+        color: var(--color-foreground);
+        font-weight: 700;
+      }
+
+      .nav-shop-tab__panel {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        order: initial;
+        width: auto;
+        padding-block-start: 0;
+      }
+
+      .nav-shop-tab__grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: var(--gap-md) var(--gap-sm);
+      }
+
+      .nav-tile__media {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.nav_shop_tab",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:settings.collection"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "t:settings.view_all_label"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "t:settings.view_all_link",
+      "info": "t:info.nav_view_all_link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_nav-tile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.nav_shop_tab"
+    }
+  ]
+}
+{% endschema %}

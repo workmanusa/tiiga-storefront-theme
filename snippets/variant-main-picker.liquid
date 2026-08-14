@@ -99,12 +99,51 @@
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
+            {%- liquid
+              # Flavors that live on a sibling product (e.g. the variety packs)
+              # join this picker as link chips, rendered in the family list's
+              # order around this product's own inputs so chip order is stable
+              # across the family's pages. Chips render only when the current
+              # product is a family member, so the shared product template
+              # doesn't leak them onto unrelated PDPs (the tub shares it).
+              assign flavor_family = blank
+              assign fieldset_option_name = product_option.name | downcase
+              if fieldset_option_name contains 'flavor'
+                for family_product in block_settings.flavor_link_products
+                  if family_product.id == product_resource.id
+                    assign flavor_family = block_settings.flavor_link_products
+                  endif
+                endfor
+              endif
+            -%}
+            {%- if flavor_family != blank -%}
+              {% render 'variant-flavor-link-chips',
+                flavor_link_products: flavor_family,
+                product_resource: product_resource,
+                block_settings: block_settings,
+                position: 'before'
+              %}
+            {%- endif -%}
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
+              {% liquid
+                # Flavor art and brand color come from the tiiga_flavor
+                # metaobject (entry handle = handleized flavor value), so both
+                # are curated in one place in admin.
+                assign flavor_entry = nil
+                assign flavor_option_name = product_option.name | downcase
+                if flavor_option_name contains 'flavor'
+                  assign flavor_value_handle = product_option_value | handleize
+                  assign flavor_entry = shop.metaobjects.tiiga_flavor[flavor_value_handle]
+                endif
+              %}
               <label
                 class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
+                {% if flavor_entry.color %}
+                  style="--flavor-swatch: {{ flavor_entry.color }};"
+                {% endif %}
               >
                 <input
                   type="radio"
@@ -149,6 +188,26 @@
                     mode: 'unscaled'
                   %}
                 {% else %}
+                  {% if block_settings.show_variant_thumbnails %}
+                    {% liquid
+                      assign thumb_media = flavor_entry.image.value
+                      if thumb_media == blank
+                        assign thumb_media = product_option_value.variant.featured_media
+                      endif
+                      if thumb_media == blank and product_option_value.product_url
+                        assign thumb_media = product_option_value.variant.product.featured_media
+                      endif
+                    %}
+                    {% if thumb_media != blank %}
+                      <span class="variant-option__button-label__media">
+                        {{
+                          thumb_media
+                          | image_url: width: 320
+                          | image_tag: loading: 'lazy', alt: '', widths: '160, 320', sizes: '160px'
+                        }}
+                      </span>
+                    {% endif %}
+                  {% endif %}
                   {% if product_option_value.available == true %}
                     <span
                       class="variant-option__button-label__pill"
@@ -165,6 +224,14 @@
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
             {%- endfor -%}
+            {%- if flavor_family != blank -%}
+              {% render 'variant-flavor-link-chips',
+                flavor_link_products: flavor_family,
+                product_resource: product_resource,
+                block_settings: block_settings,
+                position: 'after'
+              %}
+            {%- endif -%}
             {% if option_id_attribute %}
               {% style %}
                 [data-option-id="{{ fieldset_id }}"] {

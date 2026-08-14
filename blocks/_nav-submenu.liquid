@@ -1,0 +1,231 @@
+{%- doc -%}
+  Renders an expandable content section for the nav menu
+  (blocks/_nav-menu.liquid), e.g. "Why Tiiga": an accordion row in drawer
+  mode and a mega panel in desktop menu mode.
+
+  The panel shows `_nav-card` child blocks (image + title + description) and,
+  when a blog is selected, a "featured articles" side panel.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<details
+  class="nav-item"
+  name="nav-menu-item"
+  {{ block.shopify_attributes }}
+>
+  <summary class="nav-item__row">
+    <span>{{ block.settings.label }}</span>
+    <span class="svg-wrapper nav-item__caret">
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </span>
+  </summary>
+  <div class="nav-item__panel">
+    <div class="nav-item__panel-inner nav-submenu{% if block.settings.blog != blank %} nav-submenu--with-articles{% endif %}">
+      <div class="nav-submenu__main">
+        {% if block.settings.eyebrow != blank %}
+          <p class="nav-menu__eyebrow">{{ block.settings.eyebrow }}</p>
+        {% endif %}
+        <div class="nav-submenu__cards">
+          {% content_for 'blocks' %}
+        </div>
+      </div>
+
+      {% if block.settings.blog != blank %}
+        <aside class="nav-articles">
+          {% if block.settings.articles_heading != blank %}
+            <p class="nav-menu__eyebrow">{{ block.settings.articles_heading }}</p>
+          {% endif %}
+          <ul
+            class="nav-articles__list list-unstyled"
+            role="list"
+          >
+            {% for article in block.settings.blog.articles limit: 3 %}
+              <li class="nav-articles__item">
+                <a
+                  href="{{ article.url }}"
+                  class="nav-articles__link"
+                >
+                  <span class="nav-articles__media">
+                    {% if article.image != blank %}
+                      {{
+                        article.image
+                        | image_url: width: 160
+                        | image_tag: class: 'nav-articles__image', widths: '80, 160', sizes: '56px', loading: 'lazy'
+                      }}
+                    {% endif %}
+                  </span>
+                  <span class="nav-articles__text">
+                    <span class="nav-articles__title">{{ article.title }}</span>
+                    {% liquid
+                      assign word_count = article.content | strip_html | split: ' ' | size
+                      assign minutes = word_count | divided_by: 200 | at_least: 1
+                    %}
+                    <span class="nav-articles__meta">{{ 'content.min_read' | t: minutes: minutes }}</span>
+                  </span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          <a
+            href="{{ block.settings.blog.url }}"
+            class="nav-articles__all"
+          >
+            {{- 'content.all_articles' | t }} &rarr;
+          </a>
+        </aside>
+      {% endif %}
+    </div>
+  </div>
+</details>
+
+{% stylesheet %}
+  /* Drawer mode: single column card stack */
+  .nav-submenu__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-2xs);
+  }
+
+  .nav-articles {
+    margin-block-start: var(--margin-lg);
+    padding: var(--padding-lg);
+    border-radius: 14px;
+    background-color: var(--nav-card-background);
+  }
+
+  .nav-articles__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-articles__item:not(:last-child) {
+    border-block-end: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+  }
+
+  .nav-articles__link {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding-block: var(--padding-sm);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-articles__media {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+  }
+
+  .nav-articles__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .nav-articles__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xs);
+    min-width: 0;
+  }
+
+  .nav-articles__title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-foreground);
+  }
+
+  .nav-articles__meta {
+    font-size: 0.6875rem;
+    color: var(--color-foreground-muted);
+  }
+
+  .nav-articles__all {
+    display: inline-block;
+    margin-block-start: var(--margin-sm);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .nav-articles__all:hover {
+    color: var(--color-foreground-muted);
+  }
+
+  /* Menu mode (desktop): three-column cards + articles side panel */
+  @media screen and (min-width: 750px) {
+    #header-component:not([data-menu-style='drawer']) {
+      .nav-submenu--with-articles {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        column-gap: var(--gap-2xl);
+        align-items: start;
+      }
+
+      .nav-submenu__cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--gap-md);
+      }
+
+      .nav-articles {
+        margin-block-start: 0;
+      }
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.nav_submenu",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "header",
+      "content": "t:content.featured_articles"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:settings.blog"
+    },
+    {
+      "type": "text",
+      "id": "articles_heading",
+      "label": "t:settings.heading",
+      "default": "Featured articles",
+      "visible_if": "{{ block.settings.blog != blank }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_nav-card"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.nav_submenu"
+    }
+  ]
+}
+{% endschema %}

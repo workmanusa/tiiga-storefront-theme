@@ -1,0 +1,207 @@
+{% doc %}
+  Gallery lightbox. Sources its images from the rendered media grid at runtime,
+  so it needs no media data of its own — the gallery block's own `zoom` setting
+  should be off when this is used.
+{% enddoc %}
+
+<script src="{{ 'pdp-lightbox.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+<pdp-lightbox class="pdp-lightbox" {{ block.shopify_attributes }}>
+  <dialog class="pdp-lightbox__dialog" data-ref="dialog" aria-label="{{ 'pdp_lightbox.label' | t }}">
+    <button type="button" class="pdp-lightbox__close" data-action="close">
+      <span class="visually-hidden">{{ 'pdp_lightbox.close' | t }}</span>
+      <span aria-hidden="true">
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </button>
+
+    <button type="button" class="pdp-lightbox__nav pdp-lightbox__nav--prev" data-step="-1">
+      <span class="visually-hidden">{{ 'pdp_lightbox.previous' | t }}</span>
+      <span aria-hidden="true">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </button>
+
+    <figure class="pdp-lightbox__figure">
+      <img class="pdp-lightbox__image" data-ref="image" alt="" width="1200" height="1200">
+    </figure>
+
+    <button type="button" class="pdp-lightbox__nav pdp-lightbox__nav--next" data-step="1">
+      <span class="visually-hidden">{{ 'pdp_lightbox.next' | t }}</span>
+      <span aria-hidden="true">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </button>
+
+    <span class="pdp-lightbox__counter" data-ref="counter" aria-hidden="true"></span>
+  </dialog>
+</pdp-lightbox>
+
+{% stylesheet %}
+  .pdp-lightbox__dialog {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .pdp-lightbox__dialog:not([open]) {
+    display: none;
+  }
+
+  /* A light scrim rather than the usual black — the page reads through it */
+  .pdp-lightbox__dialog::backdrop {
+    background-color: rgb(252 251 249 / 0.82);
+  }
+
+  .pdp-lightbox__figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Leave room either side for the arrows — a card sized off 100vw alone
+       slides straight under them. */
+    width: min(520px, calc(100vw - 10rem));
+    aspect-ratio: 1;
+    margin: 0 auto;
+    /* Vertically centred without flexing the dialog, so the fixed-position
+       controls stay measured against the viewport */
+    position: absolute;
+    inset: 50% auto auto 50%;
+    translate: -50% -50%;
+    border-radius: 16px;
+    /* Only visible while the image loads — the photo fills the card */
+    background-color: #eae7e2;
+    overflow: hidden;
+    /* Let the browser keep vertical gestures; horizontal ones drive the swipe */
+    touch-action: pan-y;
+  }
+
+  .pdp-lightbox__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pdp-lightbox__close,
+  .pdp-lightbox__nav {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+    border-radius: 50%;
+    padding: 0;
+    background-color: #fff;
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .pdp-lightbox__close:hover,
+  .pdp-lightbox__nav:hover {
+    background-color: #f2efeb;
+  }
+
+  .pdp-lightbox__close {
+    top: 24px;
+    inset-inline-end: 24px;
+  }
+
+  .pdp-lightbox__close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pdp-lightbox__nav {
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .pdp-lightbox__nav svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .pdp-lightbox__nav--prev {
+    inset-inline-start: 24px;
+  }
+
+  /* The caret asset points down; rotate rather than ship two more icons */
+  .pdp-lightbox__nav--prev svg {
+    rotate: 90deg;
+  }
+
+  .pdp-lightbox__nav--next {
+    inset-inline-end: 24px;
+  }
+
+  .pdp-lightbox__nav--next svg {
+    rotate: -90deg;
+  }
+
+  .pdp-lightbox__nav[hidden] {
+    display: none;
+  }
+
+  .pdp-lightbox__counter {
+    position: absolute;
+    bottom: 32px;
+    inset-inline: 0;
+    width: fit-content;
+    margin-inline: auto;
+    border-radius: 999px;
+    padding: 6px 16px;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .pdp-lightbox__figure {
+      width: min(360px, calc(100vw - 7rem));
+    }
+
+    .pdp-lightbox__close {
+      top: 12px;
+      inset-inline-end: 12px;
+    }
+
+    .pdp-lightbox__nav {
+      width: 38px;
+      height: 38px;
+    }
+
+    .pdp-lightbox__nav--prev {
+      inset-inline-start: 8px;
+    }
+
+    .pdp-lightbox__nav--next {
+      inset-inline-end: 8px;
+    }
+
+    .pdp-lightbox__counter {
+      bottom: 20px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.pdp_lightbox",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:names.pdp_lightbox"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,918 @@
+{% doc %}
+  One flavor's panel inside the flavor & nutrition section: a full-bleed photo
+  with the flavor story (tagline, ingredients, allergen lines) on the left and
+  an FDA-style nutrition facts card on the right.
+
+  Only the panel whose flavor matches the selected variant is visible; the
+  others render hidden and are toggled by assets/flavor-nutrition.js when the
+  shopper picks a different flavor. The shared benefit icons and certification
+  logos come from the parent section's settings so they are entered once, not
+  per flavor.
+
+  @example
+  {% content_for 'block', type: '_flavor-nutrition-panel', id: 'raspberry-lemonade' %}
+{% enddoc %}
+
+{%- liquid
+  assign product = closest.product
+
+  # Selected flavor from the variant picker, for the server-rendered state
+  assign selected_flavor = blank
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'flavor'
+      assign selected_flavor = option.selected_value
+    endif
+  endfor
+  assign selected_handle = selected_flavor | handleize
+  assign my_handle = block.settings.flavor | handleize
+
+  # Theme-shipped fruit photography, used until a photo is uploaded on the
+  # block. One asset per known flavor: assets/flavor-bg-<handle>.jpg
+  assign default_bg_flavors = 'raspberry-lemonade,watermelon,strawberry,tropical-bliss,orange-mango,lemon-lime' | split: ','
+  assign has_background = false
+  if block.settings.image
+    assign has_background = true
+  elsif default_bg_flavors contains my_handle
+    assign has_background = true
+  endif
+
+  # A block can only read its OWN settings — section.blocks siblings return
+  # nil settings inside theme blocks — so each panel can only answer "am I
+  # the selected flavor?". If no panel matches, flavor-nutrition.js unhides
+  # the first one after load.
+-%}
+
+<div
+  class="flavor-nutrition__panel{% unless has_background %} flavor-nutrition__panel--no-image{% endunless %}"
+  data-flavor="{{ block.settings.flavor }}"
+  data-flavor-handle="{{ my_handle }}"
+  {% unless my_handle == selected_handle %}
+    hidden
+  {% endunless %}
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.image -%}
+    {{
+      block.settings.image
+      | image_url: width: 2400
+      | image_tag: class: 'flavor-nutrition__bg', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', loading: 'lazy', alt: ''
+    }}
+  {%- elsif has_background -%}
+    <img
+      class="flavor-nutrition__bg"
+      src="{{ my_handle | prepend: 'flavor-bg-' | append: '.jpg' | asset_url }}"
+      alt=""
+      loading="lazy"
+      width="1800"
+      height="1200"
+    >
+  {%- endif -%}
+  <div class="flavor-nutrition__overlay"></div>
+
+  <div class="flavor-nutrition__inner">
+    <div class="flavor-nutrition__content">
+      <h2 class="flavor-nutrition__title">{{ block.settings.flavor }}</h2>
+
+      {%- if block.settings.tagline != blank -%}
+        <p class="flavor-nutrition__tagline">{{ block.settings.tagline }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.ingredients != blank -%}
+        <div class="flavor-nutrition__block">
+          <h3 class="flavor-nutrition__label">{{ 'flavor_nutrition.ingredients' | t }}</h3>
+          <p class="flavor-nutrition__text">{{ block.settings.ingredients | newline_to_br }}</p>
+        </div>
+      {%- endif -%}
+
+      {%- if block.settings.contains != blank -%}
+        <p class="flavor-nutrition__line">{{ block.settings.contains }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.free_of != blank -%}
+        <p class="flavor-nutrition__line">{{ block.settings.free_of }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.no_artificial != blank -%}
+        <p class="flavor-nutrition__line">{{ block.settings.no_artificial }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.disclaimer != blank -%}
+        <p class="flavor-nutrition__disclaimer">{{ block.settings.disclaimer }}</p>
+      {%- endif -%}
+
+      {%- capture benefits -%}
+        {%- for i in (1..6) -%}
+          {%- liquid
+            assign label_key = 'benefit_label_' | append: i
+            assign icon_key = 'benefit_icon_' | append: i
+            assign benefit_label = section.settings[label_key]
+            assign benefit_icon = section.settings[icon_key]
+          -%}
+          {%- if benefit_label != blank -%}
+            {%- liquid
+              assign symbol_key = 'benefit_symbol_' | append: i
+              assign symbol = section.settings[symbol_key] | default: 'none'
+            -%}
+            <li class="flavor-nutrition__benefit">
+              {%- if benefit_icon -%}
+                <span class="flavor-nutrition__benefit-icon">
+                  {{- benefit_icon | image_url: width: 120 | image_tag: loading: 'lazy', widths: '120', alt: '' -}}
+                </span>
+              {%- elsif symbol != 'none' -%}
+                <span class="flavor-nutrition__benefit-icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="24" cy="24" r="22" />
+                    {%- case symbol -%}
+                      {%- when 'droplet' -%}
+                        <path d="M24 12.5c4.2 5.2 7.2 8.9 7.2 12.6a7.2 7.2 0 1 1-14.4 0c0-3.7 3-7.4 7.2-12.6Z" />
+                        <path d="M20.6 27.2c1.1 1 2.3 1 3.4 0 1.1-1 2.3-1 3.4 0" />
+                      {%- when 'plant' -%}
+                        <path d="M24 33.5v-8" />
+                        <path d="M24 25.5c-4.4-.4-7-2.9-7.4-7.4 4.4.4 7 2.9 7.4 7.4Z" />
+                        <path d="M24 25.5c4.4-.4 7-2.9 7.4-7.4-4.4.4-7 2.9-7.4 7.4Z" />
+                        <path d="M17.5 33.5h13" />
+                      {%- when 'cube' -%}
+                        <path d="M24 14.5l7.5 4.2v8.6L24 31.5l-7.5-4.2v-8.6L24 14.5Zm0 0v17M16.5 18.7l7.5 4.2 7.5-4.2" />
+                        <path d="M15.5 32.5l17-17" stroke-width="1.75" />
+                      {%- when 'gut' -%}
+                        <path d="M15.5 20a4 4 0 0 1 4-4H29a3.25 3.25 0 0 1 0 6.5H19.5a3.25 3.25 0 0 0 0 6.5H29a4 4 0 0 1 4 4" />
+                      {%- when 'leaf' -%}
+                        <path d="M31.7 15.8c-8.8.5-14.4 6.1-14.9 13.7-.1 1.5.2 3 .8 4.4 7.8-1 13.5-6.9 14.1-18.1Z" />
+                        <path d="M19.2 32.4c2.6-6.8 7-10.9 12-13.6" />
+                      {%- when 'fiber' -%}
+                        <path d="M24 34V15.5" />
+                        <path d="M24 22.5c-2.9-.7-4.8-2.7-5.2-5.7 2.9.4 4.8 2.3 5.2 5.7Zm0 0c2.9-.7 4.8-2.7 5.2-5.7-2.9.4-4.8 2.3-5.2 5.7Z" />
+                        <path d="M24 29c-2.9-.7-4.8-2.7-5.2-5.7 2.9.4 4.8 2.3 5.2 5.7Zm0 0c2.9-.7 4.8-2.7 5.2-5.7-2.9.4-4.8 2.3-5.2 5.7Z" />
+                    {%- endcase -%}
+                  </svg>
+                </span>
+              {%- endif -%}
+              <span class="flavor-nutrition__benefit-label">{{ benefit_label }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if benefits contains '<li' -%}
+        <ul class="flavor-nutrition__benefits">
+          {{ benefits }}
+        </ul>
+      {%- endif -%}
+
+      {%- capture certifications -%}
+        {%- for i in (1..5) -%}
+          {%- liquid
+            assign cert_key = 'cert_image_' | append: i
+            assign size_key = 'cert_size_' | append: i
+            assign cert_image = section.settings[cert_key]
+          -%}
+          {%- if cert_image -%}
+            <li class="flavor-nutrition__certification" style="--cert-size: {{ section.settings[size_key] | default: 55 }}px;">
+              {{- cert_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '240', alt: cert_image.alt -}}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if certifications contains '<li' -%}
+        <ul class="flavor-nutrition__certifications">
+          {{ certifications }}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="nutrition-facts">
+      <h3 class="nutrition-facts__title">{{ 'flavor_nutrition.nutrition_facts' | t }}</h3>
+
+      <div class="nutrition-facts__servings">
+        {%- if block.settings.servings != blank -%}
+          <div>{{ block.settings.servings }}</div>
+        {%- endif -%}
+        {%- if block.settings.serving_size != blank -%}
+          <div class="nutrition-facts__serving-size">
+            <strong>{{ 'flavor_nutrition.serving_size' | t }}</strong>
+            <span>{{ block.settings.serving_size }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="nutrition-facts__divider nutrition-facts__divider--thick"></div>
+
+      <div class="nutrition-facts__amount-label">{{ 'flavor_nutrition.amount_per_serving' | t }}</div>
+      <div class="nutrition-facts__calories">
+        <span class="nutrition-facts__calories-label">{{ 'flavor_nutrition.calories' | t }}</span>
+        <span class="nutrition-facts__calories-value">{{ block.settings.calories }}</span>
+      </div>
+
+      <div class="nutrition-facts__divider nutrition-facts__divider--medium"></div>
+
+      <div class="nutrition-facts__dv-header">{{ 'flavor_nutrition.daily_value' | t }}</div>
+
+      {%- assign nutrition_rows = 'fat:plain,sat_fat:indent,trans_fat:indent,cholesterol:plain,sodium:plain,carbohydrate:plain,fiber:indent,soluble_fiber:indent-2,insoluble_fiber:indent-2,sugars:indent,added_sugars:indent-2,protein:plain' | split: ',' -%}
+      {%- for row in nutrition_rows -%}
+        {%- liquid
+          assign parts = row | split: ':'
+          assign amount_key = 'row_' | append: parts[0]
+          assign dv_key = amount_key | append: '_dv'
+          assign amount = block.settings[amount_key]
+        -%}
+        {%- if amount != blank -%}
+          <div class="nutrition-facts__row nutrition-facts__row--{{ parts[1] }}">
+            <span>{{ amount }}</span>
+            <span>{{ block.settings[dv_key] }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="nutrition-facts__divider nutrition-facts__divider--thick"></div>
+
+      {%- capture micros -%}
+        {%- assign micro_keys = 'vit_d,calcium,iron,potassium,vit_c,magnesium' | split: ',' -%}
+        {%- for key in micro_keys -%}
+          {%- liquid
+            assign amount_key = 'micro_' | append: key
+            assign dv_key = amount_key | append: '_dv'
+            assign amount = block.settings[amount_key]
+          -%}
+          {%- if amount != blank -%}
+            <div>
+              <span>{{ amount }}</span>
+              <span>{{ block.settings[dv_key] }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if micros contains '<div' -%}
+        <div class="nutrition-facts__micros">
+          {{ micros }}
+        </div>
+        <div class="nutrition-facts__divider nutrition-facts__divider--thin"></div>
+      {%- endif -%}
+
+      <p class="nutrition-facts__footnote">{{ 'flavor_nutrition.footnote' | t }}</p>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .flavor-nutrition__panel {
+    position: relative;
+    overflow: hidden;
+    padding: 80px var(--pdp-gutter, 40px);
+    color: #fff;
+    /* Flavor swatch (from the custom.css flavor map) shows while the photo
+       loads, or when no photo is set */
+    background-color: var(--flavor-swatch, #33302c);
+  }
+
+  .flavor-nutrition__panel[hidden] {
+    display: none;
+  }
+
+  .flavor-nutrition__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .flavor-nutrition__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.22);
+    pointer-events: none;
+  }
+
+  /* No photo uploaded yet: replace the flat scrim with a lit gradient so the
+     flavor color still reads as a designed backdrop */
+  .flavor-nutrition__panel--no-image .flavor-nutrition__overlay {
+    background:
+      radial-gradient(90% 85% at 82% 0%, rgb(255 255 255 / 0.12), transparent 55%),
+      radial-gradient(130% 100% at 0% 100%, rgb(0 0 0 / 0.5), transparent 60%),
+      rgb(0 0 0 / 0.38);
+  }
+
+  .flavor-nutrition__inner {
+    position: relative;
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Frosted glass card behind the flavor story, matching the homepage
+     comparison section's hazy panel (tint + blur next to a solid white card).
+     The photo stays sharp around it; the frost carries text legibility. */
+  .flavor-nutrition__content {
+    background-color: rgb(20 18 16 / 0.34);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 8px;
+    padding: 2rem 3rem 2.5rem;
+  }
+
+  /* Without backdrop-filter support the tint alone must do the work */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .flavor-nutrition__content {
+      background-color: rgb(0 0 0 / 0.55);
+    }
+  }
+
+  .flavor-nutrition__title {
+    margin: 0 0 12px;
+    font-family: var(--font-heading--family);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: inherit;
+  }
+
+  .flavor-nutrition__tagline {
+    margin: 0 0 32px;
+    max-width: 520px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .flavor-nutrition__block {
+    margin-block-end: 24px;
+    max-width: 560px;
+  }
+
+  .flavor-nutrition__label {
+    display: block;
+    margin: 0 0 6px;
+    font-family: var(--font-body--family);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: inherit;
+  }
+
+  .flavor-nutrition__text,
+  .flavor-nutrition__line {
+    margin: 0 0 6px;
+    max-width: 560px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .flavor-nutrition__line {
+    margin-block-end: 24px;
+  }
+
+  .flavor-nutrition__disclaimer {
+    margin: 24px 0 0;
+    max-width: 560px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .flavor-nutrition__benefits {
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .flavor-nutrition__benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    text-align: center;
+  }
+
+  .flavor-nutrition__benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-block-end: 10px;
+  }
+
+  .flavor-nutrition__benefit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .flavor-nutrition__benefit-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .flavor-nutrition__certifications {
+    list-style: none;
+    margin: 56px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .flavor-nutrition__certification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flavor-nutrition__certification img {
+    display: block;
+    height: var(--cert-size, 55px);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  /* The FDA-style facts card is intentionally always black-on-white,
+     independent of the color scheme — it reproduces the printed label. */
+  .nutrition-facts {
+    max-width: 380px;
+    padding: 18px 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .nutrition-facts__title {
+    margin: 0 0 6px;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    color: inherit;
+  }
+
+  .nutrition-facts__servings {
+    font-size: 13px;
+  }
+
+  .nutrition-facts__serving-size {
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: 2px;
+    font-weight: 700;
+  }
+
+  .nutrition-facts__divider--thick {
+    border-top: 8px solid #000;
+    margin: 6px 0;
+  }
+
+  .nutrition-facts__divider--medium {
+    border-top: 4px solid #000;
+    margin: 4px 0;
+  }
+
+  .nutrition-facts__divider--thin {
+    border-top: 1px solid #000;
+    margin: 6px 0;
+  }
+
+  .nutrition-facts__amount-label {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .nutrition-facts__calories {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-weight: 900;
+  }
+
+  .nutrition-facts__calories-label {
+    font-size: 24px;
+  }
+
+  .nutrition-facts__calories-value {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .nutrition-facts__dv-header {
+    margin-block-end: 2px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .nutrition-facts__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    border-bottom: 1px solid #000;
+    font-size: 13px;
+  }
+
+  .nutrition-facts__row--indent {
+    padding-inline-start: 14px;
+  }
+
+  .nutrition-facts__row--indent-2 {
+    padding-inline-start: 28px;
+  }
+
+  .nutrition-facts__micros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .nutrition-facts__micros > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    border-bottom: 1px solid #000;
+    font-size: 12px;
+  }
+
+  .nutrition-facts__footnote {
+    margin: 6px 0 0;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 900px) {
+    .flavor-nutrition__panel {
+      padding: 48px var(--pdp-gutter, 20px);
+    }
+
+    .flavor-nutrition__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .flavor-nutrition__content {
+      padding: 1.5rem 1.25rem 2rem;
+    }
+
+    .flavor-nutrition__benefits {
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .flavor-nutrition__benefit {
+      width: calc(33.333% - 14px);
+    }
+
+    .flavor-nutrition__certifications {
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .flavor-nutrition__certification img {
+      height: calc(var(--cert-size, 55px) * 0.85);
+    }
+
+    .nutrition-facts {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .nutrition-facts {
+      padding: 14px;
+      font-size: 12px;
+    }
+
+    .nutrition-facts__title {
+      font-size: 22px;
+    }
+
+    .nutrition-facts__servings {
+      font-size: 11px;
+    }
+
+    .nutrition-facts__calories-label {
+      font-size: 19px;
+    }
+
+    .nutrition-facts__calories-value {
+      font-size: 26px;
+    }
+
+    .nutrition-facts__amount-label,
+    .nutrition-facts__dv-header {
+      font-size: 10px;
+    }
+
+    .nutrition-facts__row {
+      font-size: 11px;
+    }
+
+    .nutrition-facts__micros > div {
+      font-size: 10px;
+    }
+
+    .nutrition-facts__footnote {
+      font-size: 9px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.flavor_nutrition_panel",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "flavor",
+      "label": "t:settings.flavor",
+      "info": "t:info.flavor_must_match_option"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "t:settings.tagline"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients",
+      "label": "t:settings.ingredients",
+      "default": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "contains",
+      "label": "t:settings.contains"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "free_of",
+      "label": "t:settings.free_of",
+      "default": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "no_artificial",
+      "label": "t:settings.no_artificial",
+      "default": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "t:settings.disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "t:content.nutrition_label"
+    },
+    {
+      "type": "text",
+      "id": "servings",
+      "label": "t:settings.servings_per_container",
+      "default": "16 servings per container"
+    },
+    {
+      "type": "text",
+      "id": "serving_size",
+      "label": "t:settings.serving_size",
+      "default": "1 stick (12g)"
+    },
+    {
+      "type": "text",
+      "id": "calories",
+      "label": "t:settings.calories",
+      "default": "35"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_fat",
+      "label": "t:settings.total_fat",
+      "default": "<strong>Total Fat</strong> 0g"
+    },
+    {
+      "type": "text",
+      "id": "row_fat_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "0%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_sat_fat",
+      "label": "t:settings.saturated_fat",
+      "default": "Saturated Fat 0g"
+    },
+    {
+      "type": "text",
+      "id": "row_sat_fat_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "0%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_trans_fat",
+      "label": "t:settings.trans_fat",
+      "default": "<em>Trans</em> Fat 0g"
+    },
+    {
+      "type": "text",
+      "id": "row_trans_fat_dv",
+      "label": "t:settings.daily_value_percent"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_cholesterol",
+      "label": "t:settings.cholesterol",
+      "default": "<strong>Cholesterol</strong> 0mg"
+    },
+    {
+      "type": "text",
+      "id": "row_cholesterol_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "0%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_sodium",
+      "label": "t:settings.sodium",
+      "default": "<strong>Sodium</strong> 140mg"
+    },
+    {
+      "type": "text",
+      "id": "row_sodium_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "6%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_carbohydrate",
+      "label": "t:settings.total_carbohydrate",
+      "default": "<strong>Total Carbohydrate</strong> 10g"
+    },
+    {
+      "type": "text",
+      "id": "row_carbohydrate_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "4%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_fiber",
+      "label": "t:settings.dietary_fiber",
+      "default": "Dietary Fiber 5g"
+    },
+    {
+      "type": "text",
+      "id": "row_fiber_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "18%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_soluble_fiber",
+      "label": "t:settings.soluble_fiber",
+      "default": "Soluble Fiber 4g"
+    },
+    {
+      "type": "text",
+      "id": "row_soluble_fiber_dv",
+      "label": "t:settings.daily_value_percent"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_insoluble_fiber",
+      "label": "t:settings.insoluble_fiber",
+      "default": "Insoluble Fiber 1g"
+    },
+    {
+      "type": "text",
+      "id": "row_insoluble_fiber_dv",
+      "label": "t:settings.daily_value_percent"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_sugars",
+      "label": "t:settings.total_sugars",
+      "default": "Total Sugars 4g"
+    },
+    {
+      "type": "text",
+      "id": "row_sugars_dv",
+      "label": "t:settings.daily_value_percent"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_added_sugars",
+      "label": "t:settings.added_sugars",
+      "default": "Includes 0g Added Sugars"
+    },
+    {
+      "type": "text",
+      "id": "row_added_sugars_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "0%"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "row_protein",
+      "label": "t:settings.protein",
+      "default": "<strong>Protein</strong> 0g"
+    },
+    {
+      "type": "text",
+      "id": "row_protein_dv",
+      "label": "t:settings.daily_value_percent"
+    },
+    {
+      "type": "text",
+      "id": "micro_vit_d",
+      "label": "t:settings.vitamin_d",
+      "default": "Vit. D 0mcg"
+    },
+    {
+      "type": "text",
+      "id": "micro_vit_d_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "0%"
+    },
+    {
+      "type": "text",
+      "id": "micro_calcium",
+      "label": "t:settings.calcium",
+      "default": "Calcium 22mg"
+    },
+    {
+      "type": "text",
+      "id": "micro_calcium_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "2%"
+    },
+    {
+      "type": "text",
+      "id": "micro_iron",
+      "label": "t:settings.iron",
+      "default": "Iron 1mg"
+    },
+    {
+      "type": "text",
+      "id": "micro_iron_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "6%"
+    },
+    {
+      "type": "text",
+      "id": "micro_potassium",
+      "label": "t:settings.potassium",
+      "default": "Potas. 352mg"
+    },
+    {
+      "type": "text",
+      "id": "micro_potassium_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "8%"
+    },
+    {
+      "type": "text",
+      "id": "micro_vit_c",
+      "label": "t:settings.vitamin_c",
+      "default": "Vit. C 73mg"
+    },
+    {
+      "type": "text",
+      "id": "micro_vit_c_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "80%"
+    },
+    {
+      "type": "text",
+      "id": "micro_magnesium",
+      "label": "t:settings.magnesium",
+      "default": "Magnesium 19mg"
+    },
+    {
+      "type": "text",
+      "id": "micro_magnesium_dv",
+      "label": "t:settings.daily_value_percent",
+      "default": "4%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.flavor_nutrition_panel"
+    }
+  ]
+}
+{% endschema %}

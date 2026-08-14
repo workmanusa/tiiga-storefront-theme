@@ -1,4 +1,13 @@
 {
+  "flavor_nutrition": {
+    "nutrition_facts": "Nutrition Facts",
+    "serving_size": "Serving size",
+    "amount_per_serving": "Amount per serving",
+    "calories": "Calories",
+    "daily_value": "% Daily Value*",
+    "ingredients": "Ingredients",
+    "footnote": "* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice."
+  },
   "blocks": {
     "load_video": "Načítať video: {{ description }}",
     "sold_out": "Vypredané",
@@ -126,6 +135,8 @@
     "back_to_main_menu": "Späť do hlavnej ponuky"
   },
   "content": {
+    "min_read": "{{ minutes }} min read",
+    "all_articles": "All articles",
     "reviews": "recenz.",
     "no_results_found": "Nenašli sa žiadne výsledky",
     "language": "Jazyk",
@@ -359,15 +370,45 @@
       "sticky_add_to_cart": "Panel rýchleho pridania do košíka"
     }
   },
+  "pdp_lightbox": {
+    "label": "Product image viewer",
+    "close": "Close",
+    "previous": "Previous image",
+    "next": "Next image"
+  },
+  "flavor_bundle": {
+    "one_flavor": "One flavor",
+    "one_flavor_sub": "Choose 1 flavor",
+    "bundle": "Bundle",
+    "bundle_sub": "Mix up to {{ count }} flavors",
+    "build_title": "Build your bundle",
+    "build_hint": "Choose up to {{ count }} flavors — mix and match for variety",
+    "add_flavor": "Add flavor",
+    "remove": "remove",
+    "choose_flavors": "Choose your flavors",
+    "tier_off": "{{ percent }}% off",
+    "status_tier": "Saving [percent]% — add [remaining] more for [next]% off",
+    "status_max": "You're saving [percent]% — max discount unlocked!",
+    "status_min": "Choose at least {{ count }} flavors to add to cart",
+    "status_ready": "Ready to add to cart"
+  },
   "purchase_options": {
-    "subscribe_save": "Subscribe & save",
-    "one_time_purchase": "One-time purchase",
-    "deliver_every": "Deliver every",
-    "cancel_anytime": "cancel anytime",
+    "subscribe": "Subscribe",
+    "one_time": "One time",
     "delivery_frequency": "Delivery frequency",
-    "percent_off": "{{ percent }}% off"
+    "save_percent": "Save {{ percent }}%"
   },
   "reviews": {
+    "on_product": "On {{ product }}",
+    "count_label": "{{ count }} reviews",
+    "show_more": "Show more reviews",
+    "stars_label": "{{ rating }} out of 5 stars",
+    "based_on": "Based on {{ count }} reviews",
+    "open_review": "See review by {{ author }}",
+    "review_by": "Review by {{ author }}",
+    "close": "Close",
+    "previous_image": "Previous image",
+    "next_image": "Next image",
     "five_stars": "5 out of 5 stars",
     "verified_buyer": "Verified buyer"
   }

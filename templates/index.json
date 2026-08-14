@@ -488,7 +488,7 @@
         "label_1": "Hydration Packs",
         "label_2": "Hydration Tubs",
         "label_3": "",
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 48,
         "padding-block-end": 0
       }
@@ -729,7 +729,7 @@
         "equal_columns": true,
         "limit_details_width": false,
         "gap": 48,
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 24,
         "padding-block-end": 72
       }
@@ -970,7 +970,7 @@
         "equal_columns": true,
         "limit_details_width": false,
         "gap": 48,
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 24,
         "padding-block-end": 72
       }
@@ -1093,7 +1093,7 @@
         "text": "<p>Tiiga is based on baobab, a superfruit that’s been used for gut health across Africa for thousands of years. If you need any proof it works, it’s survived generations of real-world use before science ever studied it. We use that same fruit, with real ingredients backing it. All packaged and brought to you in a thirst quenching and flavorful formula.</p>",
         "link_label": "More on the science",
         "link": "/pages/science",
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 64,
         "padding-block-end": 80
       }
@@ -1216,7 +1216,7 @@
         "text": "<p>Real baobab fruit and organic coconut water deliver prebiotic fiber and electrolytes in one stick — supporting healthy digestion and true hydration at the same time.</p>",
         "footnote": "",
         "value_color": "#1d5a6b",
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 80,
         "padding-block-end": 80
       }
@@ -1295,7 +1295,7 @@
         "link_label": "Meet the board",
         "link": "/pages/advisors",
         "eyebrow": "Medical advisors across",
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 88,
         "padding-block-end": 88
       }
@@ -1447,7 +1447,7 @@
         "subtext": "Verified customer reviews",
         "link_label": "Read More Reviews",
         "link": "/collections/all",
-        "background_color": "#efece7",
+        "background_color": "#f6f4f0",
         "padding-block-start": 88,
         "padding-block-end": 88
       }

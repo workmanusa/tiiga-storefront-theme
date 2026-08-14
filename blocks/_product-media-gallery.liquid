@@ -1,10 +1,19 @@
+{% doc %}
+  Product media gallery.
+
+  @param {string} [media_extras] - Captured HTML inserted into the grid after the first media item
+  @param {string} [media_overlay] - Captured HTML layered inside the first media item
+{% enddoc %}
+
 {% render 'product-media-gallery-content',
   media_presentation: block.settings.media_presentation,
   block_settings: block.settings,
   block_id: block.id,
   block_shopify_attributes: block.shopify_attributes,
   block: block,
-  section: section
+  section: section,
+  media_extras: media_extras,
+  media_overlay: media_overlay
 %}
 
 {% schema %}

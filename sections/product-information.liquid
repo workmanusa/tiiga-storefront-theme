@@ -2,11 +2,34 @@
   {{ closest.product | structured_data }}
 </script>
 
+{% # Benefit tiles render inside the gallery grid, directly under the lead image %}
+{% capture media_extras %}
+  {%- content_for 'block',
+    type: '_pdp-benefits',
+    id: 'pdp-benefits',
+    closest.product: closest.product
+  -%}
+{% endcapture %}
+
+{% comment %}
+  Media badge parked for now (Ian, 2026-08-14) — restore by re-adding the
+  content_for call below and the template's pdp-media-badge entry.
+
+  {%- content_for 'block',
+    type: '_pdp-media-badge',
+    id: 'pdp-media-badge',
+    closest.product: closest.product
+  -%}
+{% endcomment %}
+{% capture media_overlay %}{% endcapture %}
+
 {% capture media_gallery %}
   {%- content_for 'block',
     type: '_product-media-gallery',
     id: 'media-gallery',
-    closest.product: closest.product
+    closest.product: closest.product,
+    media_extras: media_extras,
+    media_overlay: media_overlay
   -%}
 {% endcapture %}
 
@@ -90,33 +113,29 @@
         data-singleton="{{ product.has_only_default_variant }}"
         data-single-option="{{ has_single_option }}"
       >
+        {% # The variant name is the headline (the full product title is too long for the bar), price stacked beneath %}
         <p
           class="sticky-add-to-cart__title"
           data-testid="sticky-product-title"
         >
-          {{ product.title | escape }}
+          {% if product.has_only_default_variant or current_variant == blank %}
+            {{ product.title | escape }}
+          {% else %}
+            {{ current_variant.title | escape }}
+          {% endif %}
         </p>
+        {% # Kept hidden for the unavailable-variant path in sticky-add-to-cart.js, which writes the selected options here %}
         <div
           class="sticky-add-to-cart__variant"
           data-testid="sticky-variant-title"
-          {% if product.has_only_default_variant %}
-            style="display: none;"
-          {% endif %}
+          style="display: none;"
+        ></div>
+        <div
+          class="sticky-add-to-cart__price"
+          data-testid="sticky-price-display"
         >
-          {% unless product.has_only_default_variant %}
-            {% if current_variant != blank %}
-              {% assign variant_title = current_variant.title | escape %}
-            {% endif %}
-            {{ variant_title }}
-          {% endunless %}
+          {% render 'price', product_resource: product, show_sale_price_first: true %}
         </div>
-      </div>
-
-      <div
-        class="sticky-add-to-cart__price"
-        data-testid="sticky-price-display"
-      >
-        {% render 'price', product_resource: product, show_sale_price_first: true %}
       </div>
 
       <button
@@ -171,6 +190,9 @@
 
   {% render 'add-to-cart-button-styles' %}
 {% endif %}
+
+{% # Replaces Horizon's drag-zoom viewer; the gallery's own `zoom` is off %}
+{% content_for 'block', type: '_pdp-lightbox', id: 'pdp-lightbox', closest.product: closest.product %}
 
 {% render 'product-information-content',
   product: closest.product,

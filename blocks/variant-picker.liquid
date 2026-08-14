@@ -41,6 +41,26 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "show_variant_thumbnails",
+      "label": "t:settings.show_variant_thumbnails",
+      "default": false,
+      "visible_if": "{{ block.settings.variant_style == 'buttons' }}"
+    },
+    {
+      "type": "product_list",
+      "id": "flavor_link_products",
+      "label": "t:settings.flavor_link_products",
+      "limit": 4,
+      "info": "t:info.flavor_link_products"
+    },
+    {
+      "type": "text",
+      "id": "flavor_link_heading",
+      "label": "t:settings.flavor_link_heading",
+      "info": "t:info.flavor_link_heading"
+    },
+    {
       "type": "header",
       "content": "t:content.appearance"
     },
