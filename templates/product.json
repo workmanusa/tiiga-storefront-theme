@@ -12,27 +12,17 @@
     "main": {
       "type": "product-information",
       "blocks": {
-        "media-gallery": {
-          "type": "_product-media-gallery",
-          "static": true,
+        "disclosures": {
+          "type": "disclosures",
           "settings": {
-            "media_presentation": "grid",
-            "media_columns": "two",
-            "image_gap": 12,
-            "large_first_image": true,
-            "icons_style": "arrow",
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
-            "aspect_ratio": "1",
-            "constrain_to_viewport": false,
-            "media_fit": "contain",
-            "media_radius": 20,
-            "extend_media": false,
-            "zoom": false,
-            "video_loop": false,
-            "hide_variants": true,
+            "heading": "Disclosures",
+            "heading_preset": "h4",
+            "open_by_default": false,
+            "icon": "caret",
+            "disclosure_heading_preset": "h5",
+            "text_color": "",
+            "dividers": true,
+            "divider_color": "",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -50,12 +40,37 @@
             "text_2": "Zero artificial sweeteners",
             "title_3": "Gut friendly",
             "text_3": "Prebiotic baobab fiber"
-          }
+          },
+          "blocks": {}
         },
-        "pdp-lightbox": {
-          "type": "_pdp-lightbox",
+        "media-gallery": {
+          "type": "_product-media-gallery",
           "static": true,
-          "settings": {}
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 12,
+            "large_first_image": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "1",
+            "constrain_to_viewport": false,
+            "media_fit": "contain",
+            "media_radius": 20,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "product-details": {
           "type": "_product-details",
@@ -70,11 +85,13 @@
             "gap": 0,
             "sticky_details_desktop": true,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -82,78 +99,19 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "show_variant_thumbnails": true,
-                "flavor_link_products": [
-                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
-                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
-                ],
-                "flavor_link_heading": "Variety packs"
-              },
-              "blocks": {}
-            },
-            "buy_buttons_eYQEYi": {
-              "type": "buy-buttons",
-              "settings": {
-                "stacking": false,
-                "show_pickup_availability": false,
-                "gift_card_form": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
-            },
-            "purchase_options": {
-              "type": "_purchase-options",
-              "settings": {
-                "heading": "Purchase options"
-              }
-            },
             "pdp_header": {
               "type": "_pdp-header",
               "settings": {
-                "eyebrow": "Hydration",
+                "eyebrow": "Hydration + Gut Health",
                 "show_rating": true,
                 "rating": "4.8",
                 "review_count": "67 reviews",
                 "eligibility": "",
                 "eligibility_link_label": "Learn more",
                 "eligibility_link": "/pages/hsa-fsa",
-                "description": "<p>Water, but better. A science-backed blend of electrolytes, coconut water, prebiotic baobab fiber, and real fruit, made for daily hydration.</p>"
-              }
+                "description": "<p>Gut health, but easy. A while-fruit blend of baobab and electrolytes, and for everyday balance</p>"
+              },
+              "blocks": {}
             },
             "size_selector": {
               "type": "_pdp-size-selector",
@@ -165,7 +123,8 @@
                 "product_2": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub",
                 "title_2": "30 Serving",
                 "text_2": "Tub"
-              }
+              },
+              "blocks": {}
             },
             "flavor_bundle": {
               "type": "_flavor-bundle",
@@ -180,7 +139,103 @@
                   "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
                 ],
                 "flavor_link_heading": "Variety packs"
-              }
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "show_variant_thumbnails": true,
+                "flavor_link_products": [
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                  "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties"
+                ],
+                "flavor_link_heading": "Variety packs",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": "Purchase options"
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
             }
           },
           "block_order": [
@@ -192,12 +247,10 @@
             "buy_buttons_eYQEYi"
           ]
         },
-        "disclosures": {
-          "type": "disclosures",
-          "settings": {
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
+        "pdp-lightbox": {
+          "type": "_pdp-lightbox",
+          "static": true,
+          "settings": {},
           "blocks": {}
         }
       },
@@ -210,6 +263,8 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "",
         "padding-block-start": 32,
         "padding-block-end": 32
       }
@@ -221,43 +276,313 @@
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Raspberry Lemonade",
-            "tagline": "Sweet-tart raspberries squeezed into sunny lemonade — bright, jammy, and endlessly sippable."
-          }
+            "tagline": "Sweet-tart raspberries squeezed into sunny lemonade — bright, jammy, and endlessly sippable.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         },
         "panel_watermelon": {
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Watermelon",
-            "tagline": "Summer in a glass — crisp, juicy watermelon with a clean, thirst-quenching finish."
-          }
+            "tagline": "Summer in a glass — crisp, juicy watermelon with a clean, thirst-quenching finish.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         },
         "panel_strawberry": {
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Strawberry",
-            "tagline": "Ripe, sun-warmed strawberries — soft, sweet, and picked at peak season."
-          }
+            "tagline": "Ripe, sun-warmed strawberries — soft, sweet, and picked at peak season.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         },
         "panel_tropical_bliss": {
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Tropical Bliss",
-            "tagline": "A beach-day blend of tropical fruit — one sip and you're on island time."
-          }
+            "tagline": "A beach-day blend of tropical fruit — one sip and you're on island time.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         },
         "panel_orange_mango": {
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Orange Mango",
-            "tagline": "Golden mango wrapped in fresh-squeezed orange — smooth, sunny, and citrus-bright."
-          }
+            "tagline": "Golden mango wrapped in fresh-squeezed orange — smooth, sunny, and citrus-bright.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         },
         "panel_lemon_lime": {
           "type": "_flavor-nutrition-panel",
           "settings": {
             "flavor": "Lemon Lime",
-            "tagline": "The classic twist — zesty lemon and cool lime with a clean, refreshing finish."
-          }
+            "tagline": "The classic twist — zesty lemon and cool lime with a clean, refreshing finish.",
+            "ingredients": "Organic Baobab Fruit Powder, Coconut Water Powder, Sodium Citrate, Citric Acid, Natural Flavor, D‐Ribose Powder, Potassium Chloride, Stevia Extract, Ascorbic Acid (Vitamin C), Magnesium Citrate.",
+            "contains": "",
+            "free_of": "<strong>Free of:</strong> Added Sugar, Soy, Dairy, Gluten & Caffeine.",
+            "no_artificial": "<strong>No artificial:</strong> Colors, Flavors & Sweeteners.",
+            "disclaimer": "",
+            "servings": "16 servings per container",
+            "serving_size": "1 stick (12g)",
+            "calories": "35",
+            "row_fat": "<strong>Total Fat</strong> 0g",
+            "row_fat_dv": "0%",
+            "row_sat_fat": "Saturated Fat 0g",
+            "row_sat_fat_dv": "0%",
+            "row_trans_fat": "<em>Trans</em> Fat 0g",
+            "row_trans_fat_dv": "",
+            "row_cholesterol": "<strong>Cholesterol</strong> 0mg",
+            "row_cholesterol_dv": "0%",
+            "row_sodium": "<strong>Sodium</strong> 140mg",
+            "row_sodium_dv": "6%",
+            "row_carbohydrate": "<strong>Total Carbohydrate</strong> 10g",
+            "row_carbohydrate_dv": "4%",
+            "row_fiber": "Dietary Fiber 5g",
+            "row_fiber_dv": "18%",
+            "row_soluble_fiber": "Soluble Fiber 4g",
+            "row_soluble_fiber_dv": "",
+            "row_insoluble_fiber": "Insoluble Fiber 1g",
+            "row_insoluble_fiber_dv": "",
+            "row_sugars": "Total Sugars 4g",
+            "row_sugars_dv": "",
+            "row_added_sugars": "Includes 0g Added Sugars",
+            "row_added_sugars_dv": "0%",
+            "row_protein": "<strong>Protein</strong> 0g",
+            "row_protein_dv": "",
+            "micro_vit_d": "Vit. D 0mcg",
+            "micro_vit_d_dv": "0%",
+            "micro_calcium": "Calcium 22mg",
+            "micro_calcium_dv": "2%",
+            "micro_iron": "Iron 1mg",
+            "micro_iron_dv": "6%",
+            "micro_potassium": "Potas. 352mg",
+            "micro_potassium_dv": "8%",
+            "micro_vit_c": "Vit. C 73mg",
+            "micro_vit_c_dv": "80%",
+            "micro_magnesium": "Magnesium 19mg",
+            "micro_magnesium_dv": "4%"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -269,16 +594,23 @@
         "panel_lemon_lime"
       ],
       "settings": {
+        "benefit_symbol_1": "droplet",
         "benefit_label_1": "Advanced hydration",
-        "benefit_label_2": "No added sugar",
         "benefit_symbol_2": "cube",
-        "benefit_label_3": "Gut friendly",
+        "benefit_label_2": "No added sugar",
         "benefit_symbol_3": "gut",
-        "benefit_label_4": "Vegan formula",
+        "benefit_label_3": "Gut friendly",
         "benefit_symbol_4": "leaf",
-        "benefit_label_5": "Prebiotic fiber",
+        "benefit_label_4": "Vegan formula",
         "benefit_symbol_5": "fiber",
-        "benefit_label_6": ""
+        "benefit_label_5": "Prebiotic fiber",
+        "benefit_symbol_6": "fiber",
+        "benefit_label_6": "",
+        "cert_size_1": 55,
+        "cert_size_2": 55,
+        "cert_size_3": 60,
+        "cert_size_4": 50,
+        "cert_size_5": 80
       }
     },
     "proven_to_hydrate": {
@@ -289,14 +621,16 @@
           "settings": {
             "title": "Balanced electrolytes + glucose",
             "text": "The right ratio activates your body's sodium–glucose co-transport system, helping water absorb faster and more efficiently."
-          }
+          },
+          "blocks": {}
         },
         "point_2": {
           "type": "_hydration-point",
           "settings": {
             "title": "Prebiotic baobab fiber",
             "text": "Baobab brings prebiotic fiber and naturally occurring vitamin C, so you support your gut while you hydrate."
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -378,43 +712,73 @@
       "blocks": {
         "item_added_sugar": {
           "type": "_not-inside-item",
-          "settings": { "label": "Added sugar" }
+          "settings": {
+            "label": "Added sugar"
+          },
+          "blocks": {}
         },
         "item_dairy": {
           "type": "_not-inside-item",
-          "settings": { "label": "Dairy" }
+          "settings": {
+            "label": "Dairy"
+          },
+          "blocks": {}
         },
         "item_artificial_sweeteners": {
           "type": "_not-inside-item",
-          "settings": { "label": "Artificial sweeteners" }
+          "settings": {
+            "label": "Artificial sweeteners"
+          },
+          "blocks": {}
         },
         "item_gluten": {
           "type": "_not-inside-item",
-          "settings": { "label": "Gluten" }
+          "settings": {
+            "label": "Gluten"
+          },
+          "blocks": {}
         },
         "item_artificial_colors": {
           "type": "_not-inside-item",
-          "settings": { "label": "Artificial colors" }
+          "settings": {
+            "label": "Artificial colors"
+          },
+          "blocks": {}
         },
         "item_soy": {
           "type": "_not-inside-item",
-          "settings": { "label": "Soy" }
+          "settings": {
+            "label": "Soy"
+          },
+          "blocks": {}
         },
         "item_artificial_flavors": {
           "type": "_not-inside-item",
-          "settings": { "label": "Artificial flavors" }
+          "settings": {
+            "label": "Artificial flavors"
+          },
+          "blocks": {}
         },
         "item_sugar_alcohols": {
           "type": "_not-inside-item",
-          "settings": { "label": "Sugar alcohols" }
+          "settings": {
+            "label": "Sugar alcohols"
+          },
+          "blocks": {}
         },
         "item_artificial_dyes": {
           "type": "_not-inside-item",
-          "settings": { "label": "Artificial dyes" }
+          "settings": {
+            "label": "Artificial dyes"
+          },
+          "blocks": {}
         },
         "item_nuts": {
           "type": "_not-inside-item",
-          "settings": { "label": "Peanuts & tree nuts" }
+          "settings": {
+            "label": "Peanuts & tree nuts"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -498,9 +862,10 @@
         "combine_reviews": true,
         "rating": "4.8",
         "review_count": "67",
-        "visible_reviews": 3,
         "media_heading": "Reviews with media",
         "button_label": "Write a review",
+        "button_link": "",
+        "visible_reviews": 3,
         "stars_5": 55,
         "stars_4": 8,
         "stars_3": 2,
