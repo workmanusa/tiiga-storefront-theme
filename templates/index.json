@@ -16,6 +16,7 @@
           "type": "_split-slide",
           "settings": {
             "media_type": "image",
+            "video": "shopify://files/videos/Pouring Video (1).mp4",
             "media_position": "end",
             "horizontal_alignment": "flex-start",
             "gap": 24,
