@@ -1072,10 +1072,10 @@
         "row_3": {
           "type": "_science-row",
           "settings": {
-            "symbol": "Polyphenols",
-            "name": "Antioxidaant Compounds",
+            "symbol": "C6H12O6",
+            "name": "Glucose",
             "value": "",
-            "description": "Neutralize oxidative stress and support the gut lining."
+            "description": "Activates the sodium-glucose co-transport mechanism for rapid uptake"
           },
           "blocks": {}
         }
