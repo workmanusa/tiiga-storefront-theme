@@ -1232,6 +1232,7 @@
       "settings": {
         "quote": "<p>\"The electrolyte powder that finally makes hydration gut-friendly — no added sugar, all real fruit.\"</p>",
         "attribution": "— Verified Tiiga customer",
+        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
         "overlay_color": "#00000073",
         "text_color": "#ffffff",
         "padding-block-start": 112,
