@@ -41,6 +41,7 @@
 
 <div class="section-background color-custom-{{ section.id }}"></div>
 <product-reviews
+  id="product-reviews"
   class="product-reviews spacing-style section section--full-width color-custom-{{ section.id }}"
   style="{% render 'spacing-padding', settings: section.settings %}"
   {% if klaviyo_enabled %}
@@ -438,6 +439,9 @@
   .product-reviews {
     display: block;
     grid-column: 1 / -1;
+    /* Anchor target for the PDP header's rating link — land clear of the
+       sticky header (body's --header-height, kept live by header.js). */
+    scroll-margin-block-start: calc(var(--header-height, 60px) + 12px);
 
     /* Same inset formula as the ingredient cards section, so all the PDP
        storytelling sections' content edges line up at every viewport width */
