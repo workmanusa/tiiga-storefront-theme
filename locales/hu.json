@@ -94,7 +94,8 @@
     "price_filter_high": "Ár szerint csökkenő",
     "view_disclosure_information_for_product": "Tájékoztató adatok megtekintése a következőhöz: {{ product_title }}",
     "show_submenu": "{{ title }} almenü megjelenítése",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Hozzáadás a kosárhoz",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "Vissza a főmenübe"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "összegzés",
@@ -297,7 +299,10 @@
     },
     "item_count_cutoff": "Több mint {{ count }} tétel",
     "quick_order_list": "Gyorsrendelési lista",
-    "product_disclosures": "Terméktájékoztatók"
+    "product_disclosures": "Terméktájékoztatók",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

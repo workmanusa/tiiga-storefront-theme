@@ -94,7 +94,8 @@
     "price_filter_high": "高価格",
     "view_disclosure_information_for_product": "{{ product_title }} の開示情報を表示",
     "show_submenu": "{{ title }} のサブメニューを表示",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "カートに追加",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "メインメニューに戻る"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "レビュー",
@@ -297,7 +299,10 @@
       "other": "{{ count }}個のアイテムがカートに追加されました"
     },
     "quick_order_list": "クイック注文リスト",
-    "product_disclosures": "商品の開示情報"
+    "product_disclosures": "商品の開示情報",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

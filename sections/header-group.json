@@ -75,7 +75,7 @@
               "type": "_nav-link",
               "settings": {
                 "label": "Subscribe",
-                "link": "/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+                "link": "/pages/subscribe",
                 "pill": false
               },
               "blocks": {}
@@ -142,8 +142,8 @@
         "divider_width": 0,
         "divider_size": "page-width",
         "divider_color": "",
-        "border_width": 0,
-        "bottom_border_color": "",
+        "border_width": 1,
+        "bottom_border_color": "#e7e3db",
         "actions_display_style": "icon",
         "actions_font_size": "0.875rem",
         "actions_font": "body",

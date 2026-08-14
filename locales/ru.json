@@ -96,7 +96,8 @@
     "price_filter_high": "Высокая цена",
     "view_disclosure_information_for_product": "Просмотреть дополнительную информацию о товаре {{ product_title }}",
     "show_submenu": "Показать подменю {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Добавить в корзину",
@@ -144,6 +145,7 @@
     "back_to_main_menu": "Назад в главное меню"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "отз.",
@@ -309,7 +311,10 @@
     "item_count_cutoff": "Более {{ count }} товаров",
     "price_range": "Ценовой диапазон",
     "quick_order_list": "Список быстрых заказов",
-    "product_disclosures": "Дополнительная информация о товаре"
+    "product_disclosures": "Дополнительная информация о товаре",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -402,6 +407,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

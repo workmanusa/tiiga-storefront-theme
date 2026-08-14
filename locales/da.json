@@ -94,7 +94,8 @@
     "price_filter_high": "Høj pris",
     "view_disclosure_information_for_product": "Se deklarationsoplysninger for {{ product_title }}",
     "show_submenu": "Vis undermenu for {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Læg i indkøbskurven",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "Tilbage til hovedmenu"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "anmeldelser",
@@ -297,7 +299,10 @@
     },
     "item_count_cutoff": "Mere end {{ count }} varer",
     "quick_order_list": "Hurtig ordreliste",
-    "product_disclosures": "Produktdeklarationer"
+    "product_disclosures": "Produktdeklarationer",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

@@ -1405,7 +1405,7 @@
           "type": "_review-photo",
           "settings": {
             "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
-            "handle": "@drinktiiga"
+            "handle": ""
           },
           "blocks": {}
         },
@@ -1424,7 +1424,7 @@
           "type": "_review-photo",
           "settings": {
             "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
-            "handle": "@drinktiiga"
+            "handle": ""
           },
           "blocks": {}
         },
@@ -1443,7 +1443,7 @@
           "type": "_review-photo",
           "settings": {
             "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
-            "handle": "@drinktiiga"
+            "handle": ""
           },
           "blocks": {}
         },

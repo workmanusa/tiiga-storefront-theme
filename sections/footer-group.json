@@ -2,7 +2,7 @@
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
- * This file may be updated by the Shopify admin theme editor
+ * This file may be updated by the Shopify admin language editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
@@ -11,144 +11,28 @@
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
-    "social_banner": {
-      "type": "section",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Let's get social.</p>",
-            "type_preset": "h2"
-          }
-        },
-        "follow": {
-          "type": "button",
-          "settings": {
-            "label": "follow us @drinktiiga",
-            "link": "https://www.instagram.com",
-            "open_in_new_tab": true,
-            "style_class": "button-custom",
-            "custom_button_background": "#ffffff",
-            "custom_button_text": "#1d5a6b"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "follow"
-      ],
+    "tiiga_footer": {
+      "type": "tiiga-footer",
       "settings": {
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 20,
-        "section_width": "page-width",
+        "eyebrow": "From the Tree of Life",
+        "heading": "Hydration, rooted in your gut.",
+        "text": "Baobab superfruit, coconut water, and electrolytes — join the list for launches, recipes, and subscriber-only offers.",
+        "show_newsletter": true,
+        "shop_heading": "Shop",
+        "shop_collection": "gut-health-hydration",
+        "shop_all_label": "Shop all",
+        "learn_heading": "Learn",
+        "menu_2": "footer",
+        "social_heading": "Follow",
+        "instagram": "https://www.instagram.com/drinktiiga",
+        "tiktok": "https://www.tiktok.com/@drinktiiga",
+        "facebook": "https://www.facebook.com/drinktiiga",
         "background_color": "#1d5a6b",
-        "padding-block-start": 56,
-        "padding-block-end": 56,
-        "padding-inline-start": 48,
-        "padding-inline-end": 48
-      }
-    },
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "logo_block": {
-          "type": "logo",
-          "settings": {
-            "unit": "pixel",
-            "pixel_height": 40,
-            "text_color": "#ffffff"
-          }
-        },
-        "menu_shop": {
-          "type": "menu",
-          "settings": {
-            "menu": "main-menu",
-            "heading": "Shop",
-            "heading_preset": "paragraph"
-          }
-        },
-        "menu_learn": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer",
-            "heading": "Learn",
-            "heading_preset": "paragraph"
-          }
-        },
-        "social": {
-          "type": "social-links",
-          "settings": {
-            "instagram_url": "https://www.instagram.com",
-            "facebook_url": "https://www.facebook.com",
-            "tiktok_url": "https://www.tiktok.com"
-          }
-        }
-      },
-      "block_order": [
-        "logo_block",
-        "menu_shop",
-        "menu_learn",
-        "social"
-      ],
-      "name": "t:names.footer",
-      "settings": {
-        "section_width": "page-width",
-        "gap": 40,
-        "background_color": "#4a4139",
-        "padding-block-start": 64,
-        "padding-block-end": 48
-      }
-    },
-    "utilities": {
-      "type": "footer-utilities",
-      "blocks": {
-        "copyright": {
-          "type": "footer-copyright",
-          "settings": {
-            "show_powered_by": true,
-            "font_size": "0.75rem",
-            "case": "none"
-          }
-        },
-        "policy_list": {
-          "type": "footer-policy-list",
-          "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
-          }
-        },
-        "social_icons": {
-          "type": "social-links",
-          "settings": {
-            "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
-            "youtube_url": "https://www.youtube.com",
-            "tiktok_url": "https://www.tiktok.com",
-            "twitter_url": "https://www.twitter.com"
-          }
-        }
-      },
-      "block_order": [
-        "copyright",
-        "policy_list",
-        "social_icons"
-      ],
-      "settings": {
-        "section_width": "page-width",
-        "gap": 24,
-        "background_color": "#4a4139",
-        "divider_thickness": 1,
-        "padding-block-start": 12,
-        "padding-block-end": 16
+        "text_color": "#efece7"
       }
     }
   },
   "order": [
-    "social_banner",
-    "footer",
-    "utilities"
+    "tiiga_footer"
   ]
 }

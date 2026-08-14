@@ -1,0 +1,392 @@
+<script
+  src="{{ 'shop-collections.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+
+  assign featured_collections = section.settings.collection_list
+%}
+
+{% render 'measure-header-heights' %}
+
+<shop-collections
+  class="shop-collections section section--full-width"
+  style="--shop-card-background: {{ section.settings.card_background | default: '#f8f2ee' }};"
+>
+  <header
+    class="
+      shop-collections__hero
+      {% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}
+      {% if section.settings.hero_image %} shop-collections__hero--has-image{% endif %}
+    "
+  >
+    {% if section.settings.hero_image %}
+      {{
+        section.settings.hero_image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'shop-collections__hero-media',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2000, 3000',
+          loading: 'eager',
+          fetchpriority: 'high'
+      }}
+    {% endif %}
+    <div class="shop-collections__hero-content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="shop-collections__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h1 class="shop-collections__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="shop-collections__nav-bar">
+    <nav
+      class="shop-collections__nav"
+      aria-label="{{ 'content.shop_by' | t }}"
+    >
+      <span class="shop-collections__nav-label">{{ 'content.shop_by' | t }}</span>
+      <ul class="shop-collections__nav-list">
+        {% for collection in featured_collections %}
+          {% if collection.products_count == 0 %}{% continue %}{% endif %}
+          <li>
+            <a
+              class="shop-collections__nav-link"
+              href="#shop-{{ collection.handle }}"
+              ref="navLinks[]"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+              on:click="/handleNavClick"
+            >
+              {{- collection.title -}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if section.settings.show_search %}
+        <form
+          action="{{ routes.search_url }}"
+          method="get"
+          role="search"
+          class="shop-collections__search"
+        >
+          <span class="shop-collections__search-icon">
+            {{- 'icon-search.svg' | inline_asset_content -}}
+          </span>
+          <input
+            class="shop-collections__search-input"
+            type="search"
+            name="q"
+            placeholder="{{ 'content.search_products' | t }}"
+            aria-label="{{ 'content.search_input_label' | t }}"
+          >
+        </form>
+      {% endif %}
+    </nav>
+  </div>
+
+  <div class="shop-collections__rows">
+    {% for collection in featured_collections %}
+      {% if collection.products_count == 0 %}{% continue %}{% endif %}
+      <section
+        id="shop-{{ collection.handle }}"
+        class="shop-collections__row"
+        ref="rows[]"
+        aria-labelledby="shop-title-{{ collection.handle }}"
+      >
+        <h2
+          id="shop-title-{{ collection.handle }}"
+          class="shop-collections__row-title"
+        >
+          {{ collection.title }}
+        </h2>
+        <div class="shop-collections__rail">
+          {% for product in collection.products limit: section.settings.max_products %}
+            {% render 'shop-product-card', product: product %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+
+    {% if featured_collections == blank %}
+      {% # Blank state for a freshly added section: show the first few store collections so the editor preview is not empty. %}
+      {% for collection in collections limit: 4 %}
+        {% if collection.products_count == 0 %}{% continue %}{% endif %}
+        <section
+          id="shop-{{ collection.handle }}"
+          class="shop-collections__row"
+          ref="rows[]"
+          aria-labelledby="shop-title-{{ collection.handle }}"
+        >
+          <h2
+            id="shop-title-{{ collection.handle }}"
+            class="shop-collections__row-title"
+          >
+            {{ collection.title }}
+          </h2>
+          <div class="shop-collections__rail">
+            {% for product in collection.products limit: section.settings.max_products %}
+              {% render 'shop-product-card', product: product %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    {% endif %}
+  </div>
+</shop-collections>
+
+{% stylesheet %}
+  .shop-collections {
+    display: block;
+  }
+
+  /* Hero banner */
+  .shop-collections__hero {
+    position: relative;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    min-height: clamp(11.25rem, 24vw, 18.75rem);
+  }
+
+  .shop-collections__hero-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shop-collections__hero-content {
+    position: relative;
+    padding-block: var(--padding-2xl);
+    padding-inline: var(--util-page-margin-offset);
+  }
+
+  .shop-collections__hero--has-image .shop-collections__hero-content {
+    color: var(--color-white);
+  }
+
+  .shop-collections__eyebrow {
+    margin: 0 0 var(--margin-xs);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .shop-collections__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  /* Sticky "Shop by" bar */
+  .shop-collections__nav-bar {
+    position: sticky;
+    top: var(--header-height, 60px);
+    z-index: 2;
+    background-color: var(--color-background);
+    border-block-end: var(--style-border-width, 1px) solid
+      rgb(from var(--color-foreground) r g b / 8%);
+  }
+
+  .shop-collections__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-lg);
+    min-height: 3.5rem;
+    padding-block: var(--padding-xs);
+    padding-inline: var(--util-page-margin-offset);
+  }
+
+  .shop-collections__nav-label {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .shop-collections__nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .shop-collections__nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shop-collections__nav-link {
+    display: inline-block;
+    padding-block: var(--padding-xs);
+    color: inherit;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .shop-collections__nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+  }
+
+  .shop-collections__nav-link[aria-current] {
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+  }
+
+  .shop-collections__search {
+    position: relative;
+    display: none;
+    margin-inline-start: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .shop-collections__search {
+      display: block;
+    }
+  }
+
+  .shop-collections__search-icon {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 0.75rem;
+    translate: 0 -50%;
+    display: inline-flex;
+    width: 1.125rem;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .shop-collections__search-input {
+    width: clamp(11rem, 16vw, 14rem);
+    padding: 0.5rem 1rem 0.5rem 2.375rem;
+    border: var(--style-border-width, 1px) solid rgb(from var(--color-foreground) r g b / 25%);
+    border-radius: 100px;
+    background-color: transparent;
+    color: inherit;
+    font-size: 0.875rem;
+  }
+
+  .shop-collections__search-input::placeholder {
+    color: rgb(from var(--color-foreground) r g b / 45%);
+  }
+
+  /* Collection rows */
+  .shop-collections__rows {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+
+  .shop-collections__row {
+    /* Keep anchored rows clear of the sticky header + shop-by bar. */
+    scroll-margin-top: calc(var(--header-height, 60px) + 4.5rem);
+  }
+
+  .shop-collections__row-title {
+    margin: 0 0 var(--margin-xl);
+    padding-inline: var(--util-page-margin-offset);
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2rem, 3.2vw, 2.875rem);
+    line-height: 1.1;
+  }
+
+  .shop-collections__rail {
+    display: flex;
+    gap: var(--gap-md);
+    overflow-x: auto;
+    padding-inline: var(--util-page-margin-offset);
+    scroll-padding-inline-start: var(--util-page-margin-offset);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .shop-collections__rail::-webkit-scrollbar {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.shop_collections",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "#2e80ea"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:settings.collection_list"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "t:settings.product_count",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "t:settings.show_search",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "t:settings.card_background",
+      "default": "#f8f2ee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.shop_collections",
+      "category": "t:categories.collections"
+    }
+  ]
+}
+{% endschema %}

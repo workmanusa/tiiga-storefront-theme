@@ -63,6 +63,17 @@
   {% endif %}
   {{- block.shopify_attributes -}}
 >
+  {% # Tiiga: help icon linking to the FAQ page, sitting before the account action. %}
+  <a
+    href="{{ pages['faq'].url | default: '/pages/faq' }}"
+    class="header-actions__action header-actions__help"
+    aria-label="{{ 'content.faq' | t }}"
+  >
+    <span class="svg-wrapper" aria-hidden="true">
+      {{ 'icon-question.svg' | inline_asset_content }}
+    </span>
+  </a>
+
   {% if shop.customer_accounts_enabled %}
     {% liquid
       assign account_actions_style = ''

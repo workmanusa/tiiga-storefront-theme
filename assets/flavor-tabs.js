@@ -31,6 +31,13 @@ class FlavorTabsComponent extends HTMLElement {
       panel.setAttribute('aria-labelledby', tab.id);
       tab.setAttribute('aria-controls', panel.id);
 
+      // The panel gallery is one still image. The CSS hides the arrows and
+      // blocks native scrolling; this stops the component's own pointer-drag,
+      // which scrolls programmatically and sails past overflow: hidden.
+      for (const slideshow of panel.querySelectorAll('slideshow-component')) {
+        slideshow.setAttribute('disabled', 'true');
+      }
+
       tab.addEventListener('click', () => this.#select(index));
       tab.addEventListener('keydown', (event) => this.#handleKeydown(event, index));
     }

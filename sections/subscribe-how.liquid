@@ -1,0 +1,235 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="subscribe-how spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}; --subscribe-card-background: {{ section.settings.card_background | default: '#f8f2ee' }};"
+>
+  <header class="subscribe-how__header">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="subscribe-how__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h1 class="subscribe-how__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="subscribe-how__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+  </header>
+
+  {%- if section.settings.steps_heading != blank -%}
+    <h2 class="subscribe-how__steps-heading">{{ section.settings.steps_heading }}</h2>
+  {%- endif -%}
+
+  <div class="subscribe-how__steps">
+    {% content_for 'blocks' %}
+  </div>
+
+  {%- if section.settings.benefits != blank -%}
+    {%- assign benefit_items = section.settings.benefits | newline_to_br | split: '<br />' -%}
+    <ul class="subscribe-how__benefits" role="list">
+      {%- for item in benefit_items -%}
+        {%- assign item_text = item | strip -%}
+        {%- if item_text != blank -%}
+          <li class="subscribe-how__benefit">
+            <svg class="subscribe-how__benefit-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4.75 8.25 7 10.5l4.25-4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ item_text }}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .subscribe-how {
+    grid-column: 1 / -1;
+    --subscribe-how-inset: max(1.5rem, calc((100vw - var(--page-width, 1300px)) / 2 + 3rem));
+    padding-inline: var(--subscribe-how-inset);
+  }
+
+  .subscribe-how__header {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    margin-block-end: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .subscribe-how__eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .subscribe-how__heading {
+    margin: 0;
+    max-width: 18ch;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.25rem, 4.4vw, 4rem);
+    line-height: 1.05;
+  }
+
+  .subscribe-how__text {
+    margin-block-start: 1rem;
+    max-width: 34rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  .subscribe-how__text p {
+    margin: 0;
+  }
+
+  .subscribe-how__steps-heading {
+    margin: 0 0 1.25rem;
+    text-align: center;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .subscribe-how__steps {
+    display: grid;
+    gap: 1rem;
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+
+  .subscribe-how__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+    margin: clamp(2rem, 4vw, 3rem) auto 0;
+    padding: 0;
+    max-width: var(--page-width, 1300px);
+    list-style: none;
+  }
+
+  .subscribe-how__benefit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5625rem 1.125rem;
+    border: 1px solid rgb(from currentColor r g b / 40%);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .subscribe-how__benefit-icon {
+    flex-shrink: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.subscribe_how",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "steps_heading",
+      "label": "t:settings.steps_heading",
+      "default": "How it works"
+    },
+    {
+      "type": "textarea",
+      "id": "benefits",
+      "label": "t:settings.benefits",
+      "info": "t:info.one_per_line",
+      "default": "Save 20% on every order\nFree US shipping\nSkip or cancel anytime\nDedicated support"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "#2e80ea"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "t:settings.card_background",
+      "default": "#f8f2ee"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_subscribe-step"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.subscribe_how",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "step_1": { "type": "_subscribe-step" },
+        "step_2": { "type": "_subscribe-step" },
+        "step_3": { "type": "_subscribe-step" }
+      },
+      "block_order": ["step_1", "step_2", "step_3"]
+    }
+  ]
+}
+{% endschema %}

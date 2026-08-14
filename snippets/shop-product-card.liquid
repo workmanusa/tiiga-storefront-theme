@@ -1,0 +1,314 @@
+{% doc %}
+  Product cards for the shop-collections rails. A product with a Flavor option
+  fans out into one card per flavor value — image, title, dot color and link
+  (?variant=) all come from that flavor's variant — so the rail reads like
+  Cure's flavor-first collection rows. Products without a Flavor option render
+  a single card.
+
+  Per-flavor images prefer the variant's own attached image, then fall back to
+  the first product image whose filename or alt text names the flavor (same
+  collapsed-token matching as the PDP gallery), then the product's featured
+  image. Dot colors come from the tiiga_flavor metaobject (entry handle =
+  handleized flavor value), falling back to a neutral swatch.
+
+  Badges: a tag of "New Product", "Best Seller", or "badge:Anything" renders
+  as a pill — on the first card only when a product fans out into several.
+
+  @param {object} product - The product to render
+  @param {boolean} [show_subscribe_cta] - Render a "Subscribe & Save – price" pill (with savings percent from the variant's selling plans) under each card, as on the subscribe page rail
+
+  @example
+  {% render 'shop-product-card', product: product, show_subscribe_cta: true %}
+{% enddoc %}
+
+{% liquid
+  assign badge = blank
+  for tag in product.tags
+    assign tag_down = tag | downcase
+    if tag_down == 'new product' or tag_down == 'best seller' or tag_down == 'new' or tag_down == 'bestseller'
+      assign badge = tag
+      break
+    elsif tag_down contains 'badge:'
+      assign badge = tag | split: ':' | last | strip
+      break
+    endif
+  endfor
+
+  assign rating_value = product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value
+
+  assign flavor_option = nil
+  for option in product.options_with_values
+    assign option_name_down = option.name | downcase
+    if option_name_down contains 'flavor'
+      assign flavor_option = option
+      break
+    endif
+  endfor
+
+  if flavor_option
+    assign card_count = flavor_option.values.size
+  else
+    assign card_count = 1
+  endif
+%}
+
+{% for i in (1..card_count) %}
+  {% liquid
+    assign flavor_value = nil
+    if flavor_option
+      assign flavor_value = flavor_option.values[forloop.index0]
+    endif
+
+    if flavor_value
+      assign card_title = flavor_value.name | default: flavor_value
+      assign card_variant = flavor_value.variant
+      assign card_url = product.url | append: '?variant=' | append: card_variant.id
+      assign card_available = flavor_value.available
+
+      assign flavor_entry_handle = flavor_value | handleize
+      assign flavor_entry = shop.metaobjects.tiiga_flavor[flavor_entry_handle]
+      assign dot_color = flavor_entry.color
+
+      assign card_image = flavor_value.variant.featured_image
+      if card_image == blank
+        assign flavor_token = flavor_value | handleize | remove: '-'
+        for image in product.images
+          assign image_name = image.src | split: '/' | last
+          assign image_token = image_name | append: ' ' | append: image.alt | downcase | handleize | remove: '-' | remove: '_'
+          if image_token contains flavor_token
+            assign card_image = image
+            break
+          endif
+        endfor
+      endif
+      if card_image == blank
+        assign card_image = product.featured_image
+      endif
+
+      assign show_badge = false
+      if badge != blank and forloop.first
+        assign show_badge = true
+      endif
+    else
+      assign card_title = product.title
+      assign card_variant = product.selected_or_first_available_variant
+      assign card_url = product.url
+      assign card_available = product.available
+      assign dot_color = blank
+      assign card_image = product.featured_image
+      assign show_badge = false
+      if badge != blank
+        assign show_badge = true
+      endif
+    endif
+
+    if show_subscribe_cta
+      # Every Tiiga plan carries the same discount, so the first allocation is
+      # representative of the subscription price.
+      assign sub_allocation = card_variant.selling_plan_allocations | first
+      assign savings_percent = 0
+      if sub_allocation != blank and card_variant.price > 0
+        assign savings_percent = card_variant.price | minus: sub_allocation.price | times: 100.0 | divided_by: card_variant.price | round
+      endif
+    endif
+  %}
+
+  <a
+    class="shop-card{% unless card_available %} shop-card--sold-out{% endunless %}"
+    href="{{ card_url }}"
+  >
+    <div class="shop-card__tile">
+      {% unless card_available %}
+        <span class="shop-card__badge shop-card__badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
+      {% endunless %}
+      {% if show_badge %}
+        <span class="shop-card__badge">{{ badge }}</span>
+      {% endif %}
+      {% if card_image %}
+        {{
+          card_image
+          | image_url: width: 900
+          | image_tag:
+            class: 'shop-card__image',
+            loading: 'lazy',
+            widths: '360, 540, 720, 900',
+            sizes: '(min-width: 750px) 21.5rem, 72vw'
+        }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'shop-card__image shop-card__image--placeholder' }}
+      {% endif %}
+    </div>
+    <div class="shop-card__meta">
+      <span class="shop-card__type">{{ product.type | default: product.vendor }}</span>
+      {% if rating_value != blank %}
+        <span
+          class="shop-card__rating"
+          aria-label="{{ 'accessibility.rating' | t: rating: rating_value }}"
+        >
+          <span aria-hidden="true">{{ rating_value | round: 1 }}</span>
+          <svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.94 6.26 6.87.84-5.07 4.73 1.32 6.79L12 17.27l-6.06 3.35 1.32-6.79L2.19 9.1l6.87-.84z"/>
+          </svg>
+        </span>
+      {% endif %}
+    </div>
+    <p class="shop-card__title">
+      <span
+        class="shop-card__dot"
+        {% if dot_color != blank %}
+          style="--shop-card-dot: {{ dot_color }};"
+        {% endif %}
+      ></span>
+      <span class="shop-card__title-text">{{ card_title }}</span>
+    </p>
+    {% if show_subscribe_cta %}
+      <span class="shop-card__cta">
+        <span class="shop-card__cta-label">
+          {{- 'purchase_options.subscribe_save' | t }} &ndash; {{ sub_allocation.price | default: card_variant.price | money -}}
+        </span>
+        {% if savings_percent > 0 %}
+          <span class="shop-card__save">{{ 'purchase_options.save_percent' | t: percent: savings_percent }}</span>
+        {% endif %}
+      </span>
+    {% endif %}
+  </a>
+{% endfor %}
+
+{% stylesheet %}
+  .shop-card {
+    flex: 0 0 min(72vw, 21.5rem);
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    scroll-snap-align: start;
+  }
+
+  .shop-card__tile {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 0.93;
+    border-radius: var(--style-border-radius-cards, 8px);
+    background-color: var(--shop-card-background, #f8f2ee);
+    overflow: hidden;
+  }
+
+  .shop-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.35s ease;
+  }
+
+  .shop-card:hover .shop-card__image {
+    scale: 1.03;
+  }
+
+  .shop-card--sold-out .shop-card__image {
+    opacity: 0.55;
+  }
+
+  .shop-card--sold-out .shop-card__title-text {
+    color: rgb(from var(--color-foreground) r g b / 55%);
+  }
+
+  .shop-card__badge {
+    position: absolute;
+    inset-block-start: 0.875rem;
+    inset-inline: 0;
+    margin-inline: auto;
+    width: fit-content;
+    z-index: 1;
+    padding: 0.3125rem 0.875rem;
+    border-radius: 100px;
+    background-color: var(--color-white);
+    color: rgb(from var(--color-foreground) r g b / 85%);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Modifier must follow the base rule — equal specificity, cascade decides. */
+  .shop-card__badge--sold-out {
+    inset-inline: 0.875rem auto;
+    margin-inline: 0;
+  }
+
+  .shop-card__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    margin-block-start: var(--margin-md);
+  }
+
+  .shop-card__type {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .shop-card__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+  }
+
+  .shop-card__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: var(--margin-2xs) 0 0;
+    font-size: 1rem;
+  }
+
+  .shop-card__dot {
+    flex-shrink: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: var(--shop-card-dot, #d8d3ca);
+  }
+
+  .shop-card__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin-block-start: var(--margin-lg);
+    min-height: 2.75rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 100px;
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .shop-card:hover .shop-card__cta {
+    background-color: var(--color-primary-button-hover-background, var(--color-primary-button-background));
+    color: var(--color-primary-button-hover-text, var(--color-primary-button-text));
+  }
+
+  .shop-card--sold-out .shop-card__cta {
+    opacity: 0.5;
+  }
+
+  .shop-card__save {
+    flex-shrink: 0;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 100px;
+    background-color: rgb(from var(--color-primary-button-text) r g b / 16%);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+{% endstylesheet %}

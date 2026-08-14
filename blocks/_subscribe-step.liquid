@@ -1,0 +1,114 @@
+{% doc %}
+  One numbered "How it works" step card for the subscribe-how section.
+  The step number is derived from the block's position in the section, and
+  the card colors come from the section's card settings so all steps match.
+
+  @example
+  {% content_for 'block', type: '_subscribe-step', id: 'step_1' %}
+{% enddoc %}
+
+{%- liquid
+  assign block_index = section.blocks | find_index: 'id', block.id
+  assign step_number = block_index | plus: 1 | prepend: '0' | slice: -2, 2
+-%}
+
+<article class="subscribe-step" {{ block.shopify_attributes }}>
+  {%- if block.settings.image -%}
+    {{
+      block.settings.image
+      | image_url: width: 900
+      | image_tag:
+        widths: '360, 540, 720, 900',
+        sizes: '(min-width: 750px) 26rem, 88vw',
+        class: 'subscribe-step__image',
+        loading: 'lazy'
+    }}
+  {%- endif -%}
+  <div class="subscribe-step__body">
+    <span class="subscribe-step__number" aria-hidden="true">{{ step_number }}</span>
+    {%- if block.settings.title != blank -%}
+      <h3 class="subscribe-step__title">{{ block.settings.title }}</h3>
+    {%- endif -%}
+    {%- if block.settings.text != blank -%}
+      <p class="subscribe-step__text">{{ block.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</article>
+
+{% stylesheet %}
+  .subscribe-step {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--style-border-radius-cards, 12px);
+    background-color: var(--subscribe-card-background, #f8f2ee);
+    color: var(--subscribe-card-foreground, #33302c);
+  }
+
+  .subscribe-step__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .subscribe-step__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+  }
+
+  .subscribe-step__number {
+    color: var(--subscribe-card-foreground, #33302c);
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    line-height: 1;
+    opacity: 0.35;
+  }
+
+  .subscribe-step__title {
+    margin: 0;
+    color: var(--subscribe-card-foreground, #33302c);
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+    line-height: 1.15;
+  }
+
+  .subscribe-step__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.subscribe_step",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:settings.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.subscribe_step"
+    }
+  ]
+}
+{% endschema %}

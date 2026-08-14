@@ -16,11 +16,102 @@
   font-size: 1.75rem;
 }
 
-/* Breathe more like the reference: roomier icon cluster on desktop */
-@media screen and (min-width: 990px) {
-  header-actions {
-    gap: 0.75rem;
+/* Tight icon cluster like the reference: the 44px touch targets already
+   provide ~29px of visual air between glyphs, so no extra gap. */
+header-actions {
+  gap: 0;
+}
+
+/* Header bar proportions: roomy on mobile, tight on desktop. Doubled class
+   beats the header section's `--header-padding: var(--padding-sm)` rule,
+   which loads after this file. */
+.header.header {
+  --header-padding: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .header.header {
+    --header-padding: 0.75rem;
   }
+}
+
+/* Optically even header icons. The stock glyphs fill different shares of
+   their canvases (search ~58%, cart/help ~72%, account ~93% of a 15x17 box),
+   so each gets its own box size to land the drawn artwork at ~15px, and the
+   scaled ones get their stroke compensated back to the theme's stroke width. */
+/* Doubled wrapper class outweighs any later-loading section stylesheet rule
+   of the stock `.svg-wrapper > svg` shape. */
+.search-action .svg-wrapper.svg-wrapper > svg {
+  width: 26px;
+  height: 26px;
+}
+
+.search-action .svg-wrapper.svg-wrapper > svg :is(circle, path) {
+  stroke-width: calc(var(--icon-stroke-width) * 20 / 26);
+}
+
+.header-actions__cart-icon .svg-wrapper.svg-wrapper > svg,
+.header-actions__help .svg-wrapper.svg-wrapper > svg {
+  width: 21px;
+  height: 21px;
+}
+
+.header-actions__cart-icon .svg-wrapper.svg-wrapper > svg path,
+.header-actions__help .svg-wrapper.svg-wrapper > svg :is(circle, path) {
+  stroke-width: calc(var(--icon-stroke-width) * 20 / 21);
+}
+
+/*
+ * Search modal, restyled to the collections-page design language: soft
+ * rounded dialog, roomier input, uppercase kicker headings, and product
+ * results as warm rounded tiles with a hover zoom — the same card grammar as
+ * the shop rails. Doubled classes beat the predictive-search section styles,
+ * which load after this file.
+ */
+.search-modal .search-modal__content.dialog-modal {
+  border: none;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.14);
+}
+
+.search-modal .search-input.search-input {
+  font-size: 1.125rem;
+}
+
+.search-modal .predictive-search-results__title.predictive-search-results__title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.search-modal .resource-card .resource-card__media {
+  border-radius: 8px;
+  background-color: #f8f2ee;
+  overflow: hidden;
+}
+
+.search-modal .resource-card img {
+  transition: scale 0.35s ease;
+}
+
+.search-modal .resource-card:hover img {
+  scale: 1.03;
+}
+
+.search-modal .resource-card__title.resource-card__title {
+  margin-block-start: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-modal .resource-card__subtext.resource-card__subtext {
+  font-size: 0.8125rem;
+  opacity: 0.7;
 }
 
 /*
@@ -170,6 +261,31 @@
 /* The product-page view-transition title has no place in the panels */
 .flavor-tab-panel.flavor-tab-panel .view-product-title {
   display: none;
+}
+
+/* The panels show one still product shot: arrows, dot/thumbnail controls and
+   manual swiping are all retired. Programmatic slide changes still work —
+   overflow hidden blocks user scrolling but not the component's scrollTo —
+   so a variant's featured image can still land if a flavor changes. */
+.flavor-tab-panel.flavor-tab-panel slideshow-arrows,
+.flavor-tab-panel.flavor-tab-panel .media-gallery__mobile-controls,
+.flavor-tab-panel.flavor-tab-panel slideshow-controls {
+  display: none;
+}
+
+.flavor-tab-panel.flavor-tab-panel slideshow-slides {
+  overflow-x: hidden;
+  scroll-snap-type: none;
+  /* Swipe gestures pan the page instead of the retired carousel */
+  touch-action: pan-y;
+}
+
+/* Imagery is UI, not draggable content — no ghost-image drag, site-wide.
+   Firefox ignores this property; a dragstart guard in snippets/scripts.liquid
+   covers it there. */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 /*

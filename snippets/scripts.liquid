@@ -57,6 +57,21 @@
   defer
 ></script>
 
+{%- comment -%}
+  Imagery is UI, not draggable content. custom.css sets -webkit-user-drag on
+  every img; Firefox has no such property, so the ghost-image drag is blocked
+  here instead. Capture phase, so no widget can see the event first.
+{%- endcomment -%}
+<script>
+  document.addEventListener(
+    'dragstart',
+    (event) => {
+      if (event.target instanceof HTMLImageElement) event.preventDefault();
+    },
+    { capture: true }
+  );
+</script>
+
 <script
   src="{{ 'view-transitions.js' | asset_url }}"
   async

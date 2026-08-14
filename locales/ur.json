@@ -74,7 +74,8 @@
       "one": "{{ count }} فلٹر لاگو کیا گیا",
       "other": "{{ count }} فلٹر لاگو کیے گئے"
     },
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add": "شامل کریں",
@@ -160,6 +161,7 @@
     }
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "cancel": "منسوخ کریں",
@@ -317,7 +319,10 @@
     "items_added_to_cart": {
       "one": "کارٹ میں 1 آئٹم شامل کر دیا گیا",
       "other": "کارٹ میں {{ count }} آئٹم شامل کر دیے گئے"
-    }
+    },
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "fields": {
     "separator": "تا"
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

@@ -78,7 +78,8 @@
       "two": "تم تطبيق {{ count }} من عوامل التصفية",
       "zero": "تم تطبيق {{ count }} من عوامل التصفية"
     },
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add": "إضافة",
@@ -172,6 +173,7 @@
     }
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "cancel": "إلغاء",
@@ -345,7 +347,10 @@
       "many": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق",
       "two": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق",
       "zero": "تمت إضافة {{ count }} من العناصر إلى سلة التسوق"
-    }
+    },
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "fields": {
     "separator": "إلى"
@@ -416,6 +421,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

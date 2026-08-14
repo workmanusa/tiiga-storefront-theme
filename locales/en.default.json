@@ -54,12 +54,14 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",
     "save_percent": "Save {{ percent }}%"
   },
   "accessibility": {
+    "footer_navigation": "Footer navigation",
     "product_tabs": "Product tabs",
     "account": "Account",
     "active_filters": "Active filters:",
@@ -215,6 +217,7 @@
     }
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "cancel": "Cancel",
@@ -306,6 +309,9 @@
     "remove_one_item_confirmation": "Remove 1 item from your cart?",
     "reviews": "reviews",
     "read_more": "Read more...",
+    "faq": "Frequently asked questions",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
     "search_input_label": "Search",
     "search_input_placeholder": "Search",
     "search": "Search",

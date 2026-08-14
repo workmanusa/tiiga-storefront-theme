@@ -1,0 +1,276 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="faq spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}; --faq-card-background: {{ section.settings.card_background | default: '#f2f0ec' }}; --faq-cta-background: {{ section.settings.cta_background | default: '#1d5a6b' }}; --faq-cta-foreground: {{ section.settings.cta_foreground | default: '#efece7' }};"
+>
+  <div
+    class="faq__inner"
+    itemscope
+    itemtype="https://schema.org/FAQPage"
+  >
+    <header class="faq__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="faq__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="faq__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="faq__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </header>
+
+    <div class="faq__categories">
+      {% content_for 'blocks' %}
+    </div>
+
+    {%- if section.settings.cta_heading != blank -%}
+      <aside class="faq__cta">
+        <h2 class="faq__cta-heading">{{ section.settings.cta_heading }}</h2>
+        {%- if section.settings.cta_text != blank -%}
+          <div class="faq__cta-text">{{ section.settings.cta_text }}</div>
+        {%- endif -%}
+        {%- if section.settings.cta_button_label != blank -%}
+          <a
+            class="faq__cta-button"
+            href="{{ section.settings.cta_button_link | default: '#' }}"
+          >
+            {{- section.settings.cta_button_label -}}
+          </a>
+        {%- endif -%}
+      </aside>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .faq {
+    /* Soft warm hairline derived from the scheme's foreground — matches the
+       header/drawer treatment instead of the stock near-black border color */
+    --faq-hairline: rgb(var(--color-foreground-rgb) / 0.1);
+
+    grid-column: 1 / -1;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+
+  .faq__inner {
+    display: block;
+    max-width: 42.5rem;
+    margin-inline: auto;
+  }
+
+  .faq__header {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    margin-block-end: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .faq__eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-foreground-muted);
+  }
+
+  .faq__heading {
+    margin: 0;
+    max-width: 16ch;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  .faq__text {
+    margin-block-start: 1rem;
+    max-width: 32rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .faq__text p {
+    margin: 0;
+  }
+
+  /* Closing call-to-action card */
+  .faq__cta {
+    margin-block-start: clamp(2.5rem, 6vw, 4rem);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    color: var(--faq-cta-foreground);
+    background-color: var(--faq-cta-background);
+    border-radius: 1.25rem;
+  }
+
+  /* The theme paints headings/rte text with the scheme foreground, so the
+     card's palette must be set explicitly rather than inherited */
+  .faq__cta-heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.1;
+    color: var(--faq-cta-foreground);
+  }
+
+  .faq__cta-text {
+    max-width: 28rem;
+    margin: 0.75rem auto 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--faq-cta-foreground);
+    opacity: 0.85;
+  }
+
+
+  .faq__cta-text p {
+    margin: 0;
+    color: inherit;
+  }
+
+  .faq__cta-button {
+    display: inline-block;
+    margin-block-start: 1.5rem;
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--faq-cta-background);
+    background-color: var(--faq-cta-foreground);
+    text-decoration: none;
+    border-radius: 100px;
+    transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+
+  .faq__cta-button:hover {
+    opacity: 0.85;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.faq",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.cta"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "cta_text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "t:settings.button_label"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "t:settings.background_color",
+      "default": "#1d5a6b"
+    },
+    {
+      "type": "color",
+      "id": "cta_foreground",
+      "label": "t:settings.text_color",
+      "default": "#efece7"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "t:settings.card_background",
+      "default": "#f2f0ec"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_faq-category"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.faq",
+      "category": "t:categories.text",
+      "blocks": {
+        "category_1": {
+          "type": "_faq-category",
+          "blocks": {
+            "question_1": { "type": "_faq-item" }
+          },
+          "block_order": ["question_1"]
+        }
+      },
+      "block_order": ["category_1"]
+    }
+  ]
+}
+{% endschema %}

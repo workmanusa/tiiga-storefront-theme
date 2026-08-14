@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "category_product": {
+          "type": "_faq-category",
+          "settings": {
+            "label": "Product"
+          },
+          "blocks": {
+            "product_1": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "What is Tiiga?",
+                "answer": "<p>Tiiga is a gut-health-forward hydration line built around organic baobab fruit and coconut water powder, rather than the typical electrolyte-only formula. It\u2019s designed to hydrate and support digestion at the same time, with natural electrolytes, prebiotic fiber, and antioxidant polyphenols in every scoop.</p>"
+              }
+            },
+            "product_2": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "What is baobab, and why is it in a hydration drink?",
+                "answer": "<p>Baobab is a fruit from the African baobab tree, naturally dehydrated into a powder. It\u2019s a source of raw, unprocessed prebiotic fiber and polyphenol antioxidants, and it\u2019s been used for its nutritional properties across parts of Africa for generations \u2014 Tiiga uses it as the base of its formula rather than as an add-in.</p>"
+              }
+            },
+            "product_3": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Does Tiiga contain added sugar?",
+                "answer": "<p>No. Tiiga\u2019s formulas are sweetened naturally, primarily with stevia extract, and get some natural sweetness from the baobab and coconut water itself. There\u2019s no added sugar in any Tiiga product.</p>"
+              }
+            },
+            "product_4": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "What\u2019s the fiber source in Tiiga, and is it safe if I have a sensitive stomach or IBS?",
+                "answer": "<p>The fiber comes from raw baobab fruit along with soluble vegetable fiber, green banana powder resistant starch, and Solnul resistant potato starch. Baobab fiber is low in FODMAPs, which can make it easier on sensitive digestive systems than other fiber sources, but tolerance varies person to person \u2014 start with a smaller amount and check with your doctor if you have IBS or another digestive condition.</p>"
+              }
+            },
+            "product_5": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Does Tiiga contain caffeine?",
+                "answer": "<p>No. Tiiga\u2019s core ingredients are organic baobab fruit powder and coconut water powder, with no caffeine \u2014 it\u2019s built as a hydration and gut-health formula, not an energy product.</p>"
+              }
+            }
+          },
+          "block_order": [
+            "product_1",
+            "product_2",
+            "product_3",
+            "product_4",
+            "product_5"
+          ]
+        },
+        "category_usage": {
+          "type": "_faq-category",
+          "settings": {
+            "label": "Usage"
+          },
+          "blocks": {
+            "usage_1": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "When should I drink Tiiga?",
+                "answer": "<p>Anytime you need hydration support \u2014 during or after physical work, workouts, travel, or simply as part of your daily routine. The gut-health formula is also commonly used first thing in the morning or with meals to support digestion.</p>"
+              }
+            },
+            "usage_2": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Can I put Tiiga in a smoothie instead of water?",
+                "answer": "<p>Yes \u2014 Tiiga blends well into smoothies for an extra hit of fiber, electrolytes, and vitamin C on top of whatever else is in the blend.</p>"
+              }
+            },
+            "usage_3": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Can kids drink Tiiga?",
+                "answer": "<p>Yes, Tiiga can be a great option for children, especially with its all-natural ingredients and the benefits of baobab for gut health, fiber, and hydration.</p>"
+              }
+            }
+          },
+          "block_order": [
+            "usage_1",
+            "usage_2",
+            "usage_3"
+          ]
+        },
+        "category_subscriptions": {
+          "type": "_faq-category",
+          "settings": {
+            "label": "Subscriptions"
+          },
+          "blocks": {
+            "subscription_1": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "How do subscriptions work?",
+                "answer": "<p>Choose your products and flavors, then pick a delivery cadence of every 2, 4, 6, or 8 weeks. Each box ships automatically on your schedule, and subscribers save 20% on every order.</p>"
+              }
+            },
+            "subscription_2": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Can I change, skip, or cancel my subscription?",
+                "answer": "<p>Yes \u2014 you can swap flavors, skip a delivery, or cancel anytime from your account. No fees, no commitments.</p>"
+              }
+            },
+            "subscription_3": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "How much do I save by subscribing?",
+                "answer": "<p>Subscribers save 20% on every delivery, not just the first one.</p>"
+              }
+            }
+          },
+          "block_order": [
+            "subscription_1",
+            "subscription_2",
+            "subscription_3"
+          ]
+        }
+      },
+      "block_order": [
+        "category_product",
+        "category_usage",
+        "category_subscriptions"
+      ],
+      "settings": {
+        "eyebrow": "Support",
+        "heading": "Frequently asked questions",
+        "text": "<p>Everything you want to know about baobab, gut health, and how to drink Tiiga.</p>",
+        "background_color": "#ffffff",
+        "card_background": "#f2f0ec",
+        "padding-block-start": 64,
+        "padding-block-end": 96,
+        "cta_heading": "Still have questions?",
+        "cta_text": "<p>We\u2019re happy to help with anything else \u2014 from ingredients and gut health to orders and subscriptions.</p>",
+        "cta_button_label": "Contact us",
+        "cta_button_link": "/pages/contact",
+        "cta_background": "#1d5a6b",
+        "cta_foreground": "#efece7"
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

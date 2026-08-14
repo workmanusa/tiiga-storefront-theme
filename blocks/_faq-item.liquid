@@ -1,0 +1,173 @@
+{%- doc -%}
+  Renders a single FAQ accordion row (question + collapsible answer) inside
+  blocks/_faq-category.liquid. Native details/summary with an animated plus
+  affordance, marked up as a schema.org Question/Answer pair for the
+  enclosing FAQPage scope in sections/faq.liquid.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<details
+  class="faq-item"
+  itemscope
+  itemprop="mainEntity"
+  itemtype="https://schema.org/Question"
+  {% if block.settings.open_by_default %}
+    open
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  <summary class="faq-item__summary">
+    <span
+      class="faq-item__question"
+      itemprop="name"
+    >
+      {{- block.settings.question -}}
+    </span>
+    <span
+      class="faq-item__icon"
+      aria-hidden="true"
+    ></span>
+  </summary>
+
+  <div
+    class="faq-item__answer"
+    itemscope
+    itemprop="acceptedAnswer"
+    itemtype="https://schema.org/Answer"
+  >
+    <div
+      class="faq-item__answer-body"
+      itemprop="text"
+    >
+      {{ block.settings.answer }}
+    </div>
+  </div>
+</details>
+
+{% stylesheet %}
+  .faq-item + .faq-item {
+    border-block-start: var(--style-border-width) solid var(--faq-hairline);
+  }
+
+  .faq-item__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+    padding-block: 1.25rem;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-foreground);
+    text-align: start;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item__summary::marker,
+  .faq-item__summary::-webkit-details-marker {
+    display: none;
+    content: '';
+  }
+
+  /* Plus made of two bars: rotates a quarter turn and drops its original
+     horizontal bar on open, landing as a minus */
+  .faq-item__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 0.8125rem;
+    height: 0.8125rem;
+    color: var(--color-foreground-muted);
+    transition: rotate var(--animation-speed) var(--animation-easing);
+  }
+
+  .faq-item__icon::before,
+  .faq-item__icon::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -50%;
+    border-radius: 1px;
+    background-color: currentcolor;
+  }
+
+  .faq-item__icon::before {
+    inline-size: 100%;
+    block-size: 1.5px;
+    transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+
+  .faq-item__icon::after {
+    inline-size: 1.5px;
+    block-size: 100%;
+  }
+
+  .faq-item[open] .faq-item__icon {
+    rotate: 90deg;
+  }
+
+  .faq-item[open] .faq-item__icon::before {
+    opacity: 0;
+  }
+
+  /* Animate open/close; `interpolate-size` lets modern browsers transition
+     to block-size: auto, others snap open */
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-item::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition: content-visibility var(--animation-speed) allow-discrete,
+      block-size var(--animation-speed) var(--animation-easing);
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+
+  .faq-item__answer-body {
+    padding-block: 0.25rem 1.5rem;
+    padding-inline-end: 2.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .faq-item__answer-body p {
+    margin: 0;
+  }
+
+  .faq-item__answer-body p + p {
+    margin-block-start: 0.75em;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.faq_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "t:settings.question"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "t:settings.answer"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "t:settings.open_row_by_default",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

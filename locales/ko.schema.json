@@ -9,6 +9,10 @@
  */
 {
   "names": {
+    "subscribe_how": "Subscribe how it works",
+    "subscribe_step": "Subscription step",
+    "subscribe_product": "Subscription product card",
+    "subscribe_products": "Subscription products",
     "pdp_size_selector": "Size selector",
     "nav_menu": "Navigation menu",
     "nav_shop": "Shop menu",
@@ -211,9 +215,16 @@
     "review_photo": "Review photo",
     "pdp_benefits": "Product benefits",
     "pdp_header": "Product header",
-    "pdp_trust_bar": "Trust bar"
+    "pdp_trust_bar": "Trust bar",
+    "tiiga_footer": "Tiiga footer",
+    "shop_collections": "Shop collections",
+    "faq": "FAQ",
+    "faq_category": "FAQ category",
+    "faq_item": "FAQ question"
   },
   "settings": {
+    "steps_heading": "Steps heading",
+    "benefits": "Benefits",
     "pill": "Pill style",
     "combine_reviews": "Combine reviews from all products",
     "klaviyo_company_id": "Klaviyo public API key (company ID)",
@@ -686,7 +697,20 @@
     "symbol": "Symbol",
     "value": "Value",
     "show_rating": "Show rating",
-    "rating": "Rating"
+    "rating": "Rating",
+    "show_newsletter": "Show email signup",
+    "shop_heading": "Shop column heading",
+    "shop_all_label": "'Shop all' label",
+    "learn_heading": "Learn column heading",
+    "social_heading": "Social column heading",
+    "instagram": "Instagram URL",
+    "tiktok": "TikTok URL",
+    "facebook": "Facebook URL",
+    "youtube": "YouTube URL",
+    "show_wordmark": "Show large wordmark",
+    "wordmark_text": "Wordmark text",
+    "question": "Question",
+    "answer": "Answer"
   },
   "options": {
     "droplet": "Droplet",
@@ -1102,7 +1126,9 @@
     "disclosures": "고지 사항",
     "disclosures_metafield_content": "이 제품에 필수적인 안전 경고 및 규제 관련 고지 사항입니다.",
     "page_text_color_contrast_info": "사용자 지정 배경 색상이 있는 섹션은 색상 대비가 충분한 경우에만 이 텍스트 색상을 사용합니다.",
-    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab.",
+    "social_links": "Social links",
+    "cta": "Call to action"
   },
   "html_defaults": {
     "share_information_about_your": "<p>고객과 브랜드에 대한 정보를 공유하세요. 제품을 설명하거나, 공지 사항을 알리거나, 스토어를 방문하는 고객을 환영할 수 있습니다.</p>",
@@ -1201,6 +1227,7 @@
     "disclosures": "고지 사항"
   },
   "info": {
+    "one_per_line": "One per line",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
     "klaviyo_company_id": "The 6-character public key from Klaviyo settings. Enables live reviews in this section.",
     "nav_open_by_default": "Expand this section when the menu drawer opens.",
@@ -1235,7 +1262,8 @@
     "edit_input_field_in_theme_settings": "[테마 설정](/editor?context=theme&category=input%20fields)에서 입력 필드 편집",
     "edit_variants_in_theme_settings": "[테마 설정](/editor?context=theme&category=variant%20pickers)에서 이형 상품 스타일을 편집하십시오.",
     "flavor_link_products": "Ordered list of the products that share one flavor picker. Each page shows the other products' flavors as linked chips, in this order. Chips only show when the current product is in the list.",
-    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group)."
+    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group).",
+    "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "categories": {
     "basic": "기본",

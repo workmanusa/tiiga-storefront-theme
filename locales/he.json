@@ -76,7 +76,8 @@
       "many": "הופעלו {{ count }} מסננים",
       "two": "הופעלו {{ count }} מסננים"
     },
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add": "הוספה",
@@ -166,6 +167,7 @@
     }
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "cancel": "ביטול",
@@ -331,7 +333,10 @@
       "other": "{{ count }} פריטים נוספו לסל",
       "many": "{{ count }} פריטים נוספו לסל",
       "two": "{{ count }} פריטים נוספו לסל"
-    }
+    },
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "fields": {
     "separator": "עד"
@@ -402,6 +407,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

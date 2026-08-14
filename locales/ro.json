@@ -95,7 +95,8 @@
     "price_filter_low": "Preț mic",
     "price_filter_high": "Preț mare",
     "view_disclosure_information_for_product": "Vizualizează mențiunile referitoare la produsul {{ product_title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Adaugă în coș",
@@ -142,6 +143,7 @@
     "zoom_media": "Fă zoom pe elementul media {{ index }}"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "recenzii",
@@ -303,7 +305,10 @@
     },
     "item_count_cutoff": "Peste {{ count }} articole",
     "quick_order_list": "Lista comenzilor rapide",
-    "product_disclosures": "Mențiuni referitoare la produs"
+    "product_disclosures": "Mențiuni referitoare la produs",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -395,6 +400,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

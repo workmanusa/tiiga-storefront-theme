@@ -125,11 +125,19 @@
   }
 
   .nav-menu__hamburger .svg-wrapper {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
   }
 
   .nav-menu__panel {
+    /* Narrower than Horizon's default drawer, per the reference (89vw, 400px cap) */
+    --drawer-width: 89vw;
+    --drawer-max-width: 400px;
+
+    /* Soft warm hairline derived from the scheme's charcoal foreground —
+       the stock var(--color-border) reads as harsh black lines here */
+    --nav-hairline: rgb(var(--color-foreground-rgb) / 0.08);
+
     position: fixed;
     top: 0;
     left: 0;
@@ -141,7 +149,7 @@
     flex-direction: column;
     overflow-y: auto;
     background-color: var(--color-background);
-    border-right: var(--style-border-drawer);
+    box-shadow: var(--shadow-popover);
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform var(--drawer-animation-speed) ease, visibility var(--drawer-animation-speed) ease;
@@ -150,6 +158,14 @@
   .nav-menu--open .nav-menu__panel {
     transform: translateX(0);
     visibility: visible;
+  }
+
+  /* The header's `contain: layout` makes it the containing block for the
+     fixed drawer, pushing it below the announcement bar and cutting off the
+     footer. Relax containment while open (same fix as Horizon's own drawer)
+     so the panel spans the full viewport height. */
+  .header:has(.nav-menu--open) {
+    contain: style;
   }
 
   .nav-menu__backdrop {
@@ -174,18 +190,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 56px;
+    min-height: 64px;
     padding-block: var(--padding-2xs);
-    padding-inline: var(--padding-lg) var(--padding-2xs);
+    padding-inline: var(--padding-xl) var(--padding-xs);
     background-color: var(--color-background);
-    border-block-end: var(--style-border-width) solid var(--color-border);
+    border-block-end: var(--style-border-width) solid var(--nav-hairline);
     flex-shrink: 0;
   }
 
   .nav-menu__drawer-title {
     margin: 0;
-    font-size: 1.125rem;
-    color: var(--color-foreground);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-foreground-muted);
   }
 
   .nav-menu__drawer-close {
@@ -205,7 +224,8 @@
 
   .nav-menu__nav {
     flex: 1 0 auto;
-    padding-block: var(--padding-2xs) var(--padding-lg);
+    padding-block: var(--padding-xs) var(--padding-lg);
+    padding-inline: var(--padding-sm);
   }
 
   .nav-menu__drawer-footer {
@@ -214,17 +234,18 @@
     z-index: var(--layer-raised);
     margin-block-start: auto;
     background-color: var(--color-background);
-    border-block-start: var(--style-border-width) solid var(--color-border);
+    border-block-start: var(--style-border-width) solid var(--nav-hairline);
     flex-shrink: 0;
   }
 
   .nav-menu__account {
     display: flex;
     align-items: center;
-    gap: var(--gap-xs);
-    padding-block: var(--padding-md);
+    gap: var(--gap-sm);
+    padding-block: var(--padding-lg);
     padding-inline: var(--padding-xl);
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--color-foreground);
     text-decoration: none;
   }
@@ -237,18 +258,14 @@
   /* ================================
      * Menu items (shared by child blocks)
      * ================================ */
-  .nav-item {
-    border-block-end: var(--style-border-width) solid var(--color-border);
-  }
-
   .nav-item__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--gap-sm);
     width: 100%;
-    padding-block: var(--padding-lg);
-    padding-inline: var(--padding-xl);
+    padding-block: 1rem;
+    padding-inline: var(--padding-sm);
     font-family: var(--font-body--family);
     font-size: 1.0625rem;
     font-weight: 500;
@@ -257,6 +274,13 @@
     text-align: left;
     cursor: pointer;
     list-style: none;
+    border-radius: 0.625rem;
+  }
+
+  /* Drawer rows highlight softly instead of relying on divider lines */
+  .nav-item__row:hover,
+  .nav-item__row:active {
+    background-color: rgb(var(--color-foreground-rgb) / 0.05);
   }
 
   .nav-item__row::marker,
@@ -337,8 +361,9 @@
       .nav-menu__nav {
         display: flex;
         align-items: center;
-        gap: var(--gap-md);
+        gap: 1.75rem;
         padding-block: 0;
+        padding-inline: 0;
       }
 
       .nav-item {
@@ -350,16 +375,41 @@
       .nav-item__row {
         width: auto;
         padding-block: var(--padding-2xs);
-        padding-inline: var(--padding-xs);
-        font-size: 0.9375rem;
+        padding-inline: 0;
+        font-size: 0.875rem;
       }
 
-      .nav-item__row:hover {
-        color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+      /* Inline links keep the underline treatment, not the drawer highlight */
+      .nav-item__row:hover,
+      .nav-item__row:active {
+        background-color: transparent;
       }
 
       .nav-item__caret {
         display: none;
+      }
+
+      /* Text items get the reference's animated underline on hover/open */
+      .nav-item:not(.nav-item--shop, .nav-item--pill) > .nav-item__row {
+        position: relative;
+      }
+
+      .nav-item:not(.nav-item--shop, .nav-item--pill) > .nav-item__row::after {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        height: 1px;
+        background-color: currentcolor;
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        transition: transform 0.3s var(--animation-easing);
+      }
+
+      .nav-item:not(.nav-item--shop, .nav-item--pill) > .nav-item__row:hover::after,
+      .nav-item[open]:not(.nav-item--shop, .nav-item--pill) > .nav-item__row::after {
+        transform: scaleX(1);
+        transform-origin: 0 50%;
       }
 
       /* The Shop item renders as a solid pill */
@@ -368,8 +418,8 @@
         color: var(--color-background);
         border-radius: 100px;
         padding-block: var(--padding-2xs);
-        padding-inline: var(--padding-lg);
-        min-height: 2.375rem;
+        padding-inline: 1rem;
+        min-height: 2rem;
         transition: background-color var(--animation-speed) var(--animation-easing);
       }
 

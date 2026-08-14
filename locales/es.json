@@ -95,7 +95,8 @@
     "price_filter_high": "Precio alto",
     "view_disclosure_information_for_product": "Ver los avisos sobre el producto de {{ product_title }}",
     "show_submenu": "Mostrar submenú de {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Agregar al carrito",
@@ -142,6 +143,7 @@
     "back_to_main_menu": "Volver al menú principal"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "reseñas",
@@ -303,7 +305,10 @@
       "many": "Se agregaron {{ count }} artículos al carrito"
     },
     "quick_order_list": "Lista de pedidos rápidos",
-    "product_disclosures": "Avisos sobre el producto"
+    "product_disclosures": "Avisos sobre el producto",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -395,6 +400,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

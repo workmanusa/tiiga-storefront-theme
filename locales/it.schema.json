@@ -9,6 +9,10 @@
  */
 {
   "names": {
+    "subscribe_how": "Subscribe how it works",
+    "subscribe_step": "Subscription step",
+    "subscribe_product": "Subscription product card",
+    "subscribe_products": "Subscription products",
     "pdp_size_selector": "Size selector",
     "nav_menu": "Navigation menu",
     "nav_shop": "Shop menu",
@@ -211,9 +215,16 @@
     "review_photo": "Review photo",
     "pdp_benefits": "Product benefits",
     "pdp_header": "Product header",
-    "pdp_trust_bar": "Trust bar"
+    "pdp_trust_bar": "Trust bar",
+    "tiiga_footer": "Tiiga footer",
+    "shop_collections": "Shop collections",
+    "faq": "FAQ",
+    "faq_category": "FAQ category",
+    "faq_item": "FAQ question"
   },
   "settings": {
+    "steps_heading": "Steps heading",
+    "benefits": "Benefits",
     "pill": "Pill style",
     "combine_reviews": "Combine reviews from all products",
     "klaviyo_company_id": "Klaviyo public API key (company ID)",
@@ -686,7 +697,20 @@
     "symbol": "Symbol",
     "value": "Value",
     "show_rating": "Show rating",
-    "rating": "Rating"
+    "rating": "Rating",
+    "show_newsletter": "Show email signup",
+    "shop_heading": "Shop column heading",
+    "shop_all_label": "'Shop all' label",
+    "learn_heading": "Learn column heading",
+    "social_heading": "Social column heading",
+    "instagram": "Instagram URL",
+    "tiktok": "TikTok URL",
+    "facebook": "Facebook URL",
+    "youtube": "YouTube URL",
+    "show_wordmark": "Show large wordmark",
+    "wordmark_text": "Wordmark text",
+    "question": "Question",
+    "answer": "Answer"
   },
   "options": {
     "droplet": "Droplet",
@@ -1102,7 +1126,9 @@
     "disclosures": "Informative",
     "disclosures_metafield_content": "Avvertenze di sicurezza e informative normative obbligatorie per questo prodotto.",
     "page_text_color_contrast_info": "Le sezioni con un colore di sfondo personalizzato useranno questo colore del testo solo quando il contrasto cromatico è sufficiente.",
-    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab.",
+    "social_links": "Social links",
+    "cta": "Call to action"
   },
   "html_defaults": {
     "share_information_about_your": "<p>Condividi informazioni sul tuo brand con i clienti. Descrivi un prodotto, fai annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
@@ -1201,6 +1227,7 @@
     "disclosures": "Informative"
   },
   "info": {
+    "one_per_line": "One per line",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
     "klaviyo_company_id": "The 6-character public key from Klaviyo settings. Enables live reviews in this section.",
     "nav_open_by_default": "Expand this section when the menu drawer opens.",
@@ -1235,7 +1262,8 @@
     "edit_input_field_in_theme_settings": "Modifica il campo di inserimento nelle [impostazioni del tema](/editor?context=theme&category=input%20fields)",
     "edit_variants_in_theme_settings": "Modifica lo stile delle varianti nelle [impostazioni del tema](/editor?context=theme&category=variant%20pickers)",
     "flavor_link_products": "Ordered list of the products that share one flavor picker. Each page shows the other products' flavors as linked chips, in this order. Chips only show when the current product is in the list.",
-    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group)."
+    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group).",
+    "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "categories": {
     "product_list": "Collezione in evidenza",

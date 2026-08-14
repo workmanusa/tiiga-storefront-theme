@@ -94,7 +94,8 @@
     "price_filter_high": "ราคาแพง",
     "view_disclosure_information_for_product": "ดูข้อมูลชี้แจงสำหรับ{{ product_title }}",
     "show_submenu": "แสดงเมนูย่อยของ{{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "เพิ่มลงในตะกร้าสินค้า",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "กลับไปที่เมนูหลัก"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "รีวิว",
@@ -297,7 +299,10 @@
       "other": "เพิ่มสินค้า {{ count }} รายการลงในตะกร้า"
     },
     "quick_order_list": "รายการคำสั่งซื้อด่วน",
-    "product_disclosures": "ข้อมูลชี้แจงสินค้า"
+    "product_disclosures": "ข้อมูลชี้แจงสินค้า",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

@@ -96,7 +96,8 @@
     "price_filter_high": "Vysoká cena",
     "view_disclosure_information_for_product": "Zobrazit povinné informace o produktu {{ product_title }}",
     "show_submenu": "Zobrazit podnabídku {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Přidat do košíku",
@@ -144,6 +145,7 @@
     "back_to_main_menu": "Zpět do hlavní nabídky"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "recen.",
@@ -309,7 +311,10 @@
     },
     "item_count_cutoff": "Počet položek: více než {{ count }}",
     "quick_order_list": "Seznam pro rychlou objednávku",
-    "product_disclosures": "Povinné informace o produktu"
+    "product_disclosures": "Povinné informace o produktu",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -402,6 +407,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

@@ -1,0 +1,40 @@
+{% doc %}
+  One product entry in the subscribe-products rail. Renders the shared
+  shop-product-card snippet, so a product with a Flavor option fans out into
+  one card per flavor — identical to the /collections rows. The wrapper is
+  display: contents so every card sits directly in the rail's flex flow.
+
+  @example
+  {% content_for 'block', type: '_subscribe-product', id: 'card_1' %}
+{% enddoc %}
+
+{%- if block.settings.product != blank -%}
+  <div class="subscribe-product" {{ block.shopify_attributes }}>
+    {% render 'shop-product-card', product: block.settings.product %}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .subscribe-product {
+    display: contents;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.subscribe_product",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.subscribe_product"
+    }
+  ]
+}
+{% endschema %}

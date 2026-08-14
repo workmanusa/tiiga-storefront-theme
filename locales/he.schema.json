@@ -163,7 +163,9 @@
     "disclosures_metafield_content": "אזהרות בטיחות חובה וגילויים רגולטוריים עבור מוצר זה.",
     "app_required_for_ratings": "נדרש יישום עבור דירוגי מוצרים. [למידע נוסף](https://help.shopify.com/manual/apps)",
     "navigation": "ניווט",
-    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab."
+    "flavor_tabs_help": "Add up to three Featured product sections directly below this section. Each label shows one of them as a tab.",
+    "social_links": "Social links",
+    "cta": "Call to action"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>הצטרף לרשימת הדיוור שלנו</h2>",
@@ -224,6 +226,7 @@
     "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "info": {
+    "one_per_line": "One per line",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
     "klaviyo_company_id": "The 6-character public key from Klaviyo settings. Enables live reviews in this section.",
     "nav_open_by_default": "Expand this section when the menu drawer opens.",
@@ -258,9 +261,14 @@
     "pills_usage": "משמש למסננים שהוחלו, קודי הנחה והצעות חיפוש",
     "media_type_info": "התכונות מאוכלסות מקישורי התפריט שלך",
     "flavor_link_products": "Ordered list of the products that share one flavor picker. Each page shows the other products' flavors as linked chips, in this order. Chips only show when the current product is in the list.",
-    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group)."
+    "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group).",
+    "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "names": {
+    "subscribe_how": "Subscribe how it works",
+    "subscribe_step": "Subscription step",
+    "subscribe_product": "Subscription product card",
+    "subscribe_products": "Subscription products",
     "pdp_size_selector": "Size selector",
     "nav_menu": "Navigation menu",
     "nav_shop": "Shop menu",
@@ -463,7 +471,12 @@
     "review_photo": "Review photo",
     "pdp_benefits": "Product benefits",
     "pdp_header": "Product header",
-    "pdp_trust_bar": "Trust bar"
+    "pdp_trust_bar": "Trust bar",
+    "tiiga_footer": "Tiiga footer",
+    "shop_collections": "Shop collections",
+    "faq": "FAQ",
+    "faq_category": "FAQ category",
+    "faq_item": "FAQ question"
   },
   "options": {
     "droplet": "Droplet",
@@ -746,6 +759,8 @@
     "below_media": "מתחת למדיה"
   },
   "settings": {
+    "steps_heading": "Steps heading",
+    "benefits": "Benefits",
     "pill": "Pill style",
     "combine_reviews": "Combine reviews from all products",
     "klaviyo_company_id": "Klaviyo public API key (company ID)",
@@ -1218,7 +1233,20 @@
     "symbol": "Symbol",
     "value": "Value",
     "show_rating": "Show rating",
-    "rating": "Rating"
+    "rating": "Rating",
+    "show_newsletter": "Show email signup",
+    "shop_heading": "Shop column heading",
+    "shop_all_label": "'Shop all' label",
+    "learn_heading": "Learn column heading",
+    "social_heading": "Social column heading",
+    "instagram": "Instagram URL",
+    "tiktok": "TikTok URL",
+    "facebook": "Facebook URL",
+    "youtube": "YouTube URL",
+    "show_wordmark": "Show large wordmark",
+    "wordmark_text": "Wordmark text",
+    "question": "Question",
+    "answer": "Answer"
   },
   "text_defaults": {
     "accordion_heading": "כותרת אקורדיון",

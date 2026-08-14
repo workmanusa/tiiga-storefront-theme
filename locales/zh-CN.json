@@ -94,7 +94,8 @@
     "price_filter_high": "高价",
     "view_disclosure_information_for_product": "查看 {{ product_title }} 的披露信息",
     "show_submenu": "显示 {{ title }} 子菜单",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "添加到购物车",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "返回主菜单"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "评价",
@@ -297,7 +299,10 @@
       "other": "{{ count }} 件商品已加入购物车"
     },
     "quick_order_list": "快速订购列表",
-    "product_disclosures": "产品披露信息"
+    "product_disclosures": "产品披露信息",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

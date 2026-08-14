@@ -94,7 +94,8 @@
     "price_filter_high": "Висока цена",
     "view_disclosure_information_for_product": "Преглед на оповестената информация за {{ product_title }}",
     "show_submenu": "Показване на подменю {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Добавяне към количката",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "Назад към главното меню"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "мнения",
@@ -297,7 +299,10 @@
       "other": "{{ count }} артикула са добавени в количката"
     },
     "quick_order_list": "Бърз списък с поръчки",
-    "product_disclosures": "Оповестявания за продукта"
+    "product_disclosures": "Оповестявания за продукта",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

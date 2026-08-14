@@ -94,7 +94,8 @@
     "price_filter_high": "高價",
     "view_disclosure_information_for_product": "檢視 {{ product_title }} 的揭露資訊",
     "show_submenu": "顯示 {{ title }} 子選單",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "加入購物車",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "返回主選單"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "評論數",
@@ -297,7 +299,10 @@
     },
     "item_count_cutoff": "超過 {{ count }} 個品項",
     "quick_order_list": "快速訂購清單",
-    "product_disclosures": "商品揭露資訊"
+    "product_disclosures": "商品揭露資訊",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

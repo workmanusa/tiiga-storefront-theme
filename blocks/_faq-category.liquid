@@ -1,0 +1,74 @@
+{%- doc -%}
+  Renders one FAQ category group inside sections/faq.liquid: a small
+  uppercase label on a soft card bar, followed by the category's question
+  rows (child `_faq-item` blocks). The label doubles as a deep-link anchor
+  (`#faq-<label-handle>`).
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<section
+  class="faq-category"
+  {% if block.settings.label != blank %}
+    id="faq-{{ block.settings.label | handleize }}"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.label != blank -%}
+    <h2 class="faq-category__label">
+      {{- block.settings.label -}}
+    </h2>
+  {%- endif -%}
+
+  <div class="faq-category__items">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .faq-category {
+    /* Keep deep-linked anchors clear of the sticky header */
+    scroll-margin-block-start: calc(var(--header-height, 60px) + 1.5rem);
+  }
+
+  .faq-category + .faq-category {
+    margin-block-start: 2.5rem;
+  }
+
+  .faq-category__label {
+    margin: 0;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    background-color: var(--faq-card-background);
+    border-radius: 0.75rem;
+  }
+
+  .faq-category__items {
+    padding-inline: 1.25rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.faq_category",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_faq-item"
+    }
+  ]
+}
+{% endschema %}

@@ -94,7 +94,8 @@
     "price_filter_high": "Giá cao",
     "view_disclosure_information_for_product": "Xem thông tin công bố của {{ product_title }}",
     "show_submenu": "Hiển thị menu phụ {{ title }}",
-    "product_tabs": "Product tabs"
+    "product_tabs": "Product tabs",
+    "footer_navigation": "Footer navigation"
   },
   "actions": {
     "add_to_cart": "Thêm vào giỏ hàng",
@@ -140,6 +141,7 @@
     "back_to_main_menu": "Quay lại menu chính"
   },
   "content": {
+    "flavor_count": "{{ count }} flavors",
     "min_read": "{{ minutes }} min read",
     "all_articles": "All articles",
     "reviews": "đánh giá",
@@ -297,7 +299,10 @@
     },
     "item_count_cutoff": "Hơn {{ count }} mặt hàng",
     "quick_order_list": "Danh sách đặt hàng nhanh",
-    "product_disclosures": "Thông tin công bố sản phẩm"
+    "product_disclosures": "Thông tin công bố sản phẩm",
+    "shop_by": "Shop by",
+    "search_products": "Search products",
+    "faq": "Frequently asked questions"
   },
   "gift_cards": {
     "issued": {
@@ -388,6 +393,7 @@
     "status_ready": "Ready to add to cart"
   },
   "purchase_options": {
+    "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",
     "one_time": "One time",
     "delivery_frequency": "Delivery frequency",

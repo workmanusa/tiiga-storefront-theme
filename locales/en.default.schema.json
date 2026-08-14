@@ -33,6 +33,8 @@
     "text": "Text"
   },
   "content": {
+    "cta": "Call to action",
+    "social_links": "Social links",
     "promo_banner": "Promo banner",
     "featured_articles": "Featured articles",
     "rating_breakdown": "Rating breakdown",
@@ -232,6 +234,8 @@
     "work_quickly_to_ship": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
   },
   "info": {
+    "one_per_line": "One per line",
+    "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead.",
     "flavor_link_products": "Ordered list of the products that share one flavor picker. Each page shows the other products' flavors as linked chips, in this order. Chips only show when the current product is in the list.",
     "flavor_link_heading": "Shown once, in front of the second flavor group (the first linked group).",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
@@ -269,6 +273,14 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "faq": "FAQ",
+    "faq_category": "FAQ category",
+    "faq_item": "FAQ question",
+    "subscribe_how": "Subscribe how it works",
+    "subscribe_step": "Subscription step",
+    "subscribe_product": "Subscription product card",
+    "subscribe_products": "Subscription products",
+    "tiiga_footer": "Tiiga footer",
     "pdp_size_selector": "Size selector",
     "nav_menu": "Navigation menu",
     "nav_shop": "Shop menu",
@@ -484,6 +496,7 @@
     "social_media_links": "Social media links",
     "spacer": "Spacer",
     // Slideshow hero with a solid content panel beside the media
+    "shop_collections": "Shop collections",
     "split_hero": "Split hero",
     // Banner section with two side-by-side content panels
     "split_showcase": "Split showcase",
@@ -826,6 +839,10 @@
     "below_media": "Below media"
   },
   "settings": {
+    "steps_heading": "Steps heading",
+    "benefits": "Benefits",
+    "question": "Question",
+    "answer": "Answer",
     "pill": "Pill style",
     "combine_reviews": "Combine reviews from all products",
     "klaviyo_company_id": "Klaviyo public API key (company ID)",
@@ -880,6 +897,17 @@
     "max_flavors": "Maximum flavors",
     "show_variant_thumbnails": "Show variant thumbnails",
     "flavor_link_products": "Combined flavor products",
+    "show_newsletter": "Show email signup",
+    "shop_heading": "Shop column heading",
+    "shop_all_label": "'Shop all' label",
+    "learn_heading": "Learn column heading",
+    "social_heading": "Social column heading",
+    "instagram": "Instagram URL",
+    "tiktok": "TikTok URL",
+    "facebook": "Facebook URL",
+    "youtube": "YouTube URL",
+    "show_wordmark": "Show large wordmark",
+    "wordmark_text": "Wordmark text",
     "flavor_link_heading": "Variety group heading",
     "link_label": "Link label",
     "accordion": "Accordion",
