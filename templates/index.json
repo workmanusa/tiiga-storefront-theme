@@ -577,7 +577,7 @@
             "description": {
               "type": "text",
               "settings": {
-                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 on-the-go packs.</p>",
+                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 convenient on-the-go packs.</p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -818,7 +818,7 @@
             "description": {
               "type": "text",
               "settings": {
-                "text": "<p>The same gut-health hydration in a 30-serving tub. Scoop, stir, sip — your daily ritual, simplified.</p>",
+                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 on-the-go packs.</p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
