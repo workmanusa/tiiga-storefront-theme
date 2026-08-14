@@ -1132,13 +1132,13 @@
         "column_3": {
           "type": "_comparison-column",
           "settings": {
-            "title": "Other hydration mixes",
-            "stat_1_label": "↑ 1.8x more calories",
-            "stat_1_value": "45",
-            "stat_1_unit": "calories",
-            "stat_2_label": "↑ 11g more added sugar",
-            "stat_2_value": "11g",
-            "stat_2_unit": "added sugar",
+            "title": "Probiotic and Prebiotic Sodas",
+            "stat_1_label": "",
+            "stat_1_value": "2-5g",
+            "stat_1_unit": "Added Sugar",
+            "stat_2_label": "↑ 60% less fiber",
+            "stat_2_value": "2g",
+            "stat_2_unit": "Fiber",
             "description": "Synthetic ingredients and added sugars"
           },
           "blocks": {}
