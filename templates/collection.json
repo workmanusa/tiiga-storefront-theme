@@ -14,7 +14,7 @@
       "settings": {
         "eyebrow": "Shop Tiiga",
         "heading": "Hydration, powered by baobab.",
-        "background_color": "#2e80ea",
+        "background_color": "{{ settings.color_palette.color2 }}",
         "collection_list": [
           "stick-packs",
           "tubs"
