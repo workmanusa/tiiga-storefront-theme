@@ -127,7 +127,7 @@
               "name": "t:names.heading",
               "settings": {
                 "text": "<p>Powered By Africa's Superfruit</p>",
-                "width": "100%",
+                "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h1",
