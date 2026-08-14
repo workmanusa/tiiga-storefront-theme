@@ -1105,13 +1105,13 @@
           "type": "_comparison-column",
           "settings": {
             "title": "Fiber Supplements (psyllium/acacia)",
-            "stat_1_label": "↑ 4.5x more calories",
-            "stat_1_value": "112",
-            "stat_1_unit": "calories",
+            "stat_1_label": "",
+            "stat_1_value": "5-8g",
+            "stat_1_unit": "Added Sugar",
             "stat_2_label": " ↓40% Less Fiber than Tiiga",
             "stat_2_value": "3g",
             "stat_2_unit": "Fiber",
-            "description": "Made with Synthetic Sources of fiber and loaded with"
+            "description": "Made using Synthetic Sources of fiber and loaded with"
           },
           "blocks": {}
         },
