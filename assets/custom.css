@@ -47,7 +47,9 @@
    load after this file and would otherwise win the cascade. */
 .flavor-tab-panel.flavor-tab-panel .variant-option--buttons {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Two columns when there's room, collapsing to one before a flavor name is
+     narrow enough to wrap (which would knock the rows out of alignment). */
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   gap: 0.25rem 0.5rem;
 }
 
@@ -101,8 +103,17 @@
     padding-block: 1.5rem 2.5rem;
   }
 
-  .split-slide__panel-content .custom-font-size {
+  /* Phone: readable body copy without crowding the compact heading */
+  .split-slide__panel-content .custom-font-size,
+  .split-slide__panel-content .text-block {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .split-slide__panel .button {
     font-size: 0.9375rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
   }
 }
 

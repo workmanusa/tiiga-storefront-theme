@@ -140,9 +140,15 @@
   /* Reference-scale CTA on desktop; mobile keeps the compact global sizing */
   @media screen and (min-width: 750px) {
     .split-slide__panel .button {
-      font-size: 0.9375rem;
-      padding-inline: 1.75rem;
-      padding-block: 0.875rem;
+      font-size: 1rem;
+      padding-inline: 2rem;
+      padding-block: 1rem;
+    }
+
+    /* Body copy tracks the display heading so the scale doesn't feel extreme */
+    .split-slide__panel-content .text-block {
+      font-size: 1.125rem;
+      line-height: 1.6;
     }
   }
 
