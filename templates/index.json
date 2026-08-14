@@ -1196,6 +1196,7 @@
         },
         "stat_4": {
           "type": "_stat-item",
+          "disabled": true,
           "settings": {
             "value": "79%",
             "description": "use Tiiga as their only hydration brand"
@@ -1213,7 +1214,7 @@
         "eyebrow": "",
         "heading": "Your Gut and Hydration Are Connected",
         "text": "<p>Real baobab fruit and organic coconut water deliver prebiotic fiber and electrolytes in one stick — supporting healthy digestion and true hydration at the same time.</p>",
-        "footnote": "*Based on a post-purchase survey of verified Tiiga customers",
+        "footnote": "",
         "value_color": "#1d5a6b",
         "background_color": "#efece7",
         "padding-block-start": 80,
