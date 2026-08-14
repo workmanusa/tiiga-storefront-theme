@@ -647,62 +647,67 @@
         "padding-block-end": 48
       }
     },
-    "ingredients": {
+    "ingredient_cards_fqTUjL": {
       "type": "ingredient-cards",
       "blocks": {
-        "card_1": {
+        "ingredient_card_cpyKRg": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
             "title": "100% Organic Baobab Fruit",
             "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
           },
           "blocks": {}
         },
-        "card_2": {
+        "ingredient_card_XWMYfW": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_31_59_PM.png",
             "title": "Coconut Water Powder",
             "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
-        "card_3": {
+        "ingredient_card_bDp9KX": {
           "type": "_ingredient-card",
           "settings": {
+            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
             "title": "Sodium Citrate",
             "description": "A functional form of sodium that helps with hydration, without tasting too salty."
           },
           "blocks": {}
         },
-        "card_4": {
+        "ingredient_card_ipTLAq": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Magnesium Citrate",
-            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+            "image": "shopify://shop_images/2e5be3df-b8bf-47d2-82ef-b3e70503e697.png",
+            "title": "Organic Stevia Extract",
+            "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
           },
           "blocks": {}
         },
-        "card_6": {
+        "ingredient_card_b9iYyP": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Organic Stevia Extract",
-            "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
+            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_6"
+        "ingredient_card_cpyKRg",
+        "ingredient_card_XWMYfW",
+        "ingredient_card_bDp9KX",
+        "ingredient_card_ipTLAq",
+        "ingredient_card_b9iYyP"
       ],
       "settings": {
         "heading": "Quality ingredients, thoughtfully selected",
         "text": "<p>We're not making it complicated. Tiiga is made with thoughtfully selected ingredients-no added sugar, artificial sweeteners, dyes, or anything you can't pronounce. </p>",
         "card_width": 320,
-        "background_color": "#f6f4f0",
+        "background_color": "#F7F9FD",
         "padding-block-start": 72,
         "padding-block-end": 72
       }
@@ -881,7 +886,7 @@
     "main",
     "flavor_nutrition",
     "proven_to_hydrate",
-    "ingredients",
+    "ingredient_cards_fqTUjL",
     "whats_not_inside",
     "reviews"
   ]
