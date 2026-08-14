@@ -998,23 +998,15 @@
           "type": "_ingredient-card",
           "settings": {
             "title": "Sodium Citrate",
-            "description": "An unrefined source of sodium, an essential electrolyte for hydration. Naturally mineral-rich."
+            "description": "A functional form of sodium that helps with hydration, without tasting too salty."
           },
           "blocks": {}
         },
         "card_4": {
           "type": "_ingredient-card",
           "settings": {
-            "title": "Real Fruit",
-            "description": "Flavor from actual fruit, nothing artificial. Every flavor starts with the real thing."
-          },
-          "blocks": {}
-        },
-        "card_5": {
-          "type": "_ingredient-card",
-          "settings": {
-            "title": "Prebiotic Fiber",
-            "description": "5 grams per serving from raw, unprocessed baobab — food for your gut microbiome."
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
           },
           "blocks": {}
         },
@@ -1032,7 +1024,6 @@
         "card_2",
         "card_3",
         "card_4",
-        "card_5",
         "card_6"
       ],
       "settings": {
