@@ -1288,6 +1288,7 @@
         "row_4",
         "row_5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Expert eyes on <em>every sip</em>.",
         "text": "<p>Our medical advisors bring expertise across women's health, nutrition, pediatrics, sports medicine, and more — helping keep every product grounded in real science.</p>",
@@ -1354,8 +1355,8 @@
         "tier_4"
       ],
       "settings": {
-        "heading": "Your future self drinks <em>more water</em>.",
-        "text": "<p>Start with 20% off every subscription, then bundle more flavors to save more on every delivery.</p>",
+        "heading": "Your future gut thanks you",
+        "text": "<p>Start with X% off every subscription, then bundle more flavors to save more on every delivery.</p>",
         "link_label": "Build your bundle",
         "link": "/collections/all",
         "background_color": "",
