@@ -409,81 +409,80 @@ body {
   --flavor-tint: #f2f0ec;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Raspberry Lemonade']:checked) {
+body:has(input[data-option-name='Flavor'][value='Raspberry Lemonade']:checked:not(featured-product-information *)) {
   --flavor-color: #c0325f;
   --flavor-tint: #f7e7ed;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Watermelon']:checked) {
+body:has(input[data-option-name='Flavor'][value='Watermelon']:checked:not(featured-product-information *)) {
   --flavor-color: #e06060;
   --flavor-tint: #fbe9e9;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Strawberry']:checked) {
+body:has(input[data-option-name='Flavor'][value='Strawberry']:checked:not(featured-product-information *)) {
   --flavor-color: #d94a63;
   --flavor-tint: #fae9ec;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Tropical Bliss']:checked) {
+body:has(input[data-option-name='Flavor'][value='Tropical Bliss']:checked:not(featured-product-information *)) {
   --flavor-color: #e08a1e;
   --flavor-tint: #fbf0df;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Orange Mango']:checked) {
+body:has(input[data-option-name='Flavor'][value='Orange Mango']:checked:not(featured-product-information *)) {
   --flavor-color: #dd7a1f;
   --flavor-tint: #fbeee0;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Lemon Lime']:checked) {
+body:has(input[data-option-name='Flavor'][value='Lemon Lime']:checked:not(featured-product-information *)) {
   --flavor-color: #8faa1f;
   --flavor-tint: #f2f6e2;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Berry Melon']:checked) {
+body:has(input[data-option-name='Flavor'][value='Berry Melon']:checked:not(featured-product-information *)) {
   --flavor-color: #b8437f;
   --flavor-tint: #f8e8f0;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Tropical Fruit']:checked) {
+body:has(input[data-option-name='Flavor'][value='Tropical Fruit']:checked:not(featured-product-information *)) {
   --flavor-color: #dd8f2a;
   --flavor-tint: #fbf1e2;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Wild Berry']:checked) {
+body:has(input[data-option-name='Flavor'][value='Wild Berry']:checked:not(featured-product-information *)) {
   --flavor-color: #6f3d88;
   --flavor-tint: #efe8f4;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Fruit Punch']:checked) {
+body:has(input[data-option-name='Flavor'][value='Fruit Punch']:checked:not(featured-product-information *)) {
   --flavor-color: #c93d48;
   --flavor-tint: #f9e8ea;
 }
 
-body:has(.product-information input[data-option-name='Flavor'][value='Orange']:checked) {
+body:has(input[data-option-name='Flavor'][value='Orange']:checked:not(featured-product-information *)) {
   --flavor-color: #dd7a1f;
   --flavor-tint: #fbeee0;
 }
 
 /* Tint the product section and everything below it on the product page */
-body:has(.product-information) .shopify-section-group-header-group ~ * .section-background,
-body:has(.product-information) .product-information {
-  background-color: var(--flavor-tint);
-}
-
-body:has(.product-information) .page-wrapper {
+/* PDP only. The homepage flavor selector also renders .product-information
+   (inside <featured-product-information>), so match one that is not. The old
+   rule additionally repainted every .section-background on the page. */
+body:has(.product-information:not(featured-product-information *)) .product-information:not(featured-product-information *),
+body:has(.product-information:not(featured-product-information *)) .page-wrapper {
   background-color: var(--flavor-tint);
 }
 
 /* Media panel sits on a neutral card so the packaging stays true to color */
-.product-information .product-information__media {
+.product-information:not(featured-product-information *) .product-information__media {
   background-color: #efece7;
   border-radius: 12px;
   padding: 1.5rem;
 }
 
 /* Buy box: option group labels */
-.product-information .variant-option__label,
-.product-information legend {
+.product-information:not(featured-product-information *) .variant-option__label,
+.product-information:not(featured-product-information *) legend {
   font-family: var(--font-subheading--family);
   font-size: 0.75rem;
   font-weight: 700;
@@ -492,7 +491,7 @@ body:has(.product-information) .page-wrapper {
 }
 
 /* Size / flavor choices as white cards rather than the theme's outlined pills */
-.product-information .variant-option__button-label.variant-option__button-label {
+.product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label {
   background-color: #fff;
   border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
   border-radius: 8px;
@@ -500,23 +499,23 @@ body:has(.product-information) .page-wrapper {
   justify-content: center;
 }
 
-.product-information .variant-option__button-label.variant-option__button-label:has(:checked) {
+.product-information:not(featured-product-information *) .variant-option__button-label.variant-option__button-label:has(:checked) {
   border-color: var(--color-foreground);
   border-width: 2px;
 }
 
-.product-information .variant-option__button-label__pill {
+.product-information:not(featured-product-information *) .variant-option__button-label__pill {
   display: none;
 }
 
 /* Product title as the flavor name, like the reference */
-.product-information .product-title {
+.product-information:not(featured-product-information *) .product-title {
   font-size: clamp(2.25rem, 4vw, 3.5rem);
   line-height: 1.05;
 }
 
 @media screen and (max-width: 749px) {
-  .product-information .product-information__media {
+  .product-information:not(featured-product-information *) .product-information__media {
     padding: 1rem;
   }
 }
