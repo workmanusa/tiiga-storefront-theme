@@ -12,8 +12,8 @@
         "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
         "secondary_button_label": "Shop All Products",
         "secondary_button_link": "shopify://collections/all",
-        "rating": "4.8",
-        "review_count": "5,000+ reviews",
+        "rating": "4.7",
+        "review_count": "850+ reviews",
         "shipping_note": "Free shipping $40+",
         "disclaimer": "<p>Cancel anytime · 30-day money-back guarantee · These statements have not been evaluated by the FDA.</p>",
         "background_color": "#1d5a6b",
@@ -122,7 +122,7 @@
             "number": "07",
             "eyebrow": "REVIEWS",
             "title": "The Top Choice for Electrolytes and Gut Health",
-            "text": "<p>Thousands of five-star reviews, and they keep landing on the same three reasons. Tiiga is what people reach for when they want electrolytes and gut health in one stick instead of a shelf full of separate products.</p>",
+            "text": "<p>Hundreds of five-star reviews, and they keep landing on the same three reasons. Tiiga is what people reach for when they want electrolytes and gut health in one stick instead of a shelf full of separate products.</p>",
             "media_style": "checklist",
             "media_position": "right",
             "checklist": "Convenience: pre-portioned sticks, no measuring and no clean-up\nTaste: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
@@ -699,6 +699,71 @@
         "padding-block-start": 24,
         "padding-block-end": 80
       }
+    },
+    "ingredients": {
+      "type": "ingredient-cards",
+      "blocks": {
+        "card_1": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
+            "title": "100% Organic Baobab Fruit",
+            "description": "Africa's superfruit, wild-harvested and raw. Naturally packed with prebiotic fiber, vitamin C, and minerals."
+          },
+          "blocks": {}
+        },
+        "card_2": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_31_59_PM.png",
+            "title": "Coconut Water Powder",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+          },
+          "blocks": {}
+        },
+        "card_3": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
+            "title": "Sodium Citrate",
+            "description": "A functional form of sodium that helps with hydration, without tasting too salty."
+          },
+          "blocks": {}
+        },
+        "card_6": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/2e5be3df-b8bf-47d2-82ef-b3e70503e697.png",
+            "title": "Organic Stevia Extract",
+            "description": "Made from the stevia plant, this organic extract adds sweetness without sugar or calories."
+          },
+          "blocks": {}
+        },
+        "card_4": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
+            "title": "Magnesium Citrate",
+            "description": "Naturally rich in electrolytes to replenish what your body loses and support hydration."
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_6",
+        "card_4"
+      ],
+      "settings": {
+        "heading": "Quality ingredients, thoughtfully selected",
+        "text": "<p>We're not making it complicated. Tiiga is made with thoughtfully selected ingredients-no added sugar, artificial sweeteners, dyes, or anything you can't pronounce. </p>",
+        "card_width": 320,
+        "background_color": "",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
     }
   },
   "order": [
@@ -707,6 +772,7 @@
     "flavor_tabs",
     "buy_packs",
     "buy_tubs",
+    "ingredients",
     "trust",
     "quote"
   ]
