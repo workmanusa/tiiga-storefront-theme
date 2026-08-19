@@ -19,6 +19,21 @@
     assign media_full = ' story-row--media-full'
   endif
 
+  # A lone image fills the media area instead of sharing it with a pair.
+  assign media_single = ''
+  if media_style == 'image' or block.settings.image_2 == blank
+    assign media_single = ' story-row__media--single'
+  endif
+
+  assign image_sizes = '(min-width: 990px) 260px, 44vw'
+  if section.settings.media_width == 'full'
+    if media_single == blank
+      assign image_sizes = '(min-width: 750px) 560px, 44vw'
+    else
+      assign image_sizes = '(min-width: 750px) 720px, 92vw'
+    endif
+  endif
+
   # A row only splits into two columns when it actually has media to show.
   assign is_split = false
   if media_style == 'image' and block.settings.image_1 != blank
@@ -54,14 +69,14 @@
   {%- endif -%}
 
   {%- if is_split -%}
-    <div class="story-row__media">
+    <div class="story-row__media{{ media_single }}">
       {%- if block.settings.image_1 != blank -%}
         {{
           block.settings.image_1
-          | image_url: width: 900
+          | image_url: width: 1600
           | image_tag:
-            widths: '300, 480, 640, 900',
-            sizes: '(min-width: 990px) 260px, 44vw',
+            widths: '300, 480, 640, 900, 1200, 1600',
+            sizes: image_sizes,
             class: 'story-row__image',
             loading: 'lazy'
         }}
@@ -69,10 +84,10 @@
       {%- if media_style == 'image_pair' and block.settings.image_2 != blank -%}
         {{
           block.settings.image_2
-          | image_url: width: 900
+          | image_url: width: 1600
           | image_tag:
-            widths: '300, 480, 640, 900',
-            sizes: '(min-width: 990px) 260px, 44vw',
+            widths: '300, 480, 640, 900, 1200, 1600',
+            sizes: image_sizes,
             class: 'story-row__image story-row__image--offset',
             loading: 'lazy'
         }}
@@ -226,6 +241,16 @@
     margin-block-start: 2rem;
   }
 
+  .story-row__media--single {
+    justify-items: center;
+  }
+
+  .story-row__media--single .story-row__image {
+    aspect-ratio: auto;
+    width: 100%;
+    height: auto;
+  }
+
   @media screen and (min-width: 750px) {
     .story-row {
       padding: 2.75rem;
@@ -288,6 +313,15 @@
 
     .story-row--media-full .story-row__image {
       aspect-ratio: 3 / 2;
+    }
+
+    /* One image under the heading: bounded by height so square and
+       portrait sources are not cropped into a letterbox. */
+    .story-row--media-full .story-row__media--single .story-row__image {
+      aspect-ratio: auto;
+      width: auto;
+      height: 30rem;
+      max-width: 100%;
     }
 
     .story-row--media-full .story-row__image--offset {
