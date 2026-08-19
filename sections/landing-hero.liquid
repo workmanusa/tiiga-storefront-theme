@@ -1,0 +1,364 @@
+{% render 'contrast-override',
+  background_color: section.settings.background_color,
+  text_color: section.settings.text_color,
+  section_id: section.id
+%}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="landing-hero spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="landing-hero__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="landing-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h1 class="landing-hero__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="landing-hero__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.image_1 != blank or section.settings.image_2 != blank -%}
+      <div class="landing-hero__media">
+        {%- if section.settings.image_1 != blank -%}
+          {{
+            section.settings.image_1
+            | image_url: width: 900
+            | image_tag:
+              widths: '300, 480, 640, 900',
+              sizes: '(min-width: 750px) 300px, 42vw',
+              class: 'landing-hero__image landing-hero__image--lead',
+              fetchpriority: 'high'
+          }}
+        {%- endif -%}
+        {%- if section.settings.image_2 != blank -%}
+          {{
+            section.settings.image_2
+            | image_url: width: 900
+            | image_tag:
+              widths: '300, 480, 640, 900',
+              sizes: '(min-width: 750px) 300px, 42vw',
+              class: 'landing-hero__image landing-hero__image--trail',
+              loading: 'lazy'
+          }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.primary_button_label != blank or section.settings.secondary_button_label != blank -%}
+      <div class="landing-hero__actions">
+        {%- if section.settings.primary_button_label != blank -%}
+          <a
+            class="button landing-hero__button"
+            href="{{ section.settings.primary_button_link | default: '#' }}"
+          >
+            {{- section.settings.primary_button_label -}}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_button_label != blank -%}
+          <a
+            class="button-secondary landing-hero__button"
+            href="{{ section.settings.secondary_button_link | default: '#' }}"
+          >
+            {{- section.settings.secondary_button_label -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.rating != blank or section.settings.review_count != blank or section.settings.shipping_note != blank -%}
+      <div class="landing-hero__proof">
+        {%- if section.settings.rating != blank -%}
+          <span class="landing-hero__rating">
+            <span
+              class="landing-hero__stars"
+              role="img"
+              aria-label="{{ 'reviews.stars_label' | t: rating: section.settings.rating }}"
+            >
+              ★★★★★
+            </span>
+            <span class="landing-hero__rating-value">{{ section.settings.rating }}</span>
+          </span>
+        {%- endif -%}
+        {%- if section.settings.review_count != blank -%}
+          <span class="landing-hero__proof-item">{{ section.settings.review_count }}</span>
+        {%- endif -%}
+        {%- if section.settings.shipping_note != blank -%}
+          <span class="landing-hero__proof-item">{{ section.settings.shipping_note }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <div class="landing-hero__disclaimer">{{ section.settings.disclaimer }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .landing-hero {
+    grid-column: 1 / -1;
+  }
+
+  .landing-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 1.5rem);
+    text-align: center;
+  }
+
+  .landing-hero__eyebrow {
+    margin: 0 0 1.5rem;
+    padding: 0.5rem 1.125rem;
+    border-radius: 999px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.12);
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .landing-hero__heading {
+    margin: 0;
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  .landing-hero__text {
+    margin-block-start: 1.25rem;
+    max-width: 34rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: rgb(var(--color-foreground-rgb) / 0.85);
+  }
+
+  .landing-hero__text p {
+    margin: 0;
+  }
+
+  .landing-hero__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-block-start: 2.5rem;
+  }
+
+  .landing-hero__image {
+    display: block;
+    width: min(42vw, 300px);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .landing-hero__image--lead {
+    rotate: -4deg;
+  }
+
+  .landing-hero__image--trail {
+    rotate: 4deg;
+  }
+
+  .landing-hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: min(100%, 26rem);
+    margin-block-start: 2.5rem;
+  }
+
+  .landing-hero__button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .landing-hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-block-start: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .landing-hero__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .landing-hero__stars {
+    letter-spacing: 0.1em;
+    color: #f5a623;
+  }
+
+  .landing-hero__rating-value {
+    font-weight: 600;
+  }
+
+  .landing-hero__proof-item {
+    color: rgb(var(--color-foreground-rgb) / 0.8);
+  }
+
+  .landing-hero__disclaimer {
+    margin-block-start: 1.5rem;
+    max-width: 34rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .landing-hero__disclaimer p {
+    margin: 0;
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .landing-hero__image {
+      transition: rotate 0.3s ease;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.landing_hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:settings.image_1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:settings.image_2"
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "t:settings.primary_button_label"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "t:settings.primary_button_link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "t:settings.secondary_button_label"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "t:settings.secondary_button_link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.social_proof"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "t:settings.rating"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "t:settings.review_count"
+    },
+    {
+      "type": "text",
+      "id": "shipping_note",
+      "label": "t:settings.shipping_note"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "t:settings.disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.landing_hero",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

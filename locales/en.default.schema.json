@@ -277,6 +277,9 @@
     "faq": "FAQ",
     "faq_category": "FAQ category",
     "faq_item": "FAQ question",
+    "landing_hero": "Landing hero",
+    "story_row": "Story row",
+    "story_rows": "Story rows",
     "subscribe_how": "Subscribe how it works",
     "subscribe_step": "Subscription step",
     "subscribe_product": "Subscription product card",
@@ -523,7 +526,9 @@
     "comparison_slider": "Comparison slider"
   },
   "options": {
+    "checklist": "Checklist",
     "droplet": "Droplet",
+    "image_pair": "Image pair",
     "sugar_cube": "Sugar cube",
     "gut": "Gut",
     "fiber": "Fiber",
@@ -840,6 +845,14 @@
     "below_media": "Below media"
   },
   "settings": {
+    "checklist": "Checklist",
+    "checklist_info": "One item per line.",
+    "number": "Number",
+    "primary_button_label": "Primary button label",
+    "primary_button_link": "Primary button link",
+    "secondary_button_label": "Secondary button label",
+    "secondary_button_link": "Secondary button link",
+    "shipping_note": "Shipping note",
     "steps_heading": "Steps heading",
     "benefits": "Benefits",
     "question": "Question",

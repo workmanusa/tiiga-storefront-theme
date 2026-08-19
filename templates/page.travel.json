@@ -1,0 +1,400 @@
+{
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "settings": {
+        "eyebrow": "Limited-Time: Save 20% on First Order",
+        "heading": "Your Gut Travels With You. Make Sure It's Ready.",
+        "text": "<p>Join 1 million travelers who never leave home without their TIIGA stick packs.</p>",
+        "image_1": "shopify://shop_images/77438913-8a37-488c-a3ce-16b5b186ab05.png",
+        "image_2": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b.png",
+        "primary_button_label": "Save 20% + Free Shipping",
+        "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties",
+        "secondary_button_label": "One-time purchase — Shop All Products",
+        "secondary_button_link": "shopify://collections/all",
+        "rating": "4.8",
+        "review_count": "5,000+ reviews",
+        "shipping_note": "Free shipping $40+",
+        "disclaimer": "<p>Cancel anytime · 30-day money-back guarantee · These statements have not been evaluated by the FDA.</p>",
+        "background_color": "#1d5a6b",
+        "text_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "story_rows": {
+      "type": "story-rows",
+      "blocks": {
+        "row_1": {
+          "type": "_story-row",
+          "settings": {
+            "number": "01",
+            "eyebrow": "DIGESTION",
+            "title": "Travel Kills Your Gut Routine. TIIGA Revives It.",
+            "text": "<p>New time zones, eating out every meal, zero fiber in airport food — your gut never stood a chance. TIIGA delivers 5g of raw prebiotic fiber to feed the good bacteria that keep you regular. No laxatives. No guesswork. Just easier digestion, wherever you land.</p>",
+            "media_style": "image_pair",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2_a4773a08-c276-4a7e-9760-112196cbf8c8.png",
+            "image_2": "shopify://shop_images/5be5305b-5583-409b-81f9-b27135df3e56.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_2": {
+          "type": "_story-row",
+          "settings": {
+            "number": "02",
+            "eyebrow": "EASE",
+            "title": "No Bulky Bottles. Just a Stick That Fits in Your Carry-On.",
+            "text": "<p>Forget the powder tub you'll never mix right in a hotel room, or the 6 supplement bottles eating up half your toiletry bag. TIIGA comes in pre-portioned daily stick packs — TSA-friendly, no measuring, no mess. Toss one in your bag and your gut is covered. Every single day.</p>",
+            "media_style": "image_pair",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/Image-rev2_03b117d0-70ff-4265-a09a-ea914b68a774.webp",
+            "image_2": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_3": {
+          "type": "_story-row",
+          "settings": {
+            "number": "03",
+            "eyebrow": "ENERGY",
+            "title": "Stop Landing Exhausted. Start Landing Ready.",
+            "text": "<p>Jet lag wrecks more than your sleep — it tanks your focus, your mood, and your first two days at the destination. TIIGA packs B-vitamins, adaptogens, and real coconut water electrolytes that support steady, jitter-free energy. So you hit the ground running instead of hitting snooze.</p>",
+            "media_style": "image_pair",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/98e72709-3546-4803-b3ee-c60b9eb69e65.png",
+            "image_2": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2_a4773a08-c276-4a7e-9760-112196cbf8c8.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_4": {
+          "type": "_story-row",
+          "settings": {
+            "number": "04",
+            "eyebrow": "IMMUNITY",
+            "title": "Airplanes Are Petri Dishes. Your Gut Is Your Last Line of Defense.",
+            "text": "<p>Recycled cabin air, crowded terminals, zero sleep — traveling is basically an open invitation your immune system didn't ask for. About 70% of your immune system lives in your gut. When your gut is supported, so is your immunity.</p>",
+            "media_style": "image_pair",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/animated-petri-dish.png",
+            "image_2": "shopify://shop_images/5be5305b-5583-409b-81f9-b27135df3e56.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_5": {
+          "type": "_story-row",
+          "settings": {
+            "number": "05",
+            "eyebrow": "DEHYDRATION",
+            "title": "Cabin Air Drains You Faster Than Any Workout.",
+            "text": "<p>Airplane humidity is below 8% — drier than the Sahara. Most travelers land dehydrated without even knowing it. TIIGA's real coconut water electrolytes help your body actually absorb water at the cellular level, not just pass it through. One stick. Real hydration.</p>",
+            "media_style": "image_pair",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/airplane-cabin.png",
+            "image_2": "shopify://shop_images/77438913-8a37-488c-a3ce-16b5b186ab05.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_6": {
+          "type": "_story-row",
+          "settings": {
+            "number": "06",
+            "eyebrow": "SKIP THE FOMO",
+            "title": "Eat Like a Local — Skip the Regret.",
+            "text": "<p>Nobody wants to spend their first day abroad feeling bloated and backed up. Air travel dehydrates your body and slows digestion down — making constipation one of the most common travel complaints. TIIGA delivers 5g of prebiotic fiber to keep things moving naturally, even when your routine gets thrown off.</p>",
+            "media_style": "image_pair",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/group-of-happy-people-eating-in-local-resurant.png",
+            "image_2": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b.png",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_7": {
+          "type": "_story-row",
+          "settings": {
+            "number": "07",
+            "eyebrow": "DIGESTION",
+            "title": "One Pack. Every Gut Need. Zero Checked Baggage.",
+            "text": "<p>Traveling is already complicated. Your gut routine shouldn't be. TIIGA is the one habit you'll never accidentally leave on the bathroom counter. Small enough to forget you packed it. Powerful enough to notice when you didn't.</p>",
+            "media_style": "checklist",
+            "media_position": "right",
+            "checklist": "Replaces fiber supplements, electrolyte drinks, vitamin C tablets, and B-vitamin capsules\nTear, pour into any water bottle, and shake — done in 10 seconds flat\nFits in a jacket pocket · hotel minibar · gym bag · airplane seat pocket",
+            "background_color": "#1d5a6b",
+            "text_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "trust": {
+      "type": "reviews-carousel",
+      "blocks": {
+        "tile_1": {
+          "type": "_review-photo",
+          "settings": {
+            "image": "",
+            "handle": "Sarah M. · Subscriber · NYC"
+          },
+          "blocks": {}
+        },
+        "tile_2": {
+          "type": "_review-photo",
+          "settings": {
+            "image": "",
+            "handle": "James R. · Frequent Flyer · LA"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2"
+      ],
+      "settings": {
+        "heading": "Trusted by 1M+ Customers",
+        "subtext": "With over 5,000 five-star reviews and a growing subscriber base, TIIGA is the top choice for travelers who refuse to let their gut routine fall apart 30,000 feet in the air.",
+        "link_label": "",
+        "link": "",
+        "background_color": "",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "quote": {
+      "type": "press-quote",
+      "settings": {
+        "quote": "<p>\"I travel for work 3 weeks a month. TIIGA is the only supplement I've actually kept up with. It fits in my carry-on, tastes great, and I genuinely feel the difference.\"</p>",
+        "attribution": "— Marcus T., Verified Subscriber",
+        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
+        "overlay_color": "#00000073",
+        "text_color": "#ffffff",
+        "padding-block-start": 112,
+        "padding-block-end": 96
+      }
+    },
+    "buy": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "none",
+            "slideshow_mobile_controls_style": "none",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>{{ closest.product.title }}</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": ""
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "title",
+            "variant_picker",
+            "purchase_options",
+            "buy_buttons"
+          ]
+        }
+      },
+      "settings": {
+        "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag-varieties",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story_rows",
+    "trust",
+    "quote",
+    "buy"
+  ]
+}

@@ -9,6 +9,9 @@
  */
 {
   "names": {
+    "landing_hero": "Landing hero",
+    "story_row": "Story row",
+    "story_rows": "Story rows",
     "subscribe_how": "Subscribe how it works",
     "subscribe_step": "Subscription step",
     "subscribe_product": "Subscription product card",
@@ -223,6 +226,14 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "checklist": "Checklist",
+    "checklist_info": "One item per line.",
+    "number": "Number",
+    "primary_button_label": "Primary button label",
+    "primary_button_link": "Primary button link",
+    "secondary_button_label": "Secondary button label",
+    "secondary_button_link": "Secondary button link",
+    "shipping_note": "Shipping note",
     "steps_heading": "Steps heading",
     "benefits": "Benefits",
     "pill": "Pill style",
@@ -713,6 +724,8 @@
     "answer": "Answer"
   },
   "options": {
+    "checklist": "Checklist",
+    "image_pair": "Image pair",
     "droplet": "Droplet",
     "sugar_cube": "Sugar cube",
     "gut": "Gut",

@@ -1,0 +1,328 @@
+{%- liquid
+  assign media_style = block.settings.media_style | default: 'image_pair'
+  assign has_image_pair = false
+  if block.settings.image_1 != blank or block.settings.image_2 != blank
+    assign has_image_pair = true
+  endif
+
+  # Row titles sit under the section heading when there is one, otherwise
+  # they are the top level below the page h1.
+  assign title_tag = 'h2'
+  if section.settings.heading != blank
+    assign title_tag = 'h3'
+  endif
+
+  # A row only splits into two columns when it actually has media to show.
+  assign is_split = false
+  if media_style == 'image' and block.settings.image_1 != blank
+    assign is_split = true
+  elsif media_style == 'image_pair' and has_image_pair
+    assign is_split = true
+  endif
+-%}
+
+{% render 'contrast-override',
+  background_color: block.settings.background_color,
+  text_color: block.settings.text_color,
+  section_id: block.id
+%}
+
+<li
+  class="story-row story-row--media-{{ block.settings.media_position }} color-custom-{{ block.id }}{% if is_split %} story-row--split{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.number != blank or block.settings.eyebrow != blank -%}
+    <p class="story-row__topline">
+      {%- if block.settings.number != blank -%}
+        <span class="story-row__number">{{ block.settings.number }}</span>
+      {%- endif -%}
+      {%- if block.settings.eyebrow != blank -%}
+        <span class="story-row__eyebrow">{{ block.settings.eyebrow }}</span>
+      {%- endif -%}
+    </p>
+  {%- endif -%}
+
+  <div class="story-row__content">
+    {%- if block.settings.title != blank -%}
+      <{{ title_tag }} class="story-row__title">{{ block.settings.title }}</{{ title_tag }}>
+    {%- endif -%}
+
+    {%- if block.settings.text != blank -%}
+      <div class="story-row__text">{{ block.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if media_style == 'checklist' and block.settings.checklist != blank -%}
+      <ul class="story-row__checklist" role="list">
+        {%- assign checklist_items = block.settings.checklist | strip | newline_to_br | split: '<br />' -%}
+        {%- for checklist_item in checklist_items -%}
+          {%- assign checklist_text = checklist_item | strip -%}
+          {%- if checklist_text != blank -%}
+            <li class="story-row__checklist-item">
+              <span class="story-row__check">
+                {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              </span>
+              {{ checklist_text }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {%- if is_split -%}
+    <div class="story-row__media">
+      {%- if block.settings.image_1 != blank -%}
+        {{
+          block.settings.image_1
+          | image_url: width: 900
+          | image_tag:
+            widths: '300, 480, 640, 900',
+            sizes: '(min-width: 990px) 260px, 44vw',
+            class: 'story-row__image',
+            loading: 'lazy'
+        }}
+      {%- endif -%}
+      {%- if media_style == 'image_pair' and block.settings.image_2 != blank -%}
+        {{
+          block.settings.image_2
+          | image_url: width: 900
+          | image_tag:
+            widths: '300, 480, 640, 900',
+            sizes: '(min-width: 990px) 260px, 44vw',
+            class: 'story-row__image story-row__image--offset',
+            loading: 'lazy'
+        }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</li>
+
+{% stylesheet %}
+  .story-row {
+    display: grid;
+    gap: 1.5rem 3rem;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    grid-template-areas: 'topline' 'content';
+  }
+
+  .story-row--split {
+    grid-template-areas: 'topline' 'media' 'content';
+  }
+
+  .story-row__topline {
+    grid-area: topline;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding-block-end: 1rem;
+    border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+  }
+
+  .story-row__number {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .story-row__eyebrow {
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .story-row__content {
+    grid-area: content;
+  }
+
+  .story-row__title {
+    margin: 0 0 1rem;
+    max-width: 22ch;
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .story-row__text {
+    max-width: 46ch;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgb(var(--color-foreground-rgb) / 0.85);
+  }
+
+  .story-row__text p {
+    margin: 0;
+  }
+
+  .story-row__text p + p {
+    margin-block-start: 0.75rem;
+  }
+
+  .story-row__checklist {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .story-row__checklist-item {
+    display: grid;
+    grid-template-columns: 1.25rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .story-row__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: rgb(var(--color-foreground-rgb) / 0.1);
+  }
+
+  .story-row__check svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .story-row__media {
+    grid-area: media;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .story-row__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .story-row__image--offset {
+    margin-block-start: 2rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .story-row {
+      padding: 2.75rem;
+    }
+
+    .story-row--split {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      grid-template-areas: 'topline topline' 'content media';
+      align-items: center;
+    }
+
+    .story-row--split.story-row--media-left {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      grid-template-areas: 'topline topline' 'media content';
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.story_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "number",
+      "label": "t:settings.number"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "select",
+      "id": "media_style",
+      "label": "t:settings.style",
+      "options": [
+        { "value": "image_pair", "label": "t:options.image_pair" },
+        { "value": "image", "label": "t:options.image" },
+        { "value": "checklist", "label": "t:options.checklist" },
+        { "value": "none", "label": "t:options.none" }
+      ],
+      "default": "image_pair"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "t:settings.media_position",
+      "options": [
+        { "value": "right", "label": "t:options.right" },
+        { "value": "left", "label": "t:options.left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:settings.image_1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:settings.image_2"
+    },
+    {
+      "type": "textarea",
+      "id": "checklist",
+      "label": "t:settings.checklist",
+      "info": "t:settings.checklist_info"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "placeholder": "t:settings.default"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.story_row"
+    }
+  ]
+}
+{% endschema %}
