@@ -1,0 +1,739 @@
+{
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "settings": {
+        "eyebrow": "Limited-Time Sale · Get Up To 52% Off",
+        "heading": "6 Reasons Why Tiiga Is Your <em>Gut's</em> New Bestie",
+        "text": "<p>Your gut is like your second brain. It affects everything from digestion and energy to mood and immunity. Tiiga helps it thrive with 60+ real, nutrient-dense ingredients in a fun-sized snap pack of daily gummies.</p>",
+        "image_1": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
+        "image_2": "",
+        "primary_button_label": "Save 52% + Free Shipping",
+        "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "secondary_button_label": "Shop All Products",
+        "secondary_button_link": "shopify://collections/all",
+        "rating": "4.7",
+        "review_count": "850+ reviews",
+        "shipping_note": "1M+ members",
+        "disclaimer": "<p>Cancel anytime · 30-day money-back guarantee · These statements have not been evaluated by the FDA.</p>",
+        "background_color": "#1d5a6b",
+        "text_color": "#ffffff",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "layout": "split"
+      }
+    },
+    "story_rows": {
+      "type": "story-rows",
+      "blocks": {
+        "row_1": {
+          "type": "_story-row",
+          "settings": {
+            "number": "01",
+            "eyebrow": "DIGESTION",
+            "title": "A Healthier Stool. You're Welcome.",
+            "text": "<p>Most Americans get less than half the fiber they need daily, and their guts show it. Tiiga delivers 5g of raw, unprocessed baobab prebiotic fiber per scoop, the kind that bulks stool naturally, feeds your colon, and keeps your digestive rhythm consistent. No laxatives, no harsh stimulants. Just fiber doing what fiber was always meant to do.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2_a4773a08-c276-4a7e-9760-112196cbf8c8.png",
+            "image_2": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_2": {
+          "type": "_story-row",
+          "settings": {
+            "number": "02",
+            "eyebrow": "MICROBIOME",
+            "title": "Your Microbiome Will Thrive.",
+            "text": "<p>Your gut is home to over 100 trillion microorganisms, and what you feed them determines everything. Studies have shown that baobab fruit fiber significantly increases populations of Lactobacillus and Bifidobacterium, two of the most important beneficial bacteria in the human gut. More good bacteria means better digestion, less gas, and a gut ecosystem that actually works for you.</p>",
+            "media_style": "image",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/animated-petri-dish.png",
+            "image_2": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_3": {
+          "type": "_story-row",
+          "settings": {
+            "number": "03",
+            "eyebrow": "HYDRATION",
+            "title": "Hydration That Actually Works.",
+            "text": "<p>Water hydrates your mouth. Electrolytes hydrate your cells. Tiiga combines coconut water powder, naturally rich in potassium, with a full electrolyte blend to restore fluid balance at a deeper level. Research shows that potassium and sodium work together to regulate cellular hydration far more effectively than water alone, making every sip of Tiiga count for more.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/IMG_1107_2.jpg",
+            "image_2": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_4": {
+          "type": "_story-row",
+          "settings": {
+            "number": "04",
+            "eyebrow": "BLOATING",
+            "title": "Bye Bye, Bloat.",
+            "text": "<p>Chronic bloating is almost always a sign of gut inflammation or microbial imbalance, not just what you ate for lunch. Baobab is one of the richest natural sources of polyphenols on the planet, and polyphenols have been shown in multiple studies to reduce intestinal inflammation and support the gut lining. Less inflammation means less bloat, less discomfort, and a stomach that stops stealing your attention.</p>",
+            "media_style": "image",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
+            "image_2": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_5": {
+          "type": "_story-row",
+          "settings": {
+            "number": "05",
+            "eyebrow": "TASTE",
+            "title": "A Habit That Sticks.",
+            "text": "<p>The best supplement is the one you actually take. Tiiga was built to be something you look forward to. Smooth, fruity, and satisfying enough to replace whatever you're already drinking in the morning. No chalky texture, no weird aftertaste, no forcing it down. Just a daily ritual that quietly transforms your gut, one stick at a time.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
+            "image_2": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_6": {
+          "type": "_story-row",
+          "settings": {
+            "number": "06",
+            "eyebrow": "LOVED BY 1M+",
+            "title": "Trusted by 1M+ Customers",
+            "text": "<p>With over 80,000 five-star reviews and a growing subscriber base, Tiiga is the top choice for those looking to fill nutrition gaps in a convenient, tasty, and fun way while boosting overall health.</p>",
+            "media_style": "checklist",
+            "media_position": "right",
+            "checklist": "Convenient: one pre-portioned stick, no scoops, tubs, or measuring\nTasty: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
+            "background_color": "#1d5a6b",
+            "text_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "media_width": "full"
+      }
+    },
+    "trust": {
+      "type": "reviews-carousel",
+      "blocks": {
+        "review_1": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Relief within a few days",
+            "show_stars": true,
+            "quote": "I felt a sense of relief within a few days in my gut health. I suffer from acid reflux at times throughout the day and these have helped tremendously.",
+            "author": "Laura",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_2": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Helps clean up my gut",
+            "show_stars": true,
+            "quote": "It really helps to clean up my gut. I've never been a regular person who went to the bathroom every day. With Tiiga it's getting there! I also love to eat them!",
+            "author": "Darcie",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_3": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Easy to add to my routine",
+            "show_stars": true,
+            "quote": "Two gummies a day, no powder, no shaker, no clean-up. Way easier than the greens powder I gave up on six months ago.",
+            "author": "Tomás",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_4": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Bloating is way down",
+            "show_stars": true,
+            "quote": "I noticed within the first week that I felt less bloated after meals. Two months in and my digestion is the steadiest it's been in years.",
+            "author": "Priya",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_5": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Kids love them too",
+            "show_stars": true,
+            "quote": "I take one in the morning and my picky 8-year-old asks for one with breakfast. Anything that gets her closer to a daily multivitamin is a win.",
+            "author": "Jenna",
+            "verified": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5"
+      ],
+      "settings": {
+        "heading": "What Customers Are Saying",
+        "subtext": "",
+        "link_label": "",
+        "link": "",
+        "background_color": "",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "quote": {
+      "type": "press-quote",
+      "settings": {
+        "quote": "<p>\"What a wonderful way to maintain gut health and boost my immunity. They taste great, easy to travel with and a better way than pills to maintain my health.\"</p>",
+        "attribution": "Missy, Verified Purchase",
+        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
+        "overlay_color": "#00000073",
+        "text_color": "#ffffff",
+        "padding-block-start": 112,
+        "padding-block-end": 96
+      }
+    },
+    "flavor_tabs": {
+      "type": "flavor-tabs",
+      "settings": {
+        "label_1": "Hydration Packs",
+        "label_2": "Hydration Tubs",
+        "label_3": "",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 0
+      }
+    },
+    "buy_packs": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "none",
+            "slideshow_mobile_controls_style": "none",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Gut Health + Hydration</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "description": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Gut-health hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in 16 convenient on-the-go packs.</p>",
+                "width": "100%",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": ""
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "details_link": {
+              "type": "text",
+              "settings": {
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title",
+            "description",
+            "variant_picker",
+            "purchase_options",
+            "buy_buttons",
+            "details_link"
+          ]
+        }
+      },
+      "settings": {
+        "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 24,
+        "padding-block-end": 72
+      }
+    },
+    "buy_tubs": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "none",
+            "slideshow_mobile_controls_style": "none",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Hydration Tubs</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "description": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Gut-health and hydration powered by baobab: prebiotic fiber, electrolytes from coconut water, and real fruit in a large 30 serving tub</p>",
+                "width": "100%",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": ""
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "details_link": {
+              "type": "text",
+              "settings": {
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title",
+            "description",
+            "variant_picker",
+            "purchase_options",
+            "buy_buttons",
+            "details_link"
+          ]
+        }
+      },
+      "settings": {
+        "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 24,
+        "padding-block-end": 80
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story_rows",
+    "flavor_tabs",
+    "buy_packs",
+    "buy_tubs",
+    "trust",
+    "quote"
+  ]
+}
