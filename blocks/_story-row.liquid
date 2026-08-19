@@ -42,32 +42,9 @@
     </p>
   {%- endif -%}
 
-  <div class="story-row__content">
-    {%- if block.settings.title != blank -%}
-      <{{ title_tag }} class="story-row__title">{{ block.settings.title }}</{{ title_tag }}>
-    {%- endif -%}
-
-    {%- if block.settings.text != blank -%}
-      <div class="story-row__text">{{ block.settings.text }}</div>
-    {%- endif -%}
-
-    {%- if media_style == 'checklist' and block.settings.checklist != blank -%}
-      <ul class="story-row__checklist" role="list">
-        {%- assign checklist_items = block.settings.checklist | strip | newline_to_br | split: '<br />' -%}
-        {%- for checklist_item in checklist_items -%}
-          {%- assign checklist_text = checklist_item | strip -%}
-          {%- if checklist_text != blank -%}
-            <li class="story-row__checklist-item">
-              <span class="story-row__check">
-                {{- 'icon-checkmark.svg' | inline_asset_content -}}
-              </span>
-              {{ checklist_text }}
-            </li>
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
-  </div>
+  {%- if block.settings.title != blank -%}
+    <{{ title_tag }} class="story-row__title">{{ block.settings.title }}</{{ title_tag }}>
+  {%- endif -%}
 
   {%- if is_split -%}
     <div class="story-row__media">
@@ -95,6 +72,30 @@
       {%- endif -%}
     </div>
   {%- endif -%}
+
+  <div class="story-row__content">
+    {%- if block.settings.text != blank -%}
+      <div class="story-row__text">{{ block.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if media_style == 'checklist' and block.settings.checklist != blank -%}
+      <ul class="story-row__checklist" role="list">
+        {%- assign checklist_items = block.settings.checklist | strip | newline_to_br | split: '<br />' -%}
+        {%- for checklist_item in checklist_items -%}
+          {%- assign checklist_text = checklist_item | strip -%}
+          {%- if checklist_text != blank -%}
+            <li class="story-row__checklist-item">
+              <span class="story-row__check">
+                {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              </span>
+              {{ checklist_text }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
 </li>
 
 {% stylesheet %}
@@ -105,11 +106,11 @@
     border-radius: 20px;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    grid-template-areas: 'topline' 'content';
+    grid-template-areas: 'topline' 'title' 'content';
   }
 
   .story-row--split {
-    grid-template-areas: 'topline' 'media' 'content';
+    grid-template-areas: 'topline' 'title' 'media' 'content';
   }
 
   .story-row__topline {
@@ -143,7 +144,8 @@
   }
 
   .story-row__title {
-    margin: 0 0 1rem;
+    grid-area: title;
+    margin: 0;
     max-width: 22ch;
     font-size: clamp(1.5rem, 2.6vw, 2.25rem);
     line-height: 1.15;
@@ -224,13 +226,31 @@
 
     .story-row--split {
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      grid-template-areas: 'topline topline' 'content media';
-      align-items: center;
+      grid-template-areas:
+        'topline topline'
+        'title   media'
+        'content media';
     }
 
     .story-row--split.story-row--media-left {
       grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      grid-template-areas: 'topline topline' 'media content';
+      grid-template-areas:
+        'topline topline'
+        'media   title'
+        'media   content';
+    }
+
+    /* Keep the title and body as one optical block beside taller media. */
+    .story-row--split .story-row__title {
+      align-self: end;
+    }
+
+    .story-row--split .story-row__content {
+      align-self: start;
+    }
+
+    .story-row--split .story-row__media {
+      align-self: center;
     }
   }
 {% endstylesheet %}

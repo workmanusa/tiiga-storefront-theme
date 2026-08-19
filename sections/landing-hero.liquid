@@ -1,3 +1,10 @@
+{%- liquid
+  assign hero_media_modifier = ''
+  if section.settings.image_1 == blank or section.settings.image_2 == blank
+    assign hero_media_modifier = ' landing-hero__media--single'
+  endif
+-%}
+
 {% render 'contrast-override',
   background_color: section.settings.background_color,
   text_color: section.settings.text_color,
@@ -23,14 +30,14 @@
     {%- endif -%}
 
     {%- if section.settings.image_1 != blank or section.settings.image_2 != blank -%}
-      <div class="landing-hero__media">
+      <div class="landing-hero__media{{ hero_media_modifier }}">
         {%- if section.settings.image_1 != blank -%}
           {{
             section.settings.image_1
             | image_url: width: 900
             | image_tag:
               widths: '300, 480, 640, 900',
-              sizes: '(min-width: 750px) 300px, 42vw',
+              sizes: '(min-width: 990px) 420px, (min-width: 750px) 360px, 80vw',
               class: 'landing-hero__image landing-hero__image--lead',
               fetchpriority: 'high'
           }}
@@ -180,6 +187,11 @@
     rotate: 4deg;
   }
 
+  .landing-hero__media--single .landing-hero__image {
+    width: min(80vw, 22.5rem);
+    rotate: none;
+  }
+
   .landing-hero__actions {
     grid-area: actions;
     display: flex;
@@ -276,6 +288,10 @@
 
     .landing-hero--split .landing-hero__image {
       width: 100%;
+    }
+
+    .landing-hero--split .landing-hero__media--single .landing-hero__image {
+      width: min(100%, 26.25rem);
     }
 
     .landing-hero--split .landing-hero__actions {
