@@ -526,6 +526,7 @@
     "comparison_slider": "Comparison slider"
   },
   "options": {
+    "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
     "checklist": "Checklist",

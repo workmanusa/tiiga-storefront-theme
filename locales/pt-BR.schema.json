@@ -724,6 +724,7 @@
     "answer": "Answer"
   },
   "options": {
+    "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
     "checklist": "Checklist",

@@ -483,6 +483,7 @@
     "faq_item": "FAQ question"
   },
   "options": {
+    "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
     "checklist": "Checklist",

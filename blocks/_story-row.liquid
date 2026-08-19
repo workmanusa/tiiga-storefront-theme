@@ -12,6 +12,13 @@
     assign title_tag = 'h3'
   endif
 
+  # The section decides whether media sits beside the text or runs the
+  # full width of the card beneath the heading.
+  assign media_full = ''
+  if section.settings.media_width == 'full'
+    assign media_full = ' story-row--media-full'
+  endif
+
   # A row only splits into two columns when it actually has media to show.
   assign is_split = false
   if media_style == 'image' and block.settings.image_1 != blank
@@ -28,7 +35,7 @@
 %}
 
 <li
-  class="story-row story-row--media-{{ block.settings.media_position }} color-custom-{{ block.id }}{% if is_split %} story-row--split{% endif %}"
+  class="story-row story-row--media-{{ block.settings.media_position }}{{ media_full }} color-custom-{{ block.id }}{% if is_split %} story-row--split{% endif %}"
   {{ block.shopify_attributes }}
 >
   {%- if block.settings.number != blank or block.settings.eyebrow != blank -%}
@@ -251,6 +258,40 @@
 
     .story-row--split .story-row__media {
       align-self: center;
+    }
+
+    /* Full-width media: the card stays stacked and the image runs the
+       whole content width beneath the heading. */
+    .story-row--split.story-row--media-full,
+    .story-row--split.story-row--media-full.story-row--media-left {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        'topline'
+        'title'
+        'media'
+        'content';
+    }
+
+    .story-row--media-full .story-row__title,
+    .story-row--media-full .story-row__content,
+    .story-row--media-full .story-row__media {
+      align-self: auto;
+    }
+
+    .story-row--media-full .story-row__title {
+      max-width: 30ch;
+    }
+
+    .story-row--media-full .story-row__text {
+      max-width: 70ch;
+    }
+
+    .story-row--media-full .story-row__image {
+      aspect-ratio: 3 / 2;
+    }
+
+    .story-row--media-full .story-row__image--offset {
+      margin-block-start: 0;
     }
   }
 {% endstylesheet %}

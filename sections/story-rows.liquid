@@ -32,6 +32,7 @@
   }
 
   .story-rows__inner {
+    width: 100%;
     max-width: var(--page-width, 1300px);
     margin-inline: auto;
     padding-inline: max(var(--page-margin, 2rem), 3rem);
@@ -108,6 +109,16 @@
       "type": "richtext",
       "id": "text",
       "label": "t:settings.text"
+    },
+    {
+      "type": "select",
+      "id": "media_width",
+      "label": "t:settings.media_width",
+      "options": [
+        { "value": "beside", "label": "t:options.beside" },
+        { "value": "full", "label": "t:options.full" }
+      ],
+      "default": "beside"
     },
     {
       "type": "header",
