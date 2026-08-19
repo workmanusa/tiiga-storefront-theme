@@ -120,12 +120,12 @@
           "type": "_story-row",
           "settings": {
             "number": "07",
-            "eyebrow": "DIGESTION",
-            "title": "One Pack. Every Gut Need. Zero Checked Baggage.",
-            "text": "<p>Traveling is already complicated. Your gut routine shouldn't be. Tiiga replaces the whole shelf with one stick a day. Small enough to forget you packed it, powerful enough to notice when you didn't.</p>",
+            "eyebrow": "REVIEWS",
+            "title": "The Top Choice for Electrolytes and Gut Health",
+            "text": "<p>Thousands of five-star reviews, and they keep landing on the same three reasons. Tiiga is what people reach for when they want electrolytes and gut health in one stick instead of a shelf full of separate products.</p>",
             "media_style": "checklist",
             "media_position": "right",
-            "checklist": "Replaces fiber supplements, electrolyte drinks, vitamin C, and B-vitamins\nTear, pour into any water bottle, shake. Done in 10 seconds.\nFits a jacket pocket · gym bag · airplane seat pocket",
+            "checklist": "Convenience: one pre-portioned stick, no scoops, tubs, or measuring\nTaste: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
             "background_color": "#1d5a6b",
             "text_color": "#ffffff"
           },
