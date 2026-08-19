@@ -724,6 +724,8 @@
     "answer": "Answer"
   },
   "options": {
+    "centered": "Centered",
+    "split": "Split",
     "checklist": "Checklist",
     "image_pair": "Image pair",
     "droplet": "Droplet",

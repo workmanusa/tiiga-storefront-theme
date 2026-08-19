@@ -526,6 +526,8 @@
     "comparison_slider": "Comparison slider"
   },
   "options": {
+    "centered": "Centered",
+    "split": "Split",
     "checklist": "Checklist",
     "droplet": "Droplet",
     "image_pair": "Image pair",

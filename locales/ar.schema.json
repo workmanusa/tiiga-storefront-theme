@@ -483,6 +483,8 @@
     "faq_item": "FAQ question"
   },
   "options": {
+    "centered": "Centered",
+    "split": "Split",
     "checklist": "Checklist",
     "image_pair": "Image pair",
     "droplet": "Droplet",
