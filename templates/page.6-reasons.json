@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Limited-Time Sale · Get Up To 52% Off",
         "heading": "6 Reasons Why Tiiga Is Your <em>Gut's</em> New Bestie",
-        "text": "<p>Your gut is like your second brain. It affects everything from digestion and energy to mood and immunity. Tiiga helps it thrive with 60+ real, nutrient-dense ingredients in a fun-sized snap pack of daily gummies.</p>",
+        "text": "<p>Your gut is like your second brain. It affects everything from digestion and energy to mood and immunity. Tiiga helps it thrive with raw baobab prebiotic fiber, coconut water electrolytes, and real fruit in one daily stick.</p>",
         "image_1": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
         "image_2": "",
         "primary_button_label": "Save 52% + Free Shipping",
@@ -32,7 +32,7 @@
             "number": "01",
             "eyebrow": "DIGESTION",
             "title": "A Healthier Stool. You're Welcome.",
-            "text": "<p>Most Americans get less than half the fiber they need daily, and their guts show it. Tiiga delivers 5g of raw, unprocessed baobab prebiotic fiber per scoop, the kind that bulks stool naturally, feeds your colon, and keeps your digestive rhythm consistent. No laxatives, no harsh stimulants. Just fiber doing what fiber was always meant to do.</p>",
+            "text": "<p>Most Americans get less than half the fiber they need daily, and their guts show it. Tiiga delivers 5g of raw, unprocessed baobab prebiotic fiber per serving, the kind that bulks stool naturally, feeds your colon, and keeps your digestive rhythm consistent. No laxatives, no harsh stimulants. Just fiber doing what fiber was always meant to do.</p>",
             "media_style": "image",
             "media_position": "right",
             "image_1": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2_a4773a08-c276-4a7e-9760-112196cbf8c8.png",
@@ -107,10 +107,10 @@
             "number": "06",
             "eyebrow": "LOVED BY 1M+",
             "title": "Trusted by 1M+ Customers",
-            "text": "<p>With over 80,000 five-star reviews and a growing subscriber base, Tiiga is the top choice for those looking to fill nutrition gaps in a convenient, tasty, and fun way while boosting overall health.</p>",
+            "text": "<p>Tiiga is the top choice for people looking to fill nutrition gaps in a convenient, tasty way while supporting overall health.</p>",
             "media_style": "checklist",
             "media_position": "right",
-            "checklist": "Convenient: one pre-portioned stick, no scoops, tubs, or measuring\nTasty: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
+            "checklist": "Convenient: pre-portioned sticks, no measuring and no clean-up\nTasty: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
             "background_color": "#1d5a6b",
             "text_color": "#ffffff"
           },
@@ -149,28 +149,6 @@
           },
           "blocks": {}
         },
-        "review_2": {
-          "type": "_review-card",
-          "settings": {
-            "category": "Helps clean up my gut",
-            "show_stars": true,
-            "quote": "It really helps to clean up my gut. I've never been a regular person who went to the bathroom every day. With Tiiga it's getting there! I also love to eat them!",
-            "author": "Darcie",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "review_3": {
-          "type": "_review-card",
-          "settings": {
-            "category": "Easy to add to my routine",
-            "show_stars": true,
-            "quote": "Two gummies a day, no powder, no shaker, no clean-up. Way easier than the greens powder I gave up on six months ago.",
-            "author": "Tomás",
-            "verified": true
-          },
-          "blocks": {}
-        },
         "review_4": {
           "type": "_review-card",
           "settings": {
@@ -182,13 +160,35 @@
           },
           "blocks": {}
         },
-        "review_5": {
+        "review_real_1": {
           "type": "_review-card",
           "settings": {
-            "category": "Kids love them too",
+            "category": "For gut health",
             "show_stars": true,
-            "quote": "I take one in the morning and my picky 8-year-old asks for one with breakfast. Anything that gets her closer to a daily multivitamin is a win.",
-            "author": "Jenna",
+            "quote": "Love this stuff! Tastes great and is super helpful in the GI department. I love the bonus Vit C I am getting as well. Do not hesitate to buy!",
+            "author": "Irene P.",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_real_2": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For your daily routine",
+            "show_stars": true,
+            "quote": "As a person living with IBS, Tiiga has positively supported healing and healthy maintenance of my GI tract. Thank you!",
+            "author": "Koreen C.",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_real_3": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Easily dissolvable",
+            "show_stars": true,
+            "quote": "Easy to dissolve and smooth flavor!",
+            "author": "Beth D.",
             "verified": true
           },
           "blocks": {}
@@ -196,10 +196,10 @@
       },
       "block_order": [
         "review_1",
-        "review_2",
-        "review_3",
         "review_4",
-        "review_5"
+        "review_real_1",
+        "review_real_2",
+        "review_real_3"
       ],
       "settings": {
         "heading": "What Customers Are Saying",
