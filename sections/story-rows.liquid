@@ -2,7 +2,7 @@
 
 <div class="section-background color-custom-{{ section.id }}"></div>
 <div
-  class="story-rows spacing-style section section--full-width color-custom-{{ section.id }}"
+  class="story-rows story-rows--media-{{ section.settings.media_width }} spacing-style section section--full-width color-custom-{{ section.id }}"
   style="{% render 'spacing-padding', settings: section.settings %}"
 >
   <div class="story-rows__inner">
@@ -75,6 +75,14 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  /* Full-width media reads as a single editorial column, so the cards are
+     narrowed instead of stretching a text measure across the whole section. */
+  .story-rows--media-full .story-rows__list {
+    width: 100%;
+    max-width: 60rem;
+    margin-inline: auto;
   }
 
   @media screen and (max-width: 749px) {

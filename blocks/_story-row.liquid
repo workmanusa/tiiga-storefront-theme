@@ -317,6 +317,14 @@
 
     /* One image under the heading: bounded by height so square and
        portrait sources are not cropped into a letterbox. */
+    /* Media shares the text column's left edge rather than floating centred.
+       Height drives the size so every row lines up, and the natural ratio is
+       kept: these sources are square or portrait and a full-width landscape
+       band would crop away more than half the frame. */
+    .story-row--media-full .story-row__media--single {
+      justify-items: start;
+    }
+
     .story-row--media-full .story-row__media--single .story-row__image {
       aspect-ratio: auto;
       width: auto;
