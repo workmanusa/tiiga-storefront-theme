@@ -226,6 +226,7 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",
     "number": "Number",

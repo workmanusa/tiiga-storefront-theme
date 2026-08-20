@@ -15,7 +15,7 @@
   # The section decides whether media sits beside the text or runs the
   # full width of the card beneath the heading.
   assign media_full = ''
-  if section.settings.media_width == 'full'
+  if section.settings.media_width == 'full' or block.settings.full_width_media
     assign media_full = ' story-row--media-full'
   endif
 
@@ -25,12 +25,20 @@
     assign media_single = ' story-row__media--single'
   endif
 
-  assign image_sizes = '(min-width: 990px) 560px, (min-width: 750px) 48vw, 92vw'
-  if section.settings.media_width == 'full'
+  # Match the srcset hint to how wide the image actually renders: full-width
+  # media spans the card, beside media takes half of it, and a pair halves
+  # again.
+  if media_full == blank
     if media_single == blank
-      assign image_sizes = '(min-width: 750px) 560px, 44vw'
+      assign image_sizes = '(min-width: 990px) 280px, (min-width: 750px) 24vw, 92vw'
     else
-      assign image_sizes = '(min-width: 750px) 720px, 92vw'
+      assign image_sizes = '(min-width: 990px) 560px, (min-width: 750px) 48vw, 92vw'
+    endif
+  else
+    if media_single == blank
+      assign image_sizes = '(min-width: 990px) 640px, (min-width: 750px) 46vw, 92vw'
+    else
+      assign image_sizes = '(min-width: 990px) 880px, 92vw'
     endif
   endif
 
@@ -69,7 +77,7 @@
   {%- endif -%}
 
   {%- if is_split -%}
-    <div class="story-row__media{{ media_single }} story-row__media--fit-{{ block.settings.media_fit | default: 'cover' }}">
+    <div class="story-row__media{{ media_single }} story-row__media--fit-{{ block.settings.media_fit | default: 'cover' }} story-row__media--ratio-{{ block.settings.media_ratio | default: 'landscape' }}">
       {%- if block.settings.image_1 != blank -%}
         {{
           block.settings.image_1
@@ -241,6 +249,27 @@
     margin-block-start: 2rem;
   }
 
+  /* Paired media keeps each image's own ratio, so charts and graphics read in
+     full rather than being cropped into a portrait box, and drops the stagger
+     that suits a pair of photos but not a matched pair of charts. */
+  .story-row__media:not(.story-row__media--single) .story-row__image {
+    aspect-ratio: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .story-row__media:not(.story-row__media--single) .story-row__image--offset {
+    margin-block-start: 0;
+  }
+
+  /* Side by side, a pair is only half the card each, which is too small to
+     read on a phone. Stack them so each gets the full width. */
+  @media screen and (max-width: 749px) {
+    .story-row__media:not(.story-row__media--single) {
+      grid-auto-flow: row;
+    }
+  }
+
   .story-row__media--single {
     justify-items: center;
   }
@@ -258,6 +287,12 @@
      is not an option, so the image letterboxes inside the shared box. */
   .story-row__media--fit-contain .story-row__image {
     object-fit: contain;
+  }
+
+  /* A taller frame for portrait sources: same width as every other row, more
+     height, so far less of the image is cropped away. */
+  .story-row__media--ratio-portrait .story-row__image {
+    aspect-ratio: 4 / 5;
   }
 
   @media screen and (min-width: 750px) {
@@ -416,6 +451,22 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:settings.image_2"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_media",
+      "label": "t:settings.full_width_media",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "t:settings.image_ratio",
+      "options": [
+        { "value": "landscape", "label": "t:options.landscape" },
+        { "value": "portrait", "label": "t:options.portrait" }
+      ],
+      "default": "landscape"
     },
     {
       "type": "select",

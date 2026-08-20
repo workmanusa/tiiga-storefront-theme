@@ -33,11 +33,12 @@
             "eyebrow": "HYDRATION",
             "title": "Dehydration and Dry Mouth",
             "text": "<p>GLP-1 medications accelerate fluid loss and suppress your thirst cues, so most users end up chronically under-hydrated without realizing it. Tiiga is built on coconut water powder, a natural source of potassium, magnesium, and sodium, so every sip replenishes what you're losing. Real hydration, not just water.</p>",
-            "media_style": "image",
+            "media_style": "image_pair",
             "media_position": "right",
-            "image_1": "shopify://shop_images/Image-rev2.webp",
-            "image_2": "",
-            "background_color": "#ffffff"
+            "image_1": "shopify://shop_images/tiiga-hydration-chart-v2.png",
+            "image_2": "shopify://shop_images/tiiga-replace-chart-v2.png",
+            "background_color": "#ffffff",
+            "full_width_media": true
           },
           "blocks": {}
         },
@@ -50,7 +51,7 @@
             "text": "<p>GLP-1s slow gastric emptying, which is great for appetite but often means sluggish digestion, bloating, and constipation that can derail your progress. Each serving delivers 5g of prebiotic fiber from baobab, a gentle whole-fruit fiber that feeds the good gut bacteria and keeps things moving. No harsh laxatives.</p>",
             "media_style": "image",
             "media_position": "left",
-            "image_1": "shopify://shop_images/77438913-8a37-488c-a3ce-16b5b186ab05.png",
+            "image_1": "shopify://shop_images/e981915b-1098-451b-bbbe-2707b0d102ac.png",
             "image_2": "",
             "background_color": "#ffffff"
           },
@@ -80,9 +81,11 @@
             "text": "<p>Eating less means fewer calories and nutrients, and many GLP-1 users hit an energy wall that makes daily life harder. Baobab is naturally rich in vitamin C, B vitamins, and antioxidants that support sustained energy without stimulants, so you feel like yourself again even in a caloric deficit.</p>",
             "media_style": "image",
             "media_position": "left",
-            "image_1": "shopify://shop_images/Frame_1321316156_2_1.webp",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_fit": "cover",
+            "media_ratio": "portrait"
           },
           "blocks": {}
         },

@@ -848,6 +848,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",
     "number": "Number",

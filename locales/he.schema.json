@@ -768,6 +768,7 @@
     "below_media": "מתחת למדיה"
   },
   "settings": {
+    "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",
     "number": "Number",
