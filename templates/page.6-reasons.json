@@ -132,7 +132,7 @@
         "background_color": "#f6f4f0",
         "padding-block-start": 64,
         "padding-block-end": 64,
-        "media_width": "full"
+        "media_width": "beside"
       }
     },
     "trust": {
