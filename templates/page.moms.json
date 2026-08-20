@@ -35,9 +35,10 @@
             "text": "<p>Pregnancy, stress, and eating the kids' leftovers standing up. Tiiga delivers 5g of raw, unprocessed baobab prebiotic fiber per serving. No psyllium husk, no synthetic fillers, just fiber doing what fiber does.</p>",
             "media_style": "image",
             "media_position": "right",
-            "image_1": "shopify://shop_images/2d1510a0-9609-4c31-b4ca-d433faba478b-2_a4773a08-c276-4a7e-9760-112196cbf8c8.png",
+            "image_1": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_ratio": "portrait"
           },
           "blocks": {}
         },
@@ -50,9 +51,10 @@
             "text": "<p>Coconut water powder and natural electrolytes replenish what you actually lose. Potassium, magnesium, and sodium, because reheated coffee isn't hydration, and you know it.</p>",
             "media_style": "image",
             "media_position": "left",
-            "image_1": "shopify://shop_images/IMG_1107_2.jpg",
+            "image_1": "shopify://shop_images/ff55bc14-5ebf-4a13-83a8-97851ed81e44.png",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_ratio": "landscape"
           },
           "blocks": {}
         },
@@ -65,9 +67,10 @@
             "text": "<p>Sweetened only with stevia and the natural sweetness of baobab fruit. The one drink in the house you never have to feel guilty about.</p>",
             "media_style": "image",
             "media_position": "right",
-            "image_1": "shopify://shop_images/98e72709-3546-4803-b3ee-c60b9eb69e65.png",
+            "image_1": "shopify://shop_images/40db6539-944f-4bda-a6cb-d24a7c3fc22c.png",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_ratio": "portrait"
           },
           "blocks": {}
         },
@@ -82,7 +85,8 @@
             "media_position": "left",
             "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_ratio": "portrait"
           },
           "blocks": {}
         },
@@ -97,7 +101,8 @@
             "media_position": "right",
             "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_ratio": "portrait"
           },
           "blocks": {}
         },
@@ -132,7 +137,7 @@
         "background_color": "#f6f4f0",
         "padding-block-start": 64,
         "padding-block-end": 64,
-        "media_width": "full"
+        "media_width": "beside"
       }
     },
     "trust": {
