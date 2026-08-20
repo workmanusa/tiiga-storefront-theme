@@ -82,7 +82,8 @@
             "media_position": "left",
             "image_1": "shopify://shop_images/graphic.png",
             "image_2": "",
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "media_fit": "contain"
           },
           "blocks": {}
         },
@@ -148,7 +149,7 @@
         "background_color": "#f6f4f0",
         "padding-block-start": 64,
         "padding-block-end": 64,
-        "media_width": "full"
+        "media_width": "beside"
       }
     },
     "trust": {

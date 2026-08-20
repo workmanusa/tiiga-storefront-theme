@@ -25,7 +25,7 @@
     assign media_single = ' story-row__media--single'
   endif
 
-  assign image_sizes = '(min-width: 990px) 260px, 44vw'
+  assign image_sizes = '(min-width: 990px) 560px, (min-width: 750px) 48vw, 92vw'
   if section.settings.media_width == 'full'
     if media_single == blank
       assign image_sizes = '(min-width: 750px) 560px, 44vw'
@@ -69,7 +69,7 @@
   {%- endif -%}
 
   {%- if is_split -%}
-    <div class="story-row__media{{ media_single }}">
+    <div class="story-row__media{{ media_single }} story-row__media--fit-{{ block.settings.media_fit | default: 'cover' }}">
       {%- if block.settings.image_1 != blank -%}
         {{
           block.settings.image_1
@@ -245,10 +245,19 @@
     justify-items: center;
   }
 
+  /* One uniform frame so rows line up. object-fit keeps proportions and
+     crops the overflow rather than stretching the image. */
   .story-row__media--single .story-row__image {
-    aspect-ratio: auto;
+    aspect-ratio: 4 / 3;
     width: 100%;
     height: auto;
+    object-fit: cover;
+  }
+
+  /* Same frame, whole image. For graphics whose edges carry text, cropping
+     is not an option, so the image letterboxes inside the shared box. */
+  .story-row__media--fit-contain .story-row__image {
+    object-fit: contain;
   }
 
   @media screen and (min-width: 750px) {
@@ -407,6 +416,16 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:settings.image_2"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "t:settings.media_fit",
+      "options": [
+        { "value": "cover", "label": "t:options.cover" },
+        { "value": "contain", "label": "t:options.contain" }
+      ],
+      "default": "cover"
     },
     {
       "type": "textarea",
