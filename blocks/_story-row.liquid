@@ -332,6 +332,15 @@
       max-width: 100%;
     }
 
+    /* Between the split breakpoint and a full-width card the column is
+       narrower than a landscape image at 30rem tall, so max-width would clamp
+       the width while the height held, cropping the sides. */
+    @media screen and (max-width: 989px) {
+      .story-row--media-full .story-row__media--single .story-row__image {
+        height: 22rem;
+      }
+    }
+
     .story-row--media-full .story-row__image--offset {
       margin-block-start: 0;
     }
