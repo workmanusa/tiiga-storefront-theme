@@ -6,7 +6,7 @@
         "eyebrow": "100M+ Sticks Sold",
         "heading": "6 Benefits Moms Love about Tiiga (Besides the great taste)",
         "text": "<p>Between everyone else's snacks, schedules, and sniffles, your own health keeps sliding down the list. Tiiga is the 30-second fix: gut health, hydration, and your daily vitamin C, handled before the kids find their shoes.</p>",
-        "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
+        "image_1": "shopify://shop_images/istockphoto-2148267392-612x612.jpg",
         "image_2": "",
         "primary_button_label": "Save 52% + Free Shipping",
         "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
@@ -20,7 +20,8 @@
         "text_color": "#ffffff",
         "padding-block-start": 64,
         "padding-block-end": 64,
-        "layout": "split"
+        "layout": "split",
+        "media_fit": "contain"
       }
     },
     "story_rows": {
@@ -51,7 +52,7 @@
             "text": "<p>Coconut water powder and natural electrolytes replenish what you actually lose. Potassium, magnesium, and sodium, because reheated coffee isn't hydration, and you know it.</p>",
             "media_style": "image",
             "media_position": "left",
-            "image_1": "shopify://shop_images/ff55bc14-5ebf-4a13-83a8-97851ed81e44.png",
+            "image_1": "shopify://shop_images/istockphoto-921661186-612x612.jpg",
             "image_2": "",
             "background_color": "#ffffff",
             "media_ratio": "landscape"

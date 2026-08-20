@@ -30,14 +30,14 @@
     {%- endif -%}
 
     {%- if section.settings.image_1 != blank or section.settings.image_2 != blank -%}
-      <div class="landing-hero__media{{ hero_media_modifier }}">
+      <div class="landing-hero__media{{ hero_media_modifier }} landing-hero__media--fit-{{ section.settings.media_fit | default: 'cover' }}">
         {%- if section.settings.image_1 != blank -%}
           {{
             section.settings.image_1
             | image_url: width: 900
             | image_tag:
               widths: '300, 480, 640, 900',
-              sizes: '(min-width: 990px) 420px, (min-width: 750px) 360px, 80vw',
+              sizes: '(min-width: 990px) 680px, (min-width: 750px) 48vw, 90vw',
               class: 'landing-hero__image landing-hero__image--lead',
               fetchpriority: 'high'
           }}
@@ -187,6 +187,13 @@
     rotate: 4deg;
   }
 
+  /* Show the whole frame: the box takes the image's own ratio, so nothing is
+     cropped and no letterbox bars appear either. */
+  .landing-hero__media--fit-contain .landing-hero__image {
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
   .landing-hero__media--single .landing-hero__image {
     width: min(80vw, 22.5rem);
     rotate: none;
@@ -294,6 +301,12 @@
       width: min(100%, 26.25rem);
     }
 
+    /* Nothing is cropped in contain mode, so the image can use the whole
+       column rather than the narrower cap a cropped portrait needs. */
+    .landing-hero--split .landing-hero__media--fit-contain .landing-hero__image {
+      width: 100%;
+    }
+
     .landing-hero--split .landing-hero__actions {
       flex-direction: row;
       flex-wrap: wrap;
@@ -354,6 +367,16 @@
     {
       "type": "header",
       "content": "t:content.media"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "t:settings.media_fit",
+      "options": [
+        { "value": "cover", "label": "t:options.cover" },
+        { "value": "contain", "label": "t:options.contain" }
+      ],
+      "default": "cover"
     },
     {
       "type": "image_picker",
