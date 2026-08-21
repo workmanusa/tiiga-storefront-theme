@@ -76,12 +76,12 @@
 
 {% stylesheet %}
   .cmp-matrix {
-    --cmp-matrix-columns: minmax(136px, 1.25fr) repeat(3, minmax(104px, 1fr));
+    --cmp-matrix-columns: minmax(136px, 1.05fr) repeat(3, minmax(104px, 1fr));
   }
 
   .cmp-matrix__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
     align-items: center;
     gap: 44px;
   }
@@ -110,7 +110,7 @@
     position: relative;
     /* Capped so the columns stay tight instead of stretching on wide
        viewports; the table hugs the end of its grid track. */
-    max-width: 680px;
+    max-width: 760px;
     margin-inline-start: auto;
     padding-block-start: 32px;
   }
@@ -156,7 +156,7 @@
   .cmp-matrix__head-cell {
     padding: 17px 10px;
     font-family: var(--font-subheading--family);
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.25;
     text-align: center;
@@ -171,7 +171,7 @@
   }
 
   .cmp-matrix__head-cell--brand {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     letter-spacing: 0.02em;
   }
 
@@ -180,6 +180,14 @@
     font-size: 0.625rem;
     line-height: 1.45;
     color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  @media screen and (min-width: 990px) {
+    /* The columns are sized to fit the longest title, so keep the titles
+       on one line rather than letting a stray word drop. */
+    .cmp-matrix__head-cell {
+      white-space: nowrap;
+    }
   }
 
   @media screen and (max-width: 989px) {
