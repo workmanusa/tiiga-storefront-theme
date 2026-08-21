@@ -270,6 +270,7 @@
     "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "names": {
+    "review_video": "Review video",
     "comparison_matrix": "Comparison matrix",
     "comparison_matrix_row": "Comparison row",
     "landing_hero": "Landing hero",
@@ -777,6 +778,7 @@
     "below_media": "أسفل الوسائط"
   },
   "settings": {
+    "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",
     "display_as": "Display as",

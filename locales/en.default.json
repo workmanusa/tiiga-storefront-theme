@@ -18,6 +18,7 @@
     "footnote": "* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice."
   },
   "reviews": {
+    "play_video_by": "Play video review by {{ author }}",
     "on_product": "On {{ product }}",
     "count_label": "{{ count }} reviews",
     "show_more": "Show more reviews",

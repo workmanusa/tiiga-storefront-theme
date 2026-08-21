@@ -1,0 +1,233 @@
+{% doc %}
+  A customer testimonial video tile for the reviews carousel, sized to match
+  the quote cards so videos can be interleaved between written reviews.
+
+  The clip renders paused behind its poster; clicking the overlay starts it
+  with sound and switches on the native player controls.
+
+  @example
+  {% content_for 'block', type: '_review-video', id: 'review-video-1' %}
+{% enddoc %}
+
+<script
+  src="{{ 'review-video.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+
+{% capture card %}
+  <review-video-component class="review-video">
+    <div class="review-video__frame" ref="frame">
+      {%- if block.settings.video -%}
+        {{
+          block.settings.video
+          | video_tag: image_size: '640x', controls: false, autoplay: false, muted: false, playsinline: true, class: 'review-video__media', preload: 'metadata'
+        }}
+      {%- else -%}
+        <span class="review-video__media review-video__media--empty"></span>
+      {%- endif -%}
+
+      <button
+        type="button"
+        class="review-video__trigger"
+        ref="trigger"
+        on:click="/play"
+      >
+        {%- if block.settings.poster -%}
+          {{
+            block.settings.poster
+            | image_url: width: 640
+            | image_tag: class: 'review-video__poster', loading: 'lazy'
+          }}
+        {%- endif -%}
+        {%- if block.settings.category != blank -%}
+          <span class="review-video__category">{{ block.settings.category }}</span>
+        {%- endif -%}
+        <span class="review-video__play" aria-hidden="true">
+          {{- 'icon-play.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">
+          {%- if block.settings.author != blank -%}
+            {{ 'reviews.play_video_by' | t: author: block.settings.author }}
+          {%- else -%}
+            {{ 'accessibility.play_video' | t }}
+          {%- endif -%}
+        </span>
+      </button>
+    </div>
+
+    {%- if block.settings.author != blank -%}
+      <span class="review-video__author">
+        {{ block.settings.author }}
+        {%- if block.settings.verified -%}
+          <span class="review-video__verified-check" aria-hidden="true">
+            {{- 'icon-checkmark.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'reviews.verified_buyer' | t }}</span>
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+  </review-video-component>
+{% endcapture %}
+
+{% render 'slideshow-slide',
+  index: block_index,
+  children: card,
+  attributes: block.shopify_attributes
+%}
+
+{% stylesheet %}
+  .review-video {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .review-video__frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .review-video__media {
+    display: block;
+    width: 100%;
+    height: var(--review-tile-height, 21rem);
+    object-fit: cover;
+  }
+
+  .review-video__trigger {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    /* The poster sits inside the button so the whole tile is the hit area */
+  }
+
+  .review-video--playing .review-video__trigger {
+    display: none;
+  }
+
+  .review-video__trigger:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: -4px;
+  }
+
+  .review-video__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .review-video__category {
+    position: absolute;
+    inset-block-start: 0.875rem;
+    inset-inline: 0.875rem;
+    justify-self: center;
+    width: fit-content;
+    margin-inline: auto;
+    background-color: #1d5a6b;
+    color: #fff;
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 0.25rem 0.875rem;
+  }
+
+  .review-video__play {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background-color: rgb(0 0 0 / 0.55);
+    color: #fff;
+    transition: background-color var(--animation-speed) var(--animation-easing);
+  }
+
+  .review-video__trigger:hover .review-video__play {
+    background-color: rgb(0 0 0 / 0.75);
+  }
+
+  .review-video__play svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .review-video__author {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .review-video__verified-check {
+    display: inline-flex;
+    width: 0.875rem;
+    color: #1d5a6b;
+  }
+
+  .review-video__verified-check svg {
+    width: 100%;
+    height: auto;
+    --icon-stroke-width: 2.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.review_video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:settings.video"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "t:settings.poster"
+    },
+    {
+      "type": "text",
+      "id": "category",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "t:settings.author"
+    },
+    {
+      "type": "checkbox",
+      "id": "verified",
+      "label": "t:settings.verified",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.review_video"
+    }
+  ]
+}
+{% endschema %}

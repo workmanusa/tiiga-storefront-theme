@@ -279,6 +279,7 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "review_video": "Review video",
     "faq": "FAQ",
     "faq_category": "FAQ category",
     "faq_item": "FAQ question",
@@ -861,6 +862,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",
     "display_as": "Display as",

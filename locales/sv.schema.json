@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "review_video": "Review video",
     "comparison_matrix": "Comparison matrix",
     "comparison_matrix_row": "Comparison row",
     "landing_hero": "Landing hero",
@@ -228,6 +229,7 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",
     "display_as": "Display as",

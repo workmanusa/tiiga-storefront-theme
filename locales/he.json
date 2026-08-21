@@ -420,6 +420,7 @@
     "save_percent": "Save {{ percent }}%"
   },
   "reviews": {
+    "play_video_by": "Play video review by {{ author }}",
     "on_product": "On {{ product }}",
     "count_label": "{{ count }} reviews",
     "show_more": "Show more reviews",
