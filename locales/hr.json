@@ -399,6 +399,12 @@
     "status_min": "Choose at least {{ count }} flavors to add to cart",
     "status_ready": "Ready to add to cart"
   },
+  "comparison_matrix": {
+    "included": "Included",
+    "not_included": "Not included",
+    "attribute": "Attribute",
+    "table_label": "Product comparison"
+  },
   "purchase_options": {
     "subscribe_save": "Subscribe & save",
     "subscribe": "Subscribe",

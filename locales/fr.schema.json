@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "comparison_matrix": "Comparison matrix",
+    "comparison_matrix_row": "Comparison row",
     "landing_hero": "Landing hero",
     "story_row": "Story row",
     "story_rows": "Story rows",
@@ -226,6 +228,11 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "accent_color": "Accent color",
+    "column_label": "Column label",
+    "display_as": "Display as",
+    "footnote": "Footnote",
+    "note": "Note",
     "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",
@@ -725,6 +732,9 @@
     "answer": "Answer"
   },
   "options": {
+    "cell_value": "Written value",
+    "cell_yes": "Checkmark",
+    "cell_no": "Cross",
     "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
@@ -1010,6 +1020,10 @@
     "input_field": "Champ de saisie"
   },
   "content": {
+    "columns": "Columns",
+    "brand_column": "Brand column",
+    "second_column": "Second column",
+    "third_column": "Third column",
     "brand_card": "Brand card",
     "promo_banner": "Promo banner",
     "featured_articles": "Featured articles",

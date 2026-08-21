@@ -765,6 +765,154 @@
         "padding-block-start": 72,
         "padding-block-end": 72
       }
+    },
+    "comparison": {
+      "type": "comparison-matrix",
+      "blocks": {
+        "row_1": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Gut health and hydration in one",
+            "col_1_type": "yes",
+            "col_1_value": "",
+            "col_1_note": "",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "Hydration only",
+            "col_3_type": "no",
+            "col_3_value": "",
+            "col_3_note": "Gut only"
+          }
+        },
+        "row_2": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Prebiotic fiber per serving",
+            "col_1_type": "value",
+            "col_1_value": "5g",
+            "col_1_note": "Raw, unprocessed baobab fruit",
+            "col_2_type": "value",
+            "col_2_value": "0g",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "3–6g",
+            "col_3_note": "Usually isolated psyllium or inulin"
+          }
+        },
+        "row_3": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Electrolytes per serving",
+            "col_1_type": "value",
+            "col_1_value": "140mg sodium",
+            "col_1_note": "352mg potassium · 19mg magnesium",
+            "col_2_type": "yes",
+            "col_2_value": "",
+            "col_2_note": "Often 500–1,000mg sodium",
+            "col_3_type": "no",
+            "col_3_value": "",
+            "col_3_note": ""
+          }
+        },
+        "row_4": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Added sugar",
+            "col_1_type": "value",
+            "col_1_value": "0g",
+            "col_1_note": "Sweetened with organic stevia",
+            "col_2_type": "value",
+            "col_2_value": "0–11g",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "0–5g",
+            "col_3_note": ""
+          }
+        },
+        "row_5": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Whole-food ingredients",
+            "col_1_type": "yes",
+            "col_1_value": "",
+            "col_1_note": "Over 75% organic baobab and coconut water",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "Mineral salts and flavoring",
+            "col_3_type": "no",
+            "col_3_value": "",
+            "col_3_note": "Extracts and isolates"
+          }
+        },
+        "row_6": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Antioxidants and vitamin C",
+            "col_1_type": "value",
+            "col_1_value": "73mg vitamin C",
+            "col_1_note": "80% DV, plus baobab polyphenols",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "Varies",
+            "col_3_note": ""
+          }
+        },
+        "row_7": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Calories per serving",
+            "col_1_type": "value",
+            "col_1_value": "35",
+            "col_1_note": "",
+            "col_2_type": "value",
+            "col_2_value": "5–45",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "15–60",
+            "col_3_note": ""
+          }
+        },
+        "row_8": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Cost per serving",
+            "col_1_type": "value",
+            "col_1_value": "$1.33",
+            "col_1_note": "$1.07 on subscribe & save",
+            "col_2_type": "value",
+            "col_2_value": "$1.25–$1.75",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "$1.00–$2.50",
+            "col_3_note": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "One Stick Instead of Two Products",
+        "text": "<p>Travel throws off hydration and digestion at once, and packing two tubs is not an option. Tiiga covers both in one stick that fits in a pocket, built on whole baobab fruit and coconut water instead of isolates and mineral salts.</p>",
+        "footnote": "Per one 12g stick, Raspberry Lemonade. Tiiga cost per serving is based on the 30-serving tub at $40.00, or $1.07 with subscribe & save. Category figures are typical ranges across widely sold products in each category, not any single brand.",
+        "column_1_label": "Tiiga",
+        "column_2_label": "Electrolyte powders",
+        "column_3_label": "Fiber & greens powders",
+        "accent_color": "#1d5a6b",
+        "table_color": "#ffffff",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 80
+      }
     }
   },
   "order": [
@@ -773,6 +921,7 @@
     "flavor_tabs",
     "buy_packs",
     "buy_tubs",
+    "comparison",
     "ingredients",
     "trust",
     "quote"

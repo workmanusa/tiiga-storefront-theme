@@ -1,0 +1,327 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="cmp-matrix spacing-style section section--page-width color-custom-{{ section.id }}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --cmp-matrix-accent: {{ section.settings.accent_color }};
+    --cmp-matrix-surface: {{ section.settings.table_color }};
+  "
+>
+  <div class="cmp-matrix__inner">
+    <div class="cmp-matrix__intro">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="cmp-matrix__heading h2" id="cmp-matrix-heading-{{ section.id }}">
+          {{- section.settings.heading -}}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="cmp-matrix__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="cmp-matrix__frame">
+      {%- if section.settings.brand_image -%}
+        {{
+          section.settings.brand_image
+          | image_url: width: 400
+          | image_tag: class: 'cmp-matrix__brand-image', loading: 'lazy', alt: ''
+        }}
+      {%- endif -%}
+
+      {%- comment -%}
+        The table scrolls sideways on narrow viewports, so it is a focusable
+        region: keyboard users can reach the scroll container without a mouse.
+      {%- endcomment -%}
+      <div
+        class="cmp-matrix__scroller"
+        tabindex="0"
+        role="region"
+        {% if section.settings.heading != blank %}
+          aria-labelledby="cmp-matrix-heading-{{ section.id }}"
+        {% else %}
+          aria-label="{{ 'comparison_matrix.table_label' | t }}"
+        {% endif %}
+      >
+        <div class="cmp-matrix__table" role="table">
+          <div class="cmp-matrix__head" role="row">
+            <span class="cmp-matrix__head-cell cmp-matrix__head-cell--corner" role="columnheader">
+              <span class="visually-hidden">{{ 'comparison_matrix.attribute' | t }}</span>
+            </span>
+            {%- for i in (1..3) -%}
+              {%- liquid
+                assign label_key = 'column_' | append: i | append: '_label'
+                assign column_label = section.settings[label_key]
+              -%}
+              <span
+                class="cmp-matrix__head-cell{% if forloop.first %} cmp-matrix__head-cell--brand{% endif %}"
+                role="columnheader"
+              >
+                {{ column_label }}
+              </span>
+            {%- endfor -%}
+          </div>
+
+          {% content_for 'blocks' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- if section.settings.footnote != blank -%}
+    <p class="cmp-matrix__footnote">{{ section.settings.footnote }}</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .cmp-matrix {
+    --cmp-matrix-columns: minmax(150px, 1.5fr) repeat(3, minmax(104px, 1fr));
+  }
+
+  .cmp-matrix__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr);
+    align-items: center;
+    gap: 56px;
+  }
+
+  .cmp-matrix__heading {
+    margin: 0;
+    color: var(--cmp-matrix-accent);
+  }
+
+  .cmp-matrix__text {
+    margin-block-start: 16px;
+    color: rgb(var(--color-foreground-rgb) / 0.8);
+  }
+
+  .cmp-matrix__text > :first-child {
+    margin-block-start: 0;
+  }
+
+  .cmp-matrix__text > :last-child {
+    margin-block-end: 0;
+  }
+
+  /* The image floats above the header bar, so the frame keeps room for it
+     instead of the table clipping it. */
+  .cmp-matrix__frame {
+    position: relative;
+    padding-block-start: 44px;
+  }
+
+  .cmp-matrix__brand-image {
+    position: absolute;
+    /* Centred over the first data column: the label column is 1.5fr of a
+       1.5 + 3 = 4.5fr grid, so the column midpoint sits at ~44.4%. */
+    inset-block-start: 0;
+    inset-inline-start: 44.4%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 96px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 14px rgb(0 0 0 / 0.18));
+    pointer-events: none;
+  }
+
+  .cmp-matrix__scroller {
+    overflow-x: auto;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 0.08);
+  }
+
+  .cmp-matrix__scroller:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 3px;
+  }
+
+  .cmp-matrix__table {
+    min-width: 520px;
+    background-color: var(--cmp-matrix-surface);
+  }
+
+  .cmp-matrix__head {
+    display: grid;
+    grid-template-columns: var(--cmp-matrix-columns);
+    align-items: end;
+    background-color: var(--cmp-matrix-accent);
+    color: #fff;
+  }
+
+  .cmp-matrix__head-cell {
+    padding: 20px 10px;
+    font-family: var(--font-subheading--family);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .cmp-matrix__head-cell--corner {
+    /* Sticky corner keeps the header aligned with the sticky label column */
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    background-color: var(--cmp-matrix-accent);
+  }
+
+  .cmp-matrix__head-cell--brand {
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cmp-matrix__footnote {
+    margin: 20px 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  @media screen and (max-width: 989px) {
+    .cmp-matrix__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .cmp-matrix__frame {
+      padding-block-start: 36px;
+    }
+
+    .cmp-matrix__brand-image {
+      height: 76px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .cmp-matrix {
+      --cmp-matrix-columns: minmax(126px, 1.4fr) repeat(3, minmax(92px, 1fr));
+    }
+
+    .cmp-matrix__table {
+      min-width: 402px;
+    }
+
+    .cmp-matrix__head-cell {
+      padding: 14px 8px;
+      font-size: 0.6875rem;
+    }
+
+    .cmp-matrix__head-cell--brand {
+      font-size: 0.8125rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.comparison_matrix",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "t:settings.footnote"
+    },
+    {
+      "type": "header",
+      "content": "t:content.columns"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "column_1_label",
+      "label": "t:settings.column_label"
+    },
+    {
+      "type": "text",
+      "id": "column_2_label",
+      "label": "t:settings.column_label"
+    },
+    {
+      "type": "text",
+      "id": "column_3_label",
+      "label": "t:settings.column_label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "t:settings.accent_color",
+      "default": "#1d5a6b"
+    },
+    {
+      "type": "color",
+      "id": "table_color",
+      "label": "t:settings.background_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_comparison-matrix-row"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.comparison_matrix",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "row_1": { "type": "_comparison-matrix-row" },
+        "row_2": { "type": "_comparison-matrix-row" },
+        "row_3": { "type": "_comparison-matrix-row" }
+      },
+      "block_order": ["row_1", "row_2", "row_3"]
+    }
+  ]
+}
+{% endschema %}

@@ -30,6 +30,10 @@
     "text": "نص"
   },
   "content": {
+    "columns": "Columns",
+    "brand_column": "Brand column",
+    "second_column": "Second column",
+    "third_column": "Third column",
     "brand_card": "Brand card",
     "promo_banner": "Promo banner",
     "featured_articles": "Featured articles",
@@ -266,6 +270,8 @@
     "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "names": {
+    "comparison_matrix": "Comparison matrix",
+    "comparison_matrix_row": "Comparison row",
     "landing_hero": "Landing hero",
     "story_row": "Story row",
     "story_rows": "Story rows",
@@ -483,6 +489,9 @@
     "faq_item": "FAQ question"
   },
   "options": {
+    "cell_value": "Written value",
+    "cell_yes": "Checkmark",
+    "cell_no": "Cross",
     "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
@@ -768,6 +777,11 @@
     "below_media": "أسفل الوسائط"
   },
   "settings": {
+    "accent_color": "Accent color",
+    "column_label": "Column label",
+    "display_as": "Display as",
+    "footnote": "Footnote",
+    "note": "Note",
     "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",

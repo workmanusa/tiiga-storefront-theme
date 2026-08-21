@@ -1,0 +1,242 @@
+{% doc %}
+  One attribute row inside the comparison matrix: a row label followed by one
+  cell per column (Tiiga first, then the two category columns). Each cell shows
+  either a written value, a checkmark, or a cross, with an optional note under
+  it.
+
+  Column labels and the row grid live on the parent section, so this block only
+  renders the cells.
+
+  @example
+  {% content_for 'block', type: '_comparison-matrix-row', id: 'row-fiber' %}
+{% enddoc %}
+
+<div
+  class="cmp-matrix__row"
+  role="row"
+  {{ block.shopify_attributes }}
+>
+  <span class="cmp-matrix__row-label" role="rowheader">{{ block.settings.label }}</span>
+
+  {%- for i in (1..3) -%}
+    {%- liquid
+      assign type_key = 'col_' | append: i | append: '_type'
+      assign value_key = 'col_' | append: i | append: '_value'
+      assign note_key = 'col_' | append: i | append: '_note'
+      assign cell_type = block.settings[type_key]
+      assign cell_value = block.settings[value_key]
+      assign cell_note = block.settings[note_key]
+    -%}
+    <span
+      class="cmp-matrix__cell{% if forloop.first %} cmp-matrix__cell--brand{% endif %}"
+      role="cell"
+    >
+      {%- case cell_type -%}
+        {%- when 'yes' -%}
+          <span class="cmp-matrix__mark cmp-matrix__mark--yes">
+            {{- 'icon-checkmark.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'comparison_matrix.included' | t }}</span>
+        {%- when 'no' -%}
+          <span class="cmp-matrix__mark cmp-matrix__mark--no">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'comparison_matrix.not_included' | t }}</span>
+        {%- else -%}
+          {%- if cell_value != blank -%}
+            <span class="cmp-matrix__value">{{ cell_value }}</span>
+          {%- endif -%}
+      {%- endcase -%}
+
+      {%- if cell_note != blank -%}
+        <span class="cmp-matrix__note">{{ cell_note }}</span>
+      {%- endif -%}
+    </span>
+  {%- endfor -%}
+</div>
+
+{% stylesheet %}
+  .cmp-matrix__row {
+    display: grid;
+    grid-template-columns: var(--cmp-matrix-columns);
+    align-items: center;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+  }
+
+  .cmp-matrix__row-label {
+    /* Sticky so the attribute stays readable while the columns scroll on
+       narrow viewports; the background must be opaque for that to work. */
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    padding: 18px 20px;
+    background-color: var(--cmp-matrix-surface);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .cmp-matrix__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    align-self: stretch;
+    padding: 18px 10px;
+    text-align: center;
+  }
+
+  .cmp-matrix__cell--brand {
+    background-color: color-mix(in srgb, var(--cmp-matrix-accent) 7%, transparent);
+  }
+
+  .cmp-matrix__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .cmp-matrix__cell--brand .cmp-matrix__value {
+    color: var(--cmp-matrix-accent);
+  }
+
+  .cmp-matrix__note {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  .cmp-matrix__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  .cmp-matrix__mark svg {
+    width: 16px;
+    height: 16px;
+    --icon-stroke-width: 2;
+  }
+
+  .cmp-matrix__mark--yes {
+    background-color: var(--cmp-matrix-accent);
+    color: #fff;
+  }
+
+  .cmp-matrix__mark--no {
+    box-shadow: inset 0 0 0 1px rgb(var(--color-foreground-rgb) / 0.25);
+    color: rgb(var(--color-foreground-rgb) / 0.4);
+  }
+
+  @media screen and (max-width: 749px) {
+    .cmp-matrix__row-label {
+      padding: 14px 14px;
+      font-size: 0.8125rem;
+    }
+
+    .cmp-matrix__cell {
+      padding: 14px 8px;
+    }
+
+    .cmp-matrix__value {
+      font-size: 0.8125rem;
+    }
+
+    .cmp-matrix__note {
+      font-size: 0.6875rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.comparison_matrix_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "header",
+      "content": "t:content.brand_column"
+    },
+    {
+      "type": "select",
+      "id": "col_1_type",
+      "label": "t:settings.display_as",
+      "options": [
+        { "value": "value", "label": "t:options.cell_value" },
+        { "value": "yes", "label": "t:options.cell_yes" },
+        { "value": "no", "label": "t:options.cell_no" }
+      ],
+      "default": "value"
+    },
+    {
+      "type": "text",
+      "id": "col_1_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "col_1_note",
+      "label": "t:settings.note"
+    },
+    {
+      "type": "header",
+      "content": "t:content.second_column"
+    },
+    {
+      "type": "select",
+      "id": "col_2_type",
+      "label": "t:settings.display_as",
+      "options": [
+        { "value": "value", "label": "t:options.cell_value" },
+        { "value": "yes", "label": "t:options.cell_yes" },
+        { "value": "no", "label": "t:options.cell_no" }
+      ],
+      "default": "value"
+    },
+    {
+      "type": "text",
+      "id": "col_2_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "col_2_note",
+      "label": "t:settings.note"
+    },
+    {
+      "type": "header",
+      "content": "t:content.third_column"
+    },
+    {
+      "type": "select",
+      "id": "col_3_type",
+      "label": "t:settings.display_as",
+      "options": [
+        { "value": "value", "label": "t:options.cell_value" },
+        { "value": "yes", "label": "t:options.cell_yes" },
+        { "value": "no", "label": "t:options.cell_no" }
+      ],
+      "default": "value"
+    },
+    {
+      "type": "text",
+      "id": "col_3_value",
+      "label": "t:settings.value"
+    },
+    {
+      "type": "text",
+      "id": "col_3_note",
+      "label": "t:settings.note"
+    }
+  ]
+}
+{% endschema %}

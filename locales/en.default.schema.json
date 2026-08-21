@@ -34,6 +34,11 @@
   },
   "content": {
     "brand_card": "Brand card",
+    // Column group headers for the comparison matrix section
+    "columns": "Columns",
+    "brand_column": "Brand column",
+    "second_column": "Second column",
+    "third_column": "Third column",
     "cta": "Call to action",
     "social_links": "Social links",
     "promo_banner": "Promo banner",
@@ -308,6 +313,10 @@
     "comparison_table": "Comparison",
     // One competitor column in the comparison table
     "comparison_column": "Comparison column",
+    // Attribute-by-attribute table comparing the brand with two categories
+    "comparison_matrix": "Comparison matrix",
+    // One attribute row in the comparison matrix
+    "comparison_matrix_row": "Comparison row",
     "column": "Column",
     "product_title": "Product title",
     "custom_liquid": "Custom Liquid",
@@ -526,6 +535,10 @@
     "comparison_slider": "Comparison slider"
   },
   "options": {
+    // How one comparison-matrix cell is displayed
+    "cell_value": "Written value",
+    "cell_yes": "Checkmark",
+    "cell_no": "Cross",
     "beside": "Beside text",
     "centered": "Centered",
     "split": "Split",
@@ -848,6 +861,11 @@
     "below_media": "Below media"
   },
   "settings": {
+    "accent_color": "Accent color",
+    "column_label": "Column label",
+    "display_as": "Display as",
+    "footnote": "Footnote",
+    "note": "Note",
     "full_width_media": "Full width media",
     "checklist": "Checklist",
     "checklist_info": "One item per line.",
