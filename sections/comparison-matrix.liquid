@@ -76,7 +76,7 @@
 
 {% stylesheet %}
   .cmp-matrix {
-    --cmp-matrix-columns: minmax(150px, 1.5fr) repeat(3, minmax(104px, 1fr));
+    --cmp-matrix-columns: minmax(136px, 1.25fr) repeat(3, minmax(104px, 1fr));
   }
 
   .cmp-matrix__inner {
@@ -108,7 +108,7 @@
      instead of the table clipping it. */
   .cmp-matrix__frame {
     position: relative;
-    padding-block-start: 38px;
+    padding-block-start: 32px;
   }
 
   .cmp-matrix__brand-image {
@@ -150,9 +150,9 @@
   }
 
   .cmp-matrix__head-cell {
-    padding: 13px 10px;
+    padding: 10px 10px;
     font-family: var(--font-subheading--family);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 700;
     line-height: 1.25;
     text-align: center;
@@ -167,13 +167,13 @@
   }
 
   .cmp-matrix__head-cell--brand {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     letter-spacing: 0.02em;
   }
 
   .cmp-matrix__footnote {
-    margin: 14px 0 0;
-    font-size: 0.6875rem;
+    margin: 12px 0 0;
+    font-size: 0.625rem;
     line-height: 1.45;
     color: rgb(var(--color-foreground-rgb) / 0.55);
   }
@@ -185,7 +185,7 @@
     }
 
     .cmp-matrix__frame {
-      padding-block-start: 32px;
+      padding-block-start: 28px;
     }
 
     .cmp-matrix__brand-image {
@@ -195,7 +195,7 @@
 
   @media screen and (max-width: 749px) {
     .cmp-matrix {
-      --cmp-matrix-columns: minmax(126px, 1.4fr) repeat(3, minmax(92px, 1fr));
+      --cmp-matrix-columns: minmax(112px, 1.2fr) repeat(3, minmax(92px, 1fr));
     }
 
     .cmp-matrix__table {
@@ -203,8 +203,8 @@
     }
 
     .cmp-matrix__head-cell {
-      padding: 10px 8px;
-      font-size: 0.6875rem;
+      padding: 8px 6px;
+      font-size: 0.625rem;
     }
 
     .cmp-matrix__head-cell--brand {
