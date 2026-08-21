@@ -60,6 +60,12 @@
     display: grid;
     grid-template-columns: var(--cmp-matrix-columns);
     align-items: center;
+  }
+
+  /* The divider sits on the cells rather than the row, so it stops at the
+     brand band and leaves it as one unbroken block of color. */
+  .cmp-matrix__row-label,
+  .cmp-matrix__cell:not(.cmp-matrix__cell--brand) {
     border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
   }
 
@@ -87,8 +93,11 @@
     text-align: center;
   }
 
+  /* The brand column runs as one solid band down from the header, so Tiiga
+     reads as the answer rather than one of three options. */
   .cmp-matrix__cell--brand {
-    background-color: color-mix(in srgb, var(--cmp-matrix-accent) 7%, transparent);
+    background-color: var(--cmp-matrix-accent);
+    color: #fff;
   }
 
   .cmp-matrix__value {
@@ -97,8 +106,8 @@
     line-height: 1.25;
   }
 
-  .cmp-matrix__cell--brand .cmp-matrix__value {
-    color: var(--cmp-matrix-accent);
+  .cmp-matrix__cell--brand .cmp-matrix__note {
+    color: rgb(255 255 255 / 0.75);
   }
 
   .cmp-matrix__note {
@@ -125,6 +134,17 @@
   .cmp-matrix__mark--yes {
     background-color: var(--cmp-matrix-accent);
     color: #fff;
+  }
+
+  /* Inverted inside the band, where a teal disc would disappear */
+  .cmp-matrix__cell--brand .cmp-matrix__mark--yes {
+    background-color: #fff;
+    color: var(--cmp-matrix-accent);
+  }
+
+  .cmp-matrix__cell--brand .cmp-matrix__mark--no {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+    color: rgb(255 255 255 / 0.7);
   }
 
   .cmp-matrix__mark--no {
