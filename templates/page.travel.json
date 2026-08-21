@@ -170,10 +170,17 @@
             "handle": "James R. · Frequent Flyer · LA"
           },
           "blocks": {}
+        },
+        "ugc_video_1": {
+          "type": "_review-video",
+          "settings": {
+            "verified": true
+          }
         }
       },
       "block_order": [
         "tile_1",
+        "ugc_video_1",
         "tile_2"
       ],
       "settings": {

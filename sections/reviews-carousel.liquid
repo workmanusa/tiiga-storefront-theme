@@ -4,6 +4,19 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
+{%- liquid
+  # Video blocks with nothing picked are parked slots: they render hidden on
+  # the storefront, so they must not be counted among the slides either.
+  assign slide_count = section.blocks.size
+  unless request.design_mode
+    for carousel_block in section.blocks
+      if carousel_block.type == '_review-video' and carousel_block.settings.video == blank
+        assign slide_count = slide_count | minus: 1
+      endif
+    endfor
+  endunless
+-%}
+
 {% capture controls %}
   <div class="reviews-carousel__footer">
     <div class="reviews-carousel__nav">
@@ -49,7 +62,7 @@
   {% render 'slideshow',
     class: 'reviews-carousel__slideshow',
     slides: slides,
-    slide_count: section.blocks.size,
+    slide_count: slide_count,
     controls: controls,
     show_arrows: false,
     initial_slide: 1,

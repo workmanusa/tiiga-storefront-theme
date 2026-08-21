@@ -192,13 +192,27 @@
             "verified": true
           },
           "blocks": {}
+        },
+        "ugc_video_1": {
+          "type": "_review-video",
+          "settings": {
+            "verified": true
+          }
+        },
+        "ugc_video_2": {
+          "type": "_review-video",
+          "settings": {
+            "verified": true
+          }
         }
       },
       "block_order": [
         "review_1",
         "review_4",
+        "ugc_video_1",
         "review_real_1",
         "review_real_2",
+        "ugc_video_2",
         "review_real_3"
       ],
       "settings": {

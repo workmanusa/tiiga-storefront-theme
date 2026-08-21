@@ -5,6 +5,11 @@
   The clip renders paused behind its poster; clicking the overlay starts it
   with sound and switches on the native player controls.
 
+  A block with no video picked is an empty slot: it renders hidden on the
+  storefront, so slots can be parked between the review cards ahead of the
+  footage arriving, and shows as a labelled placeholder in the theme editor
+  so it stays selectable.
+
   @example
   {% content_for 'block', type: '_review-video', id: 'review-video-1' %}
 {% enddoc %}
@@ -15,19 +20,43 @@
   fetchpriority="low"
 ></script>
 
-{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+{%- liquid
+  assign block_index = section.blocks | find_index: 'id', block.id
+
+  assign has_video = false
+  if block.settings.video != blank
+    assign has_video = true
+  endif
+
+  # A parked slot renders as a placeholder in the editor and drops out of the
+  # rail entirely on the storefront.
+  assign is_parked_slot = false
+  if has_video == false and request.design_mode == false
+    assign is_parked_slot = true
+  endif
+-%}
 
 {% capture card %}
+  {%- if has_video == false -%}
+    {%- if request.design_mode -%}
+    <div class="review-video review-video--empty">
+      <div class="review-video__frame">
+        <span class="review-video__placeholder">
+          <span class="review-video__play" aria-hidden="true">
+            {{- 'icon-play.svg' | inline_asset_content -}}
+          </span>
+          {{ 'reviews.add_video' | t }}
+        </span>
+      </div>
+    </div>
+    {%- endif -%}
+  {%- else -%}
   <review-video-component class="review-video">
     <div class="review-video__frame" ref="frame">
-      {%- if block.settings.video -%}
-        {{
-          block.settings.video
-          | video_tag: image_size: '640x', controls: false, autoplay: false, muted: false, playsinline: true, class: 'review-video__media', preload: 'metadata'
-        }}
-      {%- else -%}
-        <span class="review-video__media review-video__media--empty"></span>
-      {%- endif -%}
+      {{
+        block.settings.video
+        | video_tag: image_size: '640x', controls: false, autoplay: false, muted: false, playsinline: true, class: 'review-video__media', preload: 'metadata'
+      }}
 
       <button
         type="button"
@@ -70,11 +99,13 @@
       </span>
     {%- endif -%}
   </review-video-component>
+  {%- endif -%}
 {% endcapture %}
 
 {% render 'slideshow-slide',
   index: block_index,
   children: card,
+  hidden: is_parked_slot,
   attributes: block.shopify_attributes
 %}
 
@@ -167,6 +198,25 @@
   .review-video__play svg {
     width: 1.125rem;
     height: 1.125rem;
+  }
+
+  .review-video--empty .review-video__frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--review-tile-height, 21rem);
+    box-shadow: inset 0 0 0 2px rgb(var(--color-foreground-rgb) / 0.15);
+  }
+
+  .review-video__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    padding-inline: 1rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
   }
 
   .review-video__author {
