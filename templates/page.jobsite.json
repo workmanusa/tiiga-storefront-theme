@@ -1,0 +1,1560 @@
+{
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "settings": {
+        "eyebrow": "Built for the trades",
+        "heading": "The Job Takes It Out of You. Put It Back.",
+        "text": "<p>Heat, sweat, and ten-hour shifts drain more than water. Tiiga puts back the sodium, potassium, and magnesium you lose on site — plus 80% of your daily vitamin C to handle the oxidative stress the work puts on your body.</p>",
+        "layout": "split",
+        "media_fit": "cover",
+        "image_1": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
+        "image_2": "",
+        "primary_button_label": "Shop Jobsite Hydration",
+        "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "secondary_button_label": "See What's In It",
+        "secondary_button_link": "#ingredients",
+        "rating": "4.7",
+        "review_count": "850+ reviews",
+        "shipping_note": "Free shipping $40+",
+        "disclaimer": "<p>Cancel anytime · 30-day money-back guarantee · These statements have not been evaluated by the FDA.</p>",
+        "background_color": "#14333d",
+        "text_color": "#ffffff",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "ticker": {
+      "type": "marquee",
+      "blocks": {
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>No Added Sugar</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>80% DV Vitamin C</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5g Prebiotic Fiber</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zero Caffeine</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_5": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mixes Clear, No Grit</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Gluten Free</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Non-GMO</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Made With Real Fruit</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_1",
+        "text_2",
+        "text_3",
+        "text_4",
+        "text_5",
+        "text_6",
+        "text_7",
+        "text_8"
+      ],
+      "settings": {
+        "movement_direction": "normal",
+        "background_color": "#1d5a6b",
+        "padding-block-start": 18,
+        "padding-block-end": 18,
+        "gap_between_elements": 48
+      }
+    },
+    "stats": {
+      "type": "stats-numbers",
+      "blocks": {
+        "stat_1": {
+          "type": "_stat-item",
+          "settings": {
+            "value": "2%",
+            "description": "of body weight lost in sweat is enough to measurably cut strength, endurance, and concentration."
+          }
+        },
+        "stat_2": {
+          "type": "_stat-item",
+          "settings": {
+            "value": "1–2L",
+            "description": "of sweat an hour is normal for hard physical work in the heat — most of it never gets replaced during the shift."
+          }
+        },
+        "stat_3": {
+          "type": "_stat-item",
+          "settings": {
+            "value": "1,800mg",
+            "description": "of sodium can leave your body in a single liter of sweat. Plain water puts none of it back."
+          }
+        },
+        "stat_4": {
+          "type": "_stat-item",
+          "settings": {
+            "value": "80%",
+            "description": "of the Daily Value for vitamin C in every stick, to help clear the oxidative stress the job creates."
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "eyebrow": "In the field",
+        "heading": "Dehydration Is a Jobsite Hazard, Not an Inconvenience",
+        "text": "<p>You don't feel thirsty until you're already behind. Slower reaction time, weaker grip, and foggy decisions are the first things to go — and on a roof, a ladder, or a live panel, those are the things that keep you safe.</p>",
+        "footnote": "Sweat rate and sweat sodium vary widely by individual, workload, heat, and acclimatization. Figures reflect commonly published ranges for physical work in hot conditions.",
+        "value_color": "#1d5a6b",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "flavor_tabs": {
+      "type": "flavor-tabs",
+      "settings": {
+        "label_1": "Jobsite Packs",
+        "label_2": "Crew Tubs",
+        "label_3": "",
+        "background_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 0
+      }
+    },
+    "buy_packs": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "none",
+            "slideshow_mobile_controls_style": "none",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Jobsite Packs · 16 Sticks</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "description": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Sixteen sealed sticks built for the truck, the cooler, or the lunch pail. Sodium, potassium, and magnesium from raw baobab and coconut water, plus 73mg of vitamin C — no scoop, no shaker, no grit.</p>",
+                "width": "100%",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": ""
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "details_link": {
+              "type": "text",
+              "settings": {
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title",
+            "description",
+            "variant_picker",
+            "purchase_options",
+            "buy_buttons",
+            "details_link"
+          ]
+        }
+      },
+      "settings": {
+        "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "background_color": "#ffffff",
+        "padding-block-start": 24,
+        "padding-block-end": 72
+      }
+    },
+    "buy_tubs": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": false,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "none",
+            "slideshow_mobile_controls_style": "none",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": false,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Crew Tubs · 30 Servings</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "description": {
+              "type": "text",
+              "settings": {
+                "text": "<p>The break-room tub. Thirty servings of the same formula for the guys who go through a stick a day — the lowest cost per serving we make.</p>",
+                "width": "100%",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "show_variant_thumbnails": false,
+                "flavor_link_products": [],
+                "flavor_link_heading": "",
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "_purchase-options",
+              "settings": {
+                "heading": ""
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "details_link": {
+              "type": "text",
+              "settings": {
+                "text": "<p><a href=\"/products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub\">See full product details</a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title",
+            "description",
+            "variant_picker",
+            "purchase_options",
+            "buy_buttons",
+            "details_link"
+          ]
+        }
+      },
+      "settings": {
+        "product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "background_color": "#ffffff",
+        "padding-block-start": 24,
+        "padding-block-end": 80
+      }
+    },
+    "story_rows": {
+      "type": "story-rows",
+      "blocks": {
+        "row_1": {
+          "type": "_story-row",
+          "settings": {
+            "number": "01",
+            "eyebrow": "HYDRATION",
+            "title": "Water Alone Won't Carry You Through a Ten-Hour Shift.",
+            "text": "<p>By the time you're thirsty you're already down. On a hot site you can sweat out one to two liters an hour, and chugging plain water dilutes the minerals you have left instead of replacing them. Losing just 2% of your body weight in sweat is enough to cut strength, coordination, and focus — the three things standing between you and a bad afternoon.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_2": {
+          "type": "_story-row",
+          "settings": {
+            "number": "02",
+            "eyebrow": "SODIUM · 140MG",
+            "title": "Sodium Is What Makes the Water Stay.",
+            "text": "<p>Sweat is salty for a reason. Every liter can carry up to 1,800mg of sodium out of you, and sodium is the mineral that pulls fluid into your bloodstream and holds it there. Drink water without it and most of it runs straight through. Tiiga uses 140mg of sodium citrate per stick — a gentle, all-day form that helps the water land without the seawater aftertaste of a salt-bomb packet.</p>",
+            "media_style": "image",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_3": {
+          "type": "_story-row",
+          "settings": {
+            "number": "03",
+            "eyebrow": "POTASSIUM · 352MG",
+            "title": "Potassium Works the Other Side of the Cell Wall.",
+            "text": "<p>Sodium holds fluid around your cells. Potassium holds it inside them, and it's what fires every muscle contraction you make swinging a hammer or climbing scaffold. Run short and the first thing you notice is a calf that locks up on the drive home. Every Tiiga stick carries 352mg — more than a medium banana — from raw baobab fruit and organic coconut water, not a lab isolate.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_4": {
+          "type": "_story-row",
+          "settings": {
+            "number": "04",
+            "eyebrow": "MAGNESIUM · 19MG",
+            "title": "Magnesium: The One Nobody Bothers to Replace.",
+            "text": "<p>Magnesium is a cofactor in more than 300 enzyme reactions, including the one that lets a contracted muscle let go again. Heavy physical work and heavy sweating both burn through it, and most guys on a jobsite never put any back. Tiiga adds 19mg of magnesium citrate — a daily topping-up dose meant to be taken every shift, not a one-time megadose that sends you looking for a porta-john.</p>",
+            "media_style": "image",
+            "media_position": "left",
+            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_5": {
+          "type": "_story-row",
+          "settings": {
+            "number": "05",
+            "eyebrow": "VITAMIN C · 73MG",
+            "title": "73mg of Vitamin C. 80% of Your Day, Handled by 10 A.M.",
+            "text": "<p>Sun, heat, diesel exhaust, welding fumes, silica dust, and hard physical output all push up oxidative stress — free radicals your body generates faster than it can clear them. Vitamin C is the water-soluble antioxidant that does the clearing, and your body doesn't store it, so yesterday's dose doesn't count today. Every Tiiga stick delivers 73mg, 80% of the Daily Value, most of it from raw baobab — one of the most vitamin-C-dense fruits on earth.</p>",
+            "media_style": "image",
+            "media_position": "right",
+            "image_1": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "row_6": {
+          "type": "_story-row",
+          "settings": {
+            "number": "06",
+            "eyebrow": "IN THE TRUCK",
+            "title": "One Stick. No Scoop, No Shaker, No Mess.",
+            "text": "",
+            "media_style": "checklist",
+            "media_position": "right",
+            "image_1": "",
+            "image_2": "",
+            "full_width_media": false,
+            "media_ratio": "landscape",
+            "media_fit": "cover",
+            "checklist": "12g stick mixes clear in any water bottle — no clumps, no grit at the bottom\nSealed and crush-proof for the glovebox, tool bag, or lunch pail\n35 calories and 0g added sugar — no two o'clock crash\n5g of prebiotic fiber from raw baobab, because break-room food isn't giving you any",
+            "background_color": "#14333d",
+            "text_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "media_width": "beside",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "science": {
+      "type": "science-spec",
+      "blocks": {
+        "row_na": {
+          "type": "_science-row",
+          "settings": {
+            "symbol": "Na+",
+            "name": "Sodium Citrate",
+            "value": "140mg",
+            "description": "Pulls fluid into the bloodstream and keeps it there. The electrolyte you sweat out in the largest amount."
+          }
+        },
+        "row_k": {
+          "type": "_science-row",
+          "settings": {
+            "symbol": "K+",
+            "name": "Potassium",
+            "value": "352mg",
+            "description": "Regulates fluid inside the cell and drives muscle contraction. From raw baobab and organic coconut water."
+          }
+        },
+        "row_mg": {
+          "type": "_science-row",
+          "settings": {
+            "symbol": "Mg",
+            "name": "Magnesium Citrate",
+            "value": "19mg",
+            "description": "A cofactor in 300+ enzyme reactions, including muscle relaxation. Depleted by heavy physical work."
+          }
+        },
+        "row_c": {
+          "type": "_science-row",
+          "settings": {
+            "symbol": "Vit C",
+            "name": "Ascorbic Acid + Baobab",
+            "value": "73mg",
+            "description": "80% of the Daily Value. Neutralizes free radicals generated by heat, sun, dust, fumes, and hard output."
+          }
+        },
+        "row_fib": {
+          "type": "_science-row",
+          "settings": {
+            "symbol": "Fiber",
+            "name": "Prebiotic Fiber",
+            "value": "5g",
+            "description": "Raw baobab fiber — 4g soluble, 1g insoluble — feeds the gut bacteria that break-room food starves."
+          }
+        }
+      },
+      "block_order": [
+        "row_na",
+        "row_k",
+        "row_mg",
+        "row_c",
+        "row_fib"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
+        "badge_label": "Per 12g stick",
+        "badge_title": "",
+        "heading": "Every Stick, Broken Down",
+        "text": "<p>No proprietary blend, no dust-in-a-packet math. This is what's in one stick of Raspberry Lemonade and what each piece is doing once it's in you. Same formula in every flavor.</p>",
+        "link_label": "See the full supplement facts",
+        "link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "background_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 80
+      }
+    },
+    "ingredients": {
+      "type": "ingredient-cards",
+      "blocks": {
+        "card_1": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
+            "title": "100% Organic Baobab Fruit",
+            "description": "Africa's superfruit, wild-harvested and raw. Carries the prebiotic fiber, the potassium, and most of the 73mg of vitamin C in every stick."
+          },
+          "blocks": {}
+        },
+        "card_2": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_31_59_PM.png",
+            "title": "Coconut Water Powder",
+            "description": "A whole-food electrolyte source, not a mineral salt. Adds potassium and trace minerals that plain water can't replace."
+          },
+          "blocks": {}
+        },
+        "card_3": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
+            "title": "Sodium Citrate · 140mg",
+            "description": "A functional form of sodium that helps fluid stay in your system — without the salt-lick finish of a high-sodium packet."
+          },
+          "blocks": {}
+        },
+        "card_4": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
+            "title": "Magnesium Citrate · 19mg",
+            "description": "The highly absorbable form. Supports normal muscle relaxation and nerve function after a shift of heavy work."
+          },
+          "blocks": {}
+        },
+        "card_5": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "",
+            "title": "Ascorbic Acid (Vitamin C)",
+            "description": "Stacked on top of baobab's natural vitamin C to bring every stick to 73mg — 80% of the Daily Value."
+          },
+          "blocks": {}
+        },
+        "card_6": {
+          "type": "_ingredient-card",
+          "settings": {
+            "image": "shopify://shop_images/2e5be3df-b8bf-47d2-82ef-b3e70503e697.png",
+            "title": "Organic Stevia Extract",
+            "description": "Made from the stevia leaf. Sweetens the stick without sugar, calories, or the crash that follows a sports drink."
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ],
+      "settings": {
+        "heading": "Six Ingredients That Earn Their Spot",
+        "text": "<p>Nothing in the stick is there for looks. No added sugar, no artificial sweeteners, no dyes, no caffeine, and nothing you'd need a chemistry degree to read off the back.</p>",
+        "card_width": 320,
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "how_to_run": {
+      "type": "proven-to-hydrate",
+      "blocks": {
+        "p1": {
+          "type": "_hydration-point",
+          "settings": {
+            "title": "Before the truck rolls",
+            "text": "One stick with breakfast. You start the shift topped off on sodium and potassium instead of spending the first two hours catching up."
+          }
+        },
+        "p2": {
+          "type": "_hydration-point",
+          "settings": {
+            "title": "Through the hot stretch",
+            "text": "Sip it, don't slam it. Steady fluid with electrolytes in it beats a gallon of plain water at lunch, which mostly just dilutes what's left."
+          }
+        },
+        "p3": {
+          "type": "_hydration-point",
+          "settings": {
+            "title": "After the last load",
+            "text": "The stick you drink at the end is the one that decides how you feel at 5 a.m. tomorrow. Magnesium and potassium go back in before the muscles have to work again."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/IMG_1107_2.jpg",
+        "eyebrow": "How to run it",
+        "heading": "Built for the Shift, Not the Gym",
+        "link_label": "Shop jobsite packs",
+        "link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "background_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "comparison": {
+      "type": "comparison-matrix",
+      "blocks": {
+        "r1": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Sodium",
+            "col_1_type": "value",
+            "col_1_value": "140mg",
+            "col_1_note": "All-day sipping dose",
+            "col_2_type": "value",
+            "col_2_value": "160mg",
+            "col_2_note": "Per 12oz, with the sugar",
+            "col_3_type": "value",
+            "col_3_value": "500–1,000mg",
+            "col_3_note": "Heavy-sweat dose, salty finish"
+          }
+        },
+        "r2": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Potassium",
+            "col_1_type": "value",
+            "col_1_value": "352mg",
+            "col_1_note": "From baobab & coconut water",
+            "col_2_type": "value",
+            "col_2_value": "45mg",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "200mg",
+            "col_3_note": "Typical"
+          }
+        },
+        "r3": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Magnesium",
+            "col_1_type": "value",
+            "col_1_value": "19mg",
+            "col_1_note": "Magnesium citrate",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "0–60mg",
+            "col_3_note": "Often omitted"
+          }
+        },
+        "r4": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Vitamin C",
+            "col_1_type": "value",
+            "col_1_value": "73mg",
+            "col_1_note": "80% DV, mostly from raw fruit",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "",
+            "col_3_type": "no",
+            "col_3_value": "",
+            "col_3_note": "Rarely included"
+          }
+        },
+        "r5": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Prebiotic fiber",
+            "col_1_type": "value",
+            "col_1_value": "5g",
+            "col_1_note": "Raw baobab fruit",
+            "col_2_type": "value",
+            "col_2_value": "0g",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "0g",
+            "col_3_note": ""
+          }
+        },
+        "r6": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Added sugar",
+            "col_1_type": "value",
+            "col_1_value": "0g",
+            "col_1_note": "Organic stevia",
+            "col_2_type": "value",
+            "col_2_value": "21g",
+            "col_2_note": "Per 12oz",
+            "col_3_type": "value",
+            "col_3_value": "0g",
+            "col_3_note": ""
+          }
+        },
+        "r7": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Calories",
+            "col_1_type": "value",
+            "col_1_value": "35",
+            "col_1_note": "",
+            "col_2_type": "value",
+            "col_2_value": "80–140",
+            "col_2_note": "",
+            "col_3_type": "value",
+            "col_3_value": "5–10",
+            "col_3_note": ""
+          }
+        },
+        "r8": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Whole-food base",
+            "col_1_type": "yes",
+            "col_1_value": "",
+            "col_1_note": "75%+ baobab & coconut water",
+            "col_2_type": "no",
+            "col_2_value": "",
+            "col_2_note": "Sugar, water, salt",
+            "col_3_type": "no",
+            "col_3_value": "",
+            "col_3_note": "Mineral salts & isolates"
+          }
+        },
+        "r9": {
+          "type": "_comparison-matrix-row",
+          "settings": {
+            "label": "Cost per serving",
+            "col_1_type": "value",
+            "col_1_value": "$1.33",
+            "col_1_note": "$1.07 on subscribe",
+            "col_2_type": "value",
+            "col_2_value": "$1.50–$2.50",
+            "col_2_note": "Per bottle",
+            "col_3_type": "value",
+            "col_3_value": "$1.25–$1.75",
+            "col_3_note": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9"
+      ],
+      "settings": {
+        "heading": "Where Tiiga Fits on a Jobsite",
+        "text": "<p>Straight talk: if you are losing multiple liters an hour in extreme heat, a high-sodium packet is doing something Tiiga isn't. What Tiiga does is cover the whole picture — sodium, potassium, magnesium, vitamin C, and fiber — in a dose you can actually drink every day without the salt-lick finish or the sugar crash.</p>",
+        "footnote": "Per one 12g stick, Raspberry Lemonade. Tiiga cost per serving is based on the 30-serving tub at $40.00, or $1.07 with subscribe & save. Sports drink and high-sodium electrolyte figures are typical ranges across widely sold products in each category, not any single brand.",
+        "column_1_label": "Tiiga",
+        "column_2_label": "Sports drinks",
+        "column_3_label": "High-sodium packets",
+        "accent_color": "#1d5a6b",
+        "table_color": "#ffffff",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 80
+      }
+    },
+    "not_inside": {
+      "type": "whats-not-inside",
+      "blocks": {
+        "item_1": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Added sugar"
+          }
+        },
+        "item_2": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Artificial colors"
+          }
+        },
+        "item_3": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Artificial sweeteners"
+          }
+        },
+        "item_4": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Caffeine"
+          }
+        },
+        "item_5": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Gluten"
+          }
+        },
+        "item_6": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Dairy"
+          }
+        },
+        "item_7": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Soy"
+          }
+        },
+        "item_8": {
+          "type": "_not-inside-item",
+          "settings": {
+            "label": "Anything you can't pronounce"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6",
+        "item_7",
+        "item_8"
+      ],
+      "settings": {
+        "eyebrow": "Read the back of the packet",
+        "heading": "What's Not In It",
+        "text": "<p>A hydration drink shouldn't need a warning label. Here's everything we left out on purpose.</p>",
+        "background_color": "#14333d",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "trust": {
+      "type": "reviews-carousel",
+      "blocks": {
+        "review_1": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Relief within a few days",
+            "show_stars": true,
+            "quote": "I felt a sense of relief within a few days in my gut health. I suffer from acid reflux at times throughout the day and these have helped tremendously.",
+            "author": "Laura",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_4": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Bloating is way down",
+            "show_stars": true,
+            "quote": "I noticed within the first week that I felt less bloated after meals. Two months in and my digestion is the steadiest it's been in years.",
+            "author": "Priya",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_real_1": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For gut health",
+            "show_stars": true,
+            "quote": "Love this stuff! Tastes great and is super helpful in the GI department. I love the bonus Vit C I am getting as well. Do not hesitate to buy!",
+            "author": "Irene P.",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_real_2": {
+          "type": "_review-card",
+          "settings": {
+            "category": "For your daily routine",
+            "show_stars": true,
+            "quote": "As a person living with IBS, Tiiga has positively supported healing and healthy maintenance of my GI tract. Thank you!",
+            "author": "Koreen C.",
+            "verified": true
+          },
+          "blocks": {}
+        },
+        "review_real_3": {
+          "type": "_review-card",
+          "settings": {
+            "category": "Easily dissolvable",
+            "show_stars": true,
+            "quote": "Easy to dissolve and smooth flavor!",
+            "author": "Beth D.",
+            "verified": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_4",
+        "review_real_1",
+        "review_real_2",
+        "review_real_3"
+      ],
+      "settings": {
+        "heading": "What Customers Are Saying",
+        "subtext": "Verified reviews from Tiiga customers.",
+        "link_label": "",
+        "link": "",
+        "background_color": "#ffffff",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "quote": {
+      "type": "press-quote",
+      "settings": {
+        "quote": "<p>\"What a wonderful way to maintain gut health and boost my immunity. They taste great, easy to travel with and a better way than pills to maintain my health.\"</p>",
+        "attribution": "Missy, Verified Purchase",
+        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
+        "overlay_color": "#00000073",
+        "text_color": "#ffffff",
+        "padding-block-start": 112,
+        "padding-block-end": 96
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "cat_1": {
+          "type": "_faq-category",
+          "settings": {
+            "label": "Straight answers"
+          },
+          "blocks": {
+            "q1": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Is 140mg of sodium enough if I sweat all day?",
+                "answer": "<p>It depends on the day. Tiiga is dosed for all-day sipping, not for a single heavy-sweat replacement hit — that's why it doesn't taste salty. On a normal shift, one to two sticks alongside food covers most people. If you're working in extreme heat and losing multiple liters an hour, treat Tiiga as your daily base and add salt to your food or a high-sodium packet on the worst days.</p>",
+                "open_by_default": true
+              }
+            },
+            "q2": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Why is there vitamin C in a hydration drink?",
+                "answer": "<p>Because the jobsite generates oxidative stress — sun, heat, exhaust, welding fumes, dust, and hard physical output all produce free radicals faster than your body clears them. Vitamin C is the main water-soluble antioxidant that does that clearing, and your body doesn't store it. Every stick has 73mg, 80% of the Daily Value, most of it from raw baobab fruit rather than added synthetically.</p>",
+                "open_by_default": false
+              }
+            },
+            "q3": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Will it crash me in the afternoon?",
+                "answer": "<p>There's nothing in it to crash from. 35 calories, 0g added sugar, and no caffeine — sweetened with organic stevia extract. A sports drink puts 21g of sugar in you and takes it back out an hour later; this doesn't.</p>",
+                "open_by_default": false
+              }
+            },
+            "q4": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Does it need a shaker bottle?",
+                "answer": "<p>No. One 12g stick dissolves clear in a standard water bottle with a shake. No scoop, no clumps, no grit left at the bottom of the jug.</p>",
+                "open_by_default": false
+              }
+            },
+            "q5": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "Can I drink it every single day?",
+                "answer": "<p>That's how it's built. The doses are daily-use amounts rather than megadoses — including the magnesium, which is why it won't send you looking for a porta-john. Plenty of customers run one stick every morning and a second one on hot days.</p>",
+                "open_by_default": false
+              }
+            },
+            "q6": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "What does the prebiotic fiber have to do with hydration?",
+                "answer": "<p>Two things. Soluble fiber slows how fast fluid and sugar move through you, which helps you hold onto what you drink. And 5g of raw baobab fiber a day feeds the gut bacteria that gas-station and break-room food starves. It's the part of the formula no electrolyte packet has.</p>",
+                "open_by_default": false
+              }
+            },
+            "q7": {
+              "type": "_faq-item",
+              "settings": {
+                "question": "How is this different from the electrolyte packet at the gas station?",
+                "answer": "<p>Most packets are mineral salts and flavoring. Tiiga is more than 75% whole food — raw baobab fruit and organic coconut water — which is where the potassium, the fiber, and most of the vitamin C come from. You're getting a wider spread of what the job takes out of you, not just a sodium hit.</p>",
+                "open_by_default": false
+              }
+            }
+          },
+          "block_order": [
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7"
+          ]
+        }
+      },
+      "block_order": [
+        "cat_1"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Questions From the Crew",
+        "text": "",
+        "cta_heading": "Still deciding?",
+        "cta_text": "<p>Start with a 16-stick pack. If it isn't doing anything for you, we'll refund it within 30 days.</p>",
+        "cta_button_label": "Shop jobsite packs",
+        "cta_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
+        "cta_background": "#1d5a6b",
+        "cta_foreground": "#ffffff",
+        "background_color": "#f6f4f0",
+        "card_background": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 88
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "stats",
+    "flavor_tabs",
+    "buy_packs",
+    "buy_tubs",
+    "story_rows",
+    "science",
+    "ingredients",
+    "how_to_run",
+    "comparison",
+    "not_inside",
+    "trust",
+    "quote",
+    "faq"
+  ]
+}

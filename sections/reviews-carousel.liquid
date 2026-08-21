@@ -91,7 +91,11 @@
   }
 
   .reviews-carousel slideshow-slide {
-    width: min(300px, 78vw);
+    /* Grow to fill the rail on wide screens rather than leaving dead space
+       after the last card; the basis keeps the copy readable and the rail
+       still scrolls once the cards stop fitting. */
+    flex: 1 0 min(300px, 78vw);
+    max-width: 420px;
     scroll-snap-align: center;
   }
 
