@@ -836,21 +836,6 @@
             "col_3_note": ""
           }
         },
-        "row_5": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Whole-food ingredients",
-            "col_1_type": "yes",
-            "col_1_value": "",
-            "col_1_note": "75%+ baobab & coconut water",
-            "col_2_type": "no",
-            "col_2_value": "",
-            "col_2_note": "Mineral salts",
-            "col_3_type": "no",
-            "col_3_value": "",
-            "col_3_note": "Extracts & isolates"
-          }
-        },
         "row_6": {
           "type": "_comparison-matrix-row",
           "settings": {
@@ -880,21 +865,6 @@
             "col_3_value": "15–60",
             "col_3_note": ""
           }
-        },
-        "row_8": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Cost per serving",
-            "col_1_type": "value",
-            "col_1_value": "$1.33",
-            "col_1_note": "$1.07 on subscribe",
-            "col_2_type": "value",
-            "col_2_value": "$1.25–$1.75",
-            "col_2_note": "",
-            "col_3_type": "value",
-            "col_3_value": "$1.00–$2.50",
-            "col_3_note": ""
-          }
         }
       },
       "block_order": [
@@ -902,15 +872,13 @@
         "row_2",
         "row_3",
         "row_4",
-        "row_5",
         "row_6",
-        "row_7",
-        "row_8"
+        "row_7"
       ],
       "settings": {
         "heading": "One Stick Instead of Two Products",
         "text": "<p>Travel throws off hydration and digestion at once, and packing two tubs is not an option. Tiiga covers both in one stick that fits in a pocket, built on whole baobab fruit and coconut water instead of isolates and mineral salts.</p>",
-        "footnote": "Per one 12g stick, Raspberry Lemonade. Tiiga cost per serving is based on the 30-serving tub at $40.00, or $1.07 with subscribe & save. Category figures are typical ranges across widely sold products in each category, not any single brand.",
+        "footnote": "Per one 12g stick, Raspberry Lemonade. Category figures are typical ranges across widely sold products in each category, not any single brand.",
         "column_1_label": "Tiiga",
         "column_2_label": "Electrolyte powders",
         "column_3_label": "Fiber & greens powders",
