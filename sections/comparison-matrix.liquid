@@ -81,7 +81,7 @@
 
   .cmp-matrix__inner {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     align-items: center;
     gap: 44px;
   }
@@ -108,6 +108,10 @@
      instead of the table clipping it. */
   .cmp-matrix__frame {
     position: relative;
+    /* Capped so the columns stay tight instead of stretching on wide
+       viewports; the table hugs the end of its grid track. */
+    max-width: 680px;
+    margin-inline-start: auto;
     padding-block-start: 32px;
   }
 
@@ -185,6 +189,7 @@
     }
 
     .cmp-matrix__frame {
+      max-width: none;
       padding-block-start: 28px;
     }
 
