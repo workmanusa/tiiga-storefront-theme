@@ -803,7 +803,7 @@
         "row_1": {
           "type": "_comparison-matrix-row",
           "settings": {
-            "label": "Gut health and hydration in one",
+            "label": "Gut health + hydration",
             "col_1_type": "yes",
             "col_1_value": "",
             "col_1_note": "",
@@ -818,28 +818,28 @@
         "row_2": {
           "type": "_comparison-matrix-row",
           "settings": {
-            "label": "Prebiotic fiber per serving",
+            "label": "Prebiotic fiber",
             "col_1_type": "value",
             "col_1_value": "5g",
-            "col_1_note": "Raw, unprocessed baobab fruit",
+            "col_1_note": "Raw baobab fruit",
             "col_2_type": "value",
             "col_2_value": "0g",
             "col_2_note": "",
             "col_3_type": "value",
             "col_3_value": "3–6g",
-            "col_3_note": "Usually isolated psyllium or inulin"
+            "col_3_note": "Isolated psyllium or inulin"
           }
         },
         "row_3": {
           "type": "_comparison-matrix-row",
           "settings": {
-            "label": "Electrolytes per serving",
+            "label": "Electrolytes",
             "col_1_type": "value",
             "col_1_value": "140mg sodium",
-            "col_1_note": "352mg potassium · 19mg magnesium",
+            "col_1_note": "352mg potassium",
             "col_2_type": "yes",
             "col_2_value": "",
-            "col_2_note": "Often 500–1,000mg sodium",
+            "col_2_note": "500–1,000mg sodium",
             "col_3_type": "no",
             "col_3_value": "",
             "col_3_note": ""
@@ -851,7 +851,7 @@
             "label": "Added sugar",
             "col_1_type": "value",
             "col_1_value": "0g",
-            "col_1_note": "Sweetened with organic stevia",
+            "col_1_note": "Organic stevia",
             "col_2_type": "value",
             "col_2_value": "0–11g",
             "col_2_note": "",
@@ -866,22 +866,22 @@
             "label": "Whole-food ingredients",
             "col_1_type": "yes",
             "col_1_value": "",
-            "col_1_note": "Over 75% organic baobab and coconut water",
+            "col_1_note": "75%+ baobab & coconut water",
             "col_2_type": "no",
             "col_2_value": "",
-            "col_2_note": "Mineral salts and flavoring",
+            "col_2_note": "Mineral salts",
             "col_3_type": "no",
             "col_3_value": "",
-            "col_3_note": "Extracts and isolates"
+            "col_3_note": "Extracts & isolates"
           }
         },
         "row_6": {
           "type": "_comparison-matrix-row",
           "settings": {
-            "label": "Antioxidants and vitamin C",
+            "label": "Antioxidants + vitamin C",
             "col_1_type": "value",
-            "col_1_value": "73mg vitamin C",
-            "col_1_note": "80% DV, plus baobab polyphenols",
+            "col_1_value": "73mg vit. C",
+            "col_1_note": "80% DV + polyphenols",
             "col_2_type": "no",
             "col_2_value": "",
             "col_2_note": "",
@@ -893,7 +893,7 @@
         "row_7": {
           "type": "_comparison-matrix-row",
           "settings": {
-            "label": "Calories per serving",
+            "label": "Calories",
             "col_1_type": "value",
             "col_1_value": "35",
             "col_1_note": "",
@@ -911,7 +911,7 @@
             "label": "Cost per serving",
             "col_1_type": "value",
             "col_1_value": "$1.33",
-            "col_1_note": "$1.07 on subscribe & save",
+            "col_1_note": "$1.07 on subscribe",
             "col_2_type": "value",
             "col_2_value": "$1.25–$1.75",
             "col_2_note": "",
