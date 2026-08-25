@@ -747,6 +747,9 @@
     "answer": "Answer"
   },
   "options": {
+    "layout_scatter": "Scattered",
+    "layout_split": "Split — photos right",
+    "layout_split_reverse": "Split — photos left",
     "cell_value": "Written value",
     "cell_yes": "Checkmark",
     "cell_no": "Cross",

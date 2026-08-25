@@ -86,7 +86,8 @@
         "accent_color": "#1d5a6b",
         "background_color": "#f6f4f0",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 0,
+        "layout": "scatter"
       }
     },
     "statement_approach": {
@@ -135,47 +136,24 @@
             "rotation": -3,
             "speed": -6
           }
-        },
-        "photo_5": {
-          "type": "_collage-photo",
-          "settings": {
-            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
-            "x": 6,
-            "y": 64,
-            "width": 13,
-            "rotation": 3,
-            "speed": -5
-          }
-        },
-        "photo_6": {
-          "type": "_collage-photo",
-          "settings": {
-            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
-            "x": 78,
-            "y": 66,
-            "width": 15,
-            "rotation": -4,
-            "speed": 6
-          }
         }
       },
       "block_order": [
         "photo_1",
         "photo_2",
         "photo_3",
-        "photo_4",
-        "photo_5",
-        "photo_6"
+        "photo_4"
       ],
       "settings": {
         "eyebrow": "Our approach",
         "heading": "Whole fruit does more than an isolate ever could.",
         "text": "<p>Tiiga starts with raw baobab and coconut water rather than lab-spun fiber and mineral salts, because the fruit already carries the fiber, the potassium, and the polyphenols together.</p>",
-        "height": 82,
+        "height": 74,
         "accent_color": "#1d5a6b",
         "background_color": "#ffffff",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 0,
+        "layout": "split"
       }
     },
     "scrapbook": {
@@ -300,7 +278,8 @@
         "accent_color": "#1d5a6b",
         "background_color": "#ffffff",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 0,
+        "layout": "scatter"
       }
     },
     "timeline": {
