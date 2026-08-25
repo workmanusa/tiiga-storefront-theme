@@ -57,32 +57,33 @@
   }
 
   /* Narrow screens have no room for a scatter beside the words, so the
-     cluster collapses to four corner prints and the rest step aside. */
+     cluster collapses to four corner prints and the rest step aside. Scoped
+     to the scattered layout — split places its photos in a grid. */
   @media screen and (max-width: 749px) {
-    .statement__photos .collage-photo {
+    .statement--scatter .collage-photo {
       width: 30%;
     }
 
-    .statement__photos .collage-photo:nth-child(n + 5) {
+    .statement--scatter .collage-photo:nth-child(n + 5) {
       display: none;
     }
 
-    .statement__photos .collage-photo:nth-child(1) {
+    .statement--scatter .collage-photo:nth-child(1) {
       inset-inline-start: -5%;
       inset-block-start: 1%;
     }
 
-    .statement__photos .collage-photo:nth-child(2) {
+    .statement--scatter .collage-photo:nth-child(2) {
       inset-inline-start: 74%;
       inset-block-start: 5%;
     }
 
-    .statement__photos .collage-photo:nth-child(3) {
+    .statement--scatter .collage-photo:nth-child(3) {
       inset-inline-start: -6%;
       inset-block-start: 74%;
     }
 
-    .statement__photos .collage-photo:nth-child(4) {
+    .statement--scatter .collage-photo:nth-child(4) {
       inset-inline-start: 76%;
       inset-block-start: 78%;
     }
