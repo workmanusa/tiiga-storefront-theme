@@ -108,53 +108,29 @@
         "photo_1": {
           "type": "_collage-photo",
           "settings": {
-            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
             "x": 2,
             "y": 12,
             "width": 15,
-            "rotation": -4,
+            "rotation": -3,
             "speed": 6
           }
         },
         "photo_2": {
           "type": "_collage-photo",
           "settings": {
-            "image": "shopify://shop_images/IMG_1107_2.jpg",
+            "image": "shopify://shop_images/54f4a645-3540-4bee-8bda-cc20866637dd.png",
             "x": 20,
             "y": 4,
             "width": 12,
             "rotation": 3,
             "speed": -4
           }
-        },
-        "photo_3": {
-          "type": "_collage-photo",
-          "settings": {
-            "image": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
-            "x": 72,
-            "y": 8,
-            "width": 16,
-            "rotation": 4,
-            "speed": 5
-          }
-        },
-        "photo_4": {
-          "type": "_collage-photo",
-          "settings": {
-            "image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
-            "x": 88,
-            "y": 30,
-            "width": 11,
-            "rotation": -3,
-            "speed": -6
-          }
         }
       },
       "block_order": [
         "photo_1",
-        "photo_2",
-        "photo_3",
-        "photo_4"
+        "photo_2"
       ],
       "settings": {
         "eyebrow": "Our approach",
