@@ -1410,6 +1410,132 @@
         "padding-block-start": 112,
         "padding-block-end": 96
       }
+    },
+    "timeline": {
+      "type": "milestone-timeline",
+      "blocks": {
+        "milestone_1": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_2": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_3": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_4": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "milestone_2",
+        "milestone_3",
+        "milestone_4"
+      ],
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "How Tiiga Got Here",
+        "text": "<p>Replace this with the short version of the origin story — where the baobab came from, and what it took to get it into a stick.</p>",
+        "accent_color": "#1d5a6b",
+        "background_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "values": {
+      "type": "brand-values",
+      "blocks": {
+        "value_1": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Whole fruit, not isolates",
+            "text": "<p>Over 75% of every stick is organic baobab fruit and coconut water powder. The fiber is raw and unprocessed — the way the fruit grew it, not spun out in a lab.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_2": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Nothing in it for looks",
+            "text": "<p>Six ingredients, each doing a job. No added sugar, no artificial sweeteners, no dyes, and no proprietary blend hiding the doses.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_3": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Two jobs, one stick",
+            "text": "<p>Prebiotic fiber and a full electrolyte blend in the same serving, so gut health and hydration stop being two separate purchases.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_4": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Built to actually drink",
+            "text": "<p>The best routine is the one you keep. Smooth, fruity, and mixes clear — no chalk, no grit, nothing to choke down.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4"
+      ],
+      "settings": {
+        "eyebrow": "What we hold to",
+        "heading": "The Rules We Build Against",
+        "text": "",
+        "columns": 2,
+        "accent_color": "#1d5a6b",
+        "card_color": "#ffffff",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
     }
   },
   "order": [
@@ -1417,9 +1543,11 @@
     "ticker",
     "stats",
     "story_rows",
+    "timeline",
     "science",
     "ingredients",
     "not_inside",
+    "values",
     "comparison",
     "advisors",
     "trust",

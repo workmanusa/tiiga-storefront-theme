@@ -270,6 +270,10 @@
     "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "names": {
+    "brand_values": "Brand values",
+    "brand_value": "Value card",
+    "milestone_timeline": "Milestone timeline",
+    "milestone": "Milestone",
     "review_video": "Review video",
     "comparison_matrix": "Comparison matrix",
     "comparison_matrix_row": "Comparison row",
@@ -778,6 +782,7 @@
     "below_media": "מתחת למדיה"
   },
   "settings": {
+    "year": "Year",
     "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",

@@ -1,0 +1,157 @@
+{% doc %}
+  One value card in the brand values grid: an optional icon, a title, a short
+  paragraph, and an optional link into the page that proves it.
+
+  @example
+  {% content_for 'block', type: '_brand-value', id: 'value-ingredients' %}
+{% enddoc %}
+
+<div
+  class="brand-value"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.icon -%}
+    {{
+      block.settings.icon
+      | image_url: width: 160
+      | image_tag: class: 'brand-value__icon', loading: 'lazy', alt: ''
+    }}
+  {%- endif -%}
+
+  {%- if block.settings.title != blank -%}
+    <h3 class="brand-value__title">{{ block.settings.title }}</h3>
+  {%- endif -%}
+
+  {%- if block.settings.text != blank -%}
+    <div class="brand-value__text">{{ block.settings.text }}</div>
+  {%- endif -%}
+
+  {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+    <a class="brand-value__link" href="{{ block.settings.link }}">
+      {{- block.settings.link_label -}}
+      <span class="brand-value__link-icon" aria-hidden="true">
+        {{- 'icon-arrow.svg' | inline_asset_content -}}
+      </span>
+    </a>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .brand-value {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 1.75rem;
+    border-radius: 16px;
+    background-color: var(--brand-values-card, #fff);
+  }
+
+  .brand-value__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  .brand-value__title {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--brand-values-accent, var(--color-foreground));
+  }
+
+  .brand-value__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .brand-value__text > :first-child {
+    margin-block-start: 0;
+  }
+
+  .brand-value__text > :last-child {
+    margin-block-end: 0;
+  }
+
+  .brand-value__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    /* Pushed to the card foot so links line up across an uneven grid */
+    margin-block-start: auto;
+    padding-block-start: 0.25rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-values-accent, var(--color-foreground));
+  }
+
+  .brand-value__link-icon {
+    display: inline-flex;
+    width: 0.75rem;
+    transition: transform var(--animation-speed) var(--animation-easing);
+  }
+
+  .brand-value__link-icon svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .brand-value__link:hover .brand-value__link-icon {
+    transform: translateX(2px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .brand-value {
+      padding: 1.375rem;
+    }
+
+    .brand-value__title {
+      font-size: 1.125rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.brand_value",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "t:settings.icon"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.link_label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.brand_value"
+    }
+  ]
+}
+{% endschema %}

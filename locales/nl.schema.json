@@ -9,6 +9,10 @@
  */
 {
   "names": {
+    "brand_values": "Brand values",
+    "brand_value": "Value card",
+    "milestone_timeline": "Milestone timeline",
+    "milestone": "Milestone",
     "review_video": "Review video",
     "comparison_matrix": "Comparison matrix",
     "comparison_matrix_row": "Comparison row",
@@ -229,6 +233,7 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "year": "Year",
     "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",

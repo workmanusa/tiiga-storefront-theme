@@ -279,6 +279,10 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "brand_values": "Brand values",
+    "brand_value": "Value card",
+    "milestone_timeline": "Milestone timeline",
+    "milestone": "Milestone",
     "review_video": "Review video",
     "faq": "FAQ",
     "faq_category": "FAQ category",
@@ -862,6 +866,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "year": "Year",
     "poster": "Poster image",
     "accent_color": "Accent color",
     "column_label": "Column label",
