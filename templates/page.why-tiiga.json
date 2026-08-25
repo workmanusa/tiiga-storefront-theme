@@ -151,7 +151,7 @@
           "type": "_scrapbook-photo",
           "settings": {
             "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
-            "caption": "Add the caption for this moment",
+            "caption": "Add a photo of Harrouna, Katy, and Jeff",
             "span": 6,
             "rotation": -3,
             "lift": 0
@@ -161,7 +161,7 @@
           "type": "_scrapbook-photo",
           "settings": {
             "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
-            "caption": "Add the caption for this moment",
+            "caption": "Add a photo of the baobab trees in Burkina Faso",
             "span": 6,
             "rotation": 2,
             "lift": 36
@@ -171,7 +171,7 @@
           "type": "_scrapbook-photo",
           "settings": {
             "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
-            "caption": "Add the caption for this moment",
+            "caption": "Add a photo of the harvest, or the fruit opened up",
             "span": 6,
             "rotation": 3,
             "lift": -16
@@ -181,7 +181,7 @@
           "type": "_scrapbook-photo",
           "settings": {
             "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
-            "caption": "Add the caption for this moment",
+            "caption": "Add a photo from the early days of the brand",
             "span": 6,
             "rotation": -2,
             "lift": 20
@@ -196,8 +196,8 @@
       ],
       "settings": {
         "eyebrow": "Founder story",
-        "heading": "It started with a tree.",
-        "text": "<p>Replace this with the real story in the founder's own voice — what went wrong, what they tried, and the moment the baobab showed up. Then swap these four photos for the candid ones and caption each.</p>",
+        "heading": "It started with a drink from home.",
+        "text": "<p>Katy, Jeff, and Harrouna met at the University of Nebraska&ndash;Lincoln. One day Harrouna shared a baobab drink from Burkina Faso &mdash; the fruit he had grown up with in western Africa, and one neither of the others had ever tasted.</p><p>Baobab is strange in the best way: it powders on the tree as it ripens, so the fruit needs no processing to become what goes in the stick. Tiiga grew out of that afternoon &mdash; sharing a piece of Harrouna's culture with the world, and supporting the communities in Africa who wild harvest it.</p>",
         "accent_color": "#1d5a6b",
         "background_color": "#f6f4f0",
         "padding-block-start": 88,
