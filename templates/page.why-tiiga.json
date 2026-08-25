@@ -51,9 +51,9 @@
           "type": "_collage-photo",
           "settings": {
             "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
-            "x": 6,
-            "y": 64,
-            "width": 13,
+            "x": 13,
+            "y": 47,
+            "width": 12,
             "rotation": 3,
             "speed": -5
           }
@@ -68,6 +68,17 @@
             "rotation": -4,
             "speed": 6
           }
+        },
+        "photo_7": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/a074ed63-a202-4d27-8cda-859165f17471.png",
+            "x": 0,
+            "y": 66,
+            "width": 16,
+            "rotation": 4,
+            "speed": 6
+          }
         }
       },
       "block_order": [
@@ -76,7 +87,8 @@
         "photo_3",
         "photo_4",
         "photo_5",
-        "photo_6"
+        "photo_6",
+        "photo_7"
       ],
       "settings": {
         "eyebrow": "The challenge",
