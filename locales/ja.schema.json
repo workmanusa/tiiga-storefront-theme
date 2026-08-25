@@ -21,6 +21,7 @@
     "comparison_matrix": "Comparison matrix",
     "comparison_matrix_row": "Comparison row",
     "landing_hero": "Landing hero",
+    "quiz": "Quiz",
     "story_row": "Story row",
     "story_rows": "Story rows",
     "subscribe_how": "Subscribe how it works",
@@ -237,6 +238,12 @@
     "faq_item": "FAQ question"
   },
   "settings": {
+    "subheading": "Subheading",
+    "quiz_packs_product": "Stick-pack product",
+    "quiz_packs_servings": "Servings per stick pack",
+    "quiz_tub_product": "Tub product",
+    "quiz_tub_servings": "Servings per tub",
+    "quiz_disclaimer": "Disclaimer",
     "caption": "Caption",
     "rotation": "Rotation",
     "horizontal_position": "Horizontal position",
@@ -1038,6 +1045,8 @@
     "input_field": "入力フィールド"
   },
   "content": {
+    "products": "Products",
+    "quiz_integrations": "Integrations",
     "columns": "Columns",
     "brand_column": "Brand column",
     "second_column": "Second column",
@@ -1277,6 +1286,7 @@
     "disclosures": "開示情報"
   },
   "info": {
+    "quiz_klaviyo_key": "The 6-character public key from Klaviyo settings. Quiz answers are saved to the visitor's Klaviyo profile as properties for email segmentation.",
     "one_per_line": "One per line",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
     "klaviyo_company_id": "The 6-character public key from Klaviyo settings. Enables live reviews in this section.",

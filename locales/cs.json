@@ -419,6 +419,25 @@
     "delivery_frequency": "Delivery frequency",
     "save_percent": "Save {{ percent }}%"
   },
+  "quiz": {
+    "back": "Back",
+    "question_count": "Question {{ current }} of {{ total }}",
+    "email_heading": "Where should we send your results?",
+    "email_subtext": "Drop your email and we'll match you with the right Tiiga, plus tips picked for your answers.",
+    "email_placeholder": "Your email",
+    "get_results": "Get my results",
+    "consent": "By continuing you agree to receive Tiiga emails. Unsubscribe anytime.",
+    "skip": "Skip and show my match",
+    "your_match": "Your match",
+    "savings_line": "Buy more, save more: the tub works out to {{ tub_price }} per serving instead of {{ packs_price }} in the sticks, about {{ percent }}% less.",
+    "subscribe_tip": "Tip: subscribe on the product page and save on every order, delivered so you never run out.",
+    "shop_product": "Shop {{ title }}",
+    "start_smaller": "Prefer to start smaller? Try the stick packs",
+    "upgrade_line": "Want the best per-serving price? Go bigger and save about {{ percent }}%",
+    "start_over": "Retake the quiz",
+    "noscript": "The quiz needs JavaScript. In the meantime,",
+    "noscript_link": "browse all products"
+  },
   "reviews": {
     "add_video": "Pick a video for this slot",
     "play_video_by": "Play video review by {{ author }}",

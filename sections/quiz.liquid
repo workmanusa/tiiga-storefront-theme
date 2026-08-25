@@ -1,0 +1,789 @@
+<script
+  src="{{ 'quiz.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+{%- liquid
+  assign packs = section.settings.packs_product
+  assign tub = section.settings.tub_product
+  assign packs_servings = section.settings.packs_servings | default: 16, allow_false: false
+  assign tub_servings = section.settings.tub_servings | default: 30, allow_false: false
+
+  assign packs_per_serving = 0
+  assign tub_per_serving = 0
+  assign save_percent = 0
+  if packs != blank and packs_servings > 0
+    assign packs_per_serving = packs.price | divided_by: packs_servings
+  endif
+  if tub != blank and tub_servings > 0
+    assign tub_per_serving = tub.price | divided_by: tub_servings
+  endif
+  if packs_per_serving > 0 and tub_per_serving > 0 and tub_per_serving < packs_per_serving
+    assign save_percent = packs_per_serving | minus: tub_per_serving | times: 100 | divided_by: packs_per_serving
+  endif
+  assign packs_per_serving_money = packs_per_serving | money
+  assign tub_per_serving_money = tub_per_serving | money
+-%}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="quiz spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <quiz-component
+    class="quiz__component"
+    data-klaviyo-key="{{ section.settings.klaviyo_public_key | escape }}"
+  >
+    <script type="application/json" data-quiz-data>
+      {
+        "reasons": {
+          "gut": "You told us digestion is the priority. Tiiga leads with 5g of whole-fruit baobab prebiotic fiber to keep your rhythm steady, no harsh laxatives.",
+          "energy": "You want steady energy. Baobab's vitamin C and B vitamins plus real electrolytes support energy without stimulants or crashes.",
+          "hydration": "Hydration is your focus. Coconut water electrolytes with potassium, magnesium, and sodium make every sip count for more than plain water.",
+          "immune": "You're thinking ahead. Every stick delivers 73mg of vitamin C, 80% of your daily value, plus baobab polyphenols.",
+          "performance": "You push your body hard. Potassium, magnesium, and sodium replenish what sweat takes out, with 5g of fiber working for your gut.",
+          "recovery": "Recovery is where progress happens. Electrolytes to rehydrate after hard sessions, fiber and polyphenols to keep your gut on your side.",
+          "portable": "You need it mid-session. Pre-portioned sticks tuck into any gym bag and mix into any bottle, no scoop and no mess.",
+          "sugar": "Cutting sugar? Tiiga has zero added sugar and 35 calories per serving, sweetened with organic stevia instead.",
+          "first_timer": "New to Tiiga? The 16-stick pack is the low-commitment way to try the real fruit flavors and see how you feel.",
+          "taste": "Taste-first? Same. Real fruit flavors, no chalky texture, nothing to choke down. Start with the 16-pack and find your favorite.",
+          "clean": "You read labels. Organic baobab fruit, coconut water, no dyes, no artificial sweeteners, nothing you can't pronounce.",
+          "value": "You want the math to work. Bigger sizes and subscriptions drop your cost per serving, so the more you commit, the less you pay per day."
+        },
+        "paths": [
+          {
+            "id": "womens",
+            "label": "Women's wellness",
+            "description": "Bloating, energy, hydration, and your cycle",
+            "questions": [
+              {
+                "id": "concern",
+                "text": "What's your biggest health concern right now?",
+                "options": [
+                  { "value": "bloating", "label": "Bloating and digestive discomfort" },
+                  { "value": "energy", "label": "Low energy, especially mid-afternoon" },
+                  { "value": "hydration", "label": "Staying hydrated throughout the day" },
+                  { "value": "immune", "label": "Supporting my immune system" }
+                ]
+              },
+              {
+                "id": "bloatfreq",
+                "text": "How often do you experience bloating or digestive issues?",
+                "options": [
+                  { "value": "daily", "label": "Daily, it's really affecting my life" },
+                  { "value": "weekly", "label": "A few times a week" },
+                  { "value": "occasional", "label": "Occasionally, depending on what I eat" },
+                  { "value": "rarely", "label": "Rarely, and I want to keep it that way" }
+                ]
+              },
+              {
+                "id": "day",
+                "text": "What does a typical day look like for you?",
+                "options": [
+                  { "value": "busy", "label": "Busy: work, kids, always on the go" },
+                  { "value": "active", "label": "Active: I work out most days" },
+                  { "value": "desk", "label": "Desk-based: mostly sitting at work" },
+                  { "value": "mixed", "label": "Mixed: it varies week to week" }
+                ]
+              },
+              {
+                "id": "water",
+                "text": "How much water do you drink daily?",
+                "options": [
+                  { "value": "under4", "label": "Less than 4 cups, I forget to drink" },
+                  { "value": "cups4to6", "label": "4 to 6 cups, could be better" },
+                  { "value": "cups6to8", "label": "6 to 8 cups consistently" },
+                  { "value": "cups8plus", "label": "8+ cups, hydration is a priority" }
+                ]
+              },
+              {
+                "id": "flavor",
+                "text": "Which flavor profile sounds most like you?",
+                "options": [
+                  { "value": "berry", "label": "Light and refreshing: berry and lemonade vibes" },
+                  { "value": "tropical", "label": "Tropical and fruity: bold and bright" },
+                  { "value": "both", "label": "I want to try both before committing" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "mens",
+            "label": "Men's performance",
+            "description": "Training, energy, and recovery",
+            "questions": [
+              {
+                "id": "goal",
+                "text": "What's your primary goal right now?",
+                "options": [
+                  { "value": "performance", "label": "Better workout performance and recovery" },
+                  { "value": "energy", "label": "More consistent energy without crashes" },
+                  { "value": "gut", "label": "Fixing digestion, I feel sluggish" },
+                  { "value": "sugar", "label": "Cutting back on sports drinks and sugar" }
+                ]
+              },
+              {
+                "id": "workouts",
+                "text": "How often do you work out or do physical activity?",
+                "options": [
+                  { "value": "daily", "label": "Every day or near daily" },
+                  { "value": "threetofive", "label": "3 to 5 times a week" },
+                  { "value": "onetotwo", "label": "1 to 2 times a week, trying to do more" },
+                  { "value": "sedentary", "label": "Mostly sedentary, work keeps me busy" }
+                ]
+              },
+              {
+                "id": "drinks",
+                "text": "What do you currently drink during or after workouts?",
+                "options": [
+                  { "value": "sports", "label": "Gatorade or sports drinks" },
+                  { "value": "protein", "label": "Protein shakes or pre-workout" },
+                  { "value": "water", "label": "Just water" },
+                  { "value": "nothing", "label": "Nothing, I probably should hydrate more" }
+                ]
+              },
+              {
+                "id": "symptoms",
+                "text": "Do you experience any of these regularly?",
+                "options": [
+                  { "value": "cramps", "label": "Muscle cramps or fatigue after exercise" },
+                  { "value": "slumps", "label": "Afternoon energy slumps" },
+                  { "value": "bloating", "label": "Bloating or slow digestion" },
+                  { "value": "none", "label": "None of these, just want to optimize" }
+                ]
+              },
+              {
+                "id": "format",
+                "text": "How do you prefer to take your supplements?",
+                "options": [
+                  { "value": "packs", "label": "Stick packs, easy for gym bag or work bag" },
+                  { "value": "tub", "label": "Big tub at home, scoop daily" },
+                  { "value": "autoship", "label": "Auto-ship it so I never run out" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "general",
+            "label": "General health",
+            "description": "Everyday wellness and daily habits",
+            "questions": [
+              {
+                "id": "feeling",
+                "text": "Which of these best describes how you feel most days?",
+                "options": [
+                  { "value": "tired", "label": "Tired and sluggish, even after sleep" },
+                  { "value": "bloated", "label": "Gassy or bloated after meals" },
+                  { "value": "dehydrated", "label": "Dehydrated, I don't drink enough water" },
+                  { "value": "good", "label": "Pretty good, just want to feel even better" }
+                ]
+              },
+              {
+                "id": "matters",
+                "text": "What matters most to you in a health supplement?",
+                "options": [
+                  { "value": "clean", "label": "Clean, organic ingredients, nothing artificial" },
+                  { "value": "results", "label": "It actually works, proven results" },
+                  { "value": "taste", "label": "Taste, I won't take it if it's gross" },
+                  { "value": "value", "label": "Value, cost per serving matters" }
+                ]
+              },
+              {
+                "id": "tried",
+                "text": "Have you ever tried a prebiotic or gut health supplement before?",
+                "options": [
+                  { "value": "loved", "label": "Yes, and I loved it" },
+                  { "value": "meh", "label": "Yes, but it didn't taste great" },
+                  { "value": "never", "label": "No, this would be my first time" },
+                  { "value": "probiotics", "label": "I've tried probiotics but not prebiotics" }
+                ]
+              },
+              {
+                "id": "when",
+                "text": "When would you most likely drink Tiiga?",
+                "options": [
+                  { "value": "morning", "label": "Morning, as part of my routine" },
+                  { "value": "exercise", "label": "During or after exercise" },
+                  { "value": "afternoon", "label": "Afternoon pick-me-up instead of coffee" },
+                  { "value": "anytime", "label": "Anytime, I just want it on hand" }
+                ]
+              },
+              {
+                "id": "shop",
+                "text": "How do you prefer to shop for wellness products?",
+                "options": [
+                  { "value": "tryfirst", "label": "One-time purchase first, I want to try it" },
+                  { "value": "subscribe", "label": "Subscribe and save, if I like it I'm in" },
+                  { "value": "bulk", "label": "Buy in bulk, I'm committed" }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "active",
+            "label": "Active & athlete",
+            "description": "Serious training, hydration, and recovery",
+            "questions": [
+              {
+                "id": "activity",
+                "text": "What type of activity do you do most often?",
+                "options": [
+                  { "value": "strength", "label": "Weightlifting or strength training" },
+                  { "value": "endurance", "label": "Running or endurance sports" },
+                  { "value": "team", "label": "Team sports or CrossFit-style training" },
+                  { "value": "lowimpact", "label": "Yoga, pilates, or low-impact movement" }
+                ]
+              },
+              {
+                "id": "challenge",
+                "text": "What's your biggest challenge when it comes to performance?",
+                "options": [
+                  { "value": "recovery", "label": "Recovery takes too long after hard sessions" },
+                  { "value": "cramps", "label": "I cramp up or fatigue faster than I'd like" },
+                  { "value": "gut", "label": "Gut issues during or after training" },
+                  { "value": "cleaner", "label": "I want cleaner hydration than sports drinks" }
+                ]
+              },
+              {
+                "id": "hydrate",
+                "text": "How do you currently hydrate during workouts?",
+                "options": [
+                  { "value": "sugary", "label": "Sugary sports drinks like Gatorade or Powerade" },
+                  { "value": "powders", "label": "Electrolyte powders or tablets" },
+                  { "value": "water", "label": "Plain water only" },
+                  { "value": "natural", "label": "Coconut water or natural drinks" }
+                ]
+              },
+              {
+                "id": "gutmatters",
+                "text": "How important is gut health to your training?",
+                "options": [
+                  { "value": "very", "label": "Very, gut issues have hurt my performance" },
+                  { "value": "somewhat", "label": "Somewhat, I've never thought about it much" },
+                  { "value": "aware", "label": "I know it matters but haven't addressed it" },
+                  { "value": "notreally", "label": "Not really, I'm focused on macros and training" }
+                ]
+              },
+              {
+                "id": "timing",
+                "text": "When do you want to take Tiiga?",
+                "options": [
+                  { "value": "pre", "label": "Pre-workout for energy and hydration" },
+                  { "value": "during", "label": "During, I need something portable" },
+                  { "value": "post", "label": "Post-workout to recover faster" },
+                  { "value": "daily", "label": "Daily as a habit, timing doesn't matter" }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <div class="quiz__card">
+      <div class="quiz__header" data-quiz-header hidden>
+        <button type="button" class="quiz__back" data-quiz-back>
+          {{ 'quiz.back' | t }}
+        </button>
+        <span
+          class="quiz__count"
+          data-quiz-count
+          data-template="{{ 'quiz.question_count' | t: current: '[current]', total: '[total]' }}"
+        ></span>
+        <div class="quiz__progress" data-quiz-progress role="presentation">
+          <span class="quiz__progress-fill"></span>
+        </div>
+      </div>
+
+      <div class="quiz__panel" data-quiz-panel="intro">
+        {% if section.settings.heading != blank %}
+          <h1 class="quiz__heading h2">{{ section.settings.heading | escape }}</h1>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p class="quiz__subheading">{{ section.settings.subheading | escape }}</p>
+        {% endif %}
+        <div class="quiz__paths">
+          <button type="button" class="quiz__option quiz__option--path" data-path="womens">
+            <span class="quiz__option-label">Women's wellness</span>
+            <span class="quiz__option-hint">Bloating, energy, hydration, and your cycle</span>
+          </button>
+          <button type="button" class="quiz__option quiz__option--path" data-path="mens">
+            <span class="quiz__option-label">Men's performance</span>
+            <span class="quiz__option-hint">Training, energy, and recovery</span>
+          </button>
+          <button type="button" class="quiz__option quiz__option--path" data-path="general">
+            <span class="quiz__option-label">General health</span>
+            <span class="quiz__option-hint">Everyday wellness and daily habits</span>
+          </button>
+          <button type="button" class="quiz__option quiz__option--path" data-path="active">
+            <span class="quiz__option-label">Active &amp; athlete</span>
+            <span class="quiz__option-hint">Serious training, hydration, and recovery</span>
+          </button>
+        </div>
+        <noscript>
+          <p class="quiz__noscript">
+            {{ 'quiz.noscript' | t }}
+            <a href="{{ routes.all_products_collection_url }}">{{ 'quiz.noscript_link' | t }}</a>
+          </p>
+        </noscript>
+      </div>
+
+      <div class="quiz__panel" data-quiz-panel="questions" hidden>
+        <div class="quiz__stage" data-quiz-stage aria-live="polite"></div>
+      </div>
+
+      <div class="quiz__panel" data-quiz-panel="email" hidden data-quiz-email>
+        <h2 class="quiz__question h3">{{ 'quiz.email_heading' | t }}</h2>
+        <p class="quiz__subheading">{{ 'quiz.email_subtext' | t }}</p>
+        {%- form 'customer', class: 'quiz__email-form' -%}
+          <input type="hidden" name="contact[tags]" value="">
+          <label for="QuizEmail-{{ section.id }}" class="visually-hidden">
+            {{ 'quiz.email_placeholder' | t }}
+          </label>
+          <input
+            id="QuizEmail-{{ section.id }}"
+            class="quiz__email-input"
+            type="email"
+            name="contact[email]"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            placeholder="{{ 'quiz.email_placeholder' | t }}"
+            required
+          >
+          <button type="submit" class="button quiz__submit">
+            {{ 'quiz.get_results' | t }}
+          </button>
+        {%- endform -%}
+        <p class="quiz__consent">{{ 'quiz.consent' | t }}</p>
+        <a href="#" class="quiz__skip" data-quiz-skip>{{ 'quiz.skip' | t }}</a>
+      </div>
+
+      <div class="quiz__panel" data-quiz-panel="result" hidden>
+        <p class="quiz__eyebrow">{{ 'quiz.your_match' | t }}</p>
+
+        {% if tub != blank %}
+          <div class="quiz__result-card" data-quiz-result-card="tub" hidden>
+            <h2 class="quiz__result-title h3">{{ tub.title }}</h2>
+            {% if tub.featured_image %}
+              <img
+                class="quiz__result-image"
+                src="{{ tub.featured_image | image_url: width: 900 }}"
+                alt="{{ tub.featured_image.alt | default: tub.title | escape }}"
+                width="450"
+                height="{{ 450 | divided_by: tub.featured_image.aspect_ratio | round }}"
+                loading="lazy"
+              >
+            {% endif %}
+            <p class="quiz__reason" data-quiz-reason></p>
+            {% if save_percent > 0 %}
+              <p class="quiz__savings">
+                {{
+                  'quiz.savings_line'
+                  | t:
+                    tub_price: tub_per_serving_money,
+                    packs_price: packs_per_serving_money,
+                    percent: save_percent
+                }}
+              </p>
+            {% endif %}
+            <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
+              {{ 'quiz.subscribe_tip' | t }}
+            </p>
+            <a class="button quiz__cta" href="{{ tub.url }}">
+              {{ 'quiz.shop_product' | t: title: tub.title }}
+            </a>
+            {% if packs != blank %}
+              <a class="quiz__alt-link" href="{{ packs.url }}">
+                {{ 'quiz.start_smaller' | t }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if packs != blank %}
+          <div class="quiz__result-card" data-quiz-result-card="packs" hidden>
+            <h2 class="quiz__result-title h3">{{ packs.title }}</h2>
+            {% if packs.featured_image %}
+              <img
+                class="quiz__result-image"
+                src="{{ packs.featured_image | image_url: width: 900 }}"
+                alt="{{ packs.featured_image.alt | default: packs.title | escape }}"
+                width="450"
+                height="{{ 450 | divided_by: packs.featured_image.aspect_ratio | round }}"
+                loading="lazy"
+              >
+            {% endif %}
+            <p class="quiz__reason" data-quiz-reason></p>
+            <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
+              {{ 'quiz.subscribe_tip' | t }}
+            </p>
+            <a class="button quiz__cta" href="{{ packs.url }}">
+              {{ 'quiz.shop_product' | t: title: packs.title }}
+            </a>
+            {% if tub != blank and save_percent > 0 %}
+              <a class="quiz__alt-link" href="{{ tub.url }}">
+                {{ 'quiz.upgrade_line' | t: percent: save_percent }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.disclaimer != blank %}
+          <p class="quiz__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+        {% endif %}
+        <a href="#" class="quiz__skip" data-quiz-restart>{{ 'quiz.start_over' | t }}</a>
+      </div>
+    </div>
+  </quiz-component>
+</div>
+
+{% stylesheet %}
+  .quiz {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    padding-inline: var(--padding-lg);
+  }
+
+  .quiz__component {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .quiz__card {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border-radius: var(--style-border-radius-cards, 12px);
+    padding: var(--padding-2xl) var(--padding-xl);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+  }
+
+  .quiz__header[hidden],
+  .quiz__result-card[hidden] {
+    display: none;
+  }
+
+  .quiz__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--gap-xs) var(--gap-md);
+    margin-block-end: var(--margin-lg);
+  }
+
+  .quiz__back {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    font-size: 0.875rem;
+    min-height: var(--minimum-touch-target);
+    text-align: start;
+  }
+
+  .quiz__back:hover {
+    opacity: 1;
+  }
+
+  .quiz__count {
+    justify-self: end;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .quiz__progress {
+    grid-column: 1 / -1;
+    height: 4px;
+    border-radius: 100px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.12);
+    overflow: hidden;
+  }
+
+  .quiz__progress-fill {
+    display: block;
+    height: 100%;
+    width: var(--quiz-progress, 0%);
+    border-radius: inherit;
+    background-color: var(--color-foreground);
+    transition: width 0.25s ease;
+  }
+
+  .quiz__heading {
+    margin-block: 0 var(--margin-xs);
+  }
+
+  .quiz__subheading {
+    margin-block: 0 var(--margin-lg);
+    opacity: 0.8;
+  }
+
+  .quiz__question {
+    margin-block: 0 var(--margin-lg);
+  }
+
+  .quiz__question:focus-visible {
+    outline: none;
+  }
+
+  .quiz__paths,
+  .quiz__options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+  }
+
+  .quiz__option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    width: 100%;
+    text-align: start;
+    padding: var(--padding-md) var(--padding-lg);
+    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border-radius: var(--style-border-radius-inputs, 8px);
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    line-height: 1.4;
+    cursor: pointer;
+    min-height: var(--minimum-touch-target);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .quiz__option:hover,
+  .quiz__option[aria-pressed='true'] {
+    border-color: var(--color-foreground);
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .quiz__option-label {
+    font-weight: 600;
+  }
+
+  .quiz__option-hint {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  .quiz__email-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+  }
+
+  .quiz__email-input {
+    width: 100%;
+    padding: var(--padding-md) var(--padding-lg);
+    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border-radius: var(--style-border-radius-inputs, 8px);
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-size: 1rem;
+    min-height: var(--minimum-touch-target);
+  }
+
+  .quiz__consent {
+    margin-block: var(--margin-sm) 0;
+    font-size: 0.75rem;
+    opacity: 0.65;
+  }
+
+  .quiz__skip {
+    display: inline-block;
+    margin-block-start: var(--margin-md);
+    font-size: 0.875rem;
+    color: currentcolor;
+    opacity: 0.7;
+    text-underline-offset: 0.2em;
+  }
+
+  .quiz__skip:hover {
+    opacity: 1;
+  }
+
+  .quiz__eyebrow {
+    margin-block: 0 var(--margin-xs);
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .quiz__result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+  }
+
+  .quiz__result-title {
+    margin-block: 0;
+  }
+
+  .quiz__result-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--style-border-radius-cards, 12px);
+    align-self: center;
+    max-height: 320px;
+    object-fit: contain;
+  }
+
+  .quiz__reason,
+  .quiz__savings,
+  .quiz__subscription-tip {
+    margin-block: 0;
+  }
+
+  .quiz__savings,
+  .quiz__subscription-tip {
+    font-size: 0.9375rem;
+    opacity: 0.85;
+  }
+
+  .quiz__cta {
+    margin-block-start: var(--margin-sm);
+  }
+
+  .quiz__alt-link {
+    font-size: 0.875rem;
+    color: currentcolor;
+    text-underline-offset: 0.2em;
+  }
+
+  .quiz__disclaimer {
+    margin-block: var(--margin-lg) 0;
+    font-size: 0.6875rem;
+    opacity: 0.55;
+  }
+
+  .quiz__noscript {
+    margin-block-start: var(--margin-md);
+  }
+
+  @media screen and (max-width: 749px) {
+    .quiz__card {
+      padding: var(--padding-xl) var(--padding-lg);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.quiz",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Find your Tiiga"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:settings.subheading",
+      "default": "Answer 5 quick questions and we'll match you with the right product. First, which sounds most like you?"
+    },
+    {
+      "type": "header",
+      "content": "t:content.products"
+    },
+    {
+      "type": "product",
+      "id": "packs_product",
+      "label": "t:settings.quiz_packs_product"
+    },
+    {
+      "type": "number",
+      "id": "packs_servings",
+      "label": "t:settings.quiz_packs_servings",
+      "default": 16
+    },
+    {
+      "type": "product",
+      "id": "tub_product",
+      "label": "t:settings.quiz_tub_product"
+    },
+    {
+      "type": "number",
+      "id": "tub_servings",
+      "label": "t:settings.quiz_tub_servings",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "t:content.quiz_integrations"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_public_key",
+      "label": "t:settings.klaviyo_company_id",
+      "info": "t:info.quiz_klaviyo_key"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "t:settings.quiz_disclaimer",
+      "default": "These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.quiz"
+    }
+  ]
+}
+{% endschema %}
