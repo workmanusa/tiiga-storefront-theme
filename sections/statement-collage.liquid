@@ -153,8 +153,9 @@
   @media screen and (max-width: 749px) {
     .statement__stage {
       min-height: 0;
-      /* The scatter needs room above and below the words on a narrow screen */
-      padding-block: 22vh;
+      /* Room above and below the words for the corner prints to sit in. The
+         px floor holds when the viewport is short. */
+      padding-block: max(200px, 22vh);
     }
 
     .statement__content {
