@@ -36,6 +36,7 @@
   <quiz-component
     class="quiz__component"
     data-klaviyo-key="{{ section.settings.klaviyo_public_key | escape }}"
+    data-cart-url="{{ routes.cart_url }}"
   >
     <script type="application/json" data-quiz-data>
       {
@@ -359,15 +360,20 @@
           </button>
         {%- endform -%}
         <p class="quiz__consent">{{ 'quiz.consent' | t }}</p>
-        <a href="#" class="quiz__skip" data-quiz-skip>{{ 'quiz.skip' | t }}</a>
       </div>
 
       <div class="quiz__panel" data-quiz-panel="result" hidden>
-        <p class="quiz__eyebrow">{{ 'quiz.your_match' | t }}</p>
+        <p class="quiz__badge">{{ 'quiz.your_match' | t }}</p>
+        {% if section.settings.result_heading != blank %}
+          <h2 class="quiz__result-heading h2">{{ section.settings.result_heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.result_subtext != blank %}
+          <p class="quiz__subheading">{{ section.settings.result_subtext | escape }}</p>
+        {% endif %}
 
         {% if tub != blank %}
           <div class="quiz__result-card" data-quiz-result-card="tub" hidden>
-            <h2 class="quiz__result-title h3">{{ tub.title }}</h2>
+            <h3 class="quiz__result-title h3">{{ tub.title }}</h3>
             {% if tub.featured_image %}
               <img
                 class="quiz__result-image"
@@ -393,9 +399,7 @@
             <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
               {{ 'quiz.subscribe_tip' | t }}
             </p>
-            <a class="button quiz__cta" href="{{ tub.url }}">
-              {{ 'quiz.shop_product' | t: title: tub.title }}
-            </a>
+            {% render 'quiz-buy-form', product: tub, section_id: section.id, form_id: 'tub' %}
             {% if packs != blank %}
               <a class="quiz__alt-link" href="{{ packs.url }}">
                 {{ 'quiz.start_smaller' | t }}
@@ -406,7 +410,7 @@
 
         {% if packs != blank %}
           <div class="quiz__result-card" data-quiz-result-card="packs" hidden>
-            <h2 class="quiz__result-title h3">{{ packs.title }}</h2>
+            <h3 class="quiz__result-title h3">{{ packs.title }}</h3>
             {% if packs.featured_image %}
               <img
                 class="quiz__result-image"
@@ -421,9 +425,7 @@
             <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
               {{ 'quiz.subscribe_tip' | t }}
             </p>
-            <a class="button quiz__cta" href="{{ packs.url }}">
-              {{ 'quiz.shop_product' | t: title: packs.title }}
-            </a>
+            {% render 'quiz-buy-form', product: packs, section_id: section.id, form_id: 'packs' %}
             {% if tub != blank and save_percent > 0 %}
               <a class="quiz__alt-link" href="{{ tub.url }}">
                 {{ 'quiz.upgrade_line' | t: percent: save_percent }}
@@ -614,14 +616,21 @@
     opacity: 1;
   }
 
-  .quiz__eyebrow {
-    margin-block: 0 var(--margin-xs);
+  .quiz__badge {
+    display: inline-block;
+    margin-block: 0 var(--margin-sm);
+    padding: 0.375rem 0.875rem;
+    border-radius: 100px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.08);
     font-family: var(--font-subheading--family);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.7;
+  }
+
+  .quiz__result-heading {
+    margin-block: 0 var(--margin-xs);
   }
 
   .quiz__result-card {
@@ -659,6 +668,61 @@
 
   .quiz__cta {
     margin-block-start: var(--margin-sm);
+  }
+
+  .quiz__buy-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+    width: 100%;
+    margin-block-start: var(--margin-sm);
+  }
+
+  .quiz__price {
+    margin-block: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .quiz__plans {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .quiz__plan {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    min-height: 1.75rem;
+  }
+
+  .quiz__plan input {
+    accent-color: var(--color-foreground);
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .quiz__variant-select {
+    width: 100%;
+    padding: var(--padding-md) var(--padding-lg);
+    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border-radius: var(--style-border-radius-inputs, 8px);
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-size: 1rem;
+    min-height: var(--minimum-touch-target);
+  }
+
+  .quiz__cart-error {
+    margin-block: 0;
+    font-size: 0.875rem;
+    color: var(--color-error, #b3261e);
   }
 
   .quiz__alt-link {
@@ -702,6 +766,22 @@
       "id": "subheading",
       "label": "t:settings.subheading",
       "default": "Answer 5 quick questions and we'll match you with the right product. First, which sounds most like you?"
+    },
+    {
+      "type": "header",
+      "content": "t:content.quiz_results"
+    },
+    {
+      "type": "text",
+      "id": "result_heading",
+      "label": "t:settings.heading",
+      "default": "Your Tiiga match"
+    },
+    {
+      "type": "text",
+      "id": "result_subtext",
+      "label": "t:settings.subheading",
+      "default": "The results are in: here's the product we picked from your answers."
     },
     {
       "type": "header",

@@ -37,6 +37,8 @@
     "products": "Products",
     // Header over the quiz section's Klaviyo and disclaimer settings
     "quiz_integrations": "Integrations",
+    // Header over the quiz section's result-panel copy settings
+    "quiz_results": "Results",
     // Column group headers for the comparison matrix section
     "columns": "Columns",
     "brand_column": "Brand column",

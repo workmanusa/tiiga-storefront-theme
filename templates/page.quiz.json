@@ -5,6 +5,8 @@
       "settings": {
         "heading": "Find your Tiiga",
         "subheading": "Answer 5 quick questions and we'll match you with the right product. First, which sounds most like you?",
+        "result_heading": "Your Tiiga match",
+        "result_subtext": "The results are in: here's the product we picked from your answers.",
         "packs_product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
         "packs_servings": 16,
         "tub_product": "organic-baobab-coconut-water-prebiotic-electrolyte-supplement-30-serving-tub",

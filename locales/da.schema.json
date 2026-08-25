@@ -1045,6 +1045,7 @@
     "input_field": "Indtastningsfelt"
   },
   "content": {
+    "quiz_results": "Results",
     "products": "Products",
     "quiz_integrations": "Integrations",
     "columns": "Columns",

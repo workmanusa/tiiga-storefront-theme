@@ -37,10 +37,6 @@ class QuizComponent extends HTMLElement {
     }
 
     this.querySelector('[data-quiz-back]')?.addEventListener('click', () => this.#goBack());
-    this.querySelector('[data-quiz-skip]')?.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.#showResult();
-    });
     this.querySelector('[data-quiz-restart]')?.addEventListener('click', (event) => {
       event.preventDefault();
       this.#reset();
@@ -51,6 +47,49 @@ class QuizComponent extends HTMLElement {
       event.preventDefault();
       this.#submit();
     });
+
+    for (const buyForm of this.querySelectorAll('.quiz__buy-form')) {
+      buyForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (buyForm instanceof HTMLFormElement) this.#addToCart(buyForm);
+      });
+    }
+  }
+
+  /**
+   * Adds the selected variant (and selling plan) to the cart via the AJAX
+   * cart, then sends the visitor to the cart page.
+   *
+   * @param {HTMLFormElement} form - The result card's product form.
+   */
+  async #addToCart(form) {
+    const body = new FormData(form);
+    if (!body.get('selling_plan')) body.delete('selling_plan');
+
+    const button = form.querySelector('button[type="submit"]');
+    const error = form.querySelector('[data-quiz-cart-error]');
+    if (button instanceof HTMLButtonElement) button.disabled = true;
+    if (error instanceof HTMLElement) error.hidden = true;
+
+    try {
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body,
+      });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => null);
+        throw new Error(payload?.description ?? '');
+      }
+      window.location.assign(this.getAttribute('data-cart-url') ?? '/cart');
+    } catch (cause) {
+      if (button instanceof HTMLButtonElement) button.disabled = false;
+      if (error instanceof HTMLElement) {
+        error.textContent =
+          cause instanceof Error && cause.message ? cause.message : (error.getAttribute('data-fallback') ?? '');
+        error.hidden = false;
+      }
+    }
   }
 
   get #form() {

@@ -1,0 +1,92 @@
+{% doc %}
+  Purchase options for a quiz result card: price, one-time vs subscription
+  selling-plan radios, a flavor variant dropdown, and an add-to-cart button.
+  Submission is intercepted by quiz.js, which posts to the AJAX cart and then
+  sends the visitor to the cart page.
+
+  @param {object} product - The recommended product.
+  @param {string} section_id - Section id, used to keep input ids unique.
+  @param {string} form_id - Card slug ('tub', 'packs') to scope radio groups.
+
+  @example
+  {% render 'quiz-buy-form', product: product, section_id: section.id, form_id: 'tub' %}
+{% enddoc %}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign field_prefix = 'QuizBuy-' | append: section_id | append: '-' | append: form_id
+-%}
+
+{%- form 'product', product, class: 'quiz__buy-form' -%}
+  <p class="quiz__price">{{ variant.price | money }}</p>
+
+  {%- if product.selling_plan_groups.size > 0 -%}
+    <fieldset class="quiz__plans">
+      <legend class="visually-hidden">{{ 'quiz.purchase_options' | t }}</legend>
+      <label class="quiz__plan">
+        <input
+          type="radio"
+          name="selling_plan"
+          value=""
+          checked
+        >
+        <span>{{ 'purchase_options.one_time' | t }}</span>
+      </label>
+      {%- for group in product.selling_plan_groups -%}
+        {%- for plan in group.selling_plans -%}
+          <label class="quiz__plan">
+            <input
+              type="radio"
+              name="selling_plan"
+              value="{{ plan.id }}"
+            >
+            <span>
+              {{ plan.name }}
+              {%- assign adjustment = plan.price_adjustments.first -%}
+              {%- if adjustment.value_type == 'percentage' and adjustment.value > 0 %}
+                &middot; {{ 'purchase_options.save_percent' | t: percent: adjustment.value }}
+              {%- endif -%}
+            </span>
+          </label>
+        {%- endfor -%}
+      {%- endfor -%}
+    </fieldset>
+  {%- endif -%}
+
+  {%- if product.has_only_default_variant -%}
+    <input type="hidden" name="id" value="{{ variant.id }}">
+  {%- else -%}
+    <label for="{{ field_prefix }}-variant" class="visually-hidden">
+      {{ product.options.first }}
+    </label>
+    <select
+      id="{{ field_prefix }}-variant"
+      class="quiz__variant-select"
+      name="id"
+    >
+      {%- for product_variant in product.variants -%}
+        <option
+          value="{{ product_variant.id }}"
+          {% if product_variant.id == variant.id %}
+            selected
+          {% endif %}
+          {% unless product_variant.available %}
+            disabled
+          {% endunless %}
+        >
+          {{ product_variant.title }}
+        </option>
+      {%- endfor -%}
+    </select>
+  {%- endif -%}
+
+  <button type="submit" class="button quiz__cta">
+    {{ 'actions.add_to_cart' | t }}
+  </button>
+  <p
+    class="quiz__cart-error"
+    data-quiz-cart-error
+    data-fallback="{{ 'quiz.cart_error' | t }}"
+    hidden
+  ></p>
+{%- endform -%}
