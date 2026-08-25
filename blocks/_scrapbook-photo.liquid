@@ -42,16 +42,17 @@
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
   }
 
+  /* Prints keep their own proportions — a square, a wide landscape, and a
+     portrait sitting together is what makes a wall of photos read as one. */
   .scrapbook-photo__image {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
     border-radius: 2px;
   }
 
   .scrapbook-photo__image--empty {
+    aspect-ratio: 4 / 3;
     background-color: rgb(var(--color-foreground-rgb) / 0.08);
   }
 

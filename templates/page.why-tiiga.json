@@ -150,8 +150,8 @@
         "snap_1": {
           "type": "_scrapbook-photo",
           "settings": {
-            "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
-            "caption": "Add a photo of Harrouna, Katy, and Jeff",
+            "image": "shopify://shop_images/8_20704227-e984-484d-a40f-10159794a78d.png",
+            "caption": "Katy, Jeff, and Harrouna — where it started, at Nebraska",
             "span": 6,
             "rotation": -3,
             "lift": 0
@@ -160,39 +160,28 @@
         "snap_2": {
           "type": "_scrapbook-photo",
           "settings": {
-            "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
-            "caption": "Add a photo of the baobab trees in Burkina Faso",
+            "image": "shopify://shop_images/Mission_09845165-01b1-428d-89e5-ea3b0562ff77.png",
+            "caption": "Wild harvested by hand, under the tree it fell from",
             "span": 6,
             "rotation": 2,
-            "lift": 36
+            "lift": 28
           }
         },
         "snap_3": {
           "type": "_scrapbook-photo",
           "settings": {
-            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
-            "caption": "Add a photo of the harvest, or the fruit opened up",
-            "span": 6,
-            "rotation": 3,
-            "lift": -16
-          }
-        },
-        "snap_4": {
-          "type": "_scrapbook-photo",
-          "settings": {
-            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
-            "caption": "Add a photo from the early days of the brand",
-            "span": 6,
-            "rotation": -2,
-            "lift": 20
+            "image": "shopify://shop_images/6_1b4e3875-1f91-41f3-9c80-bdf13f9c246d.png",
+            "caption": "The baobab — the tree of life",
+            "span": 12,
+            "rotation": 1,
+            "lift": 0
           }
         }
       },
       "block_order": [
         "snap_1",
         "snap_2",
-        "snap_3",
-        "snap_4"
+        "snap_3"
       ],
       "settings": {
         "eyebrow": "Founder story",
