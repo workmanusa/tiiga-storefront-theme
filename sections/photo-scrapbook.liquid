@@ -1,0 +1,178 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="scrapbook spacing-style section section--page-width color-custom-{{ section.id }}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --scrapbook-accent: {{ section.settings.accent_color }};
+  "
+>
+  <div class="scrapbook__inner">
+    <div class="scrapbook__intro">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="scrapbook__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="scrapbook__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="scrapbook__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="scrapbook__grid">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .scrapbook__inner {
+    display: grid;
+    gap: 3.5rem;
+  }
+
+  .scrapbook__intro {
+    max-width: 40rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .scrapbook__eyebrow {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--scrapbook-accent);
+  }
+
+  .scrapbook__heading {
+    margin: 0;
+    font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .scrapbook__text {
+    margin-block-start: 1.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .scrapbook__text > :first-child {
+    margin-block-start: 0;
+  }
+
+  .scrapbook__text > :last-child {
+    margin-block-end: 0;
+  }
+
+  .scrapbook__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+    gap: 2rem 1.75rem;
+    /* Room for the lift stagger to run past the row without clipping */
+    padding-block: 2rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .scrapbook__inner {
+      gap: 2rem;
+    }
+
+    .scrapbook__grid {
+      gap: 1.5rem;
+      padding-block: 0.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.photo_scrapbook",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "t:settings.accent_color",
+      "default": "#1d5a6b"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_scrapbook-photo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.photo_scrapbook",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "snap_1": { "type": "_scrapbook-photo" },
+        "snap_2": { "type": "_scrapbook-photo" },
+        "snap_3": { "type": "_scrapbook-photo" },
+        "snap_4": { "type": "_scrapbook-photo" }
+      },
+      "block_order": ["snap_1", "snap_2", "snap_3", "snap_4"]
+    }
+  ]
+}
+{% endschema %}

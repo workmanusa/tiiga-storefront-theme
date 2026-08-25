@@ -279,6 +279,10 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "statement_collage": "Statement collage",
+    "collage_photo": "Collage photo",
+    "photo_scrapbook": "Photo scrapbook",
+    "scrapbook_photo": "Scrapbook photo",
     "brand_values": "Brand values",
     "brand_value": "Value card",
     "milestone_timeline": "Milestone timeline",
@@ -866,6 +870,10 @@
     "below_media": "Below media"
   },
   "settings": {
+    "caption": "Caption",
+    "rotation": "Rotation",
+    "horizontal_position": "Horizontal position",
+    "vertical_position": "Vertical position",
     "year": "Year",
     "poster": "Poster image",
     "accent_color": "Accent color",

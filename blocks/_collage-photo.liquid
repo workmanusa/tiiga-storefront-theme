@@ -1,0 +1,157 @@
+{% doc %}
+  One floating photo in a statement collage. Position, size, tilt, and drift
+  are per-photo settings so the scatter can be composed in the editor rather
+  than hardcoded.
+
+  Photos are decorative: the parent marks the whole cluster aria-hidden, so no
+  alt text is carried here.
+
+  @example
+  {% content_for 'block', type: '_collage-photo', id: 'photo-1' %}
+{% enddoc %}
+
+<div
+  class="collage-photo"
+  style="
+    --collage-x: {{ block.settings.x }}%;
+    --collage-y: {{ block.settings.y }}%;
+    --collage-w: {{ block.settings.width }}%;
+    --collage-r: {{ block.settings.rotation }}deg;
+    --collage-speed: {{ block.settings.speed }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.image -%}
+    {{
+      block.settings.image
+      | image_url: width: 720
+      | image_tag: class: 'collage-photo__image', loading: 'lazy', alt: ''
+    }}
+  {%- else -%}
+    <span class="collage-photo__image collage-photo__image--empty"></span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .collage-photo {
+    position: absolute;
+    inset-block-start: var(--collage-y, 0%);
+    inset-inline-start: var(--collage-x, 0%);
+    width: var(--collage-w, 16%);
+    /* --collage-shift is written by the parent on scroll; the tilt stays put */
+    transform: translate3d(0, var(--collage-shift, 0px), 0) rotate(var(--collage-r, 0deg));
+    will-change: transform;
+  }
+
+  .collage-photo__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .collage-photo__image--empty {
+    background-color: rgb(var(--color-foreground-rgb) / 0.08);
+  }
+
+  /* Narrow screens have no room for a scatter beside the words, so the
+     cluster collapses to four corner prints and the rest step aside. */
+  @media screen and (max-width: 749px) {
+    .statement__photos .collage-photo {
+      width: 30%;
+    }
+
+    .statement__photos .collage-photo:nth-child(n + 5) {
+      display: none;
+    }
+
+    .statement__photos .collage-photo:nth-child(1) {
+      inset-inline-start: -5%;
+      inset-block-start: 1%;
+    }
+
+    .statement__photos .collage-photo:nth-child(2) {
+      inset-inline-start: 74%;
+      inset-block-start: 5%;
+    }
+
+    .statement__photos .collage-photo:nth-child(3) {
+      inset-inline-start: -6%;
+      inset-block-start: 74%;
+    }
+
+    .statement__photos .collage-photo:nth-child(4) {
+      inset-inline-start: 76%;
+      inset-block-start: 78%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.collage_photo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "range",
+      "id": "x",
+      "label": "t:settings.horizontal_position",
+      "min": -10,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "y",
+      "label": "t:settings.vertical_position",
+      "min": -10,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "t:settings.width",
+      "min": 6,
+      "max": 30,
+      "step": 1,
+      "unit": "%",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "t:settings.rotation",
+      "min": -12,
+      "max": 12,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:settings.speed",
+      "min": -10,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.collage_photo"
+    }
+  ]
+}
+{% endschema %}

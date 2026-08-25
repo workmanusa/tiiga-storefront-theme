@@ -1,899 +1,432 @@
 {
   "sections": {
-    "hero": {
-      "type": "landing-hero",
-      "settings": {
-        "eyebrow": "Why Tiiga",
-        "heading": "Water Fixed the Thirst. It Never Fixed the <em>Gut</em>.",
-        "text": "<p>Two things are quietly missing from most days: the fiber your gut runs on and the electrolytes your cells need to actually hold water. Tiiga was built to close both gaps with one stick of whole baobab fruit and coconut water — not a shelf of separate powders.</p>",
-        "layout": "split",
-        "media_fit": "cover",
-        "image_1": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
-        "image_2": "",
-        "primary_button_label": "Shop Jobsite Hydration",
-        "primary_button_link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
-        "secondary_button_label": "See What's In It",
-        "secondary_button_link": "#ingredients",
-        "rating": "4.7",
-        "review_count": "850+ reviews",
-        "shipping_note": "Free shipping $40+",
-        "disclaimer": "<p>Cancel anytime · 30-day money-back guarantee · These statements have not been evaluated by the FDA.</p>",
-        "background_color": "#14333d",
-        "text_color": "#ffffff",
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      }
-    },
-    "ticker": {
-      "type": "marquee",
+    "statement_challenge": {
+      "type": "statement-collage",
       "blocks": {
-        "text_1": {
-          "type": "text",
+        "photo_1": {
+          "type": "_collage-photo",
           "settings": {
-            "text": "<p>No Added Sugar</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>80% DV Vitamin C</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>5g Prebiotic Fiber</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_4": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Zero Caffeine</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_5": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mixes Clear, No Grit</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_6": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Gluten Free</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Non-GMO</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_8": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Made With Real Fruit</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_1",
-        "text_2",
-        "text_3",
-        "text_4",
-        "text_5",
-        "text_6",
-        "text_7",
-        "text_8"
-      ],
-      "settings": {
-        "movement_direction": "normal",
-        "background_color": "#1d5a6b",
-        "padding-block-start": 18,
-        "padding-block-end": 18,
-        "gap_between_elements": 48
-      }
-    },
-    "stats": {
-      "type": "stats-numbers",
-      "blocks": {
-        "stat_1": {
-          "type": "_stat-item",
-          "settings": {
-            "value": "Half",
-            "description": "the daily fiber most Americans actually get. The gut feels the shortfall long before anything else does."
+            "image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
+            "x": 2,
+            "y": 12,
+            "width": 15,
+            "rotation": -4,
+            "speed": 6
           }
         },
-        "stat_2": {
-          "type": "_stat-item",
+        "photo_2": {
+          "type": "_collage-photo",
           "settings": {
-            "value": "100 trillion",
-            "description": "microorganisms living in your gut, and what you feed them decides how well they work for you."
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
+            "x": 20,
+            "y": 4,
+            "width": 12,
+            "rotation": 3,
+            "speed": -4
           }
         },
-        "stat_3": {
-          "type": "_stat-item",
+        "photo_3": {
+          "type": "_collage-photo",
           "settings": {
-            "value": "5g",
-            "description": "of raw, unprocessed prebiotic fiber from baobab fruit in every stick — whole fruit, not an isolate."
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
+            "x": 72,
+            "y": 8,
+            "width": 16,
+            "rotation": 4,
+            "speed": 5
           }
         },
-        "stat_4": {
-          "type": "_stat-item",
+        "photo_4": {
+          "type": "_collage-photo",
           "settings": {
-            "value": "0g",
-            "description": "added sugar, sweetened with organic stevia instead, so hydration never costs you a sugar crash."
+            "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
+            "x": 88,
+            "y": 30,
+            "width": 11,
+            "rotation": -3,
+            "speed": -6
+          }
+        },
+        "photo_5": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
+            "x": 6,
+            "y": 64,
+            "width": 13,
+            "rotation": 3,
+            "speed": -5
+          }
+        },
+        "photo_6": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
+            "x": 78,
+            "y": 66,
+            "width": 15,
+            "rotation": -4,
+            "speed": 6
           }
         }
       },
       "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4"
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6"
       ],
       "settings": {
-        "eyebrow": "The gap",
-        "heading": "Why One Stick, and Not Two Products",
-        "text": "<p>Hydration and gut health get sold as separate aisles, so most people end up buying from both and still missing the part that matters. These are the numbers Tiiga was designed around.</p>",
-        "footnote": "Sweat rate and sweat sodium vary widely by individual, workload, heat, and acclimatization. Figures reflect commonly published ranges for physical work in hot conditions.",
-        "value_color": "#1d5a6b",
-        "background_color": "#f6f4f0",
-        "padding-block-start": 80,
-        "padding-block-end": 80
-      }
-    },
-    "story_rows": {
-      "type": "story-rows",
-      "blocks": {
-        "row_1": {
-          "type": "_story-row",
-          "settings": {
-            "number": "01",
-            "eyebrow": "DIGESTION",
-            "title": "A Healthier Stool. You're Welcome.",
-            "text": "<p>Most Americans get less than half the fiber they need daily, and their guts show it. Tiiga delivers 5g of raw, unprocessed baobab prebiotic fiber per serving, the kind that bulks stool naturally, feeds your colon, and keeps your digestive rhythm consistent. No laxatives, no harsh stimulants. Just fiber doing what fiber was always meant to do.</p>",
-            "media_style": "image",
-            "media_position": "right",
-            "image_1": "shopify://shop_images/1284685a-5f3f-40f2-9f48-1042a63ff229.png",
-            "image_2": "",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "row_2": {
-          "type": "_story-row",
-          "settings": {
-            "number": "02",
-            "eyebrow": "MICROBIOME",
-            "title": "Your Microbiome Will Thrive.",
-            "text": "<p>Your gut is home to over 100 trillion microorganisms, and what you feed them determines everything. Studies have shown that baobab fruit fiber significantly increases populations of Lactobacillus and Bifidobacterium, two of the most important beneficial bacteria in the human gut. More good bacteria means better digestion, less gas, and a gut ecosystem that actually works for you.</p>",
-            "media_style": "image",
-            "media_position": "left",
-            "image_1": "shopify://shop_images/2a2cf384-1ab0-40e5-bf8f-df83f09d527e.png",
-            "image_2": "",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "row_3": {
-          "type": "_story-row",
-          "settings": {
-            "number": "03",
-            "eyebrow": "HYDRATION",
-            "title": "Hydration That Actually Works.",
-            "text": "<p>Water hydrates your mouth. Electrolytes hydrate your cells. Tiiga combines coconut water powder, naturally rich in potassium, with a full electrolyte blend to restore fluid balance at a deeper level. Research shows that potassium and sodium work together to regulate cellular hydration far more effectively than water alone, making every sip of Tiiga count for more.</p>",
-            "media_style": "image",
-            "media_position": "right",
-            "image_1": "shopify://shop_images/IMG_1107_2.jpg",
-            "image_2": "",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "row_4": {
-          "type": "_story-row",
-          "settings": {
-            "number": "04",
-            "eyebrow": "BLOATING",
-            "title": "Bloating Starts in Your Gut.",
-            "text": "<p>Bloating usually comes down to what is happening in your gut, not just what you ate for lunch. Baobab is one of the richest natural sources of polyphenols on the planet, and Tiiga pairs them with 5g of prebiotic fiber to support a balanced microbiome and healthy digestion.</p>",
-            "media_style": "image",
-            "media_position": "left",
-            "image_1": "shopify://shop_images/91a871e5-c7c6-42f5-abc3-b49ccec5a8f4.png",
-            "image_2": "",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "row_5": {
-          "type": "_story-row",
-          "settings": {
-            "number": "05",
-            "eyebrow": "TASTE",
-            "title": "A Habit That Sticks.",
-            "text": "<p>The best supplement is the one you actually take. Tiiga was built to be something you look forward to. Smooth, fruity, and satisfying enough to replace whatever you're already drinking in the morning. No chalky texture, no weird aftertaste, no forcing it down. Just a daily ritual that quietly transforms your gut, one stick at a time.</p>",
-            "media_style": "image",
-            "media_position": "right",
-            "image_1": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
-            "image_2": "",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "row_6": {
-          "type": "_story-row",
-          "settings": {
-            "number": "06",
-            "eyebrow": "LOVED BY 1M+",
-            "title": "Trusted by 1M+ Customers",
-            "text": "<p>Tiiga is the top choice for people looking to fill nutrition gaps in a convenient, tasty way while supporting overall health.</p>",
-            "media_style": "checklist",
-            "media_position": "right",
-            "checklist": "Convenient: pre-portioned sticks, no measuring and no clean-up\nTasty: real fruit flavors with no added sugar\nWhole-body support: prebiotic fiber for your gut, electrolytes for real hydration",
-            "background_color": "#1d5a6b",
-            "text_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5",
-        "row_6"
-      ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "",
-        "text": "",
-        "background_color": "#f6f4f0",
-        "padding-block-start": 64,
-        "padding-block-end": 64,
-        "media_width": "beside"
-      }
-    },
-    "science": {
-      "type": "science-spec",
-      "blocks": {
-        "row_na": {
-          "type": "_science-row",
-          "settings": {
-            "symbol": "Na+",
-            "name": "Sodium Citrate",
-            "value": "140mg",
-            "description": "Pulls fluid into the bloodstream and keeps it there. The electrolyte you sweat out in the largest amount."
-          }
-        },
-        "row_k": {
-          "type": "_science-row",
-          "settings": {
-            "symbol": "K+",
-            "name": "Potassium",
-            "value": "352mg",
-            "description": "Regulates fluid inside the cell and drives muscle contraction. From raw baobab and organic coconut water."
-          }
-        },
-        "row_mg": {
-          "type": "_science-row",
-          "settings": {
-            "symbol": "Mg",
-            "name": "Magnesium Citrate",
-            "value": "19mg",
-            "description": "A cofactor in 300+ enzyme reactions, including muscle relaxation. Depleted by heavy physical work."
-          }
-        },
-        "row_c": {
-          "type": "_science-row",
-          "settings": {
-            "symbol": "Vit C",
-            "name": "Ascorbic Acid + Baobab",
-            "value": "73mg",
-            "description": "80% of the Daily Value. Neutralizes free radicals generated by heat, sun, dust, fumes, and hard output."
-          }
-        },
-        "row_fib": {
-          "type": "_science-row",
-          "settings": {
-            "symbol": "Fiber",
-            "name": "Prebiotic Fiber",
-            "value": "5g",
-            "description": "Raw baobab fiber — 4g soluble, 1g insoluble — feeds the gut bacteria that break-room food starves."
-          }
-        }
-      },
-      "block_order": [
-        "row_na",
-        "row_k",
-        "row_mg",
-        "row_c",
-        "row_fib"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
-        "badge_label": "Per 12g stick",
-        "badge_title": "",
-        "heading": "Every Stick, Broken Down",
-        "text": "<p>No proprietary blend, no dust-in-a-packet math. This is what's in one stick of Raspberry Lemonade and what each piece is doing once it's in you. Same formula in every flavor.</p>",
-        "link_label": "See the full supplement facts",
-        "link": "shopify://products/organic-baobab-coconut-water-prebiotic-electrolyte-supplement-16-pack-bag",
-        "background_color": "#ffffff",
-        "padding-block-start": 72,
-        "padding-block-end": 80
-      }
-    },
-    "ingredients": {
-      "type": "ingredient-cards",
-      "blocks": {
-        "card_1": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_02_36_PM_ea647760-8f38-4c4b-8ba3-b44873e8c621.png",
-            "title": "100% Organic Baobab Fruit",
-            "description": "Africa's superfruit, wild-harvested and raw. Carries the prebiotic fiber, the potassium, and most of the 73mg of vitamin C in every stick."
-          },
-          "blocks": {}
-        },
-        "card_2": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_08_31_59_PM.png",
-            "title": "Coconut Water Powder",
-            "description": "A whole-food electrolyte source, not a mineral salt. Adds potassium and trace minerals that plain water can't replace."
-          },
-          "blocks": {}
-        },
-        "card_3": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/377a86b8-b505-4870-837d-d8391e23cb43_dd5c707a-07d1-4faf-9c33-f13af4efa7b0.png",
-            "title": "Sodium Citrate · 140mg",
-            "description": "A functional form of sodium that helps fluid stay in your system — without the salt-lick finish of a high-sodium packet."
-          },
-          "blocks": {}
-        },
-        "card_4": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/43f77343-153f-4fca-a30b-67bf3fdfa5ec.png",
-            "title": "Magnesium Citrate · 19mg",
-            "description": "The highly absorbable form. Supports normal muscle relaxation and nerve function after a shift of heavy work."
-          },
-          "blocks": {}
-        },
-        "card_5": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "",
-            "title": "Ascorbic Acid (Vitamin C)",
-            "description": "Stacked on top of baobab's natural vitamin C to bring every stick to 73mg — 80% of the Daily Value."
-          },
-          "blocks": {}
-        },
-        "card_6": {
-          "type": "_ingredient-card",
-          "settings": {
-            "image": "shopify://shop_images/2e5be3df-b8bf-47d2-82ef-b3e70503e697.png",
-            "title": "Organic Stevia Extract",
-            "description": "Made from the stevia leaf. Sweetens the stick without sugar, calories, or the crash that follows a sports drink."
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_5",
-        "card_6"
-      ],
-      "settings": {
-        "heading": "Six Ingredients That Earn Their Spot",
-        "text": "<p>Nothing in the stick is there for looks. No added sugar, no artificial sweeteners, no dyes, no caffeine, and nothing you'd need a chemistry degree to read off the back.</p>",
-        "card_width": 320,
-        "background_color": "#f6f4f0",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "not_inside": {
-      "type": "whats-not-inside",
-      "blocks": {
-        "item_1": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Added sugar"
-          }
-        },
-        "item_2": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Artificial colors"
-          }
-        },
-        "item_3": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Artificial sweeteners"
-          }
-        },
-        "item_4": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Caffeine"
-          }
-        },
-        "item_5": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Gluten"
-          }
-        },
-        "item_6": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Dairy"
-          }
-        },
-        "item_7": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Soy"
-          }
-        },
-        "item_8": {
-          "type": "_not-inside-item",
-          "settings": {
-            "label": "Anything you can't pronounce"
-          }
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "item_4",
-        "item_5",
-        "item_6",
-        "item_7",
-        "item_8"
-      ],
-      "settings": {
-        "eyebrow": "Read the back of the packet",
-        "heading": "What's Not In It",
-        "text": "<p>A hydration drink shouldn't need a warning label. Here's everything we left out on purpose.</p>",
-        "background_color": "#14333d",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "comparison": {
-      "type": "comparison-matrix",
-      "blocks": {
-        "row_1": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Gut health + hydration",
-            "col_1_type": "yes",
-            "col_1_value": "",
-            "col_1_note": "",
-            "col_2_type": "no",
-            "col_2_value": "",
-            "col_2_note": "Hydration only",
-            "col_3_type": "no",
-            "col_3_value": "",
-            "col_3_note": "Gut only"
-          }
-        },
-        "row_2": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Prebiotic fiber",
-            "col_1_type": "value",
-            "col_1_value": "5g",
-            "col_1_note": "Raw baobab fruit",
-            "col_2_type": "value",
-            "col_2_value": "0g",
-            "col_2_note": "",
-            "col_3_type": "value",
-            "col_3_value": "3–6g",
-            "col_3_note": "Isolated psyllium or inulin"
-          }
-        },
-        "row_3": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Electrolytes",
-            "col_1_type": "value",
-            "col_1_value": "140mg sodium",
-            "col_1_note": "352mg potassium",
-            "col_2_type": "yes",
-            "col_2_value": "",
-            "col_2_note": "500–1,000mg sodium",
-            "col_3_type": "no",
-            "col_3_value": "",
-            "col_3_note": ""
-          }
-        },
-        "row_4": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Added sugar",
-            "col_1_type": "value",
-            "col_1_value": "0g",
-            "col_1_note": "Organic stevia",
-            "col_2_type": "value",
-            "col_2_value": "0–11g",
-            "col_2_note": "",
-            "col_3_type": "value",
-            "col_3_value": "0–5g",
-            "col_3_note": ""
-          }
-        },
-        "row_6": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Antioxidants + vitamin C",
-            "col_1_type": "value",
-            "col_1_value": "73mg vit. C",
-            "col_1_note": "80% DV + polyphenols",
-            "col_2_type": "no",
-            "col_2_value": "",
-            "col_2_note": "",
-            "col_3_type": "value",
-            "col_3_value": "Varies",
-            "col_3_note": ""
-          }
-        },
-        "row_7": {
-          "type": "_comparison-matrix-row",
-          "settings": {
-            "label": "Calories",
-            "col_1_type": "value",
-            "col_1_value": "35",
-            "col_1_note": "",
-            "col_2_type": "value",
-            "col_2_value": "5–45",
-            "col_2_note": "",
-            "col_3_type": "value",
-            "col_3_value": "15–60",
-            "col_3_note": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_6",
-        "row_7"
-      ],
-      "settings": {
-        "heading": "One Stick Instead of Two Products",
-        "text": "<p>Most people end up buying twice: an electrolyte powder for hydration and a fiber or greens powder for their gut. Tiiga does both in one stick, built on whole baobab fruit and coconut water instead of isolates and mineral salts.</p>",
-        "footnote": "",
-        "column_1_label": "Tiiga",
-        "column_2_label": "Electrolyte powders",
-        "column_3_label": "Fiber & greens powders",
+        "eyebrow": "The challenge",
+        "heading": "Most people are under-hydrated and under-fibered.",
+        "text": "<p>Water handles the thirst. It was never going to handle the gut. Two gaps, sold in two different aisles, and most people end up short on both.</p>",
+        "height": 82,
         "accent_color": "#1d5a6b",
-        "table_color": "#ffffff",
         "background_color": "#f6f4f0",
-        "padding-block-start": 72,
-        "padding-block-end": 80
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
-    "advisors": {
-      "type": "advisors",
+    "statement_approach": {
+      "type": "statement-collage",
       "blocks": {
-        "row_1": {
-          "type": "_advisor-row",
+        "photo_1": {
+          "type": "_collage-photo",
           "settings": {
-            "color": "#d23c6d",
-            "title": "Women's Health",
-            "detail": "OB-GYN · Maternal Medicine"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
+            "x": 2,
+            "y": 12,
+            "width": 15,
+            "rotation": -4,
+            "speed": 6
+          }
         },
-        "row_2": {
-          "type": "_advisor-row",
+        "photo_2": {
+          "type": "_collage-photo",
           "settings": {
-            "color": "#2e7d5b",
-            "title": "Nutrition & Dietetics",
-            "detail": "RD · Sports Nutrition"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/IMG_1107_2.jpg",
+            "x": 20,
+            "y": 4,
+            "width": 12,
+            "rotation": 3,
+            "speed": -4
+          }
         },
-        "row_3": {
-          "type": "_advisor-row",
+        "photo_3": {
+          "type": "_collage-photo",
           "settings": {
-            "color": "#3a7de5",
-            "title": "Pediatrics",
-            "detail": "Infant & Child Health"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/tiiga033_4489efb9-ae8f-45d4-bc1a-de5c86c466c6.jpg",
+            "x": 72,
+            "y": 8,
+            "width": 16,
+            "rotation": 4,
+            "speed": 5
+          }
         },
-        "row_4": {
-          "type": "_advisor-row",
+        "photo_4": {
+          "type": "_collage-photo",
           "settings": {
-            "color": "#f5a623",
-            "title": "Sports Medicine",
-            "detail": "Performance & Recovery"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
+            "x": 88,
+            "y": 30,
+            "width": 11,
+            "rotation": -3,
+            "speed": -6
+          }
         },
-        "row_5": {
-          "type": "_advisor-row",
+        "photo_5": {
+          "type": "_collage-photo",
           "settings": {
-            "color": "#7b4397",
-            "title": "Internal Medicine & more",
-            "detail": "General Practice · ER"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP064.jpg",
+            "x": 6,
+            "y": 64,
+            "width": 13,
+            "rotation": 3,
+            "speed": -5
+          }
+        },
+        "photo_6": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
+            "x": 78,
+            "y": 66,
+            "width": 15,
+            "rotation": -4,
+            "speed": 6
+          }
         }
       },
       "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5"
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6"
       ],
-      "disabled": true,
       "settings": {
-        "heading": "Expert eyes on <em>every sip</em>.",
-        "text": "<p>Our medical advisors bring expertise across women's health, nutrition, pediatrics, sports medicine, and more — helping keep every product grounded in real science.</p>",
-        "link_label": "Meet the board",
-        "link": "/pages/advisors",
-        "eyebrow": "Medical advisors across",
+        "eyebrow": "Our approach",
+        "heading": "Whole fruit does more than an isolate ever could.",
+        "text": "<p>Tiiga starts with raw baobab and coconut water rather than lab-spun fiber and mineral salts, because the fruit already carries the fiber, the potassium, and the polyphenols together.</p>",
+        "height": 82,
+        "accent_color": "#1d5a6b",
+        "background_color": "#ffffff",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "scrapbook": {
+      "type": "photo-scrapbook",
+      "blocks": {
+        "snap_1": {
+          "type": "_scrapbook-photo",
+          "settings": {
+            "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
+            "caption": "Add the caption for this moment",
+            "span": 6,
+            "rotation": -3,
+            "lift": 0
+          }
+        },
+        "snap_2": {
+          "type": "_scrapbook-photo",
+          "settings": {
+            "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
+            "caption": "Add the caption for this moment",
+            "span": 6,
+            "rotation": 2,
+            "lift": 36
+          }
+        },
+        "snap_3": {
+          "type": "_scrapbook-photo",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
+            "caption": "Add the caption for this moment",
+            "span": 6,
+            "rotation": 3,
+            "lift": -16
+          }
+        },
+        "snap_4": {
+          "type": "_scrapbook-photo",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP054_56f2916a-a47c-4ac8-8275-d90aba3cb7ea.jpg",
+            "caption": "Add the caption for this moment",
+            "span": 6,
+            "rotation": -2,
+            "lift": 20
+          }
+        }
+      },
+      "block_order": [
+        "snap_1",
+        "snap_2",
+        "snap_3",
+        "snap_4"
+      ],
+      "settings": {
+        "eyebrow": "Founder story",
+        "heading": "It started with a tree.",
+        "text": "<p>Replace this with the real story in the founder's own voice — what went wrong, what they tried, and the moment the baobab showed up. Then swap these four photos for the candid ones and caption each.</p>",
+        "accent_color": "#1d5a6b",
         "background_color": "#f6f4f0",
         "padding-block-start": 88,
         "padding-block-end": 88
       }
     },
-    "trust": {
-      "type": "reviews-carousel",
+    "statement_mission": {
+      "type": "statement-collage",
       "blocks": {
-        "review_1": {
-          "type": "_review-card",
+        "photo_1": {
+          "type": "_collage-photo",
           "settings": {
-            "category": "Relief within a few days",
-            "show_stars": true,
-            "quote": "I felt a sense of relief within a few days in my gut health. I suffer from acid reflux at times throughout the day and these have helped tremendously.",
-            "author": "Laura",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "review_4": {
-          "type": "_review-card",
-          "settings": {
-            "category": "Bloating is way down",
-            "show_stars": true,
-            "quote": "I noticed within the first week that I felt less bloated after meals. Two months in and my digestion is the steadiest it's been in years.",
-            "author": "Priya",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "review_real_1": {
-          "type": "_review-card",
-          "settings": {
-            "category": "For gut health",
-            "show_stars": true,
-            "quote": "Love this stuff! Tastes great and is super helpful in the GI department. I love the bonus Vit C I am getting as well. Do not hesitate to buy!",
-            "author": "Irene P.",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "review_real_2": {
-          "type": "_review-card",
-          "settings": {
-            "category": "For your daily routine",
-            "show_stars": true,
-            "quote": "As a person living with IBS, Tiiga has positively supported healing and healthy maintenance of my GI tract. Thank you!",
-            "author": "Koreen C.",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "review_real_3": {
-          "type": "_review-card",
-          "settings": {
-            "category": "Easily dissolvable",
-            "show_stars": true,
-            "quote": "Easy to dissolve and smooth flavor!",
-            "author": "Beth D.",
-            "verified": true
-          },
-          "blocks": {}
-        },
-        "ugc_video_1": {
-          "type": "_review-video",
-          "settings": {
-            "verified": true
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP040.jpg",
+            "x": 2,
+            "y": 12,
+            "width": 15,
+            "rotation": -4,
+            "speed": 6
           }
         },
-        "ugc_video_2": {
-          "type": "_review-video",
+        "photo_2": {
+          "type": "_collage-photo",
           "settings": {
-            "verified": true
+            "image": "shopify://shop_images/Tiiga.Marketing-HP102.jpg",
+            "x": 20,
+            "y": 4,
+            "width": 12,
+            "rotation": 3,
+            "speed": -4
+          }
+        },
+        "photo_3": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/Tiiga.Marketing-HP147.JPG",
+            "x": 72,
+            "y": 8,
+            "width": 16,
+            "rotation": 4,
+            "speed": 5
+          }
+        },
+        "photo_4": {
+          "type": "_collage-photo",
+          "settings": {
+            "image": "shopify://shop_images/Copy_of_Tiiga.Marketing-HP004.jpg",
+            "x": 88,
+            "y": 30,
+            "width": 11,
+            "rotation": -3,
+            "speed": -6
           }
         }
       },
       "block_order": [
-        "review_1",
-        "review_4",
-        "ugc_video_1",
-        "review_real_1",
-        "review_real_2",
-        "ugc_video_2",
-        "review_real_3"
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4"
       ],
       "settings": {
-        "heading": "What Customers Are Saying",
-        "subtext": "",
-        "link_label": "",
-        "link": "",
-        "background_color": "",
-        "padding-block-start": 80,
-        "padding-block-end": 80
+        "eyebrow": "",
+        "heading": "We make one daily stick that your gut and your cells both get something out of.",
+        "text": "",
+        "height": 72,
+        "accent_color": "#1d5a6b",
+        "background_color": "#ffffff",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "timeline": {
+      "type": "milestone-timeline",
+      "blocks": {
+        "milestone_1": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_2": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_3": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_4": {
+          "type": "_milestone",
+          "settings": {
+            "year": "20XX",
+            "title": "Milestone headline",
+            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "milestone_2",
+        "milestone_3",
+        "milestone_4"
+      ],
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "How Tiiga Got Here",
+        "text": "<p>Replace this with the short version of the origin story — where the baobab came from, and what it took to get it into a stick.</p>",
+        "accent_color": "#1d5a6b",
+        "background_color": "#ffffff",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "values": {
+      "type": "brand-values",
+      "blocks": {
+        "value_1": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Whole fruit, not isolates",
+            "text": "<p>Over 75% of every stick is organic baobab fruit and coconut water powder. The fiber is raw and unprocessed — the way the fruit grew it, not spun out in a lab.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_2": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Nothing in it for looks",
+            "text": "<p>Six ingredients, each doing a job. No added sugar, no artificial sweeteners, no dyes, and no proprietary blend hiding the doses.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_3": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Two jobs, one stick",
+            "text": "<p>Prebiotic fiber and a full electrolyte blend in the same serving, so gut health and hydration stop being two separate purchases.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_4": {
+          "type": "_brand-value",
+          "settings": {
+            "icon": "",
+            "title": "Built to actually drink",
+            "text": "<p>The best routine is the one you keep. Smooth, fruity, and mixes clear — no chalk, no grit, nothing to choke down.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4"
+      ],
+      "settings": {
+        "eyebrow": "What we hold to",
+        "heading": "The Rules We Build Against",
+        "text": "",
+        "columns": 2,
+        "accent_color": "#1d5a6b",
+        "card_color": "#ffffff",
+        "background_color": "#f6f4f0",
+        "padding-block-start": 72,
+        "padding-block-end": 72
       }
     },
     "flavor_tabs": {
@@ -1399,161 +932,239 @@
         "padding-block-end": 80
       }
     },
-    "quote": {
-      "type": "press-quote",
-      "settings": {
-        "quote": "<p>\"What a wonderful way to maintain gut health and boost my immunity. They taste great, easy to travel with and a better way than pills to maintain my health.\"</p>",
-        "attribution": "Missy, Verified Purchase",
-        "background_image": "shopify://shop_images/CopyofTiiga.Marketing-HP113.jpg",
-        "overlay_color": "#00000073",
-        "text_color": "#ffffff",
-        "padding-block-start": 112,
-        "padding-block-end": 96
-      }
-    },
-    "timeline": {
-      "type": "milestone-timeline",
+    "ticker": {
+      "type": "marquee",
       "blocks": {
-        "milestone_1": {
-          "type": "_milestone",
+        "text_1": {
+          "type": "text",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
-            "logo_1": "",
-            "logo_2": "",
-            "logo_3": ""
-          }
+            "text": "<p>No Added Sugar</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "milestone_2": {
-          "type": "_milestone",
+        "text_2": {
+          "type": "text",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
-            "logo_1": "",
-            "logo_2": "",
-            "logo_3": ""
-          }
+            "text": "<p>80% DV Vitamin C</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "milestone_3": {
-          "type": "_milestone",
+        "text_3": {
+          "type": "text",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
-            "logo_1": "",
-            "logo_2": "",
-            "logo_3": ""
-          }
+            "text": "<p>5g Prebiotic Fiber</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "milestone_4": {
-          "type": "_milestone",
+        "text_4": {
+          "type": "text",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
-            "logo_1": "",
-            "logo_2": "",
-            "logo_3": ""
-          }
+            "text": "<p>Zero Caffeine</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_5": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mixes Clear, No Grit</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Gluten Free</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Non-GMO</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Made With Real Fruit</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "milestone_1",
-        "milestone_2",
-        "milestone_3",
-        "milestone_4"
+        "text_1",
+        "text_2",
+        "text_3",
+        "text_4",
+        "text_5",
+        "text_6",
+        "text_7",
+        "text_8"
       ],
       "settings": {
-        "eyebrow": "Our story",
-        "heading": "How Tiiga Got Here",
-        "text": "<p>Replace this with the short version of the origin story — where the baobab came from, and what it took to get it into a stick.</p>",
-        "accent_color": "#1d5a6b",
-        "background_color": "#ffffff",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "values": {
-      "type": "brand-values",
-      "blocks": {
-        "value_1": {
-          "type": "_brand-value",
-          "settings": {
-            "icon": "",
-            "title": "Whole fruit, not isolates",
-            "text": "<p>Over 75% of every stick is organic baobab fruit and coconut water powder. The fiber is raw and unprocessed — the way the fruit grew it, not spun out in a lab.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "value_2": {
-          "type": "_brand-value",
-          "settings": {
-            "icon": "",
-            "title": "Nothing in it for looks",
-            "text": "<p>Six ingredients, each doing a job. No added sugar, no artificial sweeteners, no dyes, and no proprietary blend hiding the doses.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "value_3": {
-          "type": "_brand-value",
-          "settings": {
-            "icon": "",
-            "title": "Two jobs, one stick",
-            "text": "<p>Prebiotic fiber and a full electrolyte blend in the same serving, so gut health and hydration stop being two separate purchases.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "value_4": {
-          "type": "_brand-value",
-          "settings": {
-            "icon": "",
-            "title": "Built to actually drink",
-            "text": "<p>The best routine is the one you keep. Smooth, fruity, and mixes clear — no chalk, no grit, nothing to choke down.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "value_1",
-        "value_2",
-        "value_3",
-        "value_4"
-      ],
-      "settings": {
-        "eyebrow": "What we hold to",
-        "heading": "The Rules We Build Against",
-        "text": "",
-        "columns": 2,
-        "accent_color": "#1d5a6b",
-        "card_color": "#ffffff",
-        "background_color": "#f6f4f0",
-        "padding-block-start": 72,
-        "padding-block-end": 72
+        "movement_direction": "normal",
+        "background_color": "#1d5a6b",
+        "padding-block-start": 18,
+        "padding-block-end": 18,
+        "gap_between_elements": 48
       }
     }
   },
   "order": [
-    "hero",
-    "ticker",
-    "stats",
-    "story_rows",
+    "statement_challenge",
+    "statement_approach",
+    "scrapbook",
+    "statement_mission",
     "timeline",
-    "science",
-    "ingredients",
-    "not_inside",
     "values",
-    "comparison",
-    "advisors",
-    "trust",
     "flavor_tabs",
     "buy_packs",
     "buy_tubs",
-    "quote"
+    "ticker"
   ]
 }

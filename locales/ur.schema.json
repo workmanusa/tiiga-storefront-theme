@@ -270,6 +270,10 @@
     "tiiga_footer_shop_collection": "The collection's products become the Shop column links. Leave empty to use the menu below instead."
   },
   "names": {
+    "statement_collage": "Statement collage",
+    "collage_photo": "Collage photo",
+    "photo_scrapbook": "Photo scrapbook",
+    "scrapbook_photo": "Scrapbook photo",
     "brand_values": "Brand values",
     "brand_value": "Value card",
     "milestone_timeline": "Milestone timeline",
@@ -782,6 +786,10 @@
     "below_media": "میڈیا کے نیچے"
   },
   "settings": {
+    "caption": "Caption",
+    "rotation": "Rotation",
+    "horizontal_position": "Horizontal position",
+    "vertical_position": "Vertical position",
     "year": "Year",
     "poster": "Poster image",
     "accent_color": "Accent color",
