@@ -67,6 +67,10 @@
       {%- for product_variant in product.variants -%}
         <option
           value="{{ product_variant.id }}"
+          {% if product_variant.featured_image %}
+            data-image="{{ product_variant.featured_image | image_url: width: 900 }}"
+            data-image-alt="{{ product_variant.featured_image.alt | default: product_variant.title | escape }}"
+          {% endif %}
           {% if product_variant.id == variant.id %}
             selected
           {% endif %}

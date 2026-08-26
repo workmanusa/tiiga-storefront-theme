@@ -77,6 +77,29 @@ class QuizComponent extends HTMLElement {
         if (buyForm instanceof HTMLFormElement) this.#addToCart(buyForm);
       });
     }
+
+    for (const select of this.querySelectorAll('.quiz__variant-select')) {
+      select.addEventListener('change', () => {
+        if (select instanceof HTMLSelectElement) this.#swapVariantImage(select);
+      });
+    }
+  }
+
+  /**
+   * Shows the selected variant's image on the result card, when it has one.
+   *
+   * @param {HTMLSelectElement} select - The result card's flavor dropdown.
+   */
+  #swapVariantImage(select) {
+    const option = select.selectedOptions[0];
+    const image = select.closest('[data-quiz-result-card]')?.querySelector('.quiz__result-image');
+    const source = option?.getAttribute('data-image');
+    if (!(image instanceof HTMLImageElement) || !source) return;
+
+    image.src = source;
+    image.removeAttribute('srcset');
+    const alt = option.getAttribute('data-image-alt');
+    if (alt) image.alt = alt;
   }
 
   /**
