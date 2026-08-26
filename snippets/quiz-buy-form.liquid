@@ -106,7 +106,7 @@
       {%- endfor -%}
     </select>
 
-    <div class="quiz__flavor-pills" role="group" aria-label="{{ product.options.first }}">
+    <div class="quiz__flavor-list" role="group" aria-label="{{ product.options.first }}">
       {%- for product_variant in product.variants -%}
         {%- liquid
           assign flavor_value_handle = product_variant.title | handleize
@@ -114,7 +114,7 @@
         -%}
         <button
           type="button"
-          class="quiz__flavor-pill"
+          class="quiz__flavor-row"
           data-quiz-flavor-pill
           data-variant-id="{{ product_variant.id }}"
           aria-pressed="{% if product_variant.id == variant.id %}true{% else %}false{% endif %}"
@@ -228,13 +228,45 @@
     >
   </purchase-options-component>
 
-  <button type="submit" class="button quiz__cta">
-    {{ 'actions.add_to_cart' | t }}
-  </button>
+  <div class="quiz__buy-row">
+    <div class="quiz__quantity">
+      <button
+        type="button"
+        class="quiz__quantity-button"
+        data-quiz-quantity="-1"
+        aria-label="{{ 'accessibility.decrease_quantity' | t }}"
+      >
+        &minus;
+      </button>
+      <input
+        class="quiz__quantity-input"
+        type="number"
+        name="quantity"
+        value="1"
+        min="1"
+        inputmode="numeric"
+        aria-label="{{ 'accessibility.quantity' | t }}"
+      >
+      <button
+        type="button"
+        class="quiz__quantity-button"
+        data-quiz-quantity="1"
+        aria-label="{{ 'accessibility.increase_quantity' | t }}"
+      >
+        &plus;
+      </button>
+    </div>
+    <button type="submit" class="button quiz__cta">
+      {{ 'actions.add_to_cart' | t }}
+    </button>
+  </div>
   <p
     class="quiz__cart-error"
     data-quiz-cart-error
     data-fallback="{{ 'quiz.cart_error' | t }}"
     hidden
   ></p>
+  <a class="quiz__details-link" href="{{ product.url }}">
+    {{ 'quiz.full_details' | t }}
+  </a>
 {%- endform -%}

@@ -462,7 +462,8 @@
               </div>
             {% endif %}
             <div class="quiz__result-info">
-              <h3 class="quiz__result-title h3">{{ tub.title }}</h3>
+              {%- assign tub_display_title = tub.title | split: '|' | first | remove_first: 'TIIGA' | strip -%}
+              <h3 class="quiz__result-title h3">{{ tub_display_title }}</h3>
               <p class="quiz__reason" data-quiz-reason></p>
               {% if save_percent > 0 %}
                 <p class="quiz__savings">
@@ -508,7 +509,8 @@
               </div>
             {% endif %}
             <div class="quiz__result-info">
-              <h3 class="quiz__result-title h3">{{ packs.title }}</h3>
+              {%- assign packs_display_title = packs.title | split: '|' | first | remove_first: 'TIIGA' | strip -%}
+              <h3 class="quiz__result-title h3">{{ packs_display_title }}</h3>
               <p class="quiz__reason" data-quiz-reason></p>
               <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
                 {{ 'quiz.subscribe_tip' | t }}
@@ -1005,49 +1007,117 @@
     margin-block-start: var(--margin-sm);
   }
 
-  .quiz__flavor-pills {
+  .quiz__flavor-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 22rem;
   }
 
-  .quiz__flavor-pill {
-    display: inline-flex;
+  .quiz__flavor-row {
+    display: flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.375rem 0.875rem;
-    border: 1.5px solid rgb(var(--quiz-sheet-fg-rgb) / 0.2);
-    border-radius: 100px;
+    gap: 0.625rem;
+    width: 100%;
+    text-align: start;
+    padding: 0.5rem 0.875rem;
+    border: none;
+    border-radius: 12px;
     background-color: transparent;
     color: var(--quiz-sheet-fg);
     font-family: var(--font-body--family);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     cursor: pointer;
-    min-height: 2.25rem;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+    min-height: 2.5rem;
+    opacity: 0.6;
+    transition: opacity 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .quiz__flavor-pill:hover {
-    border-color: rgb(var(--quiz-sheet-fg-rgb) / 0.5);
+  .quiz__flavor-row:hover {
+    opacity: 1;
   }
 
-  .quiz__flavor-pill[aria-pressed='true'] {
-    border-color: var(--quiz-sheet-fg);
-    background-color: rgb(var(--quiz-sheet-fg-rgb) / 0.05);
+  .quiz__flavor-row[aria-pressed='true'] {
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+    font-weight: 600;
   }
 
-  .quiz__flavor-pill[disabled] {
-    opacity: 0.4;
+  .quiz__flavor-row[disabled] {
+    opacity: 0.35;
     cursor: default;
     text-decoration: line-through;
   }
 
   .quiz__flavor-dot {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.875rem;
+    height: 0.875rem;
     border-radius: 50%;
     flex-shrink: 0;
     background-color: var(--flavor-swatch, rgb(var(--quiz-sheet-fg-rgb) / 0.25));
+  }
+
+  .quiz__buy-row {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    width: 100%;
+    margin-block-start: var(--margin-sm);
+  }
+
+  .quiz__quantity {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1.5px solid rgb(var(--quiz-sheet-fg-rgb) / 0.2);
+    border-radius: 100px;
+    background-color: #fff;
+  }
+
+  .quiz__quantity-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--quiz-sheet-fg);
+    font-size: 1.125rem;
+    line-height: 1;
+    width: 2.5rem;
+    min-height: var(--minimum-touch-target);
+  }
+
+  .quiz__quantity-input {
+    width: 2rem;
+    border: none;
+    background: transparent;
+    color: var(--quiz-sheet-fg);
+    font-size: 1rem;
+    text-align: center;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .quiz__quantity-input::-webkit-outer-spin-button,
+  .quiz__quantity-input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .quiz__buy-row .quiz__cta {
+    flex-grow: 1;
+    margin-block-start: 0;
+  }
+
+  .quiz__details-link {
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: currentcolor;
+    text-underline-offset: 0.25em;
+    margin-block-start: var(--margin-xs);
   }
 
   .quiz__cart-error {

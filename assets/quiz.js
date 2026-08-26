@@ -84,6 +84,15 @@ class QuizComponent extends HTMLElement {
       });
     }
 
+    for (const stepper of this.querySelectorAll('[data-quiz-quantity]')) {
+      stepper.addEventListener('click', () => {
+        const input = stepper.closest('.quiz__quantity')?.querySelector('input');
+        if (!(input instanceof HTMLInputElement)) return;
+        const step = Number(stepper.getAttribute('data-quiz-quantity')) || 0;
+        input.value = String(Math.max(1, (parseInt(input.value, 10) || 1) + step));
+      });
+    }
+
     for (const pill of this.querySelectorAll('[data-quiz-flavor-pill]')) {
       pill.addEventListener('click', () => {
         const select = pill.closest('[data-quiz-result-card]')?.querySelector('.quiz__variant-select');
