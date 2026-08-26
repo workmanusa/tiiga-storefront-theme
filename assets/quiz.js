@@ -334,7 +334,9 @@ class QuizComponent extends HTMLElement {
         pre: { product: 'tub', reason: 'performance' },
         during: { product: 'packs', reason: 'portable' },
         post: { product: 'tub', reason: 'recovery' },
-        daily: { product: 'packs', subscription: true, reason: 'performance' },
+        // A daily habit means volume: the tub, on subscription. Only the
+        // explicit portable answer ('during') keeps the sticks.
+        daily: { product: 'tub', subscription: true, reason: 'value' },
       };
       ({ product, subscription = false, reason } = byTiming[a.timing] ?? byTiming.pre);
       // "During, portable" is an explicit stick-pack choice; don't override it.
