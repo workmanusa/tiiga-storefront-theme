@@ -153,7 +153,16 @@ class QuizComponent extends HTMLElement {
       if (this.#answers[question.id]?.value === option.value) {
         button.setAttribute('aria-pressed', 'true');
       }
-      button.addEventListener('click', () => this.#answer(question.id, option));
+      button.addEventListener('click', () => {
+        // Brief pressed state so the choice reads before the step advances.
+        for (const sibling of list.querySelectorAll('button')) {
+          sibling.removeAttribute('aria-pressed');
+          sibling.disabled = true;
+        }
+        button.disabled = false;
+        button.setAttribute('aria-pressed', 'true');
+        setTimeout(() => this.#answer(question.id, option), 160);
+      });
       list.append(button);
     }
 

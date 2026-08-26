@@ -307,22 +307,20 @@
           <p class="quiz__subheading">{{ section.settings.subheading | escape }}</p>
         {% endif %}
         <div class="quiz__paths">
-          <button type="button" class="quiz__option quiz__option--path" data-path="womens">
-            <span class="quiz__option-label">Women's wellness</span>
-            <span class="quiz__option-hint">Bloating, energy, hydration, and your cycle</span>
-          </button>
-          <button type="button" class="quiz__option quiz__option--path" data-path="mens">
-            <span class="quiz__option-label">Men's performance</span>
-            <span class="quiz__option-hint">Training, energy, and recovery</span>
-          </button>
-          <button type="button" class="quiz__option quiz__option--path" data-path="general">
-            <span class="quiz__option-label">General health</span>
-            <span class="quiz__option-hint">Everyday wellness and daily habits</span>
-          </button>
-          <button type="button" class="quiz__option quiz__option--path" data-path="active">
-            <span class="quiz__option-label">Active &amp; athlete</span>
-            <span class="quiz__option-hint">Serious training, hydration, and recovery</span>
-          </button>
+          {%- liquid
+            assign path_ids = 'womens,mens,general,active' | split: ','
+            assign path_labels = "Women's wellness,Men's performance,General health,Active & athlete" | split: ','
+            assign path_hints = 'Bloating, energy, hydration, and your cycle;Training, energy, and recovery;Everyday wellness and daily habits;Serious training, hydration, and recovery' | split: ';'
+          -%}
+          {%- for path_id in path_ids -%}
+            <button type="button" class="quiz__option quiz__option--path" data-path="{{ path_id }}">
+              <span class="quiz__option-text">
+                <span class="quiz__option-label">{{ path_labels[forloop.index0] }}</span>
+                <span class="quiz__option-hint">{{ path_hints[forloop.index0] }}</span>
+              </span>
+              <span class="quiz__option-chevron">{{ 'icon-chevron-right.svg' | inline_asset_content }}</span>
+            </button>
+          {%- endfor -%}
         </div>
         <noscript>
           <p class="quiz__noscript">
@@ -373,64 +371,72 @@
 
         {% if tub != blank %}
           <div class="quiz__result-card" data-quiz-result-card="tub" hidden>
-            <h3 class="quiz__result-title h3">{{ tub.title }}</h3>
             {% if tub.featured_image %}
-              <img
-                class="quiz__result-image"
-                src="{{ tub.featured_image | image_url: width: 900 }}"
-                alt="{{ tub.featured_image.alt | default: tub.title | escape }}"
-                width="450"
-                height="{{ 450 | divided_by: tub.featured_image.aspect_ratio | round }}"
-                loading="lazy"
-              >
+              <div class="quiz__result-media">
+                <img
+                  class="quiz__result-image"
+                  src="{{ tub.featured_image | image_url: width: 900 }}"
+                  alt="{{ tub.featured_image.alt | default: tub.title | escape }}"
+                  width="450"
+                  height="{{ 450 | divided_by: tub.featured_image.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              </div>
             {% endif %}
-            <p class="quiz__reason" data-quiz-reason></p>
-            {% if save_percent > 0 %}
-              <p class="quiz__savings">
-                {{
-                  'quiz.savings_line'
-                  | t:
-                    tub_price: tub_per_serving_money,
-                    packs_price: packs_per_serving_money,
-                    percent: save_percent
-                }}
+            <div class="quiz__result-info">
+              <h3 class="quiz__result-title h3">{{ tub.title }}</h3>
+              <p class="quiz__reason" data-quiz-reason></p>
+              {% if save_percent > 0 %}
+                <p class="quiz__savings">
+                  {{
+                    'quiz.savings_line'
+                    | t:
+                      tub_price: tub_per_serving_money,
+                      packs_price: packs_per_serving_money,
+                      percent: save_percent
+                  }}
+                </p>
+              {% endif %}
+              <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
+                {{ 'quiz.subscribe_tip' | t }}
               </p>
-            {% endif %}
-            <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
-              {{ 'quiz.subscribe_tip' | t }}
-            </p>
-            {% render 'quiz-buy-form', product: tub, section_id: section.id, form_id: 'tub' %}
-            {% if packs != blank %}
-              <a class="quiz__alt-link" href="{{ packs.url }}">
-                {{ 'quiz.start_smaller' | t }}
-              </a>
-            {% endif %}
+              {% render 'quiz-buy-form', product: tub, section_id: section.id, form_id: 'tub' %}
+              {% if packs != blank %}
+                <a class="quiz__alt-link" href="{{ packs.url }}">
+                  {{ 'quiz.start_smaller' | t }}
+                </a>
+              {% endif %}
+            </div>
           </div>
         {% endif %}
 
         {% if packs != blank %}
           <div class="quiz__result-card" data-quiz-result-card="packs" hidden>
-            <h3 class="quiz__result-title h3">{{ packs.title }}</h3>
             {% if packs.featured_image %}
-              <img
-                class="quiz__result-image"
-                src="{{ packs.featured_image | image_url: width: 900 }}"
-                alt="{{ packs.featured_image.alt | default: packs.title | escape }}"
-                width="450"
-                height="{{ 450 | divided_by: packs.featured_image.aspect_ratio | round }}"
-                loading="lazy"
-              >
+              <div class="quiz__result-media">
+                <img
+                  class="quiz__result-image"
+                  src="{{ packs.featured_image | image_url: width: 900 }}"
+                  alt="{{ packs.featured_image.alt | default: packs.title | escape }}"
+                  width="450"
+                  height="{{ 450 | divided_by: packs.featured_image.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              </div>
             {% endif %}
-            <p class="quiz__reason" data-quiz-reason></p>
-            <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
-              {{ 'quiz.subscribe_tip' | t }}
-            </p>
-            {% render 'quiz-buy-form', product: packs, section_id: section.id, form_id: 'packs' %}
-            {% if tub != blank and save_percent > 0 %}
-              <a class="quiz__alt-link" href="{{ tub.url }}">
-                {{ 'quiz.upgrade_line' | t: percent: save_percent }}
-              </a>
-            {% endif %}
+            <div class="quiz__result-info">
+              <h3 class="quiz__result-title h3">{{ packs.title }}</h3>
+              <p class="quiz__reason" data-quiz-reason></p>
+              <p class="quiz__subscription-tip" data-quiz-subscription-tip hidden>
+                {{ 'quiz.subscribe_tip' | t }}
+              </p>
+              {% render 'quiz-buy-form', product: packs, section_id: section.id, form_id: 'packs' %}
+              {% if tub != blank and save_percent > 0 %}
+                <a class="quiz__alt-link" href="{{ tub.url }}">
+                  {{ 'quiz.upgrade_line' | t: percent: save_percent }}
+                </a>
+              {% endif %}
+            </div>
           </div>
         {% endif %}
 
@@ -455,6 +461,41 @@
     display: block;
     width: 100%;
     max-width: 40rem;
+    transition: max-width 0.3s ease;
+  }
+
+  @keyframes quiz-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .quiz__panel:not([hidden]),
+  .quiz__stage .quiz__question,
+  .quiz__stage .quiz__options {
+    animation: quiz-fade-up 0.3s ease both;
+  }
+
+  .quiz__stage .quiz__options {
+    animation-delay: 0.06s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quiz__panel:not([hidden]),
+    .quiz__stage .quiz__question,
+    .quiz__stage .quiz__options {
+      animation: none;
+    }
+
+    .quiz__component {
+      transition: none;
+    }
   }
 
   .quiz__card {
@@ -571,6 +612,19 @@
     background-color: rgb(var(--color-foreground-rgb) / 0.06);
   }
 
+  .quiz__option--path {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+  }
+
+  .quiz__option-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
   .quiz__option-label {
     font-weight: 600;
   }
@@ -578,6 +632,24 @@
   .quiz__option-hint {
     font-size: 0.875rem;
     opacity: 0.7;
+  }
+
+  .quiz__option-chevron {
+    display: flex;
+    flex-shrink: 0;
+    width: 1rem;
+    opacity: 0.4;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .quiz__option-chevron svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .quiz__option--path:hover .quiz__option-chevron {
+    transform: translateX(4px);
+    opacity: 0.9;
   }
 
   .quiz__email-form {
@@ -636,6 +708,12 @@
   .quiz__result-card {
     display: flex;
     flex-direction: column;
+    gap: var(--gap-lg);
+  }
+
+  .quiz__result-info {
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     gap: var(--gap-sm);
   }
@@ -644,14 +722,37 @@
     margin-block: 0;
   }
 
+  .quiz__result-media {
+    border-radius: var(--style-border-radius-cards, 12px);
+    overflow: hidden;
+  }
+
   .quiz__result-image {
+    display: block;
     width: 100%;
     max-width: 100%;
     height: auto;
-    border-radius: var(--style-border-radius-cards, 12px);
-    align-self: center;
     max-height: 320px;
     object-fit: contain;
+  }
+
+  @media screen and (min-width: 750px) {
+    .quiz__component:has([data-quiz-panel='result']:not([hidden])) {
+      max-width: 58rem;
+    }
+
+    .quiz__result-card {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: var(--gap-2xl, 2.5rem);
+      align-items: start;
+    }
+
+    .quiz__result-image {
+      max-height: none;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
   }
 
   .quiz__reason,
