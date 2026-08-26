@@ -84,6 +84,16 @@ class QuizComponent extends HTMLElement {
       });
     }
 
+    for (const pill of this.querySelectorAll('[data-quiz-flavor-pill]')) {
+      pill.addEventListener('click', () => {
+        const select = pill.closest('[data-quiz-result-card]')?.querySelector('.quiz__variant-select');
+        const variantId = pill.getAttribute('data-variant-id');
+        if (!(select instanceof HTMLSelectElement) || !variantId) return;
+        select.value = variantId;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
+
     for (const thumb of this.querySelectorAll('[data-quiz-thumb]')) {
       thumb.addEventListener('click', () => {
         const card = thumb.closest('[data-quiz-result-card]');
@@ -126,6 +136,15 @@ class QuizComponent extends HTMLElement {
         'aria-pressed',
         thumb.getAttribute('data-image') === currentSource ? 'true' : 'false'
       );
+    }
+
+    if (select instanceof HTMLSelectElement) {
+      for (const pill of card.querySelectorAll('[data-quiz-flavor-pill]')) {
+        pill.setAttribute(
+          'aria-pressed',
+          pill.getAttribute('data-variant-id') === select.value ? 'true' : 'false'
+        );
+      }
     }
   }
 

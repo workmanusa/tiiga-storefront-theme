@@ -1,8 +1,9 @@
 {% doc %}
-  Purchase options for a quiz result card: price, one-time vs subscription
-  selling-plan radios, a flavor variant dropdown, and an add-to-cart button.
-  Submission is intercepted by quiz.js, which posts to the AJAX cart and then
-  sends the visitor to the cart page.
+  Purchase options for a quiz result card, styled like the landing-page PDP:
+  swatch flavor pills, the theme's subscribe/one-time selector
+  (purchase-options component), and an add-to-cart button. Submission is
+  intercepted by quiz.js, which posts to the AJAX cart and then sends the
+  visitor to the cart page.
 
   @param {object} product - The recommended product.
   @param {string} section_id - Section id, used to keep input ids unique.
@@ -12,47 +13,62 @@
   {% render 'quiz-buy-form', product: product, section_id: section.id, form_id: 'tub' %}
 {% enddoc %}
 
+<script
+  src="{{ 'purchase-options.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
 {%- liquid
   assign variant = product.selected_or_first_available_variant
   assign field_prefix = 'QuizBuy-' | append: section_id | append: '-' | append: form_id
+  assign plan_group = product.selling_plan_groups | first
+
+  # Default frequency follows the size, mirroring the PDP: the 16-pack
+  # defaults to every 2 weeks, the 30-serving tub to every 4 weeks.
+  assign product_title_down = product.title | downcase
+  assign default_plan_keyword = blank
+  if product_title_down contains '16 pack'
+    assign default_plan_keyword = ' 2 week'
+  elsif product_title_down contains '30 serving' or product_title_down contains 'tub'
+    assign default_plan_keyword = ' 4 week'
+  endif
+
+  assign default_plan = plan_group.selling_plans | first
+  if plan_group.selling_plans.size > 1
+    assign default_plan = plan_group.selling_plans[1]
+  endif
+  if default_plan_keyword != blank
+    for plan in plan_group.selling_plans
+      assign plan_name_padded = plan.name | downcase | prepend: ' '
+      if plan_name_padded contains default_plan_keyword
+        assign default_plan = plan
+        break
+      endif
+    endfor
+  endif
+
+  assign default_allocation = blank
+  assign savings_percent = 0
+  for allocation in variant.selling_plan_allocations
+    if allocation.selling_plan.id == default_plan.id
+      assign default_allocation = allocation
+    endif
+  endfor
+  if default_allocation != blank and variant.price > 0
+    assign savings_percent = variant.price | minus: default_allocation.price | times: 100.0 | divided_by: variant.price | round
+  endif
+
+  assign flavor_option = blank
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'flavor'
+      assign flavor_option = option
+    endif
+  endfor
 -%}
 
-{%- form 'product', product, class: 'quiz__buy-form' -%}
-  <p class="quiz__price">{{ variant.price | money }}</p>
-
-  {%- if product.selling_plan_groups.size > 0 -%}
-    <fieldset class="quiz__plans">
-      <legend class="visually-hidden">{{ 'quiz.purchase_options' | t }}</legend>
-      <label class="quiz__plan">
-        <input
-          type="radio"
-          name="selling_plan"
-          value=""
-          checked
-        >
-        <span>{{ 'purchase_options.one_time' | t }}</span>
-      </label>
-      {%- for group in product.selling_plan_groups -%}
-        {%- for plan in group.selling_plans -%}
-          <label class="quiz__plan">
-            <input
-              type="radio"
-              name="selling_plan"
-              value="{{ plan.id }}"
-            >
-            <span>
-              {{ plan.name }}
-              {%- assign adjustment = plan.price_adjustments.first -%}
-              {%- if adjustment.value_type == 'percentage' and adjustment.value > 0 %}
-                &middot; {{ 'purchase_options.save_percent' | t: percent: adjustment.value }}
-              {%- endif -%}
-            </span>
-          </label>
-        {%- endfor -%}
-      {%- endfor -%}
-    </fieldset>
-  {%- endif -%}
-
+{%- form 'product', product, class: 'quiz__buy-form', id: field_prefix -%}
   {%- if product.has_only_default_variant -%}
     <input type="hidden" name="id" value="{{ variant.id }}">
   {%- else -%}
@@ -61,8 +77,10 @@
     </label>
     <select
       id="{{ field_prefix }}-variant"
-      class="quiz__variant-select"
+      class="quiz__variant-select visually-hidden"
       name="id"
+      tabindex="-1"
+      aria-hidden="true"
     >
       {%- for product_variant in product.variants -%}
         {%- capture variant_image_url -%}
@@ -87,7 +105,128 @@
         </option>
       {%- endfor -%}
     </select>
+
+    <div class="quiz__flavor-pills" role="group" aria-label="{{ product.options.first }}">
+      {%- for product_variant in product.variants -%}
+        {%- liquid
+          assign flavor_value_handle = product_variant.title | handleize
+          assign flavor_entry = shop.metaobjects.tiiga_flavor[flavor_value_handle]
+        -%}
+        <button
+          type="button"
+          class="quiz__flavor-pill"
+          data-quiz-flavor-pill
+          data-variant-id="{{ product_variant.id }}"
+          aria-pressed="{% if product_variant.id == variant.id %}true{% else %}false{% endif %}"
+          {% if flavor_entry.color %}
+            style="--flavor-swatch: {{ flavor_entry.color }};"
+          {% endif %}
+          {% unless product_variant.available %}
+            disabled
+          {% endunless %}
+        >
+          <span class="quiz__flavor-dot" aria-hidden="true"></span>
+          {{ product_variant.title }}
+        </button>
+      {%- endfor -%}
+    </div>
   {%- endif -%}
+
+  <purchase-options-component
+    class="purchase-options"
+    data-block-id="quiz-{{ form_id }}-{{ section_id }}"
+    data-product-id="{{ product.id }}"
+  >
+    {%- if plan_group != blank and default_allocation != blank -%}
+      <label
+        class="purchase-options__option purchase-options__option--selected"
+        data-price="{{ default_allocation.price | money }}"
+      >
+        <input
+          type="radio"
+          class="visually-hidden"
+          name="purchase-mode-quiz-{{ form_id }}-{{ section_id }}"
+          value="subscribe"
+          checked
+        >
+        <span class="purchase-options__radio" aria-hidden="true"></span>
+        <span class="purchase-options__copy">
+          <span class="purchase-options__title">{{ 'purchase_options.subscribe' | t }}</span>
+          <span class="purchase-options__frequency">
+            <select
+              class="purchase-options__plan-select"
+              aria-label="{{ 'purchase_options.delivery_frequency' | t }}"
+            >
+              {%- for plan in plan_group.selling_plans -%}
+                {%- liquid
+                  assign plan_allocation = blank
+                  for allocation in variant.selling_plan_allocations
+                    if allocation.selling_plan.id == plan.id
+                      assign plan_allocation = allocation
+                    endif
+                  endfor
+                -%}
+                <option
+                  value="{{ plan.id }}"
+                  data-price="{{ plan_allocation.price | default: default_allocation.price | money }}"
+                  {% if plan.id == default_plan.id %}
+                    selected
+                  {% endif %}
+                >
+                  {{ plan.name | downcase }}
+                </option>
+              {%- endfor -%}
+            </select>
+            <span class="purchase-options__caret" aria-hidden="true">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </span>
+        </span>
+        {%- if savings_percent > 0 -%}
+          <span class="purchase-options__badge">
+            {{- 'purchase_options.save_percent' | t: percent: savings_percent -}}
+          </span>
+        {%- endif -%}
+        <span class="purchase-options__price">
+          {%- if default_allocation.price < variant.price -%}
+            <s class="purchase-options__price-was">{{ variant.price | money }}</s>
+          {%- endif -%}
+          <span class="purchase-options__price-now">{{ default_allocation.price | money }}</span>
+        </span>
+      </label>
+    {%- endif -%}
+
+    <label
+      class="purchase-options__option{% unless plan_group != blank and default_allocation != blank %} purchase-options__option--selected{% endunless %}"
+      data-price="{{ variant.price | money }}"
+    >
+      <input
+        type="radio"
+        class="visually-hidden"
+        name="purchase-mode-quiz-{{ form_id }}-{{ section_id }}"
+        value="one-time"
+        {% unless plan_group != blank and default_allocation != blank %}
+          checked
+        {% endunless %}
+      >
+      <span class="purchase-options__radio" aria-hidden="true"></span>
+      <span class="purchase-options__copy">
+        <span class="purchase-options__title">{{ 'purchase_options.one_time' | t }}</span>
+      </span>
+      <span class="purchase-options__price">
+        {%- if variant.compare_at_price > variant.price -%}
+          <s class="purchase-options__price-was">{{ variant.compare_at_price | money }}</s>
+        {%- endif -%}
+        <span class="purchase-options__price-now">{{ variant.price | money }}</span>
+      </span>
+    </label>
+
+    <input
+      type="hidden"
+      name="selling_plan"
+      value="{{ default_plan.id }}"
+    >
+  </purchase-options-component>
 
   <button type="submit" class="button quiz__cta">
     {{ 'actions.add_to_cart' | t }}
