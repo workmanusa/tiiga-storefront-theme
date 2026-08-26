@@ -106,8 +106,33 @@
       {%- endfor -%}
     </select>
 
-    <div class="quiz__flavor-list" role="group" aria-label="{{ product.options.first }}">
-      {%- for product_variant in product.variants -%}
+    {%- liquid
+      assign selected_flavor_handle = variant.title | handleize
+      assign selected_flavor_entry = shop.metaobjects.tiiga_flavor[selected_flavor_handle]
+    -%}
+    <div class="quiz__flavor-select" data-quiz-flavor-wrap>
+      <button
+        type="button"
+        class="quiz__flavor-toggle"
+        data-quiz-flavor-toggle
+        aria-expanded="false"
+        aria-label="{{ product.options.first }}"
+      >
+        <span
+          class="quiz__flavor-dot"
+          aria-hidden="true"
+          data-quiz-toggle-dot
+          {% if selected_flavor_entry.color %}
+            style="--flavor-swatch: {{ selected_flavor_entry.color }};"
+          {% endif %}
+        ></span>
+        <span data-quiz-toggle-label>{{ variant.title }}</span>
+        <span class="quiz__flavor-caret" aria-hidden="true">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+      <div class="quiz__flavor-list" role="group" aria-label="{{ product.options.first }}">
+        {%- for product_variant in product.variants -%}
         {%- liquid
           assign flavor_value_handle = product_variant.title | handleize
           assign flavor_entry = shop.metaobjects.tiiga_flavor[flavor_value_handle]
@@ -128,7 +153,8 @@
           <span class="quiz__flavor-dot" aria-hidden="true"></span>
           {{ product_variant.title }}
         </button>
-      {%- endfor -%}
+        {%- endfor -%}
+      </div>
     </div>
   {%- endif -%}
 

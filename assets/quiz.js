@@ -100,8 +100,26 @@ class QuizComponent extends HTMLElement {
         if (!(select instanceof HTMLSelectElement) || !variantId) return;
         select.value = variantId;
         select.dispatchEvent(new Event('change', { bubbles: true }));
+        this.#closeFlavorDropdown(pill.closest('[data-quiz-flavor-wrap]'));
       });
     }
+
+    for (const toggle of this.querySelectorAll('[data-quiz-flavor-toggle]')) {
+      toggle.addEventListener('click', () => {
+        const wrap = toggle.closest('[data-quiz-flavor-wrap]');
+        if (!(wrap instanceof HTMLElement)) return;
+        const open = wrap.toggleAttribute('data-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      for (const wrap of this.querySelectorAll('[data-quiz-flavor-wrap][data-open]')) {
+        if (event.target instanceof Node && !wrap.contains(event.target)) {
+          this.#closeFlavorDropdown(wrap);
+        }
+      }
+    });
 
     for (const thumb of this.querySelectorAll('[data-quiz-thumb]')) {
       thumb.addEventListener('click', () => {
@@ -120,6 +138,15 @@ class QuizComponent extends HTMLElement {
     for (const card of this.querySelectorAll('[data-quiz-result-card]')) {
       if (card instanceof HTMLElement) this.#refreshThumbs(card);
     }
+  }
+
+  /**
+   * @param {Element | null} wrap - The flavor dropdown wrapper to close.
+   */
+  #closeFlavorDropdown(wrap) {
+    if (!(wrap instanceof HTMLElement)) return;
+    wrap.removeAttribute('data-open');
+    wrap.querySelector('[data-quiz-flavor-toggle]')?.setAttribute('aria-expanded', 'false');
   }
 
   /**
@@ -148,11 +175,20 @@ class QuizComponent extends HTMLElement {
     }
 
     if (select instanceof HTMLSelectElement) {
+      let selectedPill = null;
       for (const pill of card.querySelectorAll('[data-quiz-flavor-pill]')) {
-        pill.setAttribute(
-          'aria-pressed',
-          pill.getAttribute('data-variant-id') === select.value ? 'true' : 'false'
-        );
+        const active = pill.getAttribute('data-variant-id') === select.value;
+        pill.setAttribute('aria-pressed', active ? 'true' : 'false');
+        if (active) selectedPill = pill;
+      }
+
+      // Mirror the selection onto the mobile dropdown toggle.
+      const toggleLabel = card.querySelector('[data-quiz-toggle-label]');
+      const toggleDot = card.querySelector('[data-quiz-toggle-dot]');
+      if (selectedPill instanceof HTMLElement && toggleLabel && toggleDot instanceof HTMLElement) {
+        toggleLabel.textContent = selectedPill.textContent?.trim() ?? '';
+        const swatch = selectedPill.style.getPropertyValue('--flavor-swatch');
+        if (swatch) toggleDot.style.setProperty('--flavor-swatch', swatch);
       }
     }
   }
