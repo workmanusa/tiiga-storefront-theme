@@ -251,6 +251,19 @@ class QuizComponent extends HTMLElement {
         const payload = await response.json().catch(() => null);
         throw new Error(payload?.description ?? '');
       }
+      // Quiz answers ride along as cart attributes so they reach the order,
+      // where a Shopify Flow can copy them into customer metafields. The
+      // underscore prefix keeps storefront surfaces from rendering them.
+      const attributes = this.#cartAttributes();
+      if (Object.keys(attributes).length > 0) {
+        await fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ attributes }),
+        }).catch(() => {
+          // Ignored: attribute tagging must not block the checkout path.
+        });
+      }
       window.location.assign(this.getAttribute('data-cart-url') ?? '/cart');
     } catch (cause) {
       if (button instanceof HTMLButtonElement) button.disabled = false;
@@ -537,6 +550,30 @@ class QuizComponent extends HTMLElement {
     this.#pushToKlaviyo(email);
 
     this.#showResult();
+  }
+
+  /**
+   * @returns {Record<string, string>} Order attributes carrying the quiz
+   * outcome and answers, underscore-prefixed to stay out of the UI.
+   */
+  #cartAttributes() {
+    /** @type {Record<string, string>} */
+    const attributes = {};
+    const pathId = this.#path?.id;
+    if (!pathId) return attributes;
+
+    attributes._quiz_path = pathId;
+    if (this.#firstName) attributes._quiz_first_name = this.#firstName;
+    for (const [id, option] of Object.entries(this.#answers)) {
+      attributes[id === 'age' ? '_quiz_age' : `_quiz_${pathId}_${id}`] = option.value;
+    }
+    const reco = this.#recommendation;
+    if (reco) {
+      attributes._quiz_recommendation = reco.product;
+      attributes._quiz_recommend_subscription = String(reco.subscription);
+    }
+
+    return attributes;
   }
 
   /**
