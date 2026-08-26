@@ -515,17 +515,22 @@ class QuizComponent extends HTMLElement {
     }
 
     const email = emailInput.value.trim();
-    const tagsInput = form.querySelector('input[name="contact[tags]"]');
-    if (tagsInput instanceof HTMLInputElement) tagsInput.value = this.#tags().join(', ');
-    const firstNameInput = form.querySelector('[data-quiz-first-name]');
-    if (firstNameInput instanceof HTMLInputElement) firstNameInput.value = this.#firstName;
-
     const button = form.querySelector('button[type="submit"]');
     if (button instanceof HTMLButtonElement) button.disabled = true;
 
-    // Fire-and-forget: the result should show even if either network call fails.
+    // Hand-built customer sign-up: a real {% form 'customer' %} gets
+    // re-submitted natively by Shopify's captcha script, navigating the
+    // visitor away mid-quiz. Fire-and-forget either way — the result must
+    // show even if the network calls fail.
+    const body = new FormData();
+    body.set('form_type', 'customer');
+    body.set('utf8', '✓');
+    body.set('contact[email]', email);
+    body.set('contact[tags]', this.#tags().join(', '));
+    if (this.#firstName) body.set('contact[first_name]', this.#firstName);
+
     try {
-      await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      await fetch('/contact', { method: 'POST', body });
     } catch {
       // Ignored: Shopify sign-up failure must not block the quiz result.
     }

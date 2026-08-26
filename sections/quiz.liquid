@@ -399,11 +399,8 @@
       <div class="quiz__panel" data-quiz-panel="email" hidden data-quiz-email>
         <h2 class="quiz__question h3">{{ 'quiz.email_heading' | t }}</h2>
         <p class="quiz__subheading">{{ 'quiz.email_subtext' | t }}</p>
-        {%- form 'customer', class: 'quiz__email-form' -%}
-          {% # A native fallback submit lands back on this page, not the footer anchor. %}
-          <input type="hidden" name="return_to" value="{{ page.url | default: request.path }}">
-          <input type="hidden" name="contact[tags]" value="">
-          <input type="hidden" name="contact[first_name]" value="" data-quiz-first-name>
+        {% # Deliberately not a Shopify customer form: the platform captcha script re-submits those natively after JS interception, navigating visitors away mid-quiz. quiz.js posts to /contact itself. %}
+        <form class="quiz__email-form" data-quiz-email-form>
           <label for="QuizEmail-{{ section.id }}" class="visually-hidden">
             {{ 'quiz.email_placeholder' | t }}
           </label>
@@ -411,7 +408,7 @@
             id="QuizEmail-{{ section.id }}"
             class="quiz__email-input"
             type="email"
-            name="contact[email]"
+            name="email"
             autocorrect="off"
             autocapitalize="off"
             autocomplete="email"
@@ -421,7 +418,7 @@
           <button type="submit" class="button quiz__submit">
             {{ 'quiz.get_results' | t }}
           </button>
-        {%- endform -%}
+        </form>
         <p class="quiz__consent">{{ 'quiz.consent' | t }}</p>
       </div>
 
