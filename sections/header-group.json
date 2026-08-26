@@ -119,7 +119,7 @@
               "name": "t:names.nav_link",
               "settings": {
                 "label": "Why Tiiga",
-                "link": "",
+                "link": "shopify://pages/why-tiiga",
                 "pill": false
               },
               "blocks": {}
@@ -129,7 +129,7 @@
               "name": "t:names.nav_link",
               "settings": {
                 "label": "Quiz",
-                "link": "",
+                "link": "shopify://pages/quiz",
                 "pill": false
               },
               "blocks": {}
