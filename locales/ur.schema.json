@@ -794,6 +794,9 @@
     "below_media": "میڈیا کے نیچے"
   },
   "settings": {
+    "quiz_name_subtext": "Name step subtext",
+    "quiz_sheet_color": "Results card color",
+    "quiz_sheet_text_color": "Results card text color",
     "subheading": "Subheading",
     "quiz_packs_product": "Stick-pack product",
     "quiz_packs_servings": "Servings per stick pack",

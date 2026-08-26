@@ -883,6 +883,9 @@
   "settings": {
     "caption": "Caption",
     "subheading": "Subheading",
+    "quiz_name_subtext": "Name step subtext",
+    "quiz_sheet_color": "Results card color",
+    "quiz_sheet_text_color": "Results card text color",
     "quiz_packs_product": "Stick-pack product",
     "quiz_packs_servings": "Servings per stick pack",
     "quiz_tub_product": "Tub product",

@@ -31,8 +31,27 @@
 <div class="section-background color-custom-{{ section.id }}"></div>
 <div
   class="quiz spacing-style section section--full-width color-custom-{{ section.id }}"
-  style="{% render 'spacing-padding', settings: section.settings %}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --quiz-sheet-bg: {{ section.settings.sheet_color | default: '#fffdf8' }};
+    --quiz-sheet-bg-rgb: {{ section.settings.sheet_color.rgb | default: '255 253 248' }};
+    --quiz-sheet-fg: {{ section.settings.sheet_text_color | default: '#1f2a2c' }};
+    --quiz-sheet-fg-rgb: {{ section.settings.sheet_text_color.rgb | default: '31 42 44' }};
+  "
 >
+  {%- if section.settings.background_image -%}
+    {{
+      section.settings.background_image
+      | image_url: width: 2400
+      | image_tag: class: 'quiz__backdrop', loading: 'lazy', alt: ''
+    }}
+  {%- endif -%}
+  {%- if section.settings.overlay_color != blank -%}
+    <div class="quiz__overlay" style="background-color: {{ section.settings.overlay_color }};"></div>
+  {%- endif -%}
+  <a class="quiz__close" href="{{ routes.root_url }}" aria-label="{{ 'actions.close' | t }}">
+    {{ 'icon-close.svg' | inline_asset_content }}
+  </a>
   <quiz-component
     class="quiz__component"
     data-klaviyo-key="{{ section.settings.klaviyo_public_key | escape }}"
@@ -53,6 +72,18 @@
           "taste": "Taste-first? Same. Real fruit flavors, no chalky texture, nothing to choke down. Start with the 16-pack and find your favorite.",
           "clean": "You read labels. Organic baobab fruit, coconut water, no dyes, no artificial sweeteners, nothing you can't pronounce.",
           "value": "You want the math to work. Bigger sizes and subscriptions drop your cost per serving, so the more you commit, the less you pay per day."
+        },
+        "age_question": {
+          "id": "age",
+          "text": "How old are you?",
+          "options": [
+            { "value": "under18", "label": "Younger than 18" },
+            { "value": "18to25", "label": "18 to 25" },
+            { "value": "26to34", "label": "26 to 34" },
+            { "value": "35to44", "label": "35 to 44" },
+            { "value": "45to54", "label": "45 to 54" },
+            { "value": "55plus", "label": "55 and older" }
+          ]
         },
         "paths": [
           {
@@ -299,13 +330,44 @@
         </div>
       </div>
 
-      <div class="quiz__panel" data-quiz-panel="intro">
+      <div class="quiz__panel quiz__panel--hero" data-quiz-panel="name">
         {% if section.settings.heading != blank %}
-          <h1 class="quiz__heading h2">{{ section.settings.heading | escape }}</h1>
+          <h1 class="quiz__hero-heading h1">{{ section.settings.heading | escape }}</h1>
         {% endif %}
+        {% if section.settings.name_subtext != blank %}
+          <p class="quiz__hero-subtext">{{ section.settings.name_subtext | escape }}</p>
+        {% endif %}
+        <form class="quiz__name-form" data-quiz-name-form>
+          <label for="QuizName-{{ section.id }}" class="visually-hidden">
+            {{ 'quiz.name_placeholder' | t }}
+          </label>
+          <input
+            id="QuizName-{{ section.id }}"
+            class="quiz__input quiz__name-input"
+            type="text"
+            name="first_name"
+            autocomplete="given-name"
+            autocapitalize="words"
+            placeholder="{{ 'quiz.name_placeholder' | t }}"
+            required
+          >
+          <button type="submit" class="button quiz__cta quiz__cta--wide">
+            {{ 'quiz.get_started' | t }}
+          </button>
+        </form>
+        <noscript>
+          <p class="quiz__noscript">
+            {{ 'quiz.noscript' | t }}
+            <a href="{{ routes.all_products_collection_url }}">{{ 'quiz.noscript_link' | t }}</a>
+          </p>
+        </noscript>
+      </div>
+
+      <div class="quiz__panel" data-quiz-panel="intro" hidden>
         {% if section.settings.subheading != blank %}
-          <p class="quiz__subheading">{{ section.settings.subheading | escape }}</p>
+          <h2 class="quiz__question h3">{{ section.settings.subheading | escape }}</h2>
         {% endif %}
+        <p class="quiz__microcopy">{{ 'quiz.select_one' | t }}</p>
         <div class="quiz__paths">
           {%- liquid
             assign path_ids = 'womens,mens,general,active' | split: ','
@@ -322,16 +384,15 @@
             </button>
           {%- endfor -%}
         </div>
-        <noscript>
-          <p class="quiz__noscript">
-            {{ 'quiz.noscript' | t }}
-            <a href="{{ routes.all_products_collection_url }}">{{ 'quiz.noscript_link' | t }}</a>
-          </p>
-        </noscript>
       </div>
 
       <div class="quiz__panel" data-quiz-panel="questions" hidden>
-        <div class="quiz__stage" data-quiz-stage aria-live="polite"></div>
+        <div
+          class="quiz__stage"
+          data-quiz-stage
+          data-select-label="{{ 'quiz.select_one' | t }}"
+          aria-live="polite"
+        ></div>
       </div>
 
       <div class="quiz__panel" data-quiz-panel="email" hidden data-quiz-email>
@@ -339,6 +400,7 @@
         <p class="quiz__subheading">{{ 'quiz.email_subtext' | t }}</p>
         {%- form 'customer', class: 'quiz__email-form' -%}
           <input type="hidden" name="contact[tags]" value="">
+          <input type="hidden" name="contact[first_name]" value="" data-quiz-first-name>
           <label for="QuizEmail-{{ section.id }}" class="visually-hidden">
             {{ 'quiz.email_placeholder' | t }}
           </label>
@@ -361,13 +423,23 @@
       </div>
 
       <div class="quiz__panel" data-quiz-panel="result" hidden>
-        <p class="quiz__badge">{{ 'quiz.your_match' | t }}</p>
-        {% if section.settings.result_heading != blank %}
-          <h2 class="quiz__result-heading h2">{{ section.settings.result_heading | escape }}</h2>
-        {% endif %}
-        {% if section.settings.result_subtext != blank %}
-          <p class="quiz__subheading">{{ section.settings.result_subtext | escape }}</p>
-        {% endif %}
+        <div class="quiz__result-header">
+          <p
+            class="quiz__result-eyebrow"
+            data-quiz-result-eyebrow
+            data-template="{{ 'quiz.personalized_for' | t: name: '[name]' }}"
+          >
+            {{ 'quiz.personalized_fallback' | t }}
+          </p>
+          {% if section.settings.result_heading != blank %}
+            <h2 class="quiz__result-heading h1">{{ section.settings.result_heading | escape }}</h2>
+          {% endif %}
+          {% if section.settings.result_subtext != blank %}
+            <p class="quiz__hero-subtext">{{ section.settings.result_subtext | escape }}</p>
+          {% endif %}
+        </div>
+
+        <div class="quiz__result-sheet">
 
         {% if tub != blank %}
           <div class="quiz__result-card" data-quiz-result-card="tub" hidden>
@@ -440,10 +512,11 @@
           </div>
         {% endif %}
 
-        {% if section.settings.disclaimer != blank %}
-          <p class="quiz__disclaimer">{{ section.settings.disclaimer | escape }}</p>
-        {% endif %}
-        <a href="#" class="quiz__skip" data-quiz-restart>{{ 'quiz.start_over' | t }}</a>
+          {% if section.settings.disclaimer != blank %}
+            <p class="quiz__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+          {% endif %}
+          <a href="#" class="quiz__skip" data-quiz-restart>{{ 'quiz.start_over' | t }}</a>
+        </div>
       </div>
     </div>
   </quiz-component>
@@ -452,12 +525,55 @@
 {% stylesheet %}
   .quiz {
     grid-column: 1 / -1;
+    position: relative;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    min-height: 92svh;
+    overflow: hidden;
     padding-inline: var(--padding-lg);
   }
 
+  .quiz__backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .quiz__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .quiz__close {
+    position: absolute;
+    inset-block-start: var(--padding-lg);
+    inset-inline-end: var(--padding-lg);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--minimum-touch-target);
+    height: var(--minimum-touch-target);
+    color: currentcolor;
+    opacity: 0.8;
+  }
+
+  .quiz__close:hover {
+    opacity: 1;
+  }
+
+  .quiz__close svg {
+    width: 1.25rem;
+    height: auto;
+  }
+
   .quiz__component {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 100%;
     max-width: 40rem;
@@ -478,6 +594,7 @@
 
   .quiz__panel:not([hidden]),
   .quiz__stage .quiz__question,
+  .quiz__stage .quiz__microcopy,
   .quiz__stage .quiz__options {
     animation: quiz-fade-up 0.3s ease both;
   }
@@ -489,6 +606,7 @@
   @media (prefers-reduced-motion: reduce) {
     .quiz__panel:not([hidden]),
     .quiz__stage .quiz__question,
+    .quiz__stage .quiz__microcopy,
     .quiz__stage .quiz__options {
       animation: none;
     }
@@ -496,14 +614,6 @@
     .quiz__component {
       transition: none;
     }
-  }
-
-  .quiz__card {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    border-radius: var(--style-border-radius-cards, 12px);
-    padding: var(--padding-2xl) var(--padding-xl);
-    box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
   }
 
   .quiz__header[hidden],
@@ -524,9 +634,13 @@
     background: transparent;
     cursor: pointer;
     padding: 0;
-    color: var(--color-foreground);
-    opacity: 0.7;
-    font-size: 0.875rem;
+    color: currentcolor;
+    opacity: 0.75;
+    font-family: var(--font-subheading--family);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     min-height: var(--minimum-touch-target);
     text-align: start;
   }
@@ -542,14 +656,14 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 0.75;
   }
 
   .quiz__progress {
     grid-column: 1 / -1;
     height: 4px;
     border-radius: 100px;
-    background-color: rgb(var(--color-foreground-rgb) / 0.12);
+    background-color: rgb(var(--quiz-sheet-bg-rgb) / 0.25);
     overflow: hidden;
   }
 
@@ -558,25 +672,45 @@
     height: 100%;
     width: var(--quiz-progress, 0%);
     border-radius: inherit;
-    background-color: var(--color-foreground);
+    background-color: var(--quiz-sheet-bg);
     transition: width 0.25s ease;
   }
 
-  .quiz__heading {
-    margin-block: 0 var(--margin-xs);
+  .quiz__panel--hero {
+    text-align: center;
   }
 
-  .quiz__subheading {
+  .quiz__hero-heading {
+    margin-block: 0 var(--margin-sm);
+  }
+
+  .quiz__hero-subtext {
     margin-block: 0 var(--margin-lg);
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   .quiz__question {
-    margin-block: 0 var(--margin-lg);
+    margin-block: 0 var(--margin-sm);
+    text-align: center;
   }
 
   .quiz__question:focus-visible {
     outline: none;
+  }
+
+  .quiz__microcopy {
+    margin-block: 0 var(--margin-sm);
+    font-size: 0.8125rem;
+    opacity: 0.7;
+    text-align: start;
+  }
+
+  .quiz__name-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    max-width: 26rem;
+    margin-inline: auto;
   }
 
   .quiz__paths,
@@ -594,22 +728,25 @@
     width: 100%;
     text-align: start;
     padding: var(--padding-md) var(--padding-lg);
-    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border: none;
     border-radius: var(--style-border-radius-inputs, 8px);
-    background-color: transparent;
-    color: var(--color-foreground);
+    background-color: rgb(var(--quiz-sheet-bg-rgb) / 0.78);
+    color: var(--quiz-sheet-fg);
     font-family: var(--font-body--family);
     font-size: 1rem;
     line-height: 1.4;
     cursor: pointer;
     min-height: var(--minimum-touch-target);
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+    transition: background-color 0.15s ease, transform 0.15s ease;
   }
 
   .quiz__option:hover,
   .quiz__option[aria-pressed='true'] {
-    border-color: var(--color-foreground);
-    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+    background-color: var(--quiz-sheet-bg);
+  }
+
+  .quiz__option[aria-pressed='true'] {
+    transform: scale(1.01);
   }
 
   .quiz__option--path {
@@ -656,23 +793,39 @@
     display: flex;
     flex-direction: column;
     gap: var(--gap-sm);
+    max-width: 26rem;
+    margin-inline: auto;
   }
 
+  [data-quiz-panel='email'] {
+    text-align: center;
+  }
+
+  [data-quiz-panel='email'] .quiz__hero-subtext {
+    margin-block-end: var(--margin-md);
+  }
+
+  .quiz__input,
   .quiz__email-input {
     width: 100%;
     padding: var(--padding-md) var(--padding-lg);
-    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border: none;
     border-radius: var(--style-border-radius-inputs, 8px);
-    background-color: transparent;
-    color: var(--color-foreground);
+    background-color: rgb(var(--quiz-sheet-bg-rgb) / 0.95);
+    color: var(--quiz-sheet-fg);
     font-size: 1rem;
     min-height: var(--minimum-touch-target);
+  }
+
+  .quiz__input::placeholder,
+  .quiz__email-input::placeholder {
+    color: rgb(var(--quiz-sheet-fg-rgb) / 0.55);
   }
 
   .quiz__consent {
     margin-block: var(--margin-sm) 0;
     font-size: 0.75rem;
-    opacity: 0.65;
+    opacity: 0.7;
   }
 
   .quiz__skip {
@@ -688,21 +841,41 @@
     opacity: 1;
   }
 
-  .quiz__badge {
-    display: inline-block;
-    margin-block: 0 var(--margin-sm);
-    padding: 0.375rem 0.875rem;
-    border-radius: 100px;
-    background-color: rgb(var(--color-foreground-rgb) / 0.08);
+  .quiz__result-header {
+    text-align: center;
+    margin-block-end: var(--margin-lg);
+  }
+
+  .quiz__result-eyebrow {
+    margin-block: 0 var(--margin-2xs, 0.25rem);
     font-family: var(--font-subheading--family);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    opacity: 0.85;
   }
 
   .quiz__result-heading {
     margin-block: 0 var(--margin-xs);
+    text-transform: uppercase;
+  }
+
+  .quiz__result-sheet {
+    --color-background: var(--quiz-sheet-bg);
+    --color-background-rgb: var(--quiz-sheet-bg-rgb);
+    --color-foreground: var(--quiz-sheet-fg);
+    --color-foreground-rgb: var(--quiz-sheet-fg-rgb);
+
+    background-color: var(--quiz-sheet-bg);
+    color: var(--quiz-sheet-fg);
+    border-radius: var(--style-border-radius-cards, 12px);
+    padding: var(--padding-xl);
+    text-align: start;
+  }
+
+  .quiz__result-sheet .quiz__result-title {
+    color: currentcolor;
   }
 
   .quiz__result-card {
@@ -736,25 +909,6 @@
     object-fit: contain;
   }
 
-  @media screen and (min-width: 750px) {
-    .quiz__component:has([data-quiz-panel='result']:not([hidden])) {
-      max-width: 58rem;
-    }
-
-    .quiz__result-card {
-      display: grid;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-      gap: var(--gap-2xl, 2.5rem);
-      align-items: start;
-    }
-
-    .quiz__result-image {
-      max-height: none;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
-  }
-
   .quiz__reason,
   .quiz__savings,
   .quiz__subscription-tip {
@@ -769,6 +923,11 @@
 
   .quiz__cta {
     margin-block-start: var(--margin-sm);
+  }
+
+  .quiz__cta--wide {
+    margin-block-start: 0;
+    width: 100%;
   }
 
   .quiz__buy-form {
@@ -804,7 +963,7 @@
   }
 
   .quiz__plan input {
-    accent-color: var(--color-foreground);
+    accent-color: var(--quiz-sheet-fg);
     width: 1.125rem;
     height: 1.125rem;
   }
@@ -812,10 +971,10 @@
   .quiz__variant-select {
     width: 100%;
     padding: var(--padding-md) var(--padding-lg);
-    border: var(--style-border-width-inputs, 1px) solid rgb(var(--color-foreground-rgb) / 0.25);
+    border: var(--style-border-width-inputs, 1px) solid rgb(var(--quiz-sheet-fg-rgb) / 0.3);
     border-radius: var(--style-border-radius-inputs, 8px);
     background-color: transparent;
-    color: var(--color-foreground);
+    color: var(--quiz-sheet-fg);
     font-size: 1rem;
     min-height: var(--minimum-touch-target);
   }
@@ -826,25 +985,42 @@
     color: var(--color-error, #b3261e);
   }
 
-  .quiz__alt-link {
-    font-size: 0.875rem;
-    color: currentcolor;
-    text-underline-offset: 0.2em;
-  }
-
   .quiz__disclaimer {
     margin-block: var(--margin-lg) 0;
     font-size: 0.6875rem;
-    opacity: 0.55;
+    opacity: 0.6;
   }
 
   .quiz__noscript {
     margin-block-start: var(--margin-md);
   }
 
+  @media screen and (min-width: 750px) {
+    .quiz__component:has([data-quiz-panel='result']:not([hidden])) {
+      max-width: 58rem;
+    }
+
+    .quiz__result-card {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: var(--gap-2xl, 2.5rem);
+      align-items: start;
+    }
+
+    .quiz__result-image {
+      max-height: none;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+
   @media screen and (max-width: 749px) {
-    .quiz__card {
-      padding: var(--padding-xl) var(--padding-lg);
+    .quiz {
+      padding-inline: var(--padding-md);
+    }
+
+    .quiz__result-sheet {
+      padding: var(--padding-lg);
     }
   }
 {% endstylesheet %}
@@ -860,13 +1036,19 @@
       "type": "text",
       "id": "heading",
       "label": "t:settings.heading",
-      "default": "Find your Tiiga"
+      "default": "Feel-good hydration starts here."
+    },
+    {
+      "type": "text",
+      "id": "name_subtext",
+      "label": "t:settings.quiz_name_subtext",
+      "default": "You can get your match in about 2 minutes. What's your first name?"
     },
     {
       "type": "text",
       "id": "subheading",
       "label": "t:settings.subheading",
-      "default": "Answer 5 quick questions and we'll match you with the right product. First, which sounds most like you?"
+      "default": "Which sounds most like you?"
     },
     {
       "type": "header",
@@ -931,10 +1113,34 @@
       "content": "t:content.appearance"
     },
     {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:content.background_image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:settings.overlay_color",
+      "alpha": true,
+      "default": "#12333dd9"
+    },
+    {
       "type": "color",
       "id": "background_color",
       "label": "t:settings.background_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "sheet_color",
+      "label": "t:settings.quiz_sheet_color",
+      "default": "#fffdf8"
+    },
+    {
+      "type": "color",
+      "id": "sheet_text_color",
+      "label": "t:settings.quiz_sheet_text_color",
+      "default": "#1f2a2c"
     },
     {
       "type": "header",

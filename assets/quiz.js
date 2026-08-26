@@ -19,6 +19,12 @@ class QuizComponent extends HTMLElement {
   /** @type {QuizPath | null} */
   #path = null;
 
+  /** @type {{ id: string, text: string, options: { value: string, label: string }[] }[]} */
+  #questions = [];
+
+  /** @type {string} */
+  #firstName = '';
+
   /** @type {number} */
   #step = 0;
 
@@ -40,6 +46,23 @@ class QuizComponent extends HTMLElement {
     this.querySelector('[data-quiz-restart]')?.addEventListener('click', (event) => {
       event.preventDefault();
       this.#reset();
+    });
+
+    const nameForm = this.querySelector('[data-quiz-name-form]');
+    nameForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = nameForm.querySelector('input');
+      if (!(input instanceof HTMLInputElement) || !input.checkValidity()) {
+        if (input instanceof HTMLInputElement) input.reportValidity();
+        return;
+      }
+      this.#firstName = input.value.trim();
+      this.#showPanel('intro');
+      const introHeading = this.querySelector('[data-quiz-panel="intro"] h2');
+      if (introHeading instanceof HTMLElement) {
+        introHeading.tabIndex = -1;
+        introHeading.focus({ preventScroll: true });
+      }
     });
 
     const form = this.#form;
@@ -107,6 +130,10 @@ class QuizComponent extends HTMLElement {
     this.#path = this.#data.paths.find((path) => path.id === pathId) ?? null;
     if (!this.#path) return;
 
+    // The shared age question leads every path.
+    this.#questions = this.#data.age_question
+      ? [this.#data.age_question, ...this.#path.questions]
+      : [...this.#path.questions];
     this.#step = 0;
     this.#answers = {};
     this.#showPanel('questions');
@@ -114,13 +141,12 @@ class QuizComponent extends HTMLElement {
   }
 
   #renderQuestion() {
-    const path = this.#path;
-    if (!path) return;
+    if (!this.#path) return;
 
-    const question = path.questions[this.#step];
+    const question = this.#questions[this.#step];
     if (!question) return;
 
-    const total = path.questions.length;
+    const total = this.#questions.length;
     const progress = this.querySelector('[data-quiz-progress]');
     if (progress instanceof HTMLElement) {
       progress.style.setProperty('--quiz-progress', `${((this.#step + 1) / total) * 100}%`);
@@ -141,6 +167,14 @@ class QuizComponent extends HTMLElement {
     heading.tabIndex = -1;
     heading.textContent = question.text;
     stage.append(heading);
+
+    const selectLabel = stage.getAttribute('data-select-label');
+    if (selectLabel) {
+      const microcopy = document.createElement('p');
+      microcopy.className = 'quiz__microcopy';
+      microcopy.textContent = selectLabel;
+      stage.append(microcopy);
+    }
 
     const list = document.createElement('div');
     list.className = 'quiz__options';
@@ -179,7 +213,7 @@ class QuizComponent extends HTMLElement {
 
     if (!this.#path) return;
 
-    if (this.#step < this.#path.questions.length - 1) {
+    if (this.#step < this.#questions.length - 1) {
       this.#step += 1;
       this.#renderQuestion();
     } else {
@@ -204,6 +238,7 @@ class QuizComponent extends HTMLElement {
 
   #reset() {
     this.#path = null;
+    this.#questions = [];
     this.#step = 0;
     this.#answers = {};
     this.#recommendation = null;
@@ -211,7 +246,7 @@ class QuizComponent extends HTMLElement {
   }
 
   /**
-   * @param {'intro' | 'questions' | 'email' | 'result'} name - Panel to show.
+   * @param {'name' | 'intro' | 'questions' | 'email' | 'result'} name - Panel to show.
    */
   #showPanel(name) {
     for (const panel of this.querySelectorAll('[data-quiz-panel]')) {
@@ -315,6 +350,8 @@ class QuizComponent extends HTMLElement {
     const email = emailInput.value.trim();
     const tagsInput = form.querySelector('input[name="contact[tags]"]');
     if (tagsInput instanceof HTMLInputElement) tagsInput.value = this.#tags().join(', ');
+    const firstNameInput = form.querySelector('[data-quiz-first-name]');
+    if (firstNameInput instanceof HTMLInputElement) firstNameInput.value = this.#firstName;
 
     const button = form.querySelector('button[type="submit"]');
     if (button instanceof HTMLButtonElement) button.disabled = true;
@@ -338,7 +375,8 @@ class QuizComponent extends HTMLElement {
     const tags = ['tiiga-quiz', `quiz-path-${pathId}`];
 
     for (const [id, option] of Object.entries(this.#answers)) {
-      tags.push(`quiz-${pathId}-${id}-${option.value}`);
+      // Age is shared across paths, so its tag stays path-agnostic.
+      tags.push(id === 'age' ? `quiz-age-${option.value}` : `quiz-${pathId}-${id}-${option.value}`);
     }
 
     const reco = this.#recommendation;
@@ -362,8 +400,13 @@ class QuizComponent extends HTMLElement {
       quiz_path: pathId,
       quiz_completed_at: new Date().toISOString(),
     };
+    if (this.#firstName) properties.quiz_first_name = this.#firstName;
     for (const [id, option] of Object.entries(this.#answers)) {
-      properties[`quiz_${pathId}_${id}`] = option.value;
+      if (id === 'age') {
+        properties.quiz_age = option.value;
+      } else {
+        properties[`quiz_${pathId}_${id}`] = option.value;
+      }
     }
     if (reco) {
       properties.quiz_recommendation = reco.product;
@@ -372,7 +415,9 @@ class QuizComponent extends HTMLElement {
 
     const onsite = /** @type {{ identify?: Function } | undefined} */ (window.klaviyo);
     if (onsite?.identify) {
-      onsite.identify({ $email: email, ...properties });
+      const identity = { $email: email, ...properties };
+      if (this.#firstName) identity.$first_name = this.#firstName;
+      onsite.identify(identity);
       return;
     }
 
@@ -383,7 +428,12 @@ class QuizComponent extends HTMLElement {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', revision: '2024-10-15' },
       body: JSON.stringify({
-        data: { type: 'profile', attributes: { email, properties } },
+        data: {
+          type: 'profile',
+          attributes: this.#firstName
+            ? { email, first_name: this.#firstName, properties }
+            : { email, properties },
+        },
       }),
     }).catch(() => {
       // Ignored: Klaviyo failure must not block the quiz result.
@@ -393,6 +443,13 @@ class QuizComponent extends HTMLElement {
   #showResult() {
     const reco = this.#recommendation ?? this.#recommend();
     this.#showPanel('result');
+
+    const eyebrow = this.querySelector('[data-quiz-result-eyebrow]');
+    if (eyebrow instanceof HTMLElement && this.#firstName) {
+      const template = eyebrow.getAttribute('data-template') ?? '';
+      const name = this.#firstName.charAt(0).toUpperCase() + this.#firstName.slice(1);
+      if (template.includes('[name]')) eyebrow.textContent = template.replace('[name]', name);
+    }
 
     for (const card of this.querySelectorAll('[data-quiz-result-card]')) {
       if (card instanceof HTMLElement) {
