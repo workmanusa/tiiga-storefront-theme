@@ -299,7 +299,12 @@ class QuizComponent extends HTMLElement {
       if (a.format === 'packs') product = 'packs';
       if (a.format === 'tub') product = 'tub';
       if (a.format === 'autoship') subscription = true;
-      if ((a.workouts === 'daily' || a.workouts === 'threetofive') && product !== 'tub') {
+      // An explicit stick-pack preference wins over the volume upsell.
+      if (
+        a.format !== 'packs' &&
+        (a.workouts === 'daily' || a.workouts === 'threetofive') &&
+        product !== 'tub'
+      ) {
         product = 'tub';
         upsell = true;
       }
@@ -314,10 +319,13 @@ class QuizComponent extends HTMLElement {
       ({ product, subscription = false, reason } = byShop[a.shop] ?? byShop.tryfirst);
       if (a.matters === 'taste') reason = 'taste';
       if (a.matters === 'clean') reason = 'clean';
-      if (a.matters === 'value' && !subscription) {
-        product = 'tub';
-        upsell = true;
+      if (a.matters === 'value') {
         reason = 'value';
+        // "Try it first" is an explicit one-time choice; don't override it.
+        if (!subscription && a.shop !== 'tryfirst') {
+          product = 'tub';
+          upsell = true;
+        }
       }
     }
 
@@ -329,7 +337,12 @@ class QuizComponent extends HTMLElement {
         daily: { product: 'packs', subscription: true, reason: 'performance' },
       };
       ({ product, subscription = false, reason } = byTiming[a.timing] ?? byTiming.pre);
-      if ((a.challenge === 'recovery' || a.challenge === 'cramps') && product !== 'tub') {
+      // "During, portable" is an explicit stick-pack choice; don't override it.
+      if (
+        a.timing !== 'during' &&
+        (a.challenge === 'recovery' || a.challenge === 'cramps') &&
+        product !== 'tub'
+      ) {
         product = 'tub';
         upsell = true;
         reason = a.challenge === 'recovery' ? 'recovery' : 'performance';
