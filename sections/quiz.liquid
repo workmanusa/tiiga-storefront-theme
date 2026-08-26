@@ -884,6 +884,12 @@
     gap: var(--gap-lg);
   }
 
+  .quiz__result-card:not([hidden]) ~ .quiz__result-card:not([hidden]) {
+    margin-block-start: var(--margin-xl);
+    padding-block-start: var(--padding-xl);
+    border-block-start: 1px solid rgb(var(--quiz-sheet-fg-rgb) / 0.15);
+  }
+
   .quiz__result-info {
     display: flex;
     flex-direction: column;

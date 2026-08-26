@@ -321,12 +321,17 @@ class QuizComponent extends HTMLElement {
       ({ product, reason } = byGoal[a.goal] ?? byGoal.energy);
       if (a.format === 'packs') product = 'packs';
       if (a.format === 'tub') product = 'tub';
-      if (a.format === 'autoship') subscription = true;
+      if (a.format === 'autoship') {
+        // Auto-ship shoppers see both formats with the subscription nudge.
+        subscription = true;
+        product = 'both';
+      }
       // An explicit stick-pack preference wins over the volume upsell.
       if (
         a.format !== 'packs' &&
         (a.workouts === 'daily' || a.workouts === 'threetofive') &&
-        product !== 'tub'
+        product !== 'tub' &&
+        product !== 'both'
       ) {
         product = 'tub';
         upsell = true;
@@ -490,17 +495,19 @@ class QuizComponent extends HTMLElement {
     }
 
     for (const card of this.querySelectorAll('[data-quiz-result-card]')) {
-      if (card instanceof HTMLElement) {
-        card.hidden = card.getAttribute('data-quiz-result-card') !== reco.product;
-      }
+      if (!(card instanceof HTMLElement)) continue;
+
+      const key = card.getAttribute('data-quiz-result-card');
+      const visible = reco.product === 'both' || key === reco.product;
+      card.hidden = !visible;
+      if (!visible) continue;
+
+      const reasonSlot = card.querySelector('[data-quiz-reason]');
+      if (reasonSlot) reasonSlot.textContent = this.#data.reasons[reco.reason] ?? '';
+
+      const subscriptionTip = card.querySelector('[data-quiz-subscription-tip]');
+      if (subscriptionTip instanceof HTMLElement) subscriptionTip.hidden = !reco.subscription;
     }
-
-    const activeCard = this.querySelector(`[data-quiz-result-card="${reco.product}"]`);
-    const reasonSlot = activeCard?.querySelector('[data-quiz-reason]');
-    if (reasonSlot) reasonSlot.textContent = this.#data.reasons[reco.reason] ?? '';
-
-    const subscriptionTip = activeCard?.querySelector('[data-quiz-subscription-tip]');
-    if (subscriptionTip instanceof HTMLElement) subscriptionTip.hidden = !reco.subscription;
 
     const resultHeading = this.querySelector('[data-quiz-panel="result"] h2');
     if (resultHeading instanceof HTMLElement) {

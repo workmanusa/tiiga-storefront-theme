@@ -65,11 +65,34 @@
       name="id"
     >
       {%- for product_variant in product.variants -%}
+        {%- liquid
+          # Fall back to a gallery image named after the flavor when the
+          # variant has no image of its own (e.g. standing_tropical_bliss.png).
+          assign variant_image = product_variant.featured_image
+          unless variant_image
+            assign flavor_slug = product_variant.title | downcase | replace: ' ', '_'
+            assign standing_key = 'standing_' | append: flavor_slug
+            for candidate in product.images
+              if candidate.src contains standing_key
+                assign variant_image = candidate
+                break
+              endif
+            endfor
+            unless variant_image
+              for candidate in product.images
+                if candidate.src contains flavor_slug
+                  assign variant_image = candidate
+                  break
+                endif
+              endfor
+            endunless
+          endunless
+        -%}
         <option
           value="{{ product_variant.id }}"
-          {% if product_variant.featured_image %}
-            data-image="{{ product_variant.featured_image | image_url: width: 900 }}"
-            data-image-alt="{{ product_variant.featured_image.alt | default: product_variant.title | escape }}"
+          {% if variant_image %}
+            data-image="{{ variant_image | image_url: width: 900 }}"
+            data-image-alt="{{ variant_image.alt | default: product_variant.title | escape }}"
           {% endif %}
           {% if product_variant.id == variant.id %}
             selected
