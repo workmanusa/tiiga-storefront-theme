@@ -509,21 +509,43 @@ class QuizComponent extends HTMLElement {
       const identity = { $email: email, ...properties };
       if (this.#firstName) identity.$first_name = this.#firstName;
       onsite.identify(identity);
-      return;
     }
 
     const companyId = this.getAttribute('data-klaviyo-key');
     if (!companyId) return;
 
+    /** @type {Record<string, unknown>} */
+    const profileAttributes = { email, properties };
+    if (this.#firstName) profileAttributes.first_name = this.#firstName;
+
+    const headers = { 'Content-Type': 'application/json', revision: '2024-10-15' };
+
+    // Properties upsert; fire-and-forget.
     fetch(`https://a.klaviyo.com/client/profiles/?company_id=${encodeURIComponent(companyId)}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', revision: '2024-10-15' },
+      headers,
+      body: JSON.stringify({ data: { type: 'profile', attributes: profileAttributes } }),
+    }).catch(() => {
+      // Ignored: Klaviyo failure must not block the quiz result.
+    });
+
+    // Email consent into a list, so the profile is subscribed and Klaviyo's
+    // Shopify sync can create the customer. The Shopify customer form is
+    // captcha-blocked for background submits, so this is the reliable path.
+    const listId = this.getAttribute('data-klaviyo-list');
+    if (!listId) return;
+
+    fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${encodeURIComponent(companyId)}`, {
+      method: 'POST',
+      headers,
       body: JSON.stringify({
         data: {
-          type: 'profile',
-          attributes: this.#firstName
-            ? { email, first_name: this.#firstName, properties }
-            : { email, properties },
+          type: 'subscription',
+          attributes: {
+            custom_source: 'Tiiga product match quiz',
+            profile: { data: { type: 'profile', attributes: profileAttributes } },
+          },
+          relationships: { list: { data: { type: 'list', id: listId } } },
         },
       }),
     }).catch(() => {

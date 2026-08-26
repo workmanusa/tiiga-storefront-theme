@@ -55,6 +55,7 @@
   <quiz-component
     class="quiz__component"
     data-klaviyo-key="{{ section.settings.klaviyo_public_key | escape }}"
+    data-klaviyo-list="{{ section.settings.klaviyo_list_id | escape }}"
     data-cart-url="{{ routes.cart_url }}"
   >
     <script type="application/json" data-quiz-data>
@@ -704,8 +705,8 @@
     text-align: center;
   }
 
-  {% # Headings receive programmatic focus for screen readers on step
-     changes; the visible ring is noise for sighted users. %}
+  /* Headings receive programmatic focus for screen readers on step
+     changes; the visible ring is noise for sighted users. */
   .quiz [tabindex='-1']:focus,
   .quiz [tabindex='-1']:focus-visible {
     outline: none;
@@ -1166,6 +1167,12 @@
       "id": "klaviyo_public_key",
       "label": "t:settings.klaviyo_company_id",
       "info": "t:info.quiz_klaviyo_key"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_list_id",
+      "label": "t:settings.quiz_klaviyo_list",
+      "info": "t:info.quiz_klaviyo_list"
     },
     {
       "type": "text",

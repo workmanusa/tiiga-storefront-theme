@@ -234,6 +234,7 @@
     "welcome_announcement": "<p>Welcome to our store</p>"
   },
   "info": {
+    "quiz_klaviyo_list": "The 6-character list ID from the Klaviyo list's URL. When set, quiz takers are subscribed to this list with their email consent, which lets Klaviyo's Shopify sync create the customer in Shopify.",
     "one_per_line": "One per line",
     "combine_reviews": "Show every review in the store instead of only this product's reviews. Each review is labeled with its product.",
     "klaviyo_company_id": "The 6-character public key from Klaviyo settings. Enables live reviews in this section.",
@@ -794,6 +795,7 @@
     "below_media": "أسفل الوسائط"
   },
   "settings": {
+    "quiz_klaviyo_list": "Klaviyo list ID",
     "quiz_name_subtext": "Name step subtext",
     "quiz_sheet_color": "Results card color",
     "quiz_sheet_text_color": "Results card text color",
