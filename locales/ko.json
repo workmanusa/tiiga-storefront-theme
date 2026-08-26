@@ -419,6 +419,7 @@
     "get_results": "Get my results",
     "consent": "By continuing you agree to receive Tiiga emails. Unsubscribe anytime.",
     "purchase_options": "Purchase options",
+    "flavor_thumbs": "Flavor images",
     "cart_error": "Couldn't add to cart. Please try again.",
     "savings_line": "Buy more, save more: the tub works out to {{ tub_price }} per serving instead of {{ packs_price }} in the sticks, about {{ percent }}% less.",
     "subscribe_tip": "Tip: pick a subscription below and save on every order, delivered so you never run out.",

@@ -1,0 +1,61 @@
+{% doc %}
+  Flavor thumbnails under a quiz result card's main image. Clicking one
+  selects that flavor: quiz.js syncs the card's variant dropdown and swaps
+  the main image. Uses the variant image when set, else a gallery image
+  named after the flavor (matching quiz-buy-form's fallback).
+
+  @param {object} product - The recommended product.
+
+  @example
+  {% render 'quiz-result-thumbs', product: product %}
+{% enddoc %}
+
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+-%}
+<div class="quiz__result-thumbs" role="group" aria-label="{{ 'quiz.flavor_thumbs' | t }}">
+  {%- for product_variant in product.variants -%}
+    {%- liquid
+      assign variant_image = product_variant.featured_image
+      unless variant_image
+        assign flavor_slug = product_variant.title | downcase | replace: ' ', '_'
+        assign standing_key = 'standing_' | append: flavor_slug
+        for candidate in product.images
+          if candidate.src contains standing_key
+            assign variant_image = candidate
+            break
+          endif
+        endfor
+        unless variant_image
+          for candidate in product.images
+            if candidate.src contains flavor_slug
+              assign variant_image = candidate
+              break
+            endif
+          endfor
+        endunless
+      endunless
+    -%}
+    {%- if variant_image -%}
+      <button
+        type="button"
+        class="quiz__result-thumb"
+        data-quiz-thumb
+        data-variant-id="{{ product_variant.id }}"
+        aria-pressed="{% if product_variant.id == selected_variant.id %}true{% else %}false{% endif %}"
+        aria-label="{{ product_variant.title | escape }}"
+        {% unless product_variant.available %}
+          disabled
+        {% endunless %}
+      >
+        <img
+          src="{{ variant_image | image_url: width: 160 }}"
+          alt=""
+          width="80"
+          height="80"
+          loading="lazy"
+        >
+      </button>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

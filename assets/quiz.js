@@ -83,6 +83,17 @@ class QuizComponent extends HTMLElement {
         if (select instanceof HTMLSelectElement) this.#swapVariantImage(select);
       });
     }
+
+    for (const thumb of this.querySelectorAll('[data-quiz-thumb]')) {
+      thumb.addEventListener('click', () => {
+        const card = thumb.closest('[data-quiz-result-card]');
+        const select = card?.querySelector('.quiz__variant-select');
+        const variantId = thumb.getAttribute('data-variant-id');
+        if (!(select instanceof HTMLSelectElement) || !variantId) return;
+        select.value = variantId;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
   }
 
   /**
@@ -92,8 +103,19 @@ class QuizComponent extends HTMLElement {
    */
   #swapVariantImage(select) {
     const option = select.selectedOptions[0];
-    const image = select.closest('[data-quiz-result-card]')?.querySelector('.quiz__result-image');
+    const card = select.closest('[data-quiz-result-card]');
+    const image = card?.querySelector('.quiz__result-image');
     const source = option?.getAttribute('data-image');
+
+    if (card) {
+      for (const thumb of card.querySelectorAll('[data-quiz-thumb]')) {
+        thumb.setAttribute(
+          'aria-pressed',
+          thumb.getAttribute('data-variant-id') === select.value ? 'true' : 'false'
+        );
+      }
+    }
+
     if (!(image instanceof HTMLImageElement) || !source) return;
 
     image.src = source;
