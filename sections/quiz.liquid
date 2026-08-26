@@ -704,7 +704,10 @@
     text-align: center;
   }
 
-  .quiz__question:focus-visible {
+  {% # Headings receive programmatic focus for screen readers on step
+     changes; the visible ring is noise for sighted users. %}
+  .quiz [tabindex='-1']:focus,
+  .quiz [tabindex='-1']:focus-visible {
     outline: none;
   }
 
