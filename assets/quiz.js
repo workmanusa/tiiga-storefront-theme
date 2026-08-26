@@ -48,35 +48,29 @@ class QuizComponent extends HTMLElement {
       this.#reset();
     });
 
-    const nameForm = this.querySelector('[data-quiz-name-form]');
-    nameForm?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const input = nameForm.querySelector('input');
-      if (!(input instanceof HTMLInputElement) || !input.checkValidity()) {
-        if (input instanceof HTMLInputElement) input.reportValidity();
+    // Delegated so interception survives any child replacement; a native
+    // submission of the customer form would navigate the page away mid-quiz.
+    this.addEventListener('submit', (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLFormElement)) return;
+
+      if (target.hasAttribute('data-quiz-name-form')) {
+        event.preventDefault();
+        this.#submitName(target);
         return;
       }
-      this.#firstName = input.value.trim();
-      this.#showPanel('intro');
-      const introHeading = this.querySelector('[data-quiz-panel="intro"] h2');
-      if (introHeading instanceof HTMLElement) {
-        introHeading.tabIndex = -1;
-        introHeading.focus({ preventScroll: true });
+
+      if (target.closest('[data-quiz-email]')) {
+        event.preventDefault();
+        this.#submit();
+        return;
+      }
+
+      if (target.classList.contains('quiz__buy-form')) {
+        event.preventDefault();
+        this.#addToCart(target);
       }
     });
-
-    const form = this.#form;
-    form?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      this.#submit();
-    });
-
-    for (const buyForm of this.querySelectorAll('.quiz__buy-form')) {
-      buyForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        if (buyForm instanceof HTMLFormElement) this.#addToCart(buyForm);
-      });
-    }
 
     for (const select of this.querySelectorAll('.quiz__variant-select')) {
       select.addEventListener('change', () => {
@@ -137,6 +131,24 @@ class QuizComponent extends HTMLElement {
 
     for (const card of this.querySelectorAll('[data-quiz-result-card]')) {
       if (card instanceof HTMLElement) this.#refreshThumbs(card);
+    }
+  }
+
+  /**
+   * @param {HTMLFormElement} form - The name capture form.
+   */
+  #submitName(form) {
+    const input = form.querySelector('input');
+    if (!(input instanceof HTMLInputElement) || !input.checkValidity()) {
+      if (input instanceof HTMLInputElement) input.reportValidity();
+      return;
+    }
+    this.#firstName = input.value.trim();
+    this.#showPanel('intro');
+    const introHeading = this.querySelector('[data-quiz-panel="intro"] h2');
+    if (introHeading instanceof HTMLElement) {
+      introHeading.tabIndex = -1;
+      introHeading.focus({ preventScroll: true });
     }
   }
 

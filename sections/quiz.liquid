@@ -400,6 +400,8 @@
         <h2 class="quiz__question h3">{{ 'quiz.email_heading' | t }}</h2>
         <p class="quiz__subheading">{{ 'quiz.email_subtext' | t }}</p>
         {%- form 'customer', class: 'quiz__email-form' -%}
+          {% # A native fallback submit lands back on this page, not the footer anchor. %}
+          <input type="hidden" name="return_to" value="{{ page.url | default: request.path }}">
           <input type="hidden" name="contact[tags]" value="">
           <input type="hidden" name="contact[first_name]" value="" data-quiz-first-name>
           <label for="QuizEmail-{{ section.id }}" class="visually-hidden">
