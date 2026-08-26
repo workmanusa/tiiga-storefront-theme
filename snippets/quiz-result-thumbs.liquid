@@ -1,8 +1,8 @@
 {% doc %}
-  Flavor thumbnails under a quiz result card's main image. Clicking one
-  selects that flavor: quiz.js syncs the card's variant dropdown and swaps
-  the main image. Uses the variant image when set, else a gallery image
-  named after the flavor (matching quiz-buy-form's fallback).
+  Supporting-photo thumbnails under a quiz result card's main image. Every
+  gallery image renders as a thumb tagged with the flavor its filename (or
+  variant assignment) belongs to; quiz.js shows only the selected flavor's
+  photos plus untagged ones, and clicking a thumb swaps the main image.
 
   @param {object} product - The recommended product.
 
@@ -12,50 +12,51 @@
 
 {%- liquid
   assign selected_variant = product.selected_or_first_available_variant
+  assign selected_slug = selected_variant.title | downcase | replace: ' ', '_'
 -%}
 <div class="quiz__result-thumbs" role="group" aria-label="{{ 'quiz.flavor_thumbs' | t }}">
-  {%- for product_variant in product.variants -%}
+  {%- for media_image in product.images -%}
     {%- liquid
-      assign variant_image = product_variant.featured_image
-      unless variant_image
-        assign flavor_slug = product_variant.title | downcase | replace: ' ', '_'
-        assign standing_key = 'standing_' | append: flavor_slug
-        for candidate in product.images
-          if candidate.src contains standing_key
-            assign variant_image = candidate
+      # Tag the image with a flavor: by variant assignment first, then by
+      # the flavor name appearing in the filename (with or without the
+      # underscore, e.g. bagstick_lemonlime.png).
+      assign image_flavor = ''
+      for product_variant in product.variants
+        if product_variant.featured_image and product_variant.featured_image.src == media_image.src
+          assign image_flavor = product_variant.title | downcase | replace: ' ', '_'
+          break
+        endif
+      endfor
+      if image_flavor == ''
+        for product_variant in product.variants
+          assign flavor_slug = product_variant.title | downcase | replace: ' ', '_'
+          assign flavor_compact = flavor_slug | replace: '_', ''
+          if media_image.src contains flavor_slug or media_image.src contains flavor_compact
+            assign image_flavor = flavor_slug
             break
           endif
         endfor
-        unless variant_image
-          for candidate in product.images
-            if candidate.src contains flavor_slug
-              assign variant_image = candidate
-              break
-            endif
-          endfor
-        endunless
-      endunless
+      endif
     -%}
-    {%- if variant_image -%}
-      <button
-        type="button"
-        class="quiz__result-thumb"
-        data-quiz-thumb
-        data-variant-id="{{ product_variant.id }}"
-        aria-pressed="{% if product_variant.id == selected_variant.id %}true{% else %}false{% endif %}"
-        aria-label="{{ product_variant.title | escape }}"
-        {% unless product_variant.available %}
-          disabled
-        {% endunless %}
+    <button
+      type="button"
+      class="quiz__result-thumb"
+      data-quiz-thumb
+      data-image="{{ media_image | image_url: width: 900 }}"
+      data-flavor="{{ image_flavor }}"
+      aria-label="{{ media_image.alt | default: product.title | escape }}"
+      aria-pressed="false"
+      {% if image_flavor != blank and image_flavor != selected_slug %}
+        hidden
+      {% endif %}
+    >
+      <img
+        src="{{ media_image | image_url: width: 160 }}"
+        alt=""
+        width="80"
+        height="80"
+        loading="lazy"
       >
-        <img
-          src="{{ variant_image | image_url: width: 160 }}"
-          alt=""
-          width="80"
-          height="80"
-          loading="lazy"
-        >
-      </button>
-    {%- endif -%}
+    </button>
   {%- endfor -%}
 </div>

@@ -1,0 +1,37 @@
+{% doc %}
+  Echoes the image URL for a variant: its own image when set, else a gallery
+  image named after the flavor (e.g. standing_tropical_bliss.png), else
+  nothing. Callers capture the output and fall back as needed.
+
+  @param {object} product - The product the variant belongs to.
+  @param {object} target_variant - The variant to resolve an image for.
+  @param {number} width - Width passed to image_url.
+
+  @example
+  {% capture url %}{% render 'quiz-variant-image', product: product, target_variant: variant, width: 900 %}{% endcapture %}
+{% enddoc %}
+
+{%- liquid
+  assign resolved_image = target_variant.featured_image
+  unless resolved_image
+    assign flavor_slug = target_variant.title | downcase | replace: ' ', '_'
+    assign standing_key = 'standing_' | append: flavor_slug
+    for candidate in product.images
+      if candidate.src contains standing_key
+        assign resolved_image = candidate
+        break
+      endif
+    endfor
+    unless resolved_image
+      for candidate in product.images
+        if candidate.src contains flavor_slug
+          assign resolved_image = candidate
+          break
+        endif
+      endfor
+    endunless
+  endunless
+  if resolved_image
+    echo resolved_image | image_url: width: width
+  endif
+-%}

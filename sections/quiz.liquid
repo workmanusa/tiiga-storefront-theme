@@ -444,11 +444,15 @@
         {% if tub != blank %}
           <div class="quiz__result-card" data-quiz-result-card="tub" hidden>
             {% if tub.featured_image %}
+              {%- capture tub_initial_image -%}
+                {%- render 'quiz-variant-image', product: tub, target_variant: tub.selected_or_first_available_variant, width: 900 -%}
+              {%- endcapture -%}
+              {%- assign tub_initial_image = tub_initial_image | strip -%}
               <div class="quiz__result-media">
                 <img
                   class="quiz__result-image"
-                  src="{{ tub.featured_image | image_url: width: 900 }}"
-                  alt="{{ tub.featured_image.alt | default: tub.title | escape }}"
+                  src="{% if tub_initial_image != blank %}{{ tub_initial_image }}{% else %}{{ tub.featured_image | image_url: width: 900 }}{% endif %}"
+                  alt="{{ tub.selected_or_first_available_variant.title | default: tub.title | escape }}"
                   width="450"
                   height="{{ 450 | divided_by: tub.featured_image.aspect_ratio | round }}"
                   loading="lazy"
@@ -486,11 +490,15 @@
         {% if packs != blank %}
           <div class="quiz__result-card" data-quiz-result-card="packs" hidden>
             {% if packs.featured_image %}
+              {%- capture packs_initial_image -%}
+                {%- render 'quiz-variant-image', product: packs, target_variant: packs.selected_or_first_available_variant, width: 900 -%}
+              {%- endcapture -%}
+              {%- assign packs_initial_image = packs_initial_image | strip -%}
               <div class="quiz__result-media">
                 <img
                   class="quiz__result-image"
-                  src="{{ packs.featured_image | image_url: width: 900 }}"
-                  alt="{{ packs.featured_image.alt | default: packs.title | escape }}"
+                  src="{% if packs_initial_image != blank %}{{ packs_initial_image }}{% else %}{{ packs.featured_image | image_url: width: 900 }}{% endif %}"
+                  alt="{{ packs.selected_or_first_available_variant.title | default: packs.title | escape }}"
                   width="450"
                   height="{{ 450 | divided_by: packs.featured_image.aspect_ratio | round }}"
                   loading="lazy"

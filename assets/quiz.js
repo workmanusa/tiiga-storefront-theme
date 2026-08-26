@@ -87,12 +87,45 @@ class QuizComponent extends HTMLElement {
     for (const thumb of this.querySelectorAll('[data-quiz-thumb]')) {
       thumb.addEventListener('click', () => {
         const card = thumb.closest('[data-quiz-result-card]');
-        const select = card?.querySelector('.quiz__variant-select');
-        const variantId = thumb.getAttribute('data-variant-id');
-        if (!(select instanceof HTMLSelectElement) || !variantId) return;
-        select.value = variantId;
-        select.dispatchEvent(new Event('change', { bubbles: true }));
+        const image = card?.querySelector('.quiz__result-image');
+        const source = thumb.getAttribute('data-image');
+        if (!(card instanceof HTMLElement) || !(image instanceof HTMLImageElement) || !source) {
+          return;
+        }
+        image.src = source;
+        image.removeAttribute('srcset');
+        this.#refreshThumbs(card);
       });
+    }
+
+    for (const card of this.querySelectorAll('[data-quiz-result-card]')) {
+      if (card instanceof HTMLElement) this.#refreshThumbs(card);
+    }
+  }
+
+  /**
+   * Shows only the selected flavor's supporting photos (plus untagged ones)
+   * and marks the thumb matching the main image as pressed.
+   *
+   * @param {HTMLElement} card - The result card whose thumbs to refresh.
+   */
+  #refreshThumbs(card) {
+    const select = card.querySelector('.quiz__variant-select');
+    const flavor =
+      select instanceof HTMLSelectElement
+        ? (select.selectedOptions[0]?.getAttribute('data-flavor') ?? '')
+        : '';
+    const image = card.querySelector('.quiz__result-image');
+    const currentSource = image instanceof HTMLImageElement ? image.getAttribute('src') : '';
+
+    for (const thumb of card.querySelectorAll('[data-quiz-thumb]')) {
+      if (!(thumb instanceof HTMLElement)) continue;
+      const thumbFlavor = thumb.getAttribute('data-flavor') ?? '';
+      thumb.hidden = Boolean(thumbFlavor) && Boolean(flavor) && thumbFlavor !== flavor;
+      thumb.setAttribute(
+        'aria-pressed',
+        thumb.getAttribute('data-image') === currentSource ? 'true' : 'false'
+      );
     }
   }
 
@@ -107,21 +140,14 @@ class QuizComponent extends HTMLElement {
     const image = card?.querySelector('.quiz__result-image');
     const source = option?.getAttribute('data-image');
 
-    if (card) {
-      for (const thumb of card.querySelectorAll('[data-quiz-thumb]')) {
-        thumb.setAttribute(
-          'aria-pressed',
-          thumb.getAttribute('data-variant-id') === select.value ? 'true' : 'false'
-        );
-      }
+    if (image instanceof HTMLImageElement && source) {
+      image.src = source;
+      image.removeAttribute('srcset');
+      const alt = option.getAttribute('data-image-alt');
+      if (alt) image.alt = alt;
     }
 
-    if (!(image instanceof HTMLImageElement) || !source) return;
-
-    image.src = source;
-    image.removeAttribute('srcset');
-    const alt = option.getAttribute('data-image-alt');
-    if (alt) image.alt = alt;
+    if (card instanceof HTMLElement) this.#refreshThumbs(card);
   }
 
   /**
