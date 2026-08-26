@@ -144,7 +144,7 @@
           },
           {
             "id": "mens",
-            "label": "Men's performance",
+            "label": "Men's wellness",
             "description": "Training, energy, and recovery",
             "questions": [
               {
@@ -256,7 +256,7 @@
           },
           {
             "id": "active",
-            "label": "Active & athlete",
+            "label": "Activity and performance",
             "description": "Serious training, hydration, and recovery",
             "questions": [
               {
@@ -371,7 +371,7 @@
         <div class="quiz__paths">
           {%- liquid
             assign path_ids = 'womens,mens,general,active' | split: ','
-            assign path_labels = "Women's wellness,Men's performance,General health,Active & athlete" | split: ','
+            assign path_labels = "Women's wellness,Men's wellness,General health,Activity and performance" | split: ','
             assign path_hints = 'Bloating, energy, hydration, and your cycle;Training, energy, and recovery;Everyday wellness and daily habits;Serious training, hydration, and recovery' | split: ';'
           -%}
           {%- for path_id in path_ids -%}
