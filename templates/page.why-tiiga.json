@@ -265,9 +265,9 @@
         "milestone_1": {
           "type": "_milestone",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "year": "2015",
+            "title": "First met",
+            "text": "<p>Katy, Jeff, and Harrouna meet at the University of Nebraska&ndash;Lincoln, and Harrouna shares a baobab drink from Burkina Faso neither of the others had ever tasted.</p>",
             "logo_1": "",
             "logo_2": "",
             "logo_3": ""
@@ -276,9 +276,9 @@
         "milestone_2": {
           "type": "_milestone",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "year": "2018",
+            "title": "First prototype",
+            "text": "<p>The first stick comes together &mdash; raw baobab and coconut water, mixed and remixed until it tasted like something you'd reach for every day.</p>",
             "logo_1": "",
             "logo_2": "",
             "logo_3": ""
@@ -287,9 +287,9 @@
         "milestone_3": {
           "type": "_milestone",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "year": "2020",
+            "title": "First production run",
+            "text": "<p>Tiiga graduates from small batches to a real production line, with wild-harvested baobab flowing from partner communities in western Africa.</p>",
             "logo_1": "",
             "logo_2": "",
             "logo_3": ""
@@ -298,9 +298,20 @@
         "milestone_4": {
           "type": "_milestone",
           "settings": {
-            "year": "20XX",
-            "title": "Milestone headline",
-            "text": "<p>What happened, in a sentence or two. Swap in the real moment — first batch, first retailer, first million sticks.</p>",
+            "year": "2021",
+            "title": "First retailer",
+            "text": "<p>Tiiga lands on its first store shelf &mdash; the first time someone could pick up a stick without ever having heard the story.</p>",
+            "logo_1": "",
+            "logo_2": "",
+            "logo_3": ""
+          }
+        },
+        "milestone_5": {
+          "type": "_milestone",
+          "settings": {
+            "year": "2024",
+            "title": "First million sticks",
+            "text": "<p>The millionth stick ships &mdash; a million servings of baobab, and counting, since that first drink in Lincoln.</p>",
             "logo_1": "",
             "logo_2": "",
             "logo_3": ""
@@ -311,12 +322,13 @@
         "milestone_1",
         "milestone_2",
         "milestone_3",
-        "milestone_4"
+        "milestone_4",
+        "milestone_5"
       ],
       "settings": {
         "eyebrow": "Our story",
         "heading": "How Tiiga Got Here",
-        "text": "<p>Replace this with the short version of the origin story — where the baobab came from, and what it took to get it into a stick.</p>",
+        "text": "<p>From one shared drink in Lincoln, Nebraska to a million sticks &mdash; the short version.</p>",
         "accent_color": "#1d5a6b",
         "background_color": "#ffffff",
         "padding-block-start": 72,
