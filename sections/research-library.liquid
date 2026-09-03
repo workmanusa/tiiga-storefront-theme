@@ -1,0 +1,223 @@
+<script
+  src="{{ 'research-library.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="research-library spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <research-library-component class="research-library__inner">
+    <div class="research-library__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="research-library__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="research-library__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="research-library__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div
+      class="research-library__filters"
+      role="group"
+      aria-label="{{ 'accessibility.filters' | t }}"
+      data-label-all="{{ 'actions.view_all' | t }}"
+      hidden
+    ></div>
+
+    <p
+      class="research-library__count visually-hidden"
+      aria-live="polite"
+      data-count-one="{{ 'research_library.count.one' | t }}"
+      data-count-other="{{ 'research_library.count.other' | t }}"
+    ></p>
+
+    <div class="research-library__grid">
+      {% content_for 'blocks' %}
+    </div>
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="research-library__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </research-library-component>
+</div>
+
+{% stylesheet %}
+  .research-library {
+    grid-column: 1 / -1;
+  }
+
+  .research-library__inner {
+    display: block;
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+  }
+
+  .research-library__header {
+    max-width: 44rem;
+    margin-block-end: 2rem;
+  }
+
+  .research-library__eyebrow {
+    margin: 0 0 1rem;
+    font-family: var(--font-subheading--family);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+
+  .research-library__heading {
+    margin: 0 0 1.25rem;
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+    line-height: 1.12;
+  }
+
+  .research-library__text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .research-library__text p {
+    margin: 0;
+  }
+
+  .research-library__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-end: 2rem;
+  }
+
+  .research-library__filter {
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.25);
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem 1.125rem;
+    border-radius: 100px;
+    font-family: var(--font-subheading--family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    min-height: var(--minimum-touch-target);
+  }
+
+  .research-library__filter[aria-pressed='true'] {
+    background-color: var(--color-foreground);
+    border-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .research-library__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  }
+
+  .research-library__disclaimer {
+    margin: 2rem 0 0;
+    max-width: 48rem;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  @media screen and (max-width: 749px) {
+    .research-library__inner {
+      padding-inline: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.research_library",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "t:settings.disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_research-claim"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.research_library",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "claim_1": { "type": "_research-claim" },
+        "claim_2": { "type": "_research-claim" },
+        "claim_3": { "type": "_research-claim" }
+      },
+      "block_order": ["claim_1", "claim_2", "claim_3"]
+    }
+  ]
+}
+{% endschema %}

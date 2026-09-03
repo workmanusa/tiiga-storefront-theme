@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "library": {
+      "type": "research-library",
+      "blocks": {
+        "claim_01": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Gut Health & Digestion • Antioxidants & Nutrients • Emerging Research",
+            "title": "Prebiotic potential for gut health",
+            "summary": "Baobab is naturally rich in pectin-based fiber that may help nourish the gut microbiome. In laboratory research using human gut bacteria, baobab showed promising prebiotic potential and increased the production of beneficial short-chain fatty acids — giving us even more reason to love this nutrient-packed African superfruit.",
+            "source": "A Pectin-Rich Baobab Fruit Pulp Powder Exerts Prebiotic Potential on the Human Gut Microbiome In Vitro"
+          }
+        },
+        "claim_02": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Antioxidants & Nutrients • Metabolic Wellness",
+            "title": "Antioxidant-rich nutritional profile",
+            "summary": "Baobab is a nutrient-rich African superfruit naturally packed with fiber, vitamin C, and beneficial polyphenols. Research has identified compounds in baobab fruit pulp with antioxidant activity, helping support its reputation as a powerful, whole-food ingredient for everyday wellness.",
+            "source": "Phytochemical Profile, Antioxidant and Antidiabetic Activities of Adansonia digitata L. (Baobab) from Mali as a Source of Health-Promoting Compounds"
+          }
+        },
+        "claim_03": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Hydration & Electrolytes • Antioxidants & Nutrients • Traditional Wellness",
+            "title": "Natural electrolytes for hydration",
+            "summary": "A randomized controlled study in Sudan evaluated baobab-based oral rehydration solutions in 113 children and found the baobab formulas were well accepted and supported successful rehydration during the study. Researchers also found baobab naturally provided potassium at levels similar to the WHO oral rehydration solution, highlighting the fruit's potential as a naturally nutrient- and electrolyte-rich ingredient for hydration.",
+            "source": "Baobab Oral Rehydration Solution Study"
+          }
+        },
+        "claim_04": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Gut Health & Digestion • Metabolic Wellness • Emerging Research",
+            "title": "Baobab and healthy satiety",
+            "summary": "Baobab is naturally rich in dietary fiber and polyphenols, making it a unique superfruit for everyday wellness. In a small clinical study of healthy adults, participants who consumed a baobab smoothie reported significantly less hunger compared with a control, suggesting baobab may help support feelings of fullness and satiety.",
+            "source": "The Acute Effects of Baobab Fruit (Adansonia digitata) on Satiety in Healthy Adults"
+          }
+        },
+        "claim_05": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Inflammation & Immune Support • Antioxidants & Nutrients • Emerging Research",
+            "title": "Anti-inflammatory potential of baobab",
+            "summary": "Early animal research suggests baobab fruit pulp may contain naturally occurring compounds with anti-inflammatory and antioxidant-related potential. In laboratory studies using rats and mice, baobab fruit pulp extract demonstrated measurable anti-inflammatory, pain-relieving, and fever-reducing effects, supporting continued interest in baobab as a functional plant food.",
+            "source": "Anti-Inflammatory, Analgesic and Antipyretic Effects of the Fruit Pulp of Adansonia digitata"
+          }
+        },
+        "claim_06": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Antioxidants & Nutrients • Gut Health & Digestion • Emerging Research",
+            "title": "Diverse bioactive compounds in baobab",
+            "summary": "Baobab is naturally rich in beneficial plant compounds, including flavan-3-ols such as epicatechin and procyanidins, along with complex polysaccharides and organic acids. This research highlights baobab's unique nutritional profile and growing potential as a functional food ingredient for everyday wellness.",
+            "source": "Compositional Analysis of Phytochemicals and Polysaccharides from Senegalese Plant Ingredients: Adansonia digitata (Baobab), Moringa oleifera (Moringa), and Hibiscus sabdariffa (Hibiscus)"
+          }
+        },
+        "claim_07": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Metabolic Wellness • Antioxidants & Nutrients • Emerging Research",
+            "title": "Baobab's metabolic health potential",
+            "summary": "Baobab is a remarkably complex superfruit, with researchers identifying dozens of naturally occurring compounds including organic acids, flavonoids, catechins, amino acids, and other phytonutrients. In animal research, baobab fruit extract also showed promising effects on blood sugar regulation and markers of liver and kidney health, reinforcing its potential as a functional food ingredient for everyday wellness.",
+            "source": "Metabolome-Based Profiling of African Baobab Fruit (Adansonia digitata L.) Using a Multiplex Approach of MS and NMR Techniques in Relation to Its Biological Activity"
+          }
+        },
+        "claim_08": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Antioxidants & Nutrients",
+            "title": "Exceptional antioxidant capacity of baobab",
+            "summary": "Baobab fruit pulp demonstrated exceptionally high antioxidant capacity in laboratory testing, outperforming several familiar fruits including orange, strawberry, kiwi, and bilberry. Researchers attributed this strength to baobab's combination of water- and fat-soluble antioxidants, reinforcing its reputation as a naturally nutrient-rich superfruit.",
+            "source": "The Use of Photochemiluminescence for the Measurement of the Integral Antioxidant Capacity of Baobab Products"
+          }
+        },
+        "claim_09": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Metabolic Wellness • Antioxidants & Nutrients • Gut Health & Digestion",
+            "title": "Baobab and glycemic health",
+            "summary": "Baobab is naturally rich in fiber, vitamin C, potassium, magnesium, calcium, and powerful plant compounds including polyphenols and procyanidins. Research suggests these nutrients and bioactive compounds may help support antioxidant activity and a healthy blood sugar response, making baobab a uniquely functional superfruit for everyday wellness.",
+            "source": "Adansonia digitata L. (Baobab) Bioactive Compounds, Biological Activities, and the Potential Effect on Glycemia: A Narrative Review"
+          }
+        },
+        "claim_10": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Inflammation & Immune Support • Antioxidants & Nutrients • Traditional Wellness",
+            "title": "Nutrients supporting immune function",
+            "summary": "Baobab is a naturally nutrient-dense fruit rich in vitamin C, fiber, potassium, calcium, magnesium, iron, zinc, and a variety of plant compounds with antioxidant activity. This review highlights baobab's long history of use across Africa and India as a functional food and traditional wellness ingredient, while also noting its potential role in supporting normal immune function through its nutrient profile.",
+            "source": "The Iconic Baobab (Adansonia digitata L.): Herbal Medicine for Controlling Coronavirus (SARS-CoV-2) Disease (COVID-19)"
+          }
+        },
+        "claim_11": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Emerging Research",
+            "title": "Baobab fiber and cell research",
+            "summary": "Baobab continues to attract scientific interest for its diverse bioactive plant compounds. In laboratory research, a polar extract from baobab fruit fibers reduced the proliferation of certain breast and colon cancer cell lines and influenced genes involved in cell growth and programmed cell death — early findings that highlight baobab's potential for further study.",
+            "source": "RNA Sequencing Identified Novel Target Genes for Adansonia digitata in Breast and Colon Cancer Cells"
+          }
+        },
+        "claim_12": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Antioxidants & Nutrients • Traditional Wellness",
+            "title": "Baobab's traditional nutritional value",
+            "summary": "Baobab has been valued across Africa for generations as both a food and a traditional wellness ingredient. Its fruit pulp is naturally rich in vitamin C, dietary fiber, calcium, phosphorus, and other nutrients — helping explain why baobab is increasingly recognized as a nutrient-dense superfruit.",
+            "source": "Adansonia digitata L. (Baobab): A Review of Traditional Information and Taxonomic Description"
+          }
+        },
+        "claim_13": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Inflammation & Immune Support • Antioxidants & Nutrients • Emerging Research",
+            "title": "Baobab and oral health research",
+            "summary": "Baobab is naturally rich in vitamin C, fiber, minerals, and polyphenols that contribute to its strong antioxidant and anti-inflammatory properties. This review highlights baobab's nutrient-dense profile and its potential to support overall wellness, while noting that many specific applications still require further clinical research.",
+            "source": "The Potential Uses of Baobab Tree's Medicinal Effects in Dentistry: A Literature Review"
+          }
+        },
+        "claim_14": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Gut Health & Digestion • Antioxidants & Nutrients • Traditional Wellness",
+            "title": "Traditional wellness and gut support",
+            "summary": "Baobab has a long history of traditional use and is naturally rich in vitamin C, fiber, and bioactive plant compounds. Research reviewed in this paper highlights its antioxidant and prebiotic potential, including soluble fibers that may help support the growth of beneficial gut bacteria.",
+            "source": "Medicinal Uses of Adansonia digitata L.: An Endangered Tree Species"
+          }
+        }
+      },
+      "block_order": [
+        "claim_01",
+        "claim_02",
+        "claim_03",
+        "claim_04",
+        "claim_05",
+        "claim_06",
+        "claim_07",
+        "claim_08",
+        "claim_09",
+        "claim_10",
+        "claim_11",
+        "claim_12",
+        "claim_13",
+        "claim_14"
+      ],
+      "settings": {
+        "eyebrow": "The baobab research library",
+        "heading": "14 studies. One remarkable fruit.",
+        "text": "<p>Baobab has been studied for gut health, hydration, antioxidants, metabolic wellness, and more. Every summary below comes from a published study or scientific review — filter by category to explore what researchers have found.</p>",
+        "disclaimer": "These summaries are provided for educational purposes and describe research on baobab fruit, not on Tiiga products. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "background_color": "",
+        "padding-block-start": 72,
+        "padding-block-end": 88
+      }
+    }
+  },
+  "order": ["library"]
+}

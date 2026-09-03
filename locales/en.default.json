@@ -8,6 +8,13 @@
  * ------------------------------------------------------------
  */
 {
+  "research_library": {
+    // [count] is swapped in by research-library.js when filtering
+    "count": {
+      "one": "[count] research summary shown",
+      "other": "[count] research summaries shown"
+    }
+  },
   "flavor_nutrition": {
     "nutrition_facts": "Nutrition Facts",
     "serving_size": "Serving size",

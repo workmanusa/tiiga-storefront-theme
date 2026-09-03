@@ -513,6 +513,8 @@
     "research_highlights": "Research highlights",
     // One research-summary card
     "research_claim": "Research claim",
+    // Full-page filterable grid of every research summary
+    "research_library": "Research library",
     "row": "Row",
     "search": "Search",
     "search_input": "Search input",
