@@ -1,0 +1,206 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="research-highlights spacing-style section section--full-width color-custom-{{ section.id }}"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div class="research-highlights__inner">
+    <div class="research-highlights__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="research-highlights__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="research-highlights__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="research-highlights__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="research-highlights__grid">
+      {% content_for 'blocks' %}
+    </div>
+
+    {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+      <a class="research-highlights__link" href="{{ section.settings.link }}">
+        {{- section.settings.link_label -}}
+      </a>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="research-highlights__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .research-highlights {
+    grid-column: 1 / -1;
+  }
+
+  .research-highlights__inner {
+    max-width: var(--page-width, 1300px);
+    margin-inline: auto;
+    padding-inline: max(var(--page-margin, 2rem), 3rem);
+  }
+
+  .research-highlights__header {
+    max-width: 40rem;
+    margin-block-end: 2.5rem;
+  }
+
+  .research-highlights__eyebrow {
+    margin: 0 0 1rem;
+    font-family: var(--font-subheading--family);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+
+  .research-highlights__heading {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.75rem, 2.9vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .research-highlights__text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .research-highlights__text p {
+    margin: 0;
+  }
+
+  .research-highlights__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  }
+
+  .research-highlights__link {
+    display: inline-block;
+    margin-block-start: 2rem;
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: currentcolor;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+
+  .research-highlights__disclaimer {
+    margin: 1.5rem 0 0;
+    max-width: 48rem;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  @media screen and (max-width: 749px) {
+    .research-highlights__inner {
+      padding-inline: 1.5rem;
+    }
+
+    .research-highlights__header {
+      margin-block-end: 1.75rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.research_highlights",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "t:settings.disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_research-claim"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.research_highlights",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "claim_1": { "type": "_research-claim" },
+        "claim_2": { "type": "_research-claim" },
+        "claim_3": { "type": "_research-claim" }
+      },
+      "block_order": ["claim_1", "claim_2", "claim_3"]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+<article
+  class="research-claim"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.category != blank -%}
+    <p class="research-claim__category">{{ block.settings.category }}</p>
+  {%- endif -%}
+  {%- if block.settings.title != blank -%}
+    <h3 class="research-claim__title">{{ block.settings.title }}</h3>
+  {%- endif -%}
+  {%- if block.settings.summary != blank -%}
+    <p class="research-claim__summary">{{ block.settings.summary }}</p>
+  {%- endif -%}
+  {%- if block.settings.source != blank -%}
+    <p class="research-claim__source">{{ block.settings.source }}</p>
+  {%- endif -%}
+</article>
+
+{% stylesheet %}
+  .research-claim {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1.5rem;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+    border-radius: 12px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.02);
+  }
+
+  .research-claim__category {
+    margin: 0;
+    font-family: var(--font-subheading--family);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+
+  .research-claim__title {
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+  }
+
+  .research-claim__summary {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .research-claim__source {
+    margin: auto 0 0;
+    padding-block-start: 0.75rem;
+    font-size: 0.6875rem;
+    font-style: italic;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.research_claim",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "category",
+      "label": "t:settings.category"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "textarea",
+      "id": "summary",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "source",
+      "label": "t:settings.source"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.research_claim"
+    }
+  ]
+}
+{% endschema %}

@@ -509,6 +509,10 @@
     "pull_quote": "Pull quote",
     "quantity": "Quantity",
     "quick_order_list": "Quick order list",
+    // Grid of research-summary cards (the baobab research section)
+    "research_highlights": "Research highlights",
+    // One research-summary card
+    "research_claim": "Research claim",
     "row": "Row",
     "search": "Search",
     "search_input": "Search input",
@@ -948,6 +952,8 @@
     "free_of": "Free of",
     "no_artificial": "No artificial or synthetic",
     "disclaimer": "Disclaimer",
+    "category": "Category",
+    "source": "Source note",
     "servings_per_container": "Servings per container",
     "serving_size": "Serving size",
     "calories": "Calories",

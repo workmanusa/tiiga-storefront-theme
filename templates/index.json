@@ -1118,6 +1118,68 @@
         "padding-block-end": 80
       }
     },
+    "research": {
+      "type": "research-highlights",
+      "blocks": {
+        "claim_1": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Gut Health & Digestion",
+            "title": "Prebiotic potential for gut health",
+            "summary": "Baobab's pectin-rich fiber nourished human gut bacteria in laboratory research, showing prebiotic potential and increasing production of beneficial short-chain fatty acids.",
+            "source": "In vitro study · human gut microbiome"
+          },
+          "blocks": {}
+        },
+        "claim_2": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Hydration & Electrolytes",
+            "title": "Natural electrolytes for hydration",
+            "summary": "In a randomized controlled study of 113 children, baobab-based rehydration solutions supported successful rehydration — and naturally provided potassium at levels similar to the WHO oral rehydration solution.",
+            "source": "Randomized controlled study · 113 participants"
+          },
+          "blocks": {}
+        },
+        "claim_3": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Antioxidants & Nutrients",
+            "title": "Exceptional antioxidant capacity",
+            "summary": "In laboratory testing, baobab fruit pulp outperformed orange, strawberry, kiwi, and bilberry in antioxidant capacity — powered by its combination of water- and fat-soluble antioxidants.",
+            "source": "Laboratory antioxidant analysis"
+          },
+          "blocks": {}
+        },
+        "claim_4": {
+          "type": "_research-claim",
+          "settings": {
+            "category": "Metabolic Wellness",
+            "title": "Baobab and healthy satiety",
+            "summary": "In a small clinical study, healthy adults who drank a baobab smoothie reported significantly less hunger than with a control — suggesting baobab may help support feelings of fullness.",
+            "source": "Clinical study · healthy adults"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "claim_1",
+        "claim_2",
+        "claim_3",
+        "claim_4"
+      ],
+      "settings": {
+        "eyebrow": "From the research",
+        "heading": "What the science says about baobab",
+        "text": "<p>Baobab has been studied for gut health, hydration, antioxidants, and more. Here's a look at what researchers have found — summarized from published studies.</p>",
+        "link_label": "Explore all 14 research summaries",
+        "link": "/pages/science",
+        "disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "background_color": "",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
     "comparison": {
       "type": "comparison-table",
       "blocks": {
@@ -1487,6 +1549,7 @@
     "flavor_panel_2",
     "ingredients",
     "science",
+    "research",
     "comparison",
     "stats",
     "press_quote",
